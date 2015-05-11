@@ -14,7 +14,7 @@ public class TouchCamera : MonoBehaviour {
 
 		if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began) {
 			position = Input.GetTouch (0).position; 
-		} else if (Input.GetMouseButtonDown (0)) {
+		} else if (Input.GetMouseButtonDown (0) || Input.GetMouseButtonDown (1)) {
 			position = Input.mousePosition;
 		} else
 			return;
@@ -24,10 +24,18 @@ public class TouchCamera : MonoBehaviour {
 			Ray ray = Camera.main.ScreenPointToRay( position );
 			RaycastHit hit;
 			
-			if ( Physics.Raycast(ray, out hit) && hit.transform.gameObject.tag == "Vehicle")
-			{
-				hit.rigidbody.velocity = new Vector3(0,0,0);
+			if ( Physics.Raycast(ray, out hit)) {
+				//Debug.Log(hit.transform.gameObject.name);
+				if (hit.transform.gameObject.tag == "Vehicle")
+				{
+					Vehicle vehicle = hit.transform.GetComponent<Vehicle>();
+					if (Input.GetMouseButtonDown (0))
+						vehicle.SlowDown();
+					if (Input.GetMouseButtonDown (1))
+						vehicle.SpeedUp();
+				}
 			}
+
 		}	
 	}
 }

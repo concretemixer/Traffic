@@ -1,1 +1,6 @@
 *.exe
+*.log
+*.bin
+*.dll
+/traffic_Data/
+/metadata/

@@ -4,11 +4,15 @@ using System.Collections;
 public class Vehicle : MonoBehaviour {
 
 	private Level level;
+
+	private int gear = 1;
 	// Use this for initialization
 	void Start () {
 
-		GetComponent<Rigidbody> ().velocity = transform.rotation * new Vector3 (10, 0, 0);
+		GetComponent<Rigidbody> ().velocity = transform.rotation * new Vector3 (20, 0, 0);
 		level = GameObject.Find ("Level").GetComponent<Level>();
+
+		GetComponent<Renderer> ().material.color = new Color (Random.value, Random.value, Random.value);
 	}
 	
 	// Update is called once per frame
@@ -32,4 +36,31 @@ public class Vehicle : MonoBehaviour {
 			level.OnCrash(); 
 		}
 	}
+
+	public void SlowDown()
+	{
+		if (gear == 1)
+			GetComponent<Rigidbody> ().velocity = new Vector3 (0, 0, 0);
+		else if (gear == 2)
+			GetComponent<Rigidbody> ().velocity = transform.rotation * new Vector3 (20, 0, 0);
+		else
+			return;
+
+		gear--;
+
+
+	}
+
+	public void SpeedUp()
+	{
+		if (gear == 0)
+			GetComponent<Rigidbody> ().velocity = transform.rotation * new Vector3 (20, 0, 0);
+		else if (gear == 1)
+			GetComponent<Rigidbody> ().velocity = transform.rotation * new Vector3 (40, 0, 0);
+		else
+			return;
+		
+		gear++;
+	}
+
 }
