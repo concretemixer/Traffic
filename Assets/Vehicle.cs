@@ -12,7 +12,7 @@ public class Vehicle : MonoBehaviour {
 		GetComponent<Rigidbody> ().velocity = transform.rotation * new Vector3 (20, 0, 0);
 		level = GameObject.Find ("Level").GetComponent<Level>();
 
-		GetComponent<Renderer> ().material.color = new Color (Random.value, Random.value, Random.value);
+		GetComponent<Renderer> ().material.color = new Color (Random.value, Random.value*0.2, Random.value);
 	}
 	
 	// Update is called once per frame
