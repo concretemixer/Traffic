@@ -1,0 +1,163 @@
+fileFormatVersion: 2
+guid: ad688e132299ecd45950181bc2be3887
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: blue
+    100002: car04_wheel01
+    100004: car04_wheel02
+    100006: car04_wheel03
+    100008: car04_wheel04
+    100010: car05_wheel01
+    100012: car05_wheel02
+    100014: car05_wheel03
+    100016: car05_wheel04
+    100018: car06_wheel01
+    100020: car06_wheel02
+    100022: car06_wheel03
+    100024: car06_wheel04
+    100026: car4
+    100028: car5
+    100030: car6
+    100032: //RootNode
+    100034: police
+    100036: red
+    100038: taxi
+    100040: wheels5
+    400000: blue
+    400002: car04_wheel01
+    400004: car04_wheel02
+    400006: car04_wheel03
+    400008: car04_wheel04
+    400010: car05_wheel01
+    400012: car05_wheel02
+    400014: car05_wheel03
+    400016: car05_wheel04
+    400018: car06_wheel01
+    400020: car06_wheel02
+    400022: car06_wheel03
+    400024: car06_wheel04
+    400026: car4
+    400028: car5
+    400030: car6
+    400032: //RootNode
+    400034: police
+    400036: red
+    400038: taxi
+    400040: wheels5
+    2300000: blue
+    2300002: car04_wheel01
+    2300004: car04_wheel02
+    2300006: car04_wheel03
+    2300008: car04_wheel04
+    2300010: car05_wheel01
+    2300012: car05_wheel02
+    2300014: car05_wheel03
+    2300016: car05_wheel04
+    2300018: car06_wheel01
+    2300020: car06_wheel02
+    2300022: car06_wheel03
+    2300024: car06_wheel04
+    2300026: car4
+    2300028: car5
+    2300030: car6
+    2300032: police
+    2300034: red
+    2300036: taxi
+    3300000: blue
+    3300002: car04_wheel01
+    3300004: car04_wheel02
+    3300006: car04_wheel03
+    3300008: car04_wheel04
+    3300010: car05_wheel01
+    3300012: car05_wheel02
+    3300014: car05_wheel03
+    3300016: car05_wheel04
+    3300018: car06_wheel01
+    3300020: car06_wheel02
+    3300022: car06_wheel03
+    3300024: car06_wheel04
+    3300026: car4
+    3300028: car5
+    3300030: car6
+    3300032: police
+    3300034: red
+    3300036: taxi
+    4300000: taxi
+    4300002: police
+    4300004: blue
+    4300006: red
+    4300008: car4
+    4300010: car04_wheel04
+    4300012: car5
+    4300014: car6
+    4300016: car06_wheel04
+    4300018: car06_wheel01
+    4300020: car06_wheel02
+    4300022: car06_wheel03
+    4300024: car05_wheel01
+    4300026: car05_wheel02
+    4300028: car05_wheel03
+    4300030: car05_wheel04
+    4300032: car04_wheel01
+    4300034: car04_wheel02
+    4300036: car04_wheel03
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .100000001
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
