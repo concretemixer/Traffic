@@ -29,9 +29,9 @@ public class TouchCamera : MonoBehaviour {
 				if (hit.transform.gameObject.tag == "Vehicle")
 				{
 					Vehicle vehicle = hit.transform.GetComponent<Vehicle>();
-					if (Input.GetMouseButtonDown (0))
-						vehicle.SlowDown();
 					if (Input.GetMouseButtonDown (1))
+						vehicle.SlowDown();
+					if (Input.GetMouseButtonDown (0))
 						vehicle.SpeedUp();
 				}
 			}
