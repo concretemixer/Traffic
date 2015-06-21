@@ -13,6 +13,8 @@ public class Pitcher : MonoBehaviour {
 	private float spawnTime = 0;
 	private Level level;
 
+	public Transform[] vehicles;
+
 	// Use this for initialization
 	void Start () {
 		level = GameObject.Find ("Level").GetComponent<Level>();
@@ -29,7 +31,11 @@ public class Pitcher : MonoBehaviour {
 		}
 		spawnTime -= Time.deltaTime;;
 		if (spawnTime < 0) {
-			Instantiate(vehicle, gameObject.transform.position, gameObject.transform.localRotation);
+			if (vehicles.Length==0)
+				Instantiate(vehicle, gameObject.transform.position, gameObject.transform.localRotation);
+			else
+				Instantiate(vehicles[Random.Range(0,vehicles.Length)], gameObject.transform.position, gameObject.transform.localRotation);
+
 			spawnTime = Random.value * (IntervalMax-IntervalMin) + IntervalMin;
 		}
 
