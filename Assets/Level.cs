@@ -7,6 +7,8 @@ public class Level : MonoBehaviour {
 	public bool Crash = false;
 	public bool Complete = false;
 
+	public string NextLevelName = "";
+
 	public int score = 0;
 	public int targetScore = 50;
 
@@ -16,12 +18,15 @@ public class Level : MonoBehaviour {
 
 	GameObject uiSuccess = null;
 	GameObject uiRestart = null;
+	GameObject uiNext  = null;
 	// Use this for initialization
 	void Start () {
 		uiSuccess = GameObject.Find ("Success");
 		uiSuccess.SetActive (false);
 		uiRestart = GameObject.Find ("Restart");
 		uiRestart.SetActive (false);
+		uiNext = GameObject.Find ("Next");
+		uiNext.SetActive (false);
 
 		UpdateScore();
 	}
@@ -43,6 +48,7 @@ public class Level : MonoBehaviour {
 		uiSuccess.GetComponent<Text>().text = "FAIL!!";
 		uiSuccess.SetActive (true);
 		uiRestart.SetActive (true);
+		uiNext.SetActive (false);
 	}
 
 	public void OnReach(Vehicle v)
@@ -62,11 +68,17 @@ public class Level : MonoBehaviour {
 	{
 		uiSuccess.GetComponent<Text>().text = "Success!";
 		uiSuccess.SetActive (true);
+		uiNext.SetActive (true);
 	}
 
 	private void UpdateScore()
 	{
 		GameObject.Find("Score").GetComponent<Text>().text = score.ToString()+" / "+targetScore.ToString();
+	}
+
+	public void NextLevel()
+	{
+		Application.LoadLevel(NextLevelName);
 	}
 
 	public void Restart()
