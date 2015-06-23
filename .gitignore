@@ -2,6 +2,8 @@
 *.log
 *.bin
 *.dll
+*.apk
 /traffic_Data/
 /metadata/
 /Library/
+/Temp/
