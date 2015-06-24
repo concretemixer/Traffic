@@ -12,7 +12,7 @@ public class Vehicle : MonoBehaviour {
 
 	private int gear = 1;
 	private float stopTimer = 0;
-
+	private bool stopped = false;
 
 
 	// Use this for initialization
@@ -41,12 +41,20 @@ public class Vehicle : MonoBehaviour {
 	{ 
 		if(col.gameObject.tag == "Stop")
 		{
-			if (IsBus) {
+			if (IsBus && !stopped) {
 				int pause = col.GetComponent<BusStop>().StopTimeMs;
 				stopTimer =  (float)(pause / 1000.0);
 				SlowDown();
 				gear = -1;
-				IsBus = false;
+				stopped = true;
+			}
+		}
+		if(col.gameObject.tag == "Yield")
+		{
+			if (!stopped) {
+				GetComponent<Rigidbody> ().velocity = new Vector3 (0, 0, 0);
+				gear=0;
+				stopped = true;
 			}
 		}
 		if(col.gameObject.tag == "Finish")
