@@ -54,7 +54,9 @@
      <Compile Include="Assets\TouchCamera.cs" />
      <Compile Include="Assets\Vehicle.cs" />
      <None Include="Assets\European Cartoon City\Shaders\SolidColor.shader" />
+     <None Include="Assets\Cartoon_City_Mega-Pack\Park_pack\particles\Snow\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\European Cartoon City\README.txt" />
+     <None Include="Assets\Cartoon_City_Mega-Pack\Props_pack\Skyboxes\_skybox info.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
