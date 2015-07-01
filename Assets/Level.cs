@@ -95,4 +95,10 @@ public class Level : MonoBehaviour {
 
 		}
 	}
+
+	public void OnApplicationQuit () {
+		PlayerPrefs.SetInt("Screenmanager Resolution Width", 960);
+		PlayerPrefs.SetInt("Screenmanager Resolution Height", 600);
+		PlayerPrefs.SetInt("Screenmanager Is Fullscreen mode", 0);
+	}
 }
