@@ -53,7 +53,7 @@ public class TouchCamera : MonoBehaviour {
 			RaycastHit hit;
 			
 			if ( Physics.Raycast(ray, out hit)) {
-				Debug.Log(hit.transform.gameObject.name);
+				//Debug.Log(hit.transform.gameObject.name);
 				if (hit.transform.gameObject.tag == "Vehicle")
 				{
 					Vehicle vehicle = hit.transform.GetComponent<Vehicle>();
