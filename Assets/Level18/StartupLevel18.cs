@@ -5,16 +5,19 @@ public class StartupLevel18 : MonoBehaviour {
 
 	double moveTimer = 0;
 	double moveTimer2 = 0;
+	double moveTimer3 = 0;
 
 	// Use this for initialization
 	void Start () {
-		//GameObject.Find("SimplePeople_RoadWorker_White").GetComponent<Animator>().Play("Idle_SittingOnGround");
-
+		moveTimer3 = Random.value * 4 + 10;
 		moveTimer = Random.value * 4 + 1.5;
+		GameObject.Find ("SimplePeople_BusinessMan_White").GetComponent<Animator> ().Play ("Walking");
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+
 		if (moveTimer > 0) {
 			moveTimer -= Time.deltaTime;
 			if (moveTimer <= 0) {
@@ -37,5 +40,15 @@ public class StartupLevel18 : MonoBehaviour {
 				
 			}
 		}
+
+		
+		if (moveTimer3 > 0) {
+			moveTimer3 -= Time.deltaTime;
+			if (moveTimer3 <= 0) {
+				//GameObject.Find("SimplePeople_StreetMan_Brown").GetComponent<Animator>().Play("Death_01");
+				GameObject.Find ("bm_parent").GetComponent<Animation> ().Play ("bmWalk");
+				moveTimer3 = Random.value * 4 + 5;
+			}		
+		} 
 	}
 }
