@@ -3,7 +3,13 @@ using System.Collections;
 
 public class BusStop : MonoBehaviour {
 	
-	public int StopTimeMs = 3000;
+	float StopTimeMin = 2000;
+	float StopTimeMax = 3500;
+
+	public int GetStopTime()
+	{
+		return (int)(Random.value * (StopTimeMax - StopTimeMin) + StopTimeMin);
+	}
 	// Use this for initialization
 	void Start () {
 		

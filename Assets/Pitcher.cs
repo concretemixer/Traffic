@@ -11,18 +11,19 @@ public class Pitcher : MonoBehaviour {
 	public Transform vehicle;
 
 	private float spawnTime = 0;
-	private Level level;
+	private Level level = null;
 
 	public Transform[] vehicles;
 
 	// Use this for initialization
 	void Start () {
-		level = GameObject.Find ("Level").GetComponent<Level>();
+		if (GameObject.Find ("Level")!=null)
+			level = GameObject.Find ("Level").GetComponent<Level>();
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (level.Crash || level.Complete)
+		if (level!=null && (level.Crash || level.Complete || level.PreStart))
 			return;
 
 		if (Pause > 0) {
@@ -31,12 +32,15 @@ public class Pitcher : MonoBehaviour {
 		}
 		spawnTime -= Time.deltaTime;;
 		if (spawnTime < 0) {
-			if (vehicles.Length==0)
-				Instantiate(vehicle, gameObject.transform.position, gameObject.transform.localRotation);
-			else
-				Instantiate(vehicles[Random.Range(0,vehicles.Length)], gameObject.transform.position, gameObject.transform.localRotation);
-
 			spawnTime = Random.value * (IntervalMax-IntervalMin) + IntervalMin;
+			Transform v;
+			if (vehicles.Length==0)
+				v = Instantiate(vehicle, gameObject.transform.position, gameObject.transform.localRotation) as Transform;
+			else
+				v = Instantiate(vehicles[Random.Range(0,vehicles.Length)], gameObject.transform.position, gameObject.transform.localRotation) as Transform;
+
+			//v.localScale = new Vector3(0.5f,0.5f,0.5f);
+			//v.gameObject.tag = "VehicleAI";
 		}
 
 	}

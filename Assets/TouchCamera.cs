@@ -11,10 +11,29 @@ public class TouchCamera : MonoBehaviour {
 	Vehicle touchedVehicle = null;
 	Vector2 touchedVehiclePos = new Vector2(0,0);
 
+	int shotNum = 0;
+
+	GameObject uiRoot;
 	// Update is called once per frame
 	void Update () {
 
 		Vector2 position = new Vector2(0,0);
+
+		if (Input.GetKeyDown (KeyCode.Q)) {
+			uiRoot = GameObject.Find ("IngameUIRoot");
+			uiRoot.SetActive (false);
+		}
+		if (Input.GetKeyDown (KeyCode.W)) {
+			uiRoot.SetActive (true);
+		}
+
+		if (Input.GetKeyDown (KeyCode.S)) {
+
+			Application.CaptureScreenshot(@"d:\shot"+shotNum.ToString()+".png");
+			shotNum++;
+
+
+		}
 
 		if (Input.touchCount == 1) { 
 			if (Input.GetTouch (0).phase == TouchPhase.Ended) {
@@ -30,6 +49,8 @@ public class TouchCamera : MonoBehaviour {
 						touchedVehicle.SpeedUp();
 					else
 						touchedVehicle.SlowDown();
+
+					touchedVehicle = null;
 				}
 			}
 			if (Input.GetTouch (0).phase == TouchPhase.Began) {

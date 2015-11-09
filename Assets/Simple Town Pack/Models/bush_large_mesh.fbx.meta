@@ -8,14 +8,13 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: bush_large_mesh
-    9500000: //RootNode
     11100000: //RootNode
   materials:
     importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
-    legacyGenerateAnimations: 0
+    legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
@@ -63,7 +62,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 1
+  animationType: 0
   additionalBone: 1
   userData: 
   assetBundleName: 

@@ -6,36 +6,61 @@ public class Level : MonoBehaviour {
 
 	public bool Crash = false;
 	public bool Complete = false;
+	public bool PreStart = true;
 
 	public string NextLevelName = "";
 
 	public int score = 0;
+	public int scoreFast = 0;
 	public int targetScore = 50;
 
 	private bool success = false;
 
 	public Transform pitcher;
 
-	GameObject uiSuccess = null;
-	GameObject uiRestart = null;
-	GameObject uiNext  = null;
+	public bool Ingame = false;
+
 	// Use this for initialization
 	void Start () {
-		uiSuccess = GameObject.Find ("Success");
-		uiSuccess.SetActive (false);
-		uiRestart = GameObject.Find ("Restart");
-		uiRestart.SetActive (false);
-		uiNext = GameObject.Find ("Next");
-		uiNext.SetActive (false);
+		//Time.timeScale = 3;
+		Ingame = GameObject.Find ("Game") != null;
 
-		UpdateScore();
+		if (Ingame) {
+			GameObject.Find ("Back").GetComponent<Animator> ().Play ("fade_back");
+			GameObject.Find ("Back 1").GetComponent<Animator> ().Play ("fade_back");
+			GameObject.Find ("Back 2").GetComponent<Animator> ().Play ("fade_back");
+			if (GameObject.Find ("ProgressSlider") != null) {
+				GameObject.Find ("ProgressSlider").GetComponent<Slider> ().maxValue = targetScore;
+				UpdateScore ();
+			}
+			if (GameObject.Find ("MusicSource").GetComponent<AudioSource> ().isPlaying) {
+				GameObject.Find ("AmbSource").GetComponent<AudioSource> ().Pause ();		
+			} else {
+				GameObject.Find ("AmbSource").GetComponent<AudioSource> ().Play ();				
+			}
+		}
+	//	else
+	//		GameObject.Find ("AmbSource").GetComponent<AudioSource> ().Play ();				
+
+
+		PreStart = true;
+		Invoke ("StartDelay", 1);
 	}
-	
+
+	void StartDelay()
+	{
+
+
+		PreStart = false;
+	}
+
 	// Update is called once per frame
 	void Update () {
+
+
 		if (Complete && !success) {
 			if (GameObject.FindGameObjectsWithTag("Vehicle").Length == 0) {
-				OnSuccess();
+				GameObject.Find ("Game").GetComponent<Game> ().OnSuccess (scoreFast,score );
 				success = true;
 			}
 		}
@@ -43,19 +68,24 @@ public class Level : MonoBehaviour {
 
 	public void OnCrash()
 	{
+		if (!Crash) {
+			GameObject o = GameObject.Find ("Game");
+			if (o!=null)
+				o.GetComponent<Game> ().OnFailed ();
+		}
 		Crash = true;
-
-		uiSuccess.GetComponent<Text>().text = "FAIL!!";
-		uiSuccess.SetActive (true);
-		uiRestart.SetActive (true);
-		uiNext.SetActive (false);
 	}
 
 	public void OnReach(Vehicle v)
 	{
 		if (Crash)
 			return;
-		score++;
+
+		if (!v.IsBus) {
+			score++;
+			if (v.gear == 2 && !Complete)
+				scoreFast++;
+		}
 		if (score >= targetScore) {
 			score = targetScore;
 			Complete = true;
@@ -63,36 +93,24 @@ public class Level : MonoBehaviour {
 
 		UpdateScore();
 	}
-
-	public void OnSuccess()
-	{
-		uiSuccess.GetComponent<Text>().text = "Success!";
-		uiSuccess.SetActive (true);
-		uiNext.SetActive (true);
-	}
-
+	
 	private void UpdateScore()
 	{
-		GameObject.Find("Score").GetComponent<Text>().text = score.ToString()+" / "+targetScore.ToString();
-	}
-
-	public void NextLevel()
-	{
-		Application.LoadLevel(NextLevelName);
+		if (GameObject.Find ("ProgressSlider") != null) {
+			GameObject.Find ("Score").GetComponent<Text> ().text = score.ToString () + "/" + targetScore.ToString ();
+			GameObject.Find ("ProgressSlider").GetComponent<Slider> ().value = score;
+		}
 	}
 
 	public void Restart()
 	{
-		uiSuccess.SetActive (false);
-		uiRestart.SetActive (false);
 		Crash = false;
 		score = 0;
+		scoreFast = 0;
 		UpdateScore ();
 
 		foreach (var go in GameObject.FindGameObjectsWithTag("Vehicle")) {
-
 			Destroy(go);
-
 		}
 	}
 
