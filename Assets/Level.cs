@@ -4,6 +4,9 @@ using System.Collections;
 
 public class Level : MonoBehaviour {
 
+	GameObject cameraPortrait;
+	GameObject cameraLandscape;
+
 	public bool Crash = false;
 	public bool Complete = false;
 	public bool PreStart = true;
@@ -22,6 +25,11 @@ public class Level : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		cameraPortrait = GameObject.Find("Main Camera Portrait");
+		cameraLandscape = GameObject.Find("Main Camera Landscape");;
+
+		UpdateCamera ();
 		//Time.timeScale = 3;
 		Ingame = GameObject.Find ("Game") != null;
 
@@ -34,9 +42,9 @@ public class Level : MonoBehaviour {
 				UpdateScore ();
 			}
 			if (GameObject.Find ("MusicSource").GetComponent<AudioSource> ().isPlaying) {
-				GameObject.Find ("AmbSource").GetComponent<AudioSource> ().Pause ();		
+				//GameObject.Find ("AmbSource").GetComponent<AudioSource> ().Pause ();		
 			} else {
-				GameObject.Find ("AmbSource").GetComponent<AudioSource> ().Play ();				
+			//	GameObject.Find ("AmbSource").GetComponent<AudioSource> ().Play ();				
 			}
 		}
 	//	else
@@ -57,12 +65,30 @@ public class Level : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		UpdateCamera ();
 
 		if (Complete && !success) {
 			if (GameObject.FindGameObjectsWithTag("Vehicle").Length == 0) {
 				GameObject.Find ("Game").GetComponent<Game> ().OnSuccess (scoreFast,score );
 				success = true;
 			}
+		}
+	}
+
+	void UpdateCamera ()
+	{
+		if (cameraPortrait != null && cameraLandscape != null) {
+			if ((Input.deviceOrientation == DeviceOrientation.LandscapeRight) ||  (Screen.orientation == ScreenOrientation.LandscapeLeft))
+			{
+				cameraPortrait.SetActive(false);
+				cameraLandscape.SetActive(true);
+			}
+			
+			if ((Input.deviceOrientation == DeviceOrientation.PortraitUpsideDown) ||  (Screen.orientation == ScreenOrientation.Portrait))
+			{
+				cameraPortrait.SetActive(true);
+				cameraLandscape.SetActive(false);
+			}		
 		}
 	}
 
