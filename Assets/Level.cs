@@ -78,14 +78,16 @@ public class Level : MonoBehaviour {
 	void UpdateCamera ()
 	{
 		if (cameraPortrait != null && cameraLandscape != null) {
-			if ((Input.deviceOrientation == DeviceOrientation.LandscapeRight) ||  (Screen.orientation == ScreenOrientation.LandscapeLeft))
+			if ((Screen.orientation == ScreenOrientation.LandscapeRight) ||  (Screen.orientation == ScreenOrientation.LandscapeLeft))
 			{
+				Debug.Log("landscape");
 				cameraPortrait.SetActive(false);
 				cameraLandscape.SetActive(true);
 			}
 			
-			if ((Input.deviceOrientation == DeviceOrientation.PortraitUpsideDown) ||  (Screen.orientation == ScreenOrientation.Portrait))
+			if ((Screen.orientation == ScreenOrientation.PortraitUpsideDown ) ||  (Screen.orientation == ScreenOrientation.Portrait))
 			{
+				Debug.Log("portrait");
 				cameraPortrait.SetActive(true);
 				cameraLandscape.SetActive(false);
 			}		

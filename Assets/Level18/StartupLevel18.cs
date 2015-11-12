@@ -11,7 +11,7 @@ public class StartupLevel18 : MonoBehaviour {
 	void Start () {
 		moveTimer3 = Random.value * 4 + 10;
 		moveTimer = Random.value * 4 + 1.5;
-		GameObject.Find ("SimplePeople_BusinessMan_White").GetComponent<Animator> ().Play ("Walking");
+		GameObject.Find ("SimplePeople_BusinessMan_White").GetComponent<Animator> ().Play ("Smoking");
 	}
 	
 	// Update is called once per frame
