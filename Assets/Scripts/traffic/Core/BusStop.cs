@@ -1,24 +1,22 @@
 using UnityEngine;
-using System.Collections;
 
-public class BusStop : MonoBehaviour {
-	
-	float StopTimeMin = 2000;
-	float StopTimeMax = 3500;
+public class BusStop : MonoBehaviour
+{
 
-	public int GetStopTime()
-	{
-		return (int)(Random.value * (StopTimeMax - StopTimeMin) + StopTimeMin);
-	}
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    float StopTimeMin = 2000;
+    float StopTimeMax = 3500;
 
+    public int GetStopTime()
+    {
+        return (int)(Random.value * (StopTimeMax - StopTimeMin) + StopTimeMin);
+    }
+    // Use this for initialization
+    void Start()
+    {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+    }
 }
-
