@@ -3,14 +3,18 @@ using strange.extensions.command.impl;
 using strange.extensions.context.impl;
 using Traffic.MVCS.Commands.Signals;
 using Traffic.Components;
+using UnityEngine;
+using Traffic.MVCS.Commands;
 
 namespace Traffic.MVCS
 {
     public class AppContext : MVCSContext
     {
+        EntryPoint entryPoint;
+        
         public AppContext(EntryPoint _view) : base(_view, true)
         {
-
+            entryPoint = _view;
         }
 
         /// remap command binder to signals
@@ -39,7 +43,7 @@ namespace Traffic.MVCS
 
         void mapCommands()
         {
-            // commandBinder.Bind<StratupSignal>().To<StartupCommand>();
+            commandBinder.Bind<StratupSignal>().To<StartupCommand>();
             // commandBinder.Bind<StartLevelSignal>().To<StartLevelCommand>();
             // commandBinder.Bind<SwitchToMainScreenSignal>().InSequence()
             // .To<CleanGameContainersCommand>()
@@ -93,8 +97,8 @@ namespace Traffic.MVCS
 
         void mapOthers()
         {
-            // injectionBinder.Bind<GameObject>().To(entryPoint.World).ToName(EntryPoint.Container.World);
-            // injectionBinder.Bind<GameObject>().To(entryPoint.UI).ToName(EntryPoint.Container.UI);
+            injectionBinder.Bind<GameObject>().To(entryPoint.Stage).ToName(EntryPoint.Container.Stage);
+            injectionBinder.Bind<GameObject>().To(entryPoint.UI).ToName(EntryPoint.Container.UI);
 
             // injectionBinder.Bind<UIMap>().ToSingleton();
             // injectionBinder.Bind<UIManager>().ToSingleton();

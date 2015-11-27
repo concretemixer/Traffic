@@ -32,5 +32,10 @@ namespace Traffic.Components
                 return stage;
             }
         }
+        
+        public enum Container {
+            Stage,
+            UI
+        }
     }
 }
