@@ -295,6 +295,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1740177640}
+  - 114: {fileID: 1740177641}
   m_Layer: 0
   m_Name: EntryPoint
   m_TagString: Untagged
@@ -316,6 +317,19 @@ Transform:
   - {fileID: 1429904457}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &1740177641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1740177639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878ffac0921ee4d42a145991e5332d1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ui: {fileID: 1429904453}
+  stage: {fileID: 1267618280}
 --- !u!1 &1896510437
 GameObject:
   m_ObjectHideFlags: 0

@@ -175,6 +175,7 @@
      <Compile Include="Assets\Scripts\Commons\Resurces\IResourceManager.cs" />
      <Compile Include="Assets\Scripts\Commons\UI\UIManager.cs" />
      <Compile Include="Assets\Scripts\Commons\UI\UIMap.cs" />
+     <Compile Include="Assets\Scripts\Commons\Utils\Logger.cs" />
      <Compile Include="Assets\Scripts\Traffic\Components\EntryPoint.cs" />
      <Compile Include="Assets\Scripts\Traffic\Core\BusStop.cs" />
      <Compile Include="Assets\Scripts\Traffic\Core\Catcher.cs" />
@@ -187,6 +188,8 @@
      <Compile Include="Assets\Scripts\Traffic\Core\TouchCamera.cs" />
      <Compile Include="Assets\Scripts\Traffic\Core\Vehicle.cs" />
      <Compile Include="Assets\Scripts\Traffic\MVCS\AppContext.cs" />
+     <Compile Include="Assets\Scripts\Traffic\MVCS\Commands\Init\InitUICommand.cs" />
+     <Compile Include="Assets\Scripts\Traffic\MVCS\Commands\Init\LoadConfigCommand.cs" />
      <Compile Include="Assets\Scripts\Traffic\MVCS\Commands\Signals\AppSignals.cs" />
      <Compile Include="Assets\Scripts\Traffic\MVCS\Commands\StartupCommand.cs" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendOneOne.shader" />

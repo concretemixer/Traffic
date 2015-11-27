@@ -7,10 +7,12 @@ namespace Commons.UI
     {
         public static Dictionary<Id, string> map = new Dictionary<Id, string>
         {
+            {Id.ScreenMain, ""}
         };
 
         public enum Id
         {
+            ScreenMain
         }
 
         public string GetPath(UIMap.Id _id)

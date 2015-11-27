@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Commons.UI
 {
-    public class UIManager
+    public class UIManager : IUIManager
     {
         GameObject container;
 

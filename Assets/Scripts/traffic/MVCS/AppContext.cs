@@ -4,14 +4,14 @@ using strange.extensions.context.impl;
 using Traffic.MVCS.Commands.Signals;
 using Traffic.Components;
 using UnityEngine;
-using Traffic.MVCS.Commands;
+using Traffic.MVCS.Commands.Init;
 
 namespace Traffic.MVCS
 {
     public class AppContext : MVCSContext
     {
         EntryPoint entryPoint;
-        
+
         public AppContext(EntryPoint _view) : base(_view, true)
         {
             entryPoint = _view;
@@ -28,7 +28,7 @@ namespace Traffic.MVCS
 
         public override void Launch()
         {
-            injectionBinder.GetInstance<StratupSignal>().Dispatch();
+            injectionBinder.GetInstance<StartupSignal>().Dispatch();
         }
 
         protected override void mapBindings()
@@ -43,7 +43,12 @@ namespace Traffic.MVCS
 
         void mapCommands()
         {
-            commandBinder.Bind<StratupSignal>().To<StartupCommand>();
+            // init commands
+            commandBinder.Bind<StartupSignal>().InSequence()
+                .To<LoadConfigCommand>()
+                .To<InitUICommand>();
+
+            // commandBinder.Bind<StartupSignal>().To<StartupCommand>();
             // commandBinder.Bind<StartLevelSignal>().To<StartLevelCommand>();
             // commandBinder.Bind<SwitchToMainScreenSignal>().InSequence()
             // .To<CleanGameContainersCommand>()
