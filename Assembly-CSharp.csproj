@@ -173,6 +173,8 @@
      <Compile Include="Assets\Dependencies\strangeioc\scripts\strange\framework\impl\Binding.cs" />
      <Compile Include="Assets\Dependencies\strangeioc\scripts\strange\framework\impl\SemiBinding.cs" />
      <Compile Include="Assets\Scripts\Commons\Resurces\IResourceManager.cs" />
+     <Compile Include="Assets\Scripts\Commons\Resurces\Local\LocalResourceManager.cs" />
+     <Compile Include="Assets\Scripts\Commons\UI\IUIManager.cs" />
      <Compile Include="Assets\Scripts\Commons\UI\UIManager.cs" />
      <Compile Include="Assets\Scripts\Commons\UI\UIMap.cs" />
      <Compile Include="Assets\Scripts\Commons\Utils\Logger.cs" />
@@ -188,6 +190,7 @@
      <Compile Include="Assets\Scripts\Traffic\Core\TouchCamera.cs" />
      <Compile Include="Assets\Scripts\Traffic\Core\Vehicle.cs" />
      <Compile Include="Assets\Scripts\Traffic\MVCS\AppContext.cs" />
+     <Compile Include="Assets\Scripts\Traffic\MVCS\Commands\Init\InitResourcesCommand.cs" />
      <Compile Include="Assets\Scripts\Traffic\MVCS\Commands\Init\InitUICommand.cs" />
      <Compile Include="Assets\Scripts\Traffic\MVCS\Commands\Init\LoadConfigCommand.cs" />
      <Compile Include="Assets\Scripts\Traffic\MVCS\Commands\Signals\AppSignals.cs" />
@@ -195,7 +198,7 @@
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseEffectShaderRGB.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
-     <None Include="Assets\Resources\UI\NewShader.shader" />
+     <None Include="Assets\Resources\tmp\UI\NewShader.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ShowAlphaChannel.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GlowConeTap.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SunShaftsComposite.shader" />
