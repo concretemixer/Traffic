@@ -1,3 +1,7 @@
+using Commons.Resources.Local;
+using Commons.UI;
+using Commons.Utils;
+using strange.extensions.command.impl;
 using strange.extensions.injector.api;
 using Traffic.Components;
 using UnityEngine;
@@ -17,8 +21,10 @@ namespace Traffic.MVCS.Commands.Init
             Logger.Log("init UI");
 
             var manager = new UIManager();
-            manager.Init(uiContainer);
+            manager.Init(uiContainer, new LocalResourceManager());
             binder.Bind<IUIManager>().ToValue(manager);
+
+            manager.Show(UIMap.Id.ScreenLoading);
         }
     }
 }

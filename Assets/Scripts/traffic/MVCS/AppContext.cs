@@ -13,6 +13,7 @@ using Traffic.MVCS.Views.Game;
 using Commons.Utils;
 using Commons.UI;
 using strange.extensions.context.api;
+using Traffic.MVCS.Views.UI.Loading;
 
 namespace Traffic.MVCS
 {
@@ -70,6 +71,14 @@ namespace Traffic.MVCS
 
              commandBinder.Bind<SwitchToMainScreenSignal>()
                 .To<SwitchToMainScreenCommand>();
+                
+                
+
+            // commandBinder.Bind<StartupSignal>().To<StartupCommand>();
+            // commandBinder.Bind<StartLevelSignal>().To<StartLevelCommand>();
+            // commandBinder.Bind<SwitchToMainScreenSignal>().InSequence()
+            // .To<CleanGameContainersCommand>()
+            // .To<SwitchToMainScreenCommand>();
 
             // commandBinder.Bind<LevelFailed>().InSequence()
             // .To<LevelFailedCommand>()
@@ -105,12 +114,18 @@ namespace Traffic.MVCS
         }
 
         void mapUIMediators()
+<<<<<<< HEAD
         {
             mediationBinder.Bind<LevelListScreenView>().To<LevelListScreenMediator>();
             mediationBinder.Bind<LevelFailedMenuView>().To<LevelFailedMenuMediator>();
             mediationBinder.Bind<LevelDoneMenuView>().To<LevelDoneMenuMediator>();
             mediationBinder.Bind<PauseMenuView>().To<PauseMenuMediator>();
             mediationBinder.Bind<ScreenHUDView>().To<ScreenHUDMediator>();
+=======
+        {
+            mediationBinder.Bind<LoadingScreenView>().To<LoadingScreenMediator>();
+            // mediationBinder.Bind<ScreenHUDView>().To<ScreenHUDMediator>();
+>>>>>>> 59c0f99... add UI example
         }
 
         void mapOthers()

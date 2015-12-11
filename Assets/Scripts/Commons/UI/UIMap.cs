@@ -12,6 +12,8 @@ namespace Commons.UI
             {Id.LevelFailedMenu, "UI/LevelFailedMenu"},
             {Id.LevelDoneMenu, "UI/LevelDoneMenu"},
             {Id.LevelListScreen, "UI/LevelListScreen"},
+            { Id.ScreenMain, "" },
+            { Id.ScreenLoading, "UI/ScreenLoading" }
         };
 
         public enum Id
@@ -21,9 +23,11 @@ namespace Commons.UI
             LevelDoneMenu,
             LevelFailedMenu,
             LevelListScreen
+            ScreenMain,
+            ScreenLoading
         }
 
-        public string GetPath(UIMap.Id _id)
+        public static string GetPath(UIMap.Id _id)
         {
             string path;
             if (!map.TryGetValue(_id, out path))

@@ -8,14 +8,14 @@ namespace Commons.UI
     {
         GameObject container;
 
-		[Inject]
-		public UIMap uiMap { get; set;}
-
         private Dictionary<UIMap.Id, GameObject> uiElements = new Dictionary<UIMap.Id, GameObject>();
 
-        public void Init(GameObject _container)
+        IResourceManager resourceManager;
+
+        public void Init(GameObject _container, IResourceManager rm)
         {
             this.container = _container;
+            resourceManager = rm;
         }
 
         public TViewClass Show<TViewClass>(UIMap.Id _viewId)
@@ -26,12 +26,12 @@ namespace Commons.UI
 
         public GameObject Show(UIMap.Id _viewId)
         {
-            var resourcePath = uiMap.GetPath(_viewId);
-			var prefab = (GameObject)UnityEngine.Resources.Load(resourcePath);
+            var resourcePath = UIMap.GetPath(_viewId);
+            var view = resourceManager.GetResource<GameObject>(resourcePath);
 
-            var instance = GameObject.Instantiate(prefab as GameObject) as GameObject;
+            var instance = GameObject.Instantiate(view as GameObject) as GameObject;
             instance.transform.SetParent(container.transform);
-			instance.transform.localPosition = Vector3.zero;
+    	    instance.transform.localPosition = Vector3.zero;
 
             uiElements[_viewId] = instance;
 
