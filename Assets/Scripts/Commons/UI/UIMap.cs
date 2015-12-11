@@ -7,15 +7,17 @@ namespace Commons.UI
     {
         public static Dictionary<Id, string> map = new Dictionary<Id, string>
         {
-            {Id.ScreenMain, ""}
+            { Id.ScreenMain, "" },
+            { Id.ScreenLoading, "UI/ScreenLoading" }
         };
 
         public enum Id
         {
-            ScreenMain
+            ScreenMain,
+            ScreenLoading
         }
 
-        public string GetPath(UIMap.Id _id)
+        public static string GetPath(UIMap.Id _id)
         {
             string path;
             if (!map.TryGetValue(_id, out path))

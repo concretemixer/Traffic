@@ -5,6 +5,7 @@ using Traffic.MVCS.Commands.Signals;
 using Traffic.Components;
 using UnityEngine;
 using Traffic.MVCS.Commands.Init;
+using Traffic.MVCS.Views.UI.Loading;
 
 namespace Traffic.MVCS
 {
@@ -45,8 +46,10 @@ namespace Traffic.MVCS
         {
             // init commands
             commandBinder.Bind<StartupSignal>().InSequence()
-                .To<LoadConfigCommand>()
-                .To<InitUICommand>();
+                .To<InitUICommand>()
+                .To<LoadConfigCommand>();
+                
+                
 
             // commandBinder.Bind<StartupSignal>().To<StartupCommand>();
             // commandBinder.Bind<StartLevelSignal>().To<StartLevelCommand>();
@@ -96,7 +99,7 @@ namespace Traffic.MVCS
 
         void mapUIMediators()
         {
-            // mediationBinder.Bind<ScreenMainView>().To<ScreenMainMediator>();
+            mediationBinder.Bind<LoadingScreenView>().To<LoadingScreenMediator>();
             // mediationBinder.Bind<ScreenHUDView>().To<ScreenHUDMediator>();
         }
 
