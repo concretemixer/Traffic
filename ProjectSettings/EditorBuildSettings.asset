@@ -49,3 +49,25 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Level19.unity
   - enabled: 1
     path: Assets/Scenes/Levels/Level21.unity
+  - enabled: 1
+    path: Assets/Dependencies/FacebookSDK/Examples/AccessTokenMenu.unity
+  - enabled: 1
+    path: Assets/Dependencies/FacebookSDK/Examples/AppEvents.unity
+  - enabled: 1
+    path: Assets/Dependencies/FacebookSDK/Examples/AppInvites.unity
+  - enabled: 1
+    path: Assets/Dependencies/FacebookSDK/Examples/AppLinks.unity
+  - enabled: 1
+    path: Assets/Dependencies/FacebookSDK/Examples/AppRequests.unity
+  - enabled: 1
+    path: Assets/Dependencies/FacebookSDK/Examples/DialogShare.unity
+  - enabled: 1
+    path: Assets/Dependencies/FacebookSDK/Examples/GameGroups.unity
+  - enabled: 1
+    path: Assets/Dependencies/FacebookSDK/Examples/GraphRequest.unity
+  - enabled: 1
+    path: Assets/Dependencies/FacebookSDK/Examples/LogView.unity
+  - enabled: 1
+    path: Assets/Dependencies/FacebookSDK/Examples/MainMenu.unity
+  - enabled: 1
+    path: Assets/Dependencies/FacebookSDK/Examples/Pay.unity
