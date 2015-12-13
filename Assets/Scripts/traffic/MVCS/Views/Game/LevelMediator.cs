@@ -13,7 +13,7 @@ namespace Traffic.MVCS.Views.Game
     public class LevelMediator : Mediator
     {
         [Inject]
-        public UIManager UI { private get; set; }
+        public IUIManager UI { private get; set; }
 
         [Inject]
         public LevelView view

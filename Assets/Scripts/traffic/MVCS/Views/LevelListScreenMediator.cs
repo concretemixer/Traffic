@@ -32,7 +32,7 @@ namespace Traffic.MVCS.Views.UI
         }
        
         [Inject]
-        public UIManager UI {
+        public IUIManager UI {
             get;
             set;
         }

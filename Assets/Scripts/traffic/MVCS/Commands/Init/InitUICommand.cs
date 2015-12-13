@@ -1,9 +1,13 @@
 using Commons.Resources.Local;
 using Commons.UI;
 using Commons.Utils;
+
+using UnityEngine.UI;
+
 using strange.extensions.command.impl;
 using strange.extensions.injector.api;
 using Traffic.Components;
+using Traffic.Core;
 using UnityEngine;
 
 namespace Traffic.MVCS.Commands.Init
@@ -24,7 +28,13 @@ namespace Traffic.MVCS.Commands.Init
             manager.Init(uiContainer, new LocalResourceManager());
             binder.Bind<IUIManager>().ToValue(manager);
 
-            manager.Show(UIMap.Id.ScreenLoading);
+            injectionBinder.injector.Inject(uiContainer.GetComponent<UIWatcher>());
+
+            float ratio = (float)Screen.height / (float)Screen.width;
+
+            uiContainer.GetComponent<CanvasScaler>().referenceResolution = new Vector2(960, 960 * ratio);
+
+            manager.Show(UIMap.Id.LevelListScreen);
         }
     }
 }

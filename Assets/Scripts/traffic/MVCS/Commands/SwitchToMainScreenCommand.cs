@@ -12,7 +12,7 @@ namespace Traffic.MVCS.Commands
     public class SwitchToMainScreenCommand : Command
 	{
 		[Inject]
-		public UIManager UI { private get; set; }
+		public IUIManager UI { private get; set; }
 
 		[Inject(EntryPoint.Container.Stage)]
 		public  GameObject stage { get  ; set ;}

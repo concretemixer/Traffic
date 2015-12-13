@@ -114,18 +114,15 @@ namespace Traffic.MVCS
         }
 
         void mapUIMediators()
-<<<<<<< HEAD
         {
             mediationBinder.Bind<LevelListScreenView>().To<LevelListScreenMediator>();
             mediationBinder.Bind<LevelFailedMenuView>().To<LevelFailedMenuMediator>();
             mediationBinder.Bind<LevelDoneMenuView>().To<LevelDoneMenuMediator>();
             mediationBinder.Bind<PauseMenuView>().To<PauseMenuMediator>();
             mediationBinder.Bind<ScreenHUDView>().To<ScreenHUDMediator>();
-=======
-        {
             mediationBinder.Bind<LoadingScreenView>().To<LoadingScreenMediator>();
             // mediationBinder.Bind<ScreenHUDView>().To<ScreenHUDMediator>();
->>>>>>> 59c0f99... add UI example
+
         }
 
         void mapOthers()
@@ -133,8 +130,8 @@ namespace Traffic.MVCS
             injectionBinder.Bind<GameObject>().To(entryPoint.Stage).ToName(EntryPoint.Container.Stage);
             injectionBinder.Bind<GameObject>().To(entryPoint.UI).ToName(EntryPoint.Container.UI);
 
-            injectionBinder.Bind<UIMap>().ToSingleton();
-            injectionBinder.Bind<UIManager>().ToSingleton();
+         //   injectionBinder.Bind<UIMap>().ToSingleton();
+        //    injectionBinder.Bind<UIManager>().ToSingleton();
         }
     }
 }

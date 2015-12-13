@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using Commons.Resources;
 
 namespace Commons.UI
 {
@@ -16,6 +17,11 @@ namespace Commons.UI
         {
             this.container = _container;
             resourceManager = rm;
+
+            if (resourceManager == null)
+                Debug.Log("NULLLLL !!");
+            else
+                Debug.Log("OK !!");
         }
 
         public TViewClass Show<TViewClass>(UIMap.Id _viewId)
@@ -26,6 +32,9 @@ namespace Commons.UI
 
         public GameObject Show(UIMap.Id _viewId)
         {
+            if (resourceManager == null)
+                Debug.Log("NULLLLL");
+
             var resourcePath = UIMap.GetPath(_viewId);
             var view = resourceManager.GetResource<GameObject>(resourcePath);
 

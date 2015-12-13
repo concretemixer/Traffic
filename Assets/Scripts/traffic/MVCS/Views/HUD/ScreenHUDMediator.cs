@@ -55,7 +55,7 @@ namespace Traffic.MVCS.Views.UI.HUD
         }
 */
         [Inject]
-        public UIManager ui {
+        public IUIManager ui {
             get;
             set;
         }

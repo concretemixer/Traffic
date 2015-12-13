@@ -22,7 +22,7 @@ namespace Commons.UI
             PauseMenu,
             LevelDoneMenu,
             LevelFailedMenu,
-            LevelListScreen
+            LevelListScreen,
             ScreenMain,
             ScreenLoading
         }
