@@ -37,6 +37,9 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+--- !u!127 &3
+LevelGameManager:
+  m_ObjectHideFlags: 0
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -65,7 +68,6 @@ LightmapSettings:
     m_TextureCompression: 0
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
-    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
@@ -1474,16 +1476,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: "\nBinding warning: Some transforms are animated by both a Humanoid
-    animation clip and a Generic animation clip. Only the Humanoid clip will be applied
-    on those transforms.\n\tTransform 'Spine_jnt'\n\tTransform 'UpperArm_Right_jnt'\n\tTransform
-    'LowerArm_Right_jnt'\n\tTransform 'Hand_Right_jnt'\n\tTransform 'UpperLeg_Right_jnt'\n\tTransform
-    'Hips_jnt'\n\tTransform 'Hand_Left_jnt'\n\tTransform 'Root_jnt'\n\tTransform 'Foot_Right_jnt'\n\tTransform
-    'Body_jnt'\n\tand more ...\n\tFrom animation clip 'Idle'\n\tFrom animation clip
-    'Walk'\n\tFrom animation clip 'Run'\n\tFrom animation clip 'Walk_Static'\n\tFrom
-    animation clip 'Run_Static'\n\tFrom animation clip 'GrenadeThrow'\n\tFrom animation
-    clip 'Head_Down'\n\tFrom animation clip 'Head_Up'\n\tFrom animation clip 'Head_Left'\n\tFrom
-    animation clip 'Head_Right'\n\tand more ..."
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &137961210
@@ -8997,12 +8990,10 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
-  m_StereoMirrorMode: 0
 --- !u!4 &631335204
 Transform:
   m_ObjectHideFlags: 0
@@ -9108,7 +9099,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 747c18c64e37bf24d82b55949a0a763f, type: 2}
   m_PrefabInternal: {fileID: 1935616455}
   m_GameObject: {fileID: 640172382}
-  m_LocalRotation: {x: .618240714, y: 0, z: 0, w: .785988867}
+  m_LocalRotation: {x: .618240654, y: 0, z: 0, w: .785988808}
   m_LocalPosition: {x: 28.4439621, y: 1.41721249, z: 31.2321033}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -12829,7 +12820,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400000, guid: b74f3524862dc2e418a06ff0558f188d, type: 2}
   m_PrefabInternal: {fileID: 1847771845}
   m_GameObject: {fileID: 889701914}
-  m_LocalRotation: {x: .618240714, y: 0, z: 0, w: .785988867}
+  m_LocalRotation: {x: .618240654, y: 0, z: 0, w: .785988808}
   m_LocalPosition: {x: 27.8011475, y: 1.35233879, z: 31.2478237}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -13036,16 +13027,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: "\nBinding warning: Some transforms are animated by both a Humanoid
-    animation clip and a Generic animation clip. Only the Humanoid clip will be applied
-    on those transforms.\n\tTransform 'Spine_jnt'\n\tTransform 'UpperArm_Right_jnt'\n\tTransform
-    'LowerArm_Right_jnt'\n\tTransform 'Hand_Right_jnt'\n\tTransform 'UpperLeg_Right_jnt'\n\tTransform
-    'Hips_jnt'\n\tTransform 'Hand_Left_jnt'\n\tTransform 'Root_jnt'\n\tTransform 'Foot_Right_jnt'\n\tTransform
-    'Body_jnt'\n\tand more ...\n\tFrom animation clip 'Idle'\n\tFrom animation clip
-    'Walk'\n\tFrom animation clip 'Run'\n\tFrom animation clip 'Walk_Static'\n\tFrom
-    animation clip 'Run_Static'\n\tFrom animation clip 'GrenadeThrow'\n\tFrom animation
-    clip 'Head_Down'\n\tFrom animation clip 'Head_Up'\n\tFrom animation clip 'Head_Left'\n\tFrom
-    animation clip 'Head_Right'\n\tand more ..."
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &896063640
@@ -16967,16 +16949,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: "\nBinding warning: Some transforms are animated by both a Humanoid
-    animation clip and a Generic animation clip. Only the Humanoid clip will be applied
-    on those transforms.\n\tTransform 'Spine_jnt'\n\tTransform 'UpperArm_Right_jnt'\n\tTransform
-    'LowerArm_Right_jnt'\n\tTransform 'Hand_Right_jnt'\n\tTransform 'UpperLeg_Right_jnt'\n\tTransform
-    'Hips_jnt'\n\tTransform 'Hand_Left_jnt'\n\tTransform 'Root_jnt'\n\tTransform 'Foot_Right_jnt'\n\tTransform
-    'Body_jnt'\n\tand more ...\n\tFrom animation clip 'Idle'\n\tFrom animation clip
-    'Walk'\n\tFrom animation clip 'Run'\n\tFrom animation clip 'Walk_Static'\n\tFrom
-    animation clip 'Run_Static'\n\tFrom animation clip 'GrenadeThrow'\n\tFrom animation
-    clip 'Head_Down'\n\tFrom animation clip 'Head_Up'\n\tFrom animation clip 'Head_Left'\n\tFrom
-    animation clip 'Head_Right'\n\tand more ..."
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1180048213
@@ -17676,16 +17649,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: "\nBinding warning: Some transforms are animated by both a Humanoid
-    animation clip and a Generic animation clip. Only the Humanoid clip will be applied
-    on those transforms.\n\tTransform 'Spine_jnt'\n\tTransform 'UpperArm_Right_jnt'\n\tTransform
-    'LowerArm_Right_jnt'\n\tTransform 'Hand_Right_jnt'\n\tTransform 'UpperLeg_Right_jnt'\n\tTransform
-    'Hips_jnt'\n\tTransform 'Hand_Left_jnt'\n\tTransform 'Root_jnt'\n\tTransform 'Foot_Right_jnt'\n\tTransform
-    'Body_jnt'\n\tand more ...\n\tFrom animation clip 'Idle'\n\tFrom animation clip
-    'Walk'\n\tFrom animation clip 'Run'\n\tFrom animation clip 'Walk_Static'\n\tFrom
-    animation clip 'Run_Static'\n\tFrom animation clip 'GrenadeThrow'\n\tFrom animation
-    clip 'Head_Down'\n\tFrom animation clip 'Head_Up'\n\tFrom animation clip 'Head_Left'\n\tFrom
-    animation clip 'Head_Right'\n\tand more ..."
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1215847796
@@ -17855,16 +17819,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: "\nBinding warning: Some transforms are animated by both a Humanoid
-    animation clip and a Generic animation clip. Only the Humanoid clip will be applied
-    on those transforms.\n\tTransform 'Spine_jnt'\n\tTransform 'UpperArm_Right_jnt'\n\tTransform
-    'LowerArm_Right_jnt'\n\tTransform 'Hand_Right_jnt'\n\tTransform 'UpperLeg_Right_jnt'\n\tTransform
-    'Hips_jnt'\n\tTransform 'Hand_Left_jnt'\n\tTransform 'Root_jnt'\n\tTransform 'Foot_Right_jnt'\n\tTransform
-    'Body_jnt'\n\tand more ...\n\tFrom animation clip 'Idle'\n\tFrom animation clip
-    'Walk'\n\tFrom animation clip 'Run'\n\tFrom animation clip 'Walk_Static'\n\tFrom
-    animation clip 'Run_Static'\n\tFrom animation clip 'GrenadeThrow'\n\tFrom animation
-    clip 'Head_Down'\n\tFrom animation clip 'Head_Up'\n\tFrom animation clip 'Head_Left'\n\tFrom
-    animation clip 'Head_Right'\n\tand more ..."
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1226419155
@@ -18053,16 +18008,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: "\nBinding warning: Some transforms are animated by both a Humanoid
-    animation clip and a Generic animation clip. Only the Humanoid clip will be applied
-    on those transforms.\n\tTransform 'Spine_jnt'\n\tTransform 'UpperArm_Right_jnt'\n\tTransform
-    'LowerArm_Right_jnt'\n\tTransform 'Hand_Right_jnt'\n\tTransform 'UpperLeg_Right_jnt'\n\tTransform
-    'Hips_jnt'\n\tTransform 'Hand_Left_jnt'\n\tTransform 'Root_jnt'\n\tTransform 'Foot_Right_jnt'\n\tTransform
-    'Body_jnt'\n\tand more ...\n\tFrom animation clip 'Idle'\n\tFrom animation clip
-    'Walk'\n\tFrom animation clip 'Run'\n\tFrom animation clip 'Walk_Static'\n\tFrom
-    animation clip 'Run_Static'\n\tFrom animation clip 'GrenadeThrow'\n\tFrom animation
-    clip 'Head_Down'\n\tFrom animation clip 'Head_Up'\n\tFrom animation clip 'Head_Left'\n\tFrom
-    animation clip 'Head_Right'\n\tand more ..."
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1235224804
@@ -25925,16 +25871,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: "\nBinding warning: Some transforms are animated by both a Humanoid
-    animation clip and a Generic animation clip. Only the Humanoid clip will be applied
-    on those transforms.\n\tTransform 'Spine_jnt'\n\tTransform 'UpperArm_Right_jnt'\n\tTransform
-    'LowerArm_Right_jnt'\n\tTransform 'Hand_Right_jnt'\n\tTransform 'UpperLeg_Right_jnt'\n\tTransform
-    'Hips_jnt'\n\tTransform 'Hand_Left_jnt'\n\tTransform 'Root_jnt'\n\tTransform 'Foot_Right_jnt'\n\tTransform
-    'Body_jnt'\n\tand more ...\n\tFrom animation clip 'Idle'\n\tFrom animation clip
-    'Walk'\n\tFrom animation clip 'Run'\n\tFrom animation clip 'Walk_Static'\n\tFrom
-    animation clip 'Run_Static'\n\tFrom animation clip 'GrenadeThrow'\n\tFrom animation
-    clip 'Head_Down'\n\tFrom animation clip 'Head_Up'\n\tFrom animation clip 'Head_Left'\n\tFrom
-    animation clip 'Head_Right'\n\tand more ..."
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1720375191
@@ -26723,16 +26660,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: "\nBinding warning: Some transforms are animated by both a Humanoid
-    animation clip and a Generic animation clip. Only the Humanoid clip will be applied
-    on those transforms.\n\tTransform 'Spine_jnt'\n\tTransform 'UpperArm_Right_jnt'\n\tTransform
-    'LowerArm_Right_jnt'\n\tTransform 'Hand_Right_jnt'\n\tTransform 'UpperLeg_Right_jnt'\n\tTransform
-    'Hips_jnt'\n\tTransform 'Hand_Left_jnt'\n\tTransform 'Root_jnt'\n\tTransform 'Foot_Right_jnt'\n\tTransform
-    'Body_jnt'\n\tand more ...\n\tFrom animation clip 'Idle'\n\tFrom animation clip
-    'Walk'\n\tFrom animation clip 'Run'\n\tFrom animation clip 'Walk_Static'\n\tFrom
-    animation clip 'Run_Static'\n\tFrom animation clip 'GrenadeThrow'\n\tFrom animation
-    clip 'Head_Down'\n\tFrom animation clip 'Head_Up'\n\tFrom animation clip 'Head_Left'\n\tFrom
-    animation clip 'Head_Right'\n\tand more ..."
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1767363721
@@ -29081,16 +29009,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: "\nBinding warning: Some transforms are animated by both a Humanoid
-    animation clip and a Generic animation clip. Only the Humanoid clip will be applied
-    on those transforms.\n\tTransform 'Spine_jnt'\n\tTransform 'UpperArm_Right_jnt'\n\tTransform
-    'LowerArm_Right_jnt'\n\tTransform 'Hand_Right_jnt'\n\tTransform 'UpperLeg_Right_jnt'\n\tTransform
-    'Hips_jnt'\n\tTransform 'Hand_Left_jnt'\n\tTransform 'Root_jnt'\n\tTransform 'Foot_Right_jnt'\n\tTransform
-    'Body_jnt'\n\tand more ...\n\tFrom animation clip 'Idle'\n\tFrom animation clip
-    'Walk'\n\tFrom animation clip 'Run'\n\tFrom animation clip 'Walk_Static'\n\tFrom
-    animation clip 'Run_Static'\n\tFrom animation clip 'GrenadeThrow'\n\tFrom animation
-    clip 'Head_Down'\n\tFrom animation clip 'Head_Up'\n\tFrom animation clip 'Head_Left'\n\tFrom
-    animation clip 'Head_Right'\n\tand more ..."
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1919859629
@@ -29607,16 +29526,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: "\nBinding warning: Some transforms are animated by both a Humanoid
-    animation clip and a Generic animation clip. Only the Humanoid clip will be applied
-    on those transforms.\n\tTransform 'Spine_jnt'\n\tTransform 'UpperArm_Right_jnt'\n\tTransform
-    'LowerArm_Right_jnt'\n\tTransform 'Hand_Right_jnt'\n\tTransform 'UpperLeg_Right_jnt'\n\tTransform
-    'Hips_jnt'\n\tTransform 'Hand_Left_jnt'\n\tTransform 'Root_jnt'\n\tTransform 'Foot_Right_jnt'\n\tTransform
-    'Body_jnt'\n\tand more ...\n\tFrom animation clip 'Idle'\n\tFrom animation clip
-    'Walk'\n\tFrom animation clip 'Run'\n\tFrom animation clip 'Walk_Static'\n\tFrom
-    animation clip 'Run_Static'\n\tFrom animation clip 'GrenadeThrow'\n\tFrom animation
-    clip 'Head_Down'\n\tFrom animation clip 'Head_Up'\n\tFrom animation clip 'Head_Left'\n\tFrom
-    animation clip 'Head_Right'\n\tand more ..."
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1956143559
@@ -30191,16 +30101,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: "\nBinding warning: Some transforms are animated by both a Humanoid
-    animation clip and a Generic animation clip. Only the Humanoid clip will be applied
-    on those transforms.\n\tTransform 'Spine_jnt'\n\tTransform 'UpperArm_Right_jnt'\n\tTransform
-    'LowerArm_Right_jnt'\n\tTransform 'Hand_Right_jnt'\n\tTransform 'UpperLeg_Right_jnt'\n\tTransform
-    'Hips_jnt'\n\tTransform 'Hand_Left_jnt'\n\tTransform 'Root_jnt'\n\tTransform 'Foot_Right_jnt'\n\tTransform
-    'Body_jnt'\n\tand more ...\n\tFrom animation clip 'Idle'\n\tFrom animation clip
-    'Walk'\n\tFrom animation clip 'Run'\n\tFrom animation clip 'Walk_Static'\n\tFrom
-    animation clip 'Run_Static'\n\tFrom animation clip 'GrenadeThrow'\n\tFrom animation
-    clip 'Head_Down'\n\tFrom animation clip 'Head_Up'\n\tFrom animation clip 'Head_Left'\n\tFrom
-    animation clip 'Head_Right'\n\tand more ..."
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &2012930587
@@ -30588,16 +30489,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: "\nBinding warning: Some transforms are animated by both a Humanoid
-    animation clip and a Generic animation clip. Only the Humanoid clip will be applied
-    on those transforms.\n\tTransform 'Spine_jnt'\n\tTransform 'UpperArm_Right_jnt'\n\tTransform
-    'LowerArm_Right_jnt'\n\tTransform 'Hand_Right_jnt'\n\tTransform 'UpperLeg_Right_jnt'\n\tTransform
-    'Hips_jnt'\n\tTransform 'Hand_Left_jnt'\n\tTransform 'Root_jnt'\n\tTransform 'Foot_Right_jnt'\n\tTransform
-    'Body_jnt'\n\tand more ...\n\tFrom animation clip 'Idle'\n\tFrom animation clip
-    'Walk'\n\tFrom animation clip 'Run'\n\tFrom animation clip 'Walk_Static'\n\tFrom
-    animation clip 'Run_Static'\n\tFrom animation clip 'GrenadeThrow'\n\tFrom animation
-    clip 'Head_Down'\n\tFrom animation clip 'Head_Up'\n\tFrom animation clip 'Head_Left'\n\tFrom
-    animation clip 'Head_Right'\n\tand more ..."
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &2031302175
