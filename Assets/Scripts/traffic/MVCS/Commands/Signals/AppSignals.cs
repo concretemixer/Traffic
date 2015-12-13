@@ -5,4 +5,18 @@ namespace Traffic.MVCS.Commands.Signals
 	public class StartupSignal : Signal {
 		
 	}
+
+	public class StartLevelSignal : Signal<int> {
+		
+	}
+
+    public class SwitchToMainScreenSignal : Signal
+    {
+    }
+
+    public class OrientationChangedSignal : Signal
+    {
+    }
+
+
 }

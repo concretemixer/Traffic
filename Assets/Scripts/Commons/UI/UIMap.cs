@@ -7,12 +7,20 @@ namespace Commons.UI
     {
         public static Dictionary<Id, string> map = new Dictionary<Id, string>
         {
-            {Id.ScreenMain, ""}
+            {Id.ScreenHUD, "UI/ScreenHUDView"},
+            {Id.PauseMenu, "UI/ScreenPauseMenu"},
+            {Id.LevelFailedMenu, "UI/LevelFailedMenu"},
+            {Id.LevelDoneMenu, "UI/LevelDoneMenu"},
+            {Id.LevelListScreen, "UI/LevelListScreen"},
         };
 
         public enum Id
         {
-            ScreenMain
+            ScreenHUD,
+            PauseMenu,
+            LevelDoneMenu,
+            LevelFailedMenu,
+            LevelListScreen
         }
 
         public string GetPath(UIMap.Id _id)

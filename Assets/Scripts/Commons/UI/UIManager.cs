@@ -1,5 +1,6 @@
-using Commons.Resources;
 using UnityEngine;
+using System;
+using System.Collections.Generic;
 
 namespace Commons.UI
 {
@@ -7,9 +8,10 @@ namespace Commons.UI
     {
         GameObject container;
 
-        UIMap uiMap;
+		[Inject]
+		public UIMap uiMap { get; set;}
 
-        IResourceManager resourceManager;
+        private Dictionary<UIMap.Id, GameObject> uiElements = new Dictionary<UIMap.Id, GameObject>();
 
         public void Init(GameObject _container)
         {
@@ -25,12 +27,24 @@ namespace Commons.UI
         public GameObject Show(UIMap.Id _viewId)
         {
             var resourcePath = uiMap.GetPath(_viewId);
-            var view = resourceManager.GetResource<GameObject>(resourcePath);
+			var prefab = (GameObject)UnityEngine.Resources.Load(resourcePath);
 
-            GameObject instance = Object.Instantiate(view);
+            var instance = GameObject.Instantiate(prefab as GameObject) as GameObject;
             instance.transform.SetParent(container.transform);
+			instance.transform.localPosition = Vector3.zero;
+
+            uiElements[_viewId] = instance;
 
             return instance;
+        }
+
+        public void Hide(UIMap.Id _viewId)
+        {
+            if (uiElements.ContainsKey(_viewId))
+            {
+                GameObject.Destroy(uiElements[_viewId]);
+                uiElements.Remove(_viewId);
+            }
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+namespace Traffic {
+
 public class StartupLevel18 : MonoBehaviour {
 
 	double moveTimer = 0;
@@ -51,4 +53,5 @@ public class StartupLevel18 : MonoBehaviour {
 			}		
 		} 
 	}
+}
 }

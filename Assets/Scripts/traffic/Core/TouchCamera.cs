@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+namespace Traffic.Core {
+
 public class TouchCamera : MonoBehaviour {
 
 	// Use this for initialization
@@ -89,4 +91,5 @@ public class TouchCamera : MonoBehaviour {
 
 
 	}
+}
 }

@@ -3,6 +3,8 @@
 using UnityEngine.UI;
 using System.Collections;
 
+namespace Traffic.Core {
+
 public class Game : MonoBehaviour {
 
 	GameObject endLevelPanel = null;
@@ -15,6 +17,9 @@ public class Game : MonoBehaviour {
 	GameObject uiRoot = null;
 	GameObject startUiRoot = null;
 
+	GameObject page1 = null;
+	GameObject page2 = null;
+
 	GameObject cameraMenu = null;
 
 	int currentLevelIndex = 0;
@@ -22,21 +27,33 @@ public class Game : MonoBehaviour {
 	{
 		"Level1",
 		"Level2",
-		"Level3",
+		"Level4_1",
+
+		"Level3_1",
 		"Level4",
-		"Level5",
-		"Level6",
-		"Level7",
-		"Level8",
-		"Level21",
-		"Level9",
 		"Level10",
+
+		"Level6",
+		"Level5",
+		"Level3",
+
+		"Level18_1",
+		"Level8",
+		"Level7",
+
+
+		"Level21",
+		"Level13_1",
+		"Level9",
+
 		"Level11",
 		"Level12",
-		"Level13",
 		"Level14",
+
 		"Level15",
+		"Level13",	
 		"Level16",
+
 		"Level17",
 		"Level18",
 		"Level19",
@@ -51,7 +68,8 @@ public class Game : MonoBehaviour {
 		0,-1,-1,-1,-1,
 		-1,-1,-1,-1,-1,
 		-1,-1,-1,-1,-1,
-		-1,-1,-1,-1,-1};
+		-1,-1,-1,-1,-1,
+		-1,-1,-1,-1};
 
 	void UpdateLevelProgress()
 	{
@@ -59,13 +77,15 @@ public class Game : MonoBehaviour {
 
 		//levelState = new int[20];
 
-		for (int a=0; a<20; a++) {
+
+
+		for (int a=0; a<24; a++) {
 			levelState[a] = PlayerPrefs.GetInt("progress.1."+(a+1).ToString(),0);
 		}
 		if (levelState[0]==-1)
 			levelState[0]=0;
 
-		for (int a=0; a<20; a++) {
+		for (int a=0; a<24; a++) {
 			GameObject b = GameObject.Find ("ButtonLevel"+(a+1).ToString()).gameObject;
 
 
@@ -103,6 +123,8 @@ public class Game : MonoBehaviour {
 				
 			}
 		}
+
+		
 	}
 	// Use this for initialization
 	void Start () {
@@ -117,13 +139,17 @@ public class Game : MonoBehaviour {
 
 		cameraMenu = GameObject.Find ("Camera2");
 
-		Application.LoadLevel ("Level0");
+		//Application.LoadLevel ("Level0");
 
 
 	//	GameObject.Find ("Canvas 1").transform.SetAsFirstSibling ();
 
 		UpdateLevelProgress();
 
+
+		page1 = GameObject.Find ("Page1");
+		page2 = GameObject.Find ("Page2");
+		
 		endLevelPanel = GameObject.Find ("EndLevelPanel");
 		pauseButton = GameObject.Find ("PauseButton");
 		goButton = GameObject.Find ("GoButton");
@@ -132,6 +158,7 @@ public class Game : MonoBehaviour {
 
 		endLevelPanel.SetActive(false);			
 		goButton.SetActive (false);
+		page2.SetActive (false);
 
 		nextButton.GetComponent<Button> ().interactable = false;
 
@@ -156,9 +183,12 @@ public class Game : MonoBehaviour {
 		optionsUiRoot.GetComponent<RectTransform> ().SetSizeWithCurrentAnchors (RectTransform.Axis.Horizontal, 600.0f * ratio);
 		optionsUiRoot.SetActive (false);
 
-		GameObject.Find ("Back").GetComponent<Animator> ().Play ("show_back");
+//		GameObject.Find ("Back").GetComponent<Animator> ().Play ("show_back");
 		GameObject.Find ("Back 1").GetComponent<Animator> ().Play ("show_back");
 		GameObject.Find ("Back 2").GetComponent<Animator> ().Play ("show_back");
+
+
+
 
 		Invoke ("ShowStartUI", 1);
 	}
@@ -181,7 +211,17 @@ public class Game : MonoBehaviour {
 		//uiRoot.SetActive (false);
 		preUiRoot.SetActive (true);
 		startUiRoot.SetActive (false);
+
+		bool page = page1.activeSelf;
+
+		page1.SetActive (true);
+		page2.SetActive (true);
+
 		UpdateLevelProgress();
+
+		page1.SetActive (page);
+		page2.SetActive (!page);
+
 	}
 
 	public void OnMenuPressed()
@@ -244,7 +284,7 @@ public class Game : MonoBehaviour {
 		goButton.SetActive (false);
 		pauseButton.SetActive (true);
 
-		GameObject.Find ("Level").GetComponent<Level> ().Restart ();
+		//GameObject.Find ("Level").GetComponent<Level> ().Restart ();
 	}
 
 	public void OnNextPressed()
@@ -416,4 +456,17 @@ public class Game : MonoBehaviour {
 		}
 	}
 
+	public void OnPrevPage()
+	{
+		page2.SetActive (false);
+		page1.SetActive (true);
+	}
+
+	public void OnNextPage()
+	{
+		page1.SetActive (false);
+		page2.SetActive (true);
+	}
+
+}
 }

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+namespace Traffic {
+
 public class StartupLevel8 : MonoBehaviour {
 
 	double smokeTimer = 0;
@@ -25,4 +27,6 @@ public class StartupLevel8 : MonoBehaviour {
 			smokeTimer = Random.value * 4 + 1.5;
 		}
 	}
+}
+
 }

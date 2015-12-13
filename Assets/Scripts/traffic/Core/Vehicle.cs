@@ -1,7 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Traffic.MVCS.Commands.Signals;
+
+namespace Traffic.Core {
 
 public class Vehicle : MonoBehaviour {
+
+
+    public VehicleReachedDestination onVehicleReachedDestination { get; set; }
+
+
+    public VehicleCrashed onVehicleCrashed { get; set; }
+
 
 	public AudioClip[] crashSound;
 	public AudioClip moveSound;
@@ -14,7 +24,7 @@ public class Vehicle : MonoBehaviour {
 	public bool  CanAccelerate = true;
 	public bool IsBus = false;
 
-	private Level level;
+//	private Level level;
 
 	public int gear = 1;
 	private float stopTimer = 0;
@@ -43,7 +53,8 @@ public class Vehicle : MonoBehaviour {
 			GetComponent<Rigidbody> ().velocity = transform.rotation * new Vector3 (NormalSpeed, 0, 0);
 		if (gear==2)
 			GetComponent<Rigidbody> ().velocity = transform.rotation * new Vector3 (FastSpeed, 0, 0);
-		level = GameObject.Find ("Level").GetComponent<Level>();
+
+		//level = GameObject.Find ("Level").GetComponent<Level>();
 
 		GetComponent<Renderer> ().material.color = new Color (Random.value, (float)(Random.value*0.2f), Random.value);
 
@@ -204,8 +215,7 @@ public class Vehicle : MonoBehaviour {
 			gameObject.GetComponent<Rigidbody>().detectCollisions = false;
 			Invoke("SelfDestroy",3);
 			//Destroy(gameObject);
-			if (level!=null)
-				level.OnReach(this);
+            onVehicleReachedDestination.Dispatch();
 
 			Transform t = transform.FindChild("AccelSource");
 			if (t!=null) {
@@ -227,11 +237,14 @@ public class Vehicle : MonoBehaviour {
 			GetComponent<Rigidbody> ().drag = 10;
 			GetComponent<Rigidbody> ().angularDrag = 10;
 
+            /*
 			if (level!=null) {
 				if (crashSound!=null && !level.Crash) 
 					AudioSource.PlayClipAtPoint(crashSound[Random.Range(0,crashSound.Length)],col.contacts[0].point);
 				level.OnCrash(); 
 			}
+              */
+            onVehicleCrashed.Dispatch();
 
 		}
 
@@ -249,6 +262,11 @@ public class Vehicle : MonoBehaviour {
 			//GetComponent<Rigidbody> ().velocity = new Vector3 (0, 0, 0);
 			deceleration = true;
 			targetSpeed = 0;
+
+			if (IsBus) {
+				ShowEffects();
+			}
+
 		} else if (gear == 2) {
 			//GetComponent<Rigidbody> ().velocity = transform.rotation * new Vector3 (NormalSpeed, 0, 0);
 			deceleration = true;
@@ -272,8 +290,33 @@ public class Vehicle : MonoBehaviour {
 			transform.Find("Flash1").gameObject.GetComponent<ParticleSystem>().Play();
 		if (transform.Find("Flash2")!=null)
 			transform.Find("Flash2").gameObject.GetComponent<ParticleSystem>().Play();
+		if (transform.Find("Flash3")!=null)
+			transform.Find("Flash3").gameObject.GetComponent<ParticleSystem>().Play();
+		if (transform.Find("Flash4")!=null)
+			transform.Find("Flash4").gameObject.GetComponent<ParticleSystem>().Play();
+		if (transform.Find ("Door") != null)
+			transform.Find ("Door").GetComponent<MeshRenderer> ().enabled = true;
+
 	}
 
+	void StopEffects()
+	{
+		if (transform.Find("Smoke")!=null)
+			transform.Find("Smoke").gameObject.GetComponent<ParticleSystem>().Stop();
+		if (transform.Find("Smoke1")!=null)
+			transform.Find("Smoke1").gameObject.GetComponent<ParticleSystem>().Stop();
+		if (transform.Find("Flash2")!=null)
+			transform.Find("Flash1").gameObject.GetComponent<ParticleSystem>().Stop();
+		if (transform.Find("Flash2")!=null)
+			transform.Find("Flash2").gameObject.GetComponent<ParticleSystem>().Stop();
+		if (transform.Find("Flash3")!=null)
+			transform.Find("Flash3").gameObject.GetComponent<ParticleSystem>().Stop();
+		if (transform.Find("Flash4")!=null)
+			transform.Find("Flash4").gameObject.GetComponent<ParticleSystem>().Stop();
+		if (transform.Find ("Door") != null)
+			transform.Find ("Door").GetComponent<MeshRenderer> ().enabled = false;
+
+	}
 
 	public void SpeedUp()
 	{
@@ -286,6 +329,10 @@ public class Vehicle : MonoBehaviour {
 				if (t!=null) {
 					t.gameObject.GetComponent<AudioSource>().PlayOneShot(startSound);
 				}
+			}
+
+			if (IsBus) {
+				StopEffects();
 			}
 		}
 		else if (gear == 1) {
@@ -312,5 +359,7 @@ public class Vehicle : MonoBehaviour {
 		gear++;
 		deceleration = false;
 	}
+
+}
 
 }

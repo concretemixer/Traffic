@@ -1,9 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+using Traffic.MVCS.Commands.Signals;
+
+namespace Traffic.Core {
+
 public class Pitcher : MonoBehaviour {
 
+    [Inject]
+    public VehicleReachedDestination onVehicleReachedDestination { get; set; }
+
+    [Inject]
+    public VehicleCrashed onVehicleCrashed { get; set; }
+
+    [Inject]
+    public LevelFailed onLevelFailed { get; set; }
+
+    [Inject]
+    public LevelComplete onLevelComplete { get; set; }
+
 	public float Pause = 2;
+    private float _pause;
 
 	public float IntervalMin = 3;
 	public float IntervalMax = 5;
@@ -11,37 +28,54 @@ public class Pitcher : MonoBehaviour {
 	public Transform vehicle;
 
 	private float spawnTime = 0;
-	private Level level = null;
 
 	public Transform[] vehicles;
 
 	// Use this for initialization
 	void Start () {
-		if (GameObject.Find ("Level")!=null)
-			level = GameObject.Find ("Level").GetComponent<Level>();
+        onLevelFailed.AddListener(stopSpawn);
+        onLevelComplete.AddListener(stopSpawn);
+
+        _pause = Pause;
 	}
+
+    void stopSpawn()
+    {
+        spawnTime = float.MaxValue;
+    }
+
+    void OnDestroy()
+    {
+        onLevelFailed.RemoveListener(stopSpawn);
+        onLevelComplete.RemoveListener(stopSpawn);
+    }
 
 	// Update is called once per frame
 	void Update () {
-		if (level!=null && (level.Crash || level.Complete || level.PreStart))
-			return;
-
-		if (Pause > 0) {
-			Pause -= Time.deltaTime;
+		if (_pause > 0) {
+			_pause -= Time.deltaTime;
 			return;
 		}
 		spawnTime -= Time.deltaTime;;
 		if (spawnTime < 0) {
-			spawnTime = Random.value * (IntervalMax-IntervalMin) + IntervalMin;
-			Transform v;
-			if (vehicles.Length==0)
-				v = Instantiate(vehicle, gameObject.transform.position, gameObject.transform.localRotation) as Transform;
-			else
-				v = Instantiate(vehicles[Random.Range(0,vehicles.Length)], gameObject.transform.position, gameObject.transform.localRotation) as Transform;
+			spawnTime = Random.value * (IntervalMax-IntervalMin) + IntervalMin;		
+            Transform t = (vehicles.Length==0) ? vehicle : vehicles[Random.Range(0,vehicles.Length)];
+            Transform v  = Instantiate(t, this.transform.localPosition, this.transform.localRotation) as Transform;
+            Vehicle v2 = v.GetComponent<Vehicle>();
 
-			//v.localScale = new Vector3(0.5f,0.5f,0.5f);
-			//v.gameObject.tag = "VehicleAI";
+            v.parent = this.gameObject.transform.parent;
+
+            v2.onVehicleCrashed = onVehicleCrashed;
+            v2.onVehicleReachedDestination = onVehicleReachedDestination;           
 		}
 
 	}
+
+    public void Reset()
+    {
+        _pause = Pause;
+        spawnTime = 0;
+    }
+}
+
 }

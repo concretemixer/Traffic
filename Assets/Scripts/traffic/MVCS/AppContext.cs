@@ -4,7 +4,15 @@ using strange.extensions.context.impl;
 using Traffic.MVCS.Commands.Signals;
 using Traffic.Components;
 using UnityEngine;
+using Traffic.Core;
 using Traffic.MVCS.Commands.Init;
+using Traffic.MVCS.Commands;
+using Traffic.MVCS.Views.UI.HUD;
+using Traffic.MVCS.Views.UI;
+using Traffic.MVCS.Views.Game;
+using Commons.Utils;
+using Commons.UI;
+using strange.extensions.context.api;
 
 namespace Traffic.MVCS
 {
@@ -15,6 +23,7 @@ namespace Traffic.MVCS
         public AppContext(EntryPoint _view) : base(_view, true)
         {
             entryPoint = _view;
+		 
         }
 
         /// remap command binder to signals
@@ -24,11 +33,13 @@ namespace Traffic.MVCS
             base.addCoreComponents();
             injectionBinder.Unbind<ICommandBinder>();
             injectionBinder.Bind<ICommandBinder>().To<SignalCommandBinder>().ToSingleton();
+
         }
 
         public override void Launch()
         {
-            injectionBinder.GetInstance<StartupSignal>().Dispatch();
+			injectionBinder.GetInstance<StartupSignal>().Dispatch();
+			//injectionBinder.GetInstance<StartLevelSignal>().Dispatch(0);
         }
 
         protected override void mapBindings()
@@ -43,16 +54,22 @@ namespace Traffic.MVCS
 
         void mapCommands()
         {
+
             // init commands
             commandBinder.Bind<StartupSignal>().InSequence()
                 .To<LoadConfigCommand>()
-                .To<InitUICommand>();
+					.To<InitUICommand>()
+					.To<StartupCommand>();
 
-            // commandBinder.Bind<StartupSignal>().To<StartupCommand>();
-            // commandBinder.Bind<StartLevelSignal>().To<StartLevelCommand>();
-            // commandBinder.Bind<SwitchToMainScreenSignal>().InSequence()
-            // .To<CleanGameContainersCommand>()
-            // .To<SwitchToMainScreenCommand>();
+         
+            commandBinder.Bind<StartLevelSignal>().To<StartLevelCommand>();
+            commandBinder.Bind<LevelPause>().To<PauseLevelCommand>();
+			commandBinder.Bind<LevelResume>().To<ResumeLevelCommand>();
+            commandBinder.Bind<LevelRetry>().To<RetryLevelCommand>();
+//            commandBinder.Bind<StartLevelSignal>().To<StartLevelCommand>();
+
+             commandBinder.Bind<SwitchToMainScreenSignal>()
+                .To<SwitchToMainScreenCommand>();
 
             // commandBinder.Bind<LevelFailed>().InSequence()
             // .To<LevelFailedCommand>()
@@ -64,40 +81,36 @@ namespace Traffic.MVCS
             // .To<CleanGameContainersCommand>()
             // .To<SwitchToMainScreenCommand>();
 
-            // commandBinder.Bind<RetyLevelSignal>().InSequence()
-            // .To<CleanGameContainersCommand>()
-            // .To<StartLevelCommand>();
+     
         }
 
         void mapSignals()
         {
-            // injectionBinder.Bind<PinElementSignal>().ToSingleton();
-            // injectionBinder.Bind<UnpinElementSignal>().ToSingleton();
-            // injectionBinder.Bind<EliminateElementsSignal>().ToSingleton();
-            // injectionBinder.Bind<AddElementsSignal>().ToSingleton();
-            // injectionBinder.Bind<MoveElementsSignal>().ToSingleton();
+            injectionBinder.Bind<OrientationChangedSignal>().ToSingleton();
+			injectionBinder.Bind<VehicleReachedDestination> ().ToSingleton ();
+			injectionBinder.Bind<VehicleCrashed> ().ToSingleton ();
+			injectionBinder.Bind<LevelFailed> ().ToSingleton ();
+			injectionBinder.Bind<LevelComplete> ().ToSingleton ();            
         }
 
         void mapModels()
-        {
-            // injectionBinder.Bind<RandomProxy>().To(new RandomProxy(123));
-            // injectionBinder.Bind<IElementGenerator>().To<RandomElementGenerator>().ToSingleton();
-            // injectionBinder.Bind<ILevelModel>().To<LevelModel>();
-            // injectionBinder.Bind<IChainModel>().To<ChainModel>();
-
-            // injectionBinder.Bind<IElementsDefModel>().To<ElementsDefModel>().ToSingleton();
-            // injectionBinder.Bind<ILevelListModel>().To<LevelListModel>().ToSingleton();
+        {	
+            injectionBinder.Bind<ILevelModel>().To<LevelModel>();
+            injectionBinder.Bind<ILevelListModel>().To<LevelListModel>().ToSingleton();            
         }
 
         void mapStageMediators()
         {
-            // mediationBinder.Bind<LevelView>().To<LevelMediator>();
+            mediationBinder.Bind<LevelView>().To<LevelMediator>();
         }
 
         void mapUIMediators()
         {
-            // mediationBinder.Bind<ScreenMainView>().To<ScreenMainMediator>();
-            // mediationBinder.Bind<ScreenHUDView>().To<ScreenHUDMediator>();
+            mediationBinder.Bind<LevelListScreenView>().To<LevelListScreenMediator>();
+            mediationBinder.Bind<LevelFailedMenuView>().To<LevelFailedMenuMediator>();
+            mediationBinder.Bind<LevelDoneMenuView>().To<LevelDoneMenuMediator>();
+            mediationBinder.Bind<PauseMenuView>().To<PauseMenuMediator>();
+            mediationBinder.Bind<ScreenHUDView>().To<ScreenHUDMediator>();
         }
 
         void mapOthers()
@@ -105,8 +118,8 @@ namespace Traffic.MVCS
             injectionBinder.Bind<GameObject>().To(entryPoint.Stage).ToName(EntryPoint.Container.Stage);
             injectionBinder.Bind<GameObject>().To(entryPoint.UI).ToName(EntryPoint.Container.UI);
 
-            // injectionBinder.Bind<UIMap>().ToSingleton();
-            // injectionBinder.Bind<UIManager>().ToSingleton();
+            injectionBinder.Bind<UIMap>().ToSingleton();
+            injectionBinder.Bind<UIManager>().ToSingleton();
         }
     }
 }

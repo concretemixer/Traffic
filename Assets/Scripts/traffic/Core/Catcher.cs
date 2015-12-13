@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+namespace Traffic.Core {
+
 public class Catcher : MonoBehaviour {
 
 
@@ -17,4 +19,5 @@ public class Catcher : MonoBehaviour {
 	void OnCollisionEnter (Collision col)
 	{
 	}
+}
 }
