@@ -17,6 +17,14 @@ namespace Traffic.MVCS.Views.UI
         [SerializeField]
         Button[] levelButtons;
 
+
+        [SerializeField]
+        Image backBack;
+
+        [SerializeField]
+        Image backFront;
+
+
         public readonly Signal onButtonNext = new Signal();
         public readonly Signal onButtonPrev = new Signal();
         public readonly Signal<int> onButtonLevel = new Signal<int>();
@@ -112,6 +120,17 @@ namespace Traffic.MVCS.Views.UI
 
                     n++;
                 }
+            }
+
+            if (ratio < 0)
+            {
+                backBack.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+                backFront.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+            }
+            else
+            {
+                backBack.GetComponent<RectTransform>().localScale = new Vector3(ratio * ratio, ratio * ratio, ratio * ratio);
+                backFront.GetComponent<RectTransform>().localScale = new Vector3(ratio * ratio, ratio * ratio, ratio * ratio);
             }
         }
 

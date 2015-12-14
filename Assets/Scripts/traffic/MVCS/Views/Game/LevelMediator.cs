@@ -56,10 +56,15 @@ namespace Traffic.MVCS.Views.Game
 		void vehicleCrashedHandler()
 		{
 			if (!level.Failed) {
-				onLevelFailed.Dispatch();
+                Invoke("levelFailedDispatch", 1);				
 				level.Failed = true;
 			}
 		}
+
+        void levelFailedDispatch()
+        {
+            onLevelFailed.Dispatch();
+        }
 
         void levelFailedHandler()
         {

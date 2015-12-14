@@ -82,12 +82,20 @@ namespace Traffic.MVCS.Views.UI.HUD
                 progressBg.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -30);
                 pauseButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-45, -50);
                 scoreShadow.GetComponent<RectTransform>().anchoredPosition = new Vector2(110, -50);
+                scoreShadow.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+                progressBg.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+                pauseButton.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
             }
             else
             {
-                progressBg.GetComponent<RectTransform>().anchoredPosition = new Vector2(-230, -30);
-                pauseButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-45, -50);
-                scoreShadow.GetComponent<RectTransform>().anchoredPosition = new Vector2(110, -100);
+                progressBg.GetComponent<RectTransform>().anchoredPosition = new Vector2(16, -45);
+                pauseButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-60, -70);
+                scoreShadow.GetComponent<RectTransform>().anchoredPosition = new Vector2(160, -150);
+
+                scoreShadow.GetComponent<RectTransform>().localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                progressBg.GetComponent<RectTransform>().localScale = new Vector3(2.0f, 2.0f, 2.0f);
+                pauseButton.GetComponent<RectTransform>().localScale = new Vector3(1.5f, 1.5f, 1.5f);
+
             }
         }
 
