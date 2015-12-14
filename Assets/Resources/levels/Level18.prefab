@@ -3515,7 +3515,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &151570
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -6089,21 +6089,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &189582
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 479032}
-  m_Layer: 0
-  m_Name: Zero
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &189634
 GameObject:
   m_ObjectHideFlags: 1
@@ -7305,7 +7290,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 417134}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!4 &412038
 Transform:
   m_ObjectHideFlags: 1
@@ -7498,9 +7483,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 455910}
-  - {fileID: 479032}
   - {fileID: 411488}
   - {fileID: 432324}
+  - {fileID: 435206}
   - {fileID: 444582}
   - {fileID: 427254}
   - {fileID: 440088}
@@ -8234,7 +8219,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 417134}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!4 &432370
 Transform:
   m_ObjectHideFlags: 1
@@ -8494,11 +8479,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151570}
   m_LocalRotation: {x: .403838813, y: -.455427527, z: .228959635, w: .759656191}
-  m_LocalPosition: {x: 215.699997, y: 341.899994, z: -100.800003}
+  m_LocalPosition: {x: 218.300003, y: 341.899994, z: -99.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 479032}
-  m_RootOrder: 0
+  m_Father: {fileID: 417134}
+  m_RootOrder: 3
 --- !u!4 &435236
 Transform:
   m_ObjectHideFlags: 1
@@ -11062,19 +11047,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 409058}
   m_RootOrder: 0
---- !u!4 &479032
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 189582}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5999999, y: 0, z: 1.29999995}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 435206}
-  m_Father: {fileID: 417134}
-  m_RootOrder: 1
 --- !u!4 &479190
 Transform:
   m_ObjectHideFlags: 1

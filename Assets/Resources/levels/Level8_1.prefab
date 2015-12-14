@@ -580,7 +580,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &119804
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -1325,21 +1325,6 @@ GameObject:
   - 23: {fileID: 2386628}
   m_Layer: 0
   m_Name: Prop_Roadcone06
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &141110
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 415866}
-  m_Layer: 0
-  m_Name: Zero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3278,11 +3263,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119804}
   m_LocalRotation: {x: .403838813, y: -.455427527, z: .228959635, w: .759656191}
-  m_LocalPosition: {x: 215.699997, y: 341.899994, z: -100.800003}
+  m_LocalPosition: {x: 215.599991, y: 341.899994, z: -90.9000015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 415866}
-  m_RootOrder: 0
+  m_Father: {fileID: 413000}
+  m_RootOrder: 8
 --- !u!4 &413000
 Transform:
   m_ObjectHideFlags: 1
@@ -3301,7 +3286,7 @@ Transform:
   - {fileID: 495080}
   - {fileID: 466844}
   - {fileID: 403336}
-  - {fileID: 415866}
+  - {fileID: 412232}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &413194
@@ -3400,19 +3385,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 495080}
   m_RootOrder: 83
---- !u!4 &415866
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141110}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.100000001, y: 0, z: 9.89999962}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 412232}
-  m_Father: {fileID: 413000}
-  m_RootOrder: 8
 --- !u!4 &415904
 Transform:
   m_ObjectHideFlags: 1

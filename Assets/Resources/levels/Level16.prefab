@@ -3220,7 +3220,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &184810
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -3596,21 +3596,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &199824
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 408296}
-  m_Layer: 0
-  m_Name: Zero
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &199950
 GameObject:
   m_ObjectHideFlags: 1
@@ -3848,19 +3833,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 473002}
   m_RootOrder: 17
---- !u!4 &408296
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 199824}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.100000001, y: 0, z: -5.5999999}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 421562}
-  m_Father: {fileID: 422670}
-  m_RootOrder: 3
 --- !u!4 &408490
 Transform:
   m_ObjectHideFlags: 1
@@ -3921,7 +3893,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 422670}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!4 &411578
 Transform:
   m_ObjectHideFlags: 1
@@ -4174,11 +4146,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184810}
   m_LocalRotation: {x: .403838813, y: -.455427527, z: .228959635, w: .759656191}
-  m_LocalPosition: {x: 215.699997, y: 341.899994, z: -100.800003}
+  m_LocalPosition: {x: 215.599991, y: 341.899994, z: -106.400002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 408296}
-  m_RootOrder: 0
+  m_Father: {fileID: 422670}
+  m_RootOrder: 4
 --- !u!4 &421598
 Transform:
   m_ObjectHideFlags: 1
@@ -4264,8 +4236,8 @@ Transform:
   - {fileID: 451666}
   - {fileID: 482392}
   - {fileID: 462154}
-  - {fileID: 408296}
   - {fileID: 411420}
+  - {fileID: 421562}
   - {fileID: 442508}
   - {fileID: 438238}
   - {fileID: 438754}

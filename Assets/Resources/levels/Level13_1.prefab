@@ -560,7 +560,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &115378
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -1335,21 +1335,6 @@ GameObject:
   - 23: {fileID: 2314528}
   m_Layer: 0
   m_Name: road_corner_mesh 6
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &142378
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 455560}
-  m_Layer: 0
-  m_Name: Zero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3412,7 +3397,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 423200}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!4 &414634
 Transform:
   m_ObjectHideFlags: 1
@@ -3617,8 +3602,8 @@ Transform:
   m_Children:
   - {fileID: 443684}
   - {fileID: 430076}
-  - {fileID: 455560}
   - {fileID: 413318}
+  - {fileID: 468614}
   - {fileID: 493452}
   - {fileID: 496026}
   - {fileID: 495006}
@@ -4418,19 +4403,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 495006}
   m_RootOrder: 27
---- !u!4 &455560
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 142378}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 468614}
-  m_Father: {fileID: 423200}
-  m_RootOrder: 2
 --- !u!4 &456672
 Transform:
   m_ObjectHideFlags: 1
@@ -4690,11 +4662,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 115378}
   m_LocalRotation: {x: .403838813, y: -.455427527, z: .228959635, w: .759656191}
-  m_LocalPosition: {x: 223.999969, y: 342, z: -103.900017}
+  m_LocalPosition: {x: 223.999969, y: 342, z: -102.900017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 455560}
-  m_RootOrder: 0
+  m_Father: {fileID: 423200}
+  m_RootOrder: 3
 --- !u!4 &468996
 Transform:
   m_ObjectHideFlags: 1

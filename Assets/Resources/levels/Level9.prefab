@@ -87,21 +87,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &102896
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 481572}
-  m_Layer: 0
-  m_Name: Zero
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &103892
 GameObject:
   m_ObjectHideFlags: 1
@@ -638,7 +623,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &127608
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -3355,7 +3340,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 476502}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &468058
 Transform:
   m_ObjectHideFlags: 1
@@ -3436,8 +3421,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 480148}
   - {fileID: 467834}
-  - {fileID: 481572}
   - {fileID: 479486}
   - {fileID: 440262}
   - {fileID: 480564}
@@ -3606,10 +3591,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127608}
   m_LocalRotation: {x: .403838813, y: -.455427527, z: .228959635, w: .759656191}
-  m_LocalPosition: {x: 215.699997, y: 341.899994, z: -100.800003}
+  m_LocalPosition: {x: 215.599991, y: 341.899994, z: -90.9000015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 481572}
+  m_Father: {fileID: 476502}
   m_RootOrder: 0
 --- !u!4 &480564
 Transform:
@@ -3635,19 +3620,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 421766}
   m_RootOrder: 19
---- !u!4 &481572
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102896}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.100000001, y: 0, z: 9.89999962}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 480148}
-  m_Father: {fileID: 476502}
-  m_RootOrder: 1
 --- !u!4 &481780
 Transform:
   m_ObjectHideFlags: 1

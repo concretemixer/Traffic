@@ -4450,7 +4450,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &170574
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -5207,21 +5207,6 @@ GameObject:
   - 23: {fileID: 2309668}
   m_Layer: 0
   m_Name: fence_long_mesh 42
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &184316
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 431472}
-  m_Layer: 0
-  m_Name: Zero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6665,11 +6650,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170574}
   m_LocalRotation: {x: .403838813, y: -.455427527, z: .228959635, w: .759656191}
-  m_LocalPosition: {x: 215.699997, y: 341.899994, z: -100.800003}
+  m_LocalPosition: {x: 218.300003, y: 341.899994, z: -99.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 431472}
-  m_RootOrder: 0
+  m_Father: {fileID: 482416}
+  m_RootOrder: 3
 --- !u!4 &411094
 Transform:
   m_ObjectHideFlags: 1
@@ -6975,7 +6960,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 482416}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!4 &418536
 Transform:
   m_ObjectHideFlags: 1
@@ -7506,19 +7491,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 403852}
   m_RootOrder: 40
---- !u!4 &431472
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 184316}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5999999, y: 0, z: 1.29999995}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 411076}
-  m_Father: {fileID: 482416}
-  m_RootOrder: 1
 --- !u!4 &432014
 Transform:
   m_ObjectHideFlags: 1
@@ -9722,7 +9694,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 482416}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!4 &474516
 Transform:
   m_ObjectHideFlags: 1
@@ -10139,9 +10111,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 485504}
-  - {fileID: 431472}
   - {fileID: 474510}
   - {fileID: 418418}
+  - {fileID: 411076}
   - {fileID: 492796}
   - {fileID: 483192}
   - {fileID: 403852}

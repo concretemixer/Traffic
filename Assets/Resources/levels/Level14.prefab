@@ -192,7 +192,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &111978
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -376,21 +376,6 @@ GameObject:
   - 23: {fileID: 2343490}
   m_Layer: 0
   m_Name: road_straight_clear_mesh 64
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &116540
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 448354}
-  m_Layer: 0
-  m_Name: Zero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3613,8 +3598,8 @@ Transform:
   - {fileID: 498658}
   - {fileID: 490778}
   - {fileID: 479076}
+  - {fileID: 454916}
   - {fileID: 439286}
-  - {fileID: 448354}
   - {fileID: 447970}
   - {fileID: 428694}
   - {fileID: 484488}
@@ -3643,7 +3628,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 438562}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!4 &439536
 Transform:
   m_ObjectHideFlags: 1
@@ -3830,19 +3815,6 @@ Transform:
   - {fileID: 459892}
   m_Father: {fileID: 438562}
   m_RootOrder: 6
---- !u!4 &448354
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 116540}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3.4000001}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 454916}
-  m_Father: {fileID: 438562}
-  m_RootOrder: 5
 --- !u!4 &448520
 Transform:
   m_ObjectHideFlags: 1
@@ -4042,11 +4014,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 111978}
   m_LocalRotation: {x: .403838813, y: -.455427527, z: .228959635, w: .759656191}
-  m_LocalPosition: {x: 223.999969, y: 342, z: -103.900017}
+  m_LocalPosition: {x: 223.999969, y: 342, z: -107.300018}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 448354}
-  m_RootOrder: 0
+  m_Father: {fileID: 438562}
+  m_RootOrder: 4
 --- !u!4 &455246
 Transform:
   m_ObjectHideFlags: 1
