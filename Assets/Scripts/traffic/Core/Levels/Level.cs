@@ -67,12 +67,22 @@ public class Level : MonoBehaviour  {
 				cameraMain.SetActive(false);
         }
 
-#if !UNITY_ANDROID && !UNITY_IOS
 
-		cameraPortrait.SetActive(false);
-		cameraLandscape.SetActive(true);
-		cameraPortrait = null;
-		//cameraLandscape  = null;
+
+#if UNITY_STANDALONE
+
+        if (Screen.width > Screen.height)
+        {
+            cameraPortrait.SetActive(false);
+            cameraLandscape.SetActive(true);
+            cameraPortrait = null;            
+        }
+        else
+        {
+            cameraPortrait.SetActive(true);
+            cameraLandscape.SetActive(false);            
+            cameraLandscape = null;
+        }
 #endif
 
 

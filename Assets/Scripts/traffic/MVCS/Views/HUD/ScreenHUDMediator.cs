@@ -38,6 +38,9 @@ namespace Traffic.MVCS.Views.UI.HUD
 		public LevelResume onResume { get; set;}
 
         [Inject]
+        public ScoreGrow onScoreGrow { get; set; }
+
+        [Inject]
         public IUIManager ui {
             get;
             set;
@@ -45,6 +48,7 @@ namespace Traffic.MVCS.Views.UI.HUD
 			
         public override void OnRegister()
 		{
+            onScoreGrow.AddListener(scoreGrowHandler);
 			onVehicleReachedDestination.AddListener(vehicleReachHandler);
 			view.onButtonPauseLevel.AddListener(pauseLevelHandler);
           //  view.onRetyLevel.AddListener(retyLevelHandler);
@@ -57,12 +61,17 @@ namespace Traffic.MVCS.Views.UI.HUD
 
         void updateLevelProgress()
         {
-             view.SetScore(level.Score);			
+             view.SetScore((int)level.Score);			
              view.SetProgress(level.Progress, level.Target);
         }
 
-        void exitLevelHandler()
+        void scoreGrowHandler(float diff)
         {
+            if (!level.Failed && !level.Complete)
+            {
+                level.Score += diff;
+                updateLevelProgress();
+            }
         }
 
 		void pauseLevelHandler()
@@ -91,6 +100,7 @@ namespace Traffic.MVCS.Views.UI.HUD
         public override void OnRemove()
         {
 			onVehicleReachedDestination.RemoveListener(vehicleReachHandler);
+            onScoreGrow.RemoveListener(scoreGrowHandler);
 			view.onButtonPauseLevel.RemoveListener(resumeLevelHandler);
 			view.onButtonPauseLevel.RemoveListener(pauseLevelHandler);
 

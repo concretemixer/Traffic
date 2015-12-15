@@ -29,6 +29,13 @@ namespace Traffic.MVCS.Views.Game
             set;
         }
 
+        [Inject]
+        public ILevelListModel levels
+        {
+            get;
+            set;
+        }
+
 		[Inject]
 		public VehicleReachedDestination onVehicleReachedDestination { get; set;}
 
@@ -56,8 +63,11 @@ namespace Traffic.MVCS.Views.Game
 		void vehicleCrashedHandler()
 		{
 			if (!level.Failed) {
-                Invoke("levelFailedDispatch", 1);				
-				level.Failed = true;
+                //levelFailedDispatch();
+                level.Failed = true;                
+               // onLevelFailed.Dispatch();
+                this.Invoke("levelFailedDispatch", 1);
+                
 			}
 		}
 
@@ -74,11 +84,14 @@ namespace Traffic.MVCS.Views.Game
 
         void levelCompleteHandler()
         {
+            level.Complete = true;
+            levels.SetLevelState(levels.CurrentLevelIndex, LevelState.PassedOneStar);
+            if (levels.GetLevelState(levels.CurrentLevelIndex + 1) == LevelState.Locked)
+                levels.SetLevelState(levels.CurrentLevelIndex + 1, LevelState.Playable);
+
             UI.Hide(UIMap.Id.ScreenHUD);
             UI.Show(UIMap.Id.LevelDoneMenu);
         }
-
-
 
         public override void OnRegister()
         {
@@ -92,7 +105,7 @@ namespace Traffic.MVCS.Views.Game
 		public override void OnRemove()
         {
 			onVehicleReachedDestination.RemoveListener (vehicleReachedHandler);
-			onVehicleCrashed.RemoveListener (vehicleReachedHandler);
+            onVehicleCrashed.RemoveListener(vehicleCrashedHandler);
             onLevelFailed.RemoveListener(levelFailedHandler);
             onLevelComplete.RemoveListener(levelCompleteHandler);
             base.OnRemove();

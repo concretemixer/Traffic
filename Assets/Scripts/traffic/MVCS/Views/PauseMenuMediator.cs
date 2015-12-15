@@ -66,7 +66,7 @@ namespace Traffic.MVCS.Views.UI
 
             view.onButtonResumeLevel.AddListener(resumeLevelHandler);
             view.onButtonHome.AddListener(homeHandler);
-
+            view.Layout();
             base.OnRegister();
         }
 

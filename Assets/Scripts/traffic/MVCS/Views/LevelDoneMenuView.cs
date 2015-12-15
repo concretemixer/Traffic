@@ -13,6 +13,13 @@ namespace Traffic.MVCS.Views.UI
         [SerializeField]
         Button nextButton;
 
+        [SerializeField]
+        Text score;
+
+        [SerializeField]
+        Text scoreShadow;
+
+
         public readonly Signal onButtonNextLevel = new Signal();
         public readonly Signal onButtonHome = new Signal();
 
@@ -23,7 +30,11 @@ namespace Traffic.MVCS.Views.UI
             base.Awake();
         }
 
-       
+        public void SetScore(int score)
+        {
+            this.score.text = score.ToString("D6");
+            this.scoreShadow.text = this.score.text;
+        }       
 
         protected override void OnDestroy()
         {
@@ -32,5 +43,26 @@ namespace Traffic.MVCS.Views.UI
             base.OnDestroy();
         }
 
+        public override void Layout()
+        {
+
+            float ratio = (float)Screen.height / (float)Screen.width;
+
+            float scaledDimention;
+
+            if (ratio < 1)
+            {
+                this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 960);
+                this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960 * ratio);
+                scaledDimention = 960 * ratio;
+            }
+            else
+            {
+                this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 960 / ratio);
+                this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960);
+
+                scaledDimention = 960 / ratio;
+            }
+        }
     }
 }

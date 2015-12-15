@@ -32,5 +32,26 @@ namespace Traffic.MVCS.Views.UI
             base.OnDestroy();
         }
 
+        public override void Layout()
+        {
+
+            float ratio = (float)Screen.height / (float)Screen.width;
+
+            float scaledDimention;
+
+            if (ratio < 1)
+            {
+                this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 960);
+                this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960 * ratio);
+                scaledDimention = 960 * ratio;
+            }
+            else
+            {
+                this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 960 / ratio);
+                this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960);
+
+                scaledDimention = 960 / ratio;
+            }
+        }
     }
 }

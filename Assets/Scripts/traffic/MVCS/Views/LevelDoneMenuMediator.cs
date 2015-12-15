@@ -63,7 +63,7 @@ namespace Traffic.MVCS.Views.UI
                 toMainScreenSignal.Dispatch();
             else
             {
-                levels.CurrentLevelIndex++;
+                levels.CurrentLevelIndex = levels.CurrentLevelIndex+1;
                 startLevel.Dispatch(levels.CurrentLevelIndex);
             }
         }
@@ -78,7 +78,8 @@ namespace Traffic.MVCS.Views.UI
 
             view.onButtonNextLevel.AddListener(nextLevelHandler);
             view.onButtonHome.AddListener(homeHandler);
-
+            view.SetScore((int)level.Score);
+            view.Layout();
 
             base.OnRegister();
         }

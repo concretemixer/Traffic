@@ -62,7 +62,7 @@ namespace Traffic.MVCS.Views.UI
 
             view.onButtonRetryLevel.AddListener(retryLevelHandler);
             view.onButtonHome.AddListener(homeHandler);
-
+            view.Layout();
             base.OnRegister();
         }
 

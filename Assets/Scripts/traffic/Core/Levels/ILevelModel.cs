@@ -4,7 +4,7 @@ namespace Traffic.Core
 {
     public interface ILevelModel
     {
-        int Score {
+        float Score {
             get;
             set;
         }
@@ -20,6 +20,13 @@ namespace Traffic.Core
 		}
 
         bool Failed
+        {
+            get;
+            set;
+        }
+
+
+        bool Complete
         {
             get;
             set;

@@ -33,4 +33,8 @@ namespace Traffic.MVCS.Commands.Signals
     {
     }
 
+    public class ScoreGrow : Signal<float>
+    {
+    }
+
 }

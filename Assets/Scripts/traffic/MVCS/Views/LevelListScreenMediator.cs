@@ -49,8 +49,8 @@ namespace Traffic.MVCS.Views.UI
 
         void startLevelHandler(int index)
         {
-            Logger.Log(index.ToString());
-            startLevel.Dispatch(index);
+            levels.CurrentLevelIndex = index;            
+            startLevel.Dispatch(levels.CurrentLevelIndex);
         }
         
         public override void OnRegister()

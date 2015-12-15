@@ -19,6 +19,9 @@ public class Pitcher : MonoBehaviour {
     [Inject]
     public LevelComplete onLevelComplete { get; set; }
 
+    [Inject]
+    public ScoreGrow onScoreGrow { get; set; }
+
 	public float Pause = 2;
     private float _pause;
 
@@ -66,7 +69,9 @@ public class Pitcher : MonoBehaviour {
             v.parent = this.gameObject.transform.parent;
 
             v2.onVehicleCrashed = onVehicleCrashed;
-            v2.onVehicleReachedDestination = onVehicleReachedDestination;           
+            v2.onVehicleReachedDestination = onVehicleReachedDestination;
+            v2.onLevelComplete = onLevelComplete;
+            v2.onScoreGrow = onScoreGrow;
 		}
 
 	}

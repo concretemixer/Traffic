@@ -9,9 +9,11 @@ public class Vehicle : MonoBehaviour {
 
     public VehicleReachedDestination onVehicleReachedDestination { get; set; }
 
-
     public VehicleCrashed onVehicleCrashed { get; set; }
+  
+    public LevelComplete onLevelComplete { get; set; }
 
+    public ScoreGrow onScoreGrow { get; set; }
 
 	public AudioClip[] crashSound;
 	public AudioClip moveSound;
@@ -37,8 +39,11 @@ public class Vehicle : MonoBehaviour {
 	private bool acceleration = false;
 	private float accelRate = 50;
 
-
 	private float aiStopCooldown = 0;
+
+    private float lifetime = 0;
+
+    private float scoreGrowK = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -70,12 +75,29 @@ public class Vehicle : MonoBehaviour {
 				}
 			}
 		}
+
+        onLevelComplete.AddListener(StopOnLevelComplete);
 	}
-	
+
+
+    void OnDestroy()
+    {
+        onLevelComplete.RemoveListener(StopOnLevelComplete);
+    }
+
+    void StopOnLevelComplete() 
+    {
+        gameObject.GetComponent<Rigidbody>().detectCollisions = false;
+        deceleration = true;
+        targetSpeed = 0;
+    }
 	// Update is called once per frame
 	void Update () {
-		//GetComponent<Rigidbody> ().velocity = new Vector3 (50, 0, 0);
-		//GetComponent<Rigidbody> ().AddForce(new Vector3 (50, 0, 0));
+
+        lifetime += Time.deltaTime;
+
+        onScoreGrow.Dispatch(9.0f * Time.deltaTime * scoreGrowK);
+
 		if (stopTimer > 0) {
 			stopTimer -= Time.deltaTime;
 			if (stopTimer<=0)
@@ -212,6 +234,11 @@ public class Vehicle : MonoBehaviour {
 		}
 		if(col.gameObject.tag == "Finish")
 		{
+            //Debug.Log("lifetime = " + lifetime);
+
+            if (gear==2)
+                onScoreGrow.Dispatch(100);
+
 			gameObject.GetComponent<Rigidbody>().detectCollisions = false;
 			Invoke("SelfDestroy",3);
 			//Destroy(gameObject);
@@ -224,6 +251,8 @@ public class Vehicle : MonoBehaviour {
 		}
 
 	}
+
+
 
 	void SelfDestroy()
 	{
@@ -277,6 +306,11 @@ public class Vehicle : MonoBehaviour {
 
 		gear--;
 		acceleration = false;
+
+        if (gear == 0)
+            scoreGrowK = 0.1f;
+        if (gear == 1)
+            scoreGrowK = 1;
 
 	}
 
@@ -358,6 +392,23 @@ public class Vehicle : MonoBehaviour {
 		
 		gear++;
 		deceleration = false;
+
+        if (gear == 1)
+        {
+            scoreGrowK = 1;
+        }
+        else if (gear == 2)
+        {
+            if (lifetime<1.5)
+                scoreGrowK = 20;
+            else if (lifetime < 3)
+                scoreGrowK = 8;
+            else
+                scoreGrowK = 4;
+
+          //  Debug.Log(scoreGrowK);
+        }
+
 	}
 
 }

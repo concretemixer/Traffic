@@ -99,7 +99,8 @@ namespace Traffic.MVCS
 			injectionBinder.Bind<VehicleReachedDestination> ().ToSingleton ();
 			injectionBinder.Bind<VehicleCrashed> ().ToSingleton ();
 			injectionBinder.Bind<LevelFailed> ().ToSingleton ();
-			injectionBinder.Bind<LevelComplete> ().ToSingleton ();            
+			injectionBinder.Bind<LevelComplete> ().ToSingleton ();
+            injectionBinder.Bind<ScoreGrow>().ToSingleton();       
         }
 
         void mapModels()
