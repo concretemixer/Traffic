@@ -65,9 +65,9 @@ public class Level : MonoBehaviour  {
 
 			if (cameraMain!=null)
 				cameraMain.SetActive(false);
-		}
+        }
 
-#if !UNITY_ANDROID
+#if !UNITY_ANDROID && !UNITY_IOS
 
 		cameraPortrait.SetActive(false);
 		cameraLandscape.SetActive(true);
@@ -76,7 +76,7 @@ public class Level : MonoBehaviour  {
 #endif
 
 
-		UpdateCamera ();
+        UpdateCamera ();
 		//Time.timeScale = 3;
 			/*
 		Ingame = GameObject.Find ("Game") != null;
