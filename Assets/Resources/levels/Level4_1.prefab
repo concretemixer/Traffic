@@ -63,7 +63,6 @@ GameObject:
   - 20: {fileID: 2015862}
   - 92: {fileID: 9232596}
   - 124: {fileID: 12489996}
-  - 81: {fileID: 8173890}
   - 114: {fileID: 11419300}
   m_Layer: 0
   m_Name: Main Camera Landscape
@@ -1454,7 +1453,6 @@ GameObject:
   - 20: {fileID: 2034774}
   - 92: {fileID: 9263308}
   - 124: {fileID: 12418388}
-  - 81: {fileID: 8119626}
   - 114: {fileID: 11410812}
   m_Layer: 0
   m_Name: Main Camera Portrait
@@ -15058,20 +15056,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!81 &8119626
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 134876}
-  m_Enabled: 1
---- !u!81 &8173890
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 101100}
-  m_Enabled: 1
 --- !u!82 &8215838
 AudioSource:
   m_ObjectHideFlags: 1
