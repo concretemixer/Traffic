@@ -58,6 +58,9 @@ namespace Traffic.MVCS.Views.UI
 
                 scaledDimention = 960 / ratio;
             }
+
+            this.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+            this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         }
     }
 }
