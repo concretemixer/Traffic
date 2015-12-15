@@ -24,7 +24,9 @@ namespace Traffic.MVCS.Commands.Init
         {
             Logger.Log("init UI");
 
-            var manager = new UIManager();
+            var manager = new  UIManager();
+            injectionBinder.injector.Inject(manager);
+
             manager.Init(uiContainer, new LocalResourceManager());
             binder.Bind<IUIManager>().ToValue(manager);
 

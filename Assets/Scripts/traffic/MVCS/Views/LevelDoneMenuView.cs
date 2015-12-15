@@ -5,7 +5,7 @@ using strange.extensions.signal.impl;
 
 namespace Traffic.MVCS.Views.UI
 {
-    public class LevelDoneMenuView : View
+    public class LevelDoneMenuView : RotatableView
     {
         [SerializeField]
         Button homeButton;

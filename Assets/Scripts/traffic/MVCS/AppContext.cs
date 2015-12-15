@@ -129,9 +129,7 @@ namespace Traffic.MVCS
         {
             injectionBinder.Bind<GameObject>().To(entryPoint.Stage).ToName(EntryPoint.Container.Stage);
             injectionBinder.Bind<GameObject>().To(entryPoint.UI).ToName(EntryPoint.Container.UI);
-
-         //   injectionBinder.Bind<UIMap>().ToSingleton();
-        //    injectionBinder.Bind<UIManager>().ToSingleton();
+           // injectionBinder.Bind<IUIManager>().To<UIManager>();
         }
     }
 }

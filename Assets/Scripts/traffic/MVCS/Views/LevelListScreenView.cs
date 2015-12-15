@@ -6,7 +6,7 @@ using Traffic.Core;
 
 namespace Traffic.MVCS.Views.UI
 {
-    public class LevelListScreenView : View
+    public class LevelListScreenView : RotatableView
     {
         [SerializeField]
         Button nextButton;
@@ -69,8 +69,8 @@ namespace Traffic.MVCS.Views.UI
 
             this.page = page;
 
-            prevButton.gameObject.SetActive(page == 1);
-            nextButton.gameObject.SetActive(page == 0);
+            prevButton.GetComponent<Button>().interactable = (page == 1);
+            nextButton.GetComponent<Button>().interactable = (page == 0);
 
             for (int a = 0; a < levelButtons.Length; a++) {
                 int n = a + levelButtons.Length * page;
@@ -88,13 +88,22 @@ namespace Traffic.MVCS.Views.UI
 
         }
 
-        public void Layout()
+        public override void Layout()
         {
 
             float ratio = (float)Screen.height / (float)Screen.width;
 
-            this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 960);
-            this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960 * ratio);
+            if (ratio < 1)
+            {
+                this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 960);
+                this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960 * ratio);
+            }
+            else
+            {
+                this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 960 / ratio);
+                this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960);
+            }
+
 
             this.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
             this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
@@ -110,27 +119,31 @@ namespace Traffic.MVCS.Views.UI
                     if (ratio < 1)
                     {
                         levelButtons[n].GetComponent<RectTransform>().anchoredPosition = new Vector2(-225 + b * 150, 110 - 110 * a);
-                        levelButtons[n].GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+
                     }
                     else
                     {
-                        levelButtons[n].GetComponent<RectTransform>().anchoredPosition = new Vector2(-210 + b * 210, 240 - 160 * a);
-                        levelButtons[n].GetComponent<RectTransform>().localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                        levelButtons[n].GetComponent<RectTransform>().anchoredPosition = new Vector2(-150 + b * 150, 160 - 110 * a);
+
                     }
 
                     n++;
                 }
             }
 
-            if (ratio < 0)
+            if (ratio < 1)
             {
                 backBack.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
                 backFront.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+                prevButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-340, 0);
+                nextButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(340, 0);
             }
             else
             {
-                backBack.GetComponent<RectTransform>().localScale = new Vector3(ratio * ratio, ratio * ratio, ratio * ratio);
-                backFront.GetComponent<RectTransform>().localScale = new Vector3(ratio * ratio, ratio * ratio, ratio * ratio);
+                backBack.GetComponent<RectTransform>().localScale = new Vector3(ratio, ratio, ratio );
+                backFront.GetComponent<RectTransform>().localScale = new Vector3(ratio , ratio , ratio );
+                prevButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-30, -300);
+                nextButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(50, -300);
             }
         }
 

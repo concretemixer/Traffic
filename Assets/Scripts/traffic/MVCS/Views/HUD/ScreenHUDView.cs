@@ -5,7 +5,7 @@ using strange.extensions.signal.impl;
 
 namespace Traffic.MVCS.Views.UI.HUD
 {
-    public class ScreenHUDView : View
+    public class ScreenHUDView : RotatableView
     {
 
         [SerializeField]
@@ -66,35 +66,50 @@ namespace Traffic.MVCS.Views.UI.HUD
             base.OnDestroy();
         }
 
-        public void Layout()
+        public override void Layout()
         {
             
             float ratio = (float)Screen.height / (float)Screen.width;
 
-            this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 960);
-            this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960*ratio);
+            float scaledDimention; 
 
-            this.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -480 * ratio);
-            this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1,1);
+            if (ratio < 1)
+            {
+                this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 960);
+                this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960 * ratio);
+                scaledDimention = 960 * ratio;
+                this.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -scaledDimention/2);
+            }
+            else
+            {
+                this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 960 / ratio);
+                this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960);
+                this.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -480);
+                scaledDimention = 960 / ratio;
+            }
+
+            this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
 
             if (ratio < 1)
             {
                 progressBg.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -30);
+                progressBg.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+
+
                 pauseButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-45, -50);
                 scoreShadow.GetComponent<RectTransform>().anchoredPosition = new Vector2(110, -50);
-                scoreShadow.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
-                progressBg.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
-                pauseButton.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+
             }
             else
             {
-                progressBg.GetComponent<RectTransform>().anchoredPosition = new Vector2(16, -45);
-                pauseButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-60, -70);
-                scoreShadow.GetComponent<RectTransform>().anchoredPosition = new Vector2(160, -150);
+               progressBg.GetComponent<RectTransform>().anchoredPosition = new Vector2(-scaledDimention/2 + 0.9f*492*0.5f,-30);
+               progressBg.GetComponent<RectTransform>().localScale = new Vector3(0.9f, 0.9f, 0.9f);
 
-                scoreShadow.GetComponent<RectTransform>().localScale = new Vector3(1.5f, 1.5f, 1.5f);
-                progressBg.GetComponent<RectTransform>().localScale = new Vector3(2.0f, 2.0f, 2.0f);
-                pauseButton.GetComponent<RectTransform>().localScale = new Vector3(1.5f, 1.5f, 1.5f);
+               pauseButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-45, -55);
+              
+               scoreShadow.GetComponent<RectTransform>().anchoredPosition = new Vector2(110, -90);
+
+
 
             }
         }

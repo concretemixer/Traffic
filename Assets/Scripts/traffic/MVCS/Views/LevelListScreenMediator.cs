@@ -14,8 +14,7 @@ namespace Traffic.MVCS.Views.UI
     public class LevelListScreenMediator : Mediator
     {
 
-        [Inject]
-        public OrientationChangedSignal onOrientationChanged { get; set; }
+
 
         [Inject]
         public LevelListScreenView view
@@ -53,16 +52,9 @@ namespace Traffic.MVCS.Views.UI
             Logger.Log(index.ToString());
             startLevel.Dispatch(index);
         }
-
-
-        void orientationChangedHandler()
-        {
-            view.Layout();
-        }
         
         public override void OnRegister()
         {
-            onOrientationChanged.AddListener(orientationChangedHandler);
             view.onButtonNext.AddListener(switchPageHandler);
             view.onButtonPrev.AddListener(switchPageHandler);
             view.onButtonLevel.AddListener(startLevelHandler);
@@ -79,7 +71,6 @@ namespace Traffic.MVCS.Views.UI
 
         public override void OnRemove()
         {
-            onOrientationChanged.RemoveListener(orientationChangedHandler);
             view.onButtonNext.RemoveListener(switchPageHandler);
             view.onButtonPrev.RemoveListener(switchPageHandler);
             view.onButtonLevel.RemoveListener(startLevelHandler);

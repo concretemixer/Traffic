@@ -2,11 +2,16 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using Commons.Resources;
+using Traffic.MVCS.Commands.Signals;
+using Traffic.MVCS.Views.UI;
 
 namespace Commons.UI
 {
     public class UIManager : IUIManager
     {
+        [Inject]
+        public OrientationChangedSignal onOrientationChanged { get; set; }
+
         GameObject container;
 
         private Dictionary<UIMap.Id, GameObject> uiElements = new Dictionary<UIMap.Id, GameObject>();
@@ -18,10 +23,18 @@ namespace Commons.UI
             this.container = _container;
             resourceManager = rm;
 
-            if (resourceManager == null)
-                Debug.Log("NULLLLL !!");
-            else
-                Debug.Log("OK !!");
+            onOrientationChanged.AddListener(handleOrientationChange);
+        }
+
+        void handleOrientationChange()
+        {
+            foreach (var key in uiElements.Keys)
+            {
+                if (uiElements[key].GetComponent<RotatableView>()!=null)
+                {
+                    uiElements[key].GetComponent<RotatableView>().Layout();
+                }
+            }
         }
 
         public TViewClass Show<TViewClass>(UIMap.Id _viewId)
@@ -53,7 +66,7 @@ namespace Commons.UI
             {
                 GameObject.Destroy(uiElements[_viewId]);
                 uiElements.Remove(_viewId);
-            }
+            }     
         }
     }
 }

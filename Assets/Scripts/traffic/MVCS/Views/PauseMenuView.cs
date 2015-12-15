@@ -7,7 +7,7 @@ using strange.extensions.mediation.impl;
 
 namespace Traffic.MVCS.Views.UI
 {
-    public class PauseMenuView : View
+    public class PauseMenuView : RotatableView
     {
         [SerializeField]
         Button homeButton;

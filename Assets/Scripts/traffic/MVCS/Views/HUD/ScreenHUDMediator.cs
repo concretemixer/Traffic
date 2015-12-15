@@ -27,8 +27,6 @@ namespace Traffic.MVCS.Views.UI.HUD
             set;
         }
 
-        [Inject]
-        public OrientationChangedSignal onOrientationChanged { get; set; }
 
 		[Inject]
 		public VehicleReachedDestination onVehicleReachedDestination { get; set;}
@@ -39,35 +37,17 @@ namespace Traffic.MVCS.Views.UI.HUD
 		[Inject]
 		public LevelResume onResume { get; set;}
 
-		/*
-        [Inject]
-        public SwitchToMainScreenSignal toMainScreenSignal
-        {
-            get;
-            set;
-        }
-
-        [Inject]
-        public RetyLevelSignal retyLevelSignal
-        {
-            get;
-            set;
-        }
-*/
         [Inject]
         public IUIManager ui {
             get;
             set;
         }
 			
-
-
         public override void OnRegister()
 		{
 			onVehicleReachedDestination.AddListener(vehicleReachHandler);
 			view.onButtonPauseLevel.AddListener(pauseLevelHandler);
           //  view.onRetyLevel.AddListener(retyLevelHandler);
-            onOrientationChanged.AddListener(orientationChangedHandler);
 
             view.Layout();
             updateLevelProgress();
@@ -108,19 +88,11 @@ namespace Traffic.MVCS.Views.UI.HUD
             updateLevelProgress();
         }
 
-        void orientationChangedHandler()
-        {
-            view.Layout();
-        }
-
         public override void OnRemove()
         {
 			onVehicleReachedDestination.RemoveListener(vehicleReachHandler);
 			view.onButtonPauseLevel.RemoveListener(resumeLevelHandler);
 			view.onButtonPauseLevel.RemoveListener(pauseLevelHandler);
-            onOrientationChanged.RemoveListener(orientationChangedHandler);
-			//view.onExitLevel.RemoveListener(exitLevelHandler);
-            //view.onRetyLevel.RemoveListener(retyLevelHandler);
 
             base.OnRemove();
         }
