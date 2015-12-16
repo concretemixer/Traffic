@@ -1,7 +1,11 @@
 using Traffic.MVCS.Commands.Signals;
+using System.Collections.Generic;
 
 namespace Traffic.Core
 {
+
+
+
     public interface ILevelModel
     {
         float Score {

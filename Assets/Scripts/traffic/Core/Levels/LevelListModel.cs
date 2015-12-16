@@ -16,6 +16,12 @@ namespace Traffic.Core
              set;
 		}
 
+        public LevelConfig[] LevelConfigs
+        {
+            get;
+            set;
+        }
+
         public LevelState GetLevelState(int index)
         {
             if (index < 0)

@@ -6,9 +6,11 @@ using Traffic.Components;
 using Traffic.Core;
 using Traffic.MVCS.Models;
 using Commons.Utils;
+using System.IO;
 
 namespace Traffic.MVCS.Commands
 {
+
 	public class StartLevelCommand : Command
 	{
 		[Inject]
@@ -23,6 +25,8 @@ namespace Traffic.MVCS.Commands
 		[Inject]
 		public int levelIndex{get;set;}
 
+
+        
 		public override void Execute()
 		{
             UI.Hide(UIMap.Id.ScreenHUD);
@@ -52,9 +56,59 @@ namespace Traffic.MVCS.Commands
                 if (go.GetComponent<Pitcher>()!=null)
                     injectionBinder.injector.Inject(go.GetComponent<Pitcher>());
             }
-
+           
 			UI.Show(UIMap.Id.ScreenHUD);				
 		}
+        /*
+        public override void Execute()
+        {
+            UI.Hide(UIMap.Id.ScreenHUD);
+            UI.Hide(UIMap.Id.LevelFailedMenu);
+            UI.Hide(UIMap.Id.LevelDoneMenu);
+            UI.Hide(UIMap.Id.PauseMenu);
+            UI.Hide(UIMap.Id.LevelListScreen);
+
+            safeUnbind<ILevelModel>(GameState.Current);
+
+            if (stage.transform.childCount > 0)
+                GameObject.Destroy(stage.transform.GetChild(0).gameObject);
+
+
+            GameplayConfig levelCfgs = new GameplayConfig();
+
+            for (int a=0;a<levels.LevelNames.Length;a++) {
+                GameObject instance = Object.Instantiate(Resources.Load("levels/" + levels.LevelNames[a], typeof(GameObject))) as GameObject;
+
+                LevelConfig cfg = new LevelConfig();
+
+                cfg.threeStarsScore = 10000;
+                cfg.twoStarsScore = 5000;
+
+                cfg.target = instance.GetComponentInChildren<Level>().targetScore;
+
+                foreach (var pitcher in instance.transform.GetComponentsInChildren<Pitcher>())
+                {                    
+                    PitcherConfig p = new PitcherConfig();
+                    p.startDelay = pitcher.Pause;
+                    p.intervalMin = pitcher.IntervalMin;
+                    p.intervalMax = pitcher.IntervalMax;
+
+                    cfg.pitchers.Add(pitcher.gameObject.name, p);
+                }
+
+                GameObject.Destroy(instance);
+
+                levelCfgs.levels[a+1] = cfg;
+                
+            }
+
+            string data = JsonWriter.Serialize(levelCfgs);
+            var streamWriter = new StreamWriter("out.json");
+            streamWriter.Write(data);
+            streamWriter.Close();
+           
+        }
+        */
 
 		void safeUnbind<T>()
 		{
@@ -69,7 +123,6 @@ namespace Traffic.MVCS.Commands
 			if (binding != null)
 				injectionBinder.Unbind<T>(name);
 		}
-
 	}
 }
 
