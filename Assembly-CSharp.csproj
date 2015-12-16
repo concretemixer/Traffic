@@ -153,6 +153,7 @@
      <Compile Include="Assets\Dependencies\FacebookSDK\SDK\Scripts\Utils\IFacebookLogger.cs" />
      <Compile Include="Assets\Dependencies\FacebookSDK\SDK\Scripts\Utils\MiniJson.cs" />
      <Compile Include="Assets\Dependencies\FacebookSDK\SDK\Scripts\Utils\Utilities.cs" />
+<<<<<<< HEAD
      <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\game\GameContext.cs" />
      <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\game\GameRoot.cs" />
      <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\game\controller\GameEvent.cs" />
@@ -224,6 +225,34 @@
      <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\signalsproject\view\ClickDetector.cs" />
      <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\signalsproject\view\ExampleMediator.cs" />
      <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\signalsproject\view\ExampleView.cs" />
+=======
+     <Compile Include="Assets\Dependencies\JsonFx.Json\About.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\DataReaderProvider.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\DataWriterProvider.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\EcmaScriptIdentifier.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\EcmaScriptWriter.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\ICustomConverter.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\IDataReader.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\IDataWriter.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\IJsonSerializable.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\JsonClassAttribute.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\JsonDataReader.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\JsonDataWriter.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\JsonIgnoreAttribute.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\JsonNameAttribute.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\JsonReader.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\JsonReaderSettings.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\JsonSerializationException.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\JsonSpecifiedPropertyAttribute.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\JsonToken.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\JsonWriter.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\JsonWriterSettings.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\Properties\AssemblyInfo.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\Properties\AssemblyVersion.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\TypeCoercionUtility.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\XmlDataReader.cs" />
+     <Compile Include="Assets\Dependencies\JsonFx.Json\XmlDataWriter.cs" />
+>>>>>>> json
      <Compile Include="Assets\Dependencies\strangeioc\scripts\strange\ReadMe.cs" />
      <Compile Include="Assets\Dependencies\strangeioc\scripts\strange\extensions\command\api\CommandExceptionType.cs" />
      <Compile Include="Assets\Dependencies\strangeioc\scripts\strange\extensions\command\api\CommandKeys.cs" />
@@ -398,12 +427,18 @@
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SunShaftsComposite.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ColorCorrectionCurves.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\NFAA.shader" />
+<<<<<<< HEAD
      <None Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\signalsproject\ReadMe.txt" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\VignetteShader.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
      <None Include="Assets\Dependencies\strangeioc\scripts\strange\extensions\ReadMe.txt" />
+=======
+     <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\VignetteShader.shader" />
+     <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
+>>>>>>> json
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\MotionBlur.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GlowCompose.shader" />
+     <None Include="Assets\Dependencies\JsonFx.Json\Readme.txt" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Contrast Stretch\MinMaxReduction.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\SSAA.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\RadialBlur.shader" />
@@ -414,9 +449,13 @@
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Contrast Stretch\Apply.shader" />
      <None Include="Assets\Content\tmp\SimpleAirport\Changelog.txt" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\frag_ao.cginc" />
+     <None Include="Assets\Dependencies\strangeioc\scripts\strange\extensions\ReadMe.txt" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\DepthOfField34.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\TiltShift.shader" />
+<<<<<<< HEAD
      <None Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\myfirstproject\ReadMe.txt" />
+=======
+>>>>>>> json
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SSAOShader.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ConvertDepth.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ColorCorrectionCurvesSimple.shader" />
@@ -426,6 +465,7 @@
      <None Include="Assets\Content\tmp\SimplePeople\Changelog.txt" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ChromaticAberrationShader.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GlobalFog.shader" />
+     <None Include="Assets\Dependencies\JsonFx.Json\License.txt" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Contrast Stretch\Luminance.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ColorCorrectionSelective.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\Bokeh34.shader" />
