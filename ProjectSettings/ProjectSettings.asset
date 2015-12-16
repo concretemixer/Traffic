@@ -82,7 +82,7 @@ PlayerSettings:
   metroEnableLowLatencyPresentationAPI: 0
   xboxOneDisableKinectGpuReservation: 0
   productGUID: 1781933ced5dea2438f196d0b09fbcf7
-  AndroidBundleVersionCode: 3
+  AndroidBundleVersionCode: 5
   AndroidMinSdkVersion: 15
   AndroidPreferredInstallLocation: 1
   aotOptions: 
@@ -124,7 +124,7 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   AndroidKeystoreName: D:/src/concretemixer.keystore
-  AndroidKeyaliasName: 
+  AndroidKeyaliasName: max
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
   androidEnableBanner: 1
