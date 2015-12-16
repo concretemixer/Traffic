@@ -6,6 +6,8 @@ namespace Traffic.Components
 {
     public class EntryPoint : ContextView
     {
+        public static string DebugMessage = "";
+
         [SerializeField]
         GameObject ui;
         [SerializeField]

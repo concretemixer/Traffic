@@ -11,8 +11,8 @@ PlayerSettings:
   targetIOSGraphics: -1
   targetResolution: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: Traffic
+  companyName: Concretemixer Games
+  productName: Traffic Storm
   cloudProjectId: 
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -137,8 +137,8 @@ PlayerSettings:
   m_BuildTargetIcons:
   - m_BuildTarget: 
     m_Icons:
-    - m_Icon: {fileID: 0}
-      m_Size: 1
+    - m_Icon: {fileID: 2800000, guid: 684f305529643dc428b8e59655f18c11, type: 3}
+      m_Size: 128
   m_BuildTargetBatching:
   - m_BuildTarget: Android
     m_StaticBatching: 1

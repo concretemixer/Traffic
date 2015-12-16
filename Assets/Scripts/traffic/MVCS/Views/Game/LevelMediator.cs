@@ -51,7 +51,7 @@ namespace Traffic.MVCS.Views.Game
 		void vehicleReachedHandler()
 		{
 			level.Progress++;
-			if (level.Progress == level.Target) {
+			if (level.Progress == level.Config.target) {
 				onLevelComplete.Dispatch();
 			}
 

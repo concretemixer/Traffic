@@ -49,12 +49,20 @@ namespace Traffic.MVCS.Commands
 			injectionBinder.Bind<ILevelModel>().To(levelModel).ToName(GameState.Current);
 
             injectionBinder.injector.Inject(o.GetComponent<Level>());
-            levelModel.Target = o.GetComponent<Level>().targetScore;
+
+            levelModel.Config = levels.LevelConfigs[levelIndex];            
 
             foreach (var go in GameObject.FindGameObjectsWithTag("Respawn"))
             {
-                if (go.GetComponent<Pitcher>()!=null)
+                Pitcher pitcher = go.GetComponent<Pitcher>();
+                if (pitcher != null)
+                {
                     injectionBinder.injector.Inject(go.GetComponent<Pitcher>());
+
+                    pitcher.Pause = levelModel.Config.pitchers[go.name].startDelay;
+                    pitcher.IntervalMax = levelModel.Config.pitchers[go.name].intervalMax;
+                    pitcher.IntervalMin = levelModel.Config.pitchers[go.name].intervalMin;
+                }
             }
            
 			UI.Show(UIMap.Id.ScreenHUD);				

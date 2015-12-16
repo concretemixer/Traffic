@@ -28,10 +28,7 @@ public class Level : MonoBehaviour  {
 
 	 bool Crash = false;
 	 bool Complete = false;
-	 bool PreStart = true;
-
-	public int targetScore = 50;
-	
+	 bool PreStart = true;	
 
 	// Use this for initialization
 	void Start () {

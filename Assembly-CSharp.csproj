@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_5_0_1;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_5_0_1;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>D:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>D:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +179,77 @@
      <Compile Include="Assets\Dependencies\JsonFx.Json\TypeCoercionUtility.cs" />
      <Compile Include="Assets\Dependencies\JsonFx.Json\XmlDataReader.cs" />
      <Compile Include="Assets\Dependencies\JsonFx.Json\XmlDataWriter.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\game\GameContext.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\game\GameRoot.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\game\controller\GameEvent.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\game\controller\GameOverCommand.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\game\controller\RemoveSocialContextCommand.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\game\controller\ReplayGameCommand.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\game\controller\ShipDestroyedCommand.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\game\controller\UpdateScoreCommand.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\game\controller\startupSequence\StartAppCommand.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\game\controller\startupSequence\StartGameCommand.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\game\model\IScore.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\game\model\ScoreModel.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\game\util\GameLoop.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\game\util\IGameTimer.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\game\view\ClickDetector.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\game\view\EnemyMediator.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\game\view\EnemyView.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\game\view\ScoreboardMediator.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\game\view\ScoreboardView.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\game\view\ShipMediator.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\game\view\ShipView.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\main\MainContext.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\main\MainRoot.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\main\controller\GameCompleteCommand.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\main\controller\LoadSceneCommand.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\main\controller\MainEvent.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\main\controller\StartCommand.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\social\SocialContext.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\social\SocialRoot.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\social\controller\CreateFriendListCommand.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\social\controller\CreateUserTileCommand.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\social\controller\GameCompleteCommand.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\social\controller\LoadSceneCommand.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\social\controller\RemoveContextCommand.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\social\controller\SocialEvent.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\social\controller\StartCommand.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\social\service\FacebookService.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\social\service\GoogleService.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\social\service\ISocialService.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\social\service\UserVO.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\social\view\AwardView.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\social\view\AwardViewMediator.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\social\view\UserTileMediator.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\social\view\UserTileView.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\myfirstproject\MyFirstContext.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\myfirstproject\MyFirstProjectRoot.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\myfirstproject\controller\CallWebServiceCommand.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\myfirstproject\controller\ExampleEvent.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\myfirstproject\controller\StartCommand.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\myfirstproject\model\ExampleModel.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\myfirstproject\model\IExampleModel.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\myfirstproject\service\ExampleService.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\myfirstproject\service\IExampleService.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\myfirstproject\view\ClickDetector.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\myfirstproject\view\ExampleMediator.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\myfirstproject\view\ExampleView.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\signalsproject\SignalsContext.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\signalsproject\SignalsRoot.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\signalsproject\controller\CallWebServiceCommand.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\signalsproject\controller\StartCommand.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\signalsproject\model\ExampleModel.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\signalsproject\model\IExampleModel.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\signalsproject\service\ExampleService.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\signalsproject\service\IExampleService.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\signalsproject\signal\CallWebServiceSignal.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\signalsproject\signal\FulfillWebServiceRequestSignal.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\signalsproject\signal\ScoreChangedSignal.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\signalsproject\signal\StartSignal.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\signalsproject\view\ClickDetector.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\signalsproject\view\ExampleMediator.cs" />
+     <Compile Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\signalsproject\view\ExampleView.cs" />
      <Compile Include="Assets\Dependencies\strangeioc\scripts\strange\ReadMe.cs" />
      <Compile Include="Assets\Dependencies\strangeioc\scripts\strange\extensions\command\api\CommandExceptionType.cs" />
      <Compile Include="Assets\Dependencies\strangeioc\scripts\strange\extensions\command\api\CommandKeys.cs" />
@@ -353,8 +424,10 @@
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SunShaftsComposite.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ColorCorrectionCurves.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\NFAA.shader" />
+     <None Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\signalsproject\ReadMe.txt" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\VignetteShader.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
+     <None Include="Assets\Dependencies\strangeioc\scripts\strange\extensions\ReadMe.txt" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\MotionBlur.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GlowCompose.shader" />
      <None Include="Assets\Dependencies\JsonFx.Json\Readme.txt" />
@@ -368,9 +441,9 @@
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Contrast Stretch\Apply.shader" />
      <None Include="Assets\Content\tmp\SimpleAirport\Changelog.txt" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\frag_ao.cginc" />
-     <None Include="Assets\Dependencies\strangeioc\scripts\strange\extensions\ReadMe.txt" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\DepthOfField34.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\TiltShift.shader" />
+     <None Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\myfirstproject\ReadMe.txt" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SSAOShader.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ConvertDepth.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ColorCorrectionCurvesSimple.shader" />
@@ -399,9 +472,12 @@
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SepiaToneEffect.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\TwirlEffect.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\VortexEffect.shader" />
+     <None Include="Assets\Dependencies\strangeioc\LICENSE-2.0.txt" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Contrast Stretch\Adaptation.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseAndGrain.shader" />
+     <None Include="Assets\Dependencies\strangeioc\examples\Assets\scripts\multiplecontexts\ReadMe.txt" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\VignettingShader.shader" />
+     <None Include="Assets\Dependencies\strangeioc\README.txt" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Tonemapper.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BrightPassFilter.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAA2.shader" />
@@ -420,10 +496,10 @@
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\Content\tmp\SimpleProps\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendForBloom.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
- <HintPath>D:/Unity/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -24,6 +24,8 @@ namespace Traffic.MVCS.Views.UI
         [SerializeField]
         Image backFront;
 
+        [SerializeField]
+        Text debugMessage;
 
         public readonly Signal onButtonNext = new Signal();
         public readonly Signal onButtonPrev = new Signal();
@@ -88,6 +90,11 @@ namespace Traffic.MVCS.Views.UI
 
         }
 
+        public void SetDebugMessage(string text)
+        {
+            debugMessage.text = text;
+        }
+
         public override void Layout()
         {
 
@@ -145,6 +152,9 @@ namespace Traffic.MVCS.Views.UI
                 prevButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-30, -300);
                 nextButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(50, -300);
             }
+
+            debugMessage.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 5);
+            debugMessage.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);           
         }
 
     }

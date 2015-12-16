@@ -62,7 +62,7 @@ namespace Traffic.MVCS.Views.UI.HUD
         void updateLevelProgress()
         {
              view.SetScore((int)level.Score);			
-             view.SetProgress(level.Progress, level.Target);
+             view.SetProgress(level.Progress, level.Config.target);
         }
 
         void scoreGrowHandler(float diff)

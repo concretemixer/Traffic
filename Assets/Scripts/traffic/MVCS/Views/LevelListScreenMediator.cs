@@ -4,6 +4,7 @@ using Traffic.MVCS.Commands.Signals;
 using Traffic.MVCS.Views.UI.HUD;
 using Traffic.MVCS.Models;
 using Traffic.Core;
+using Traffic.Components;
 using Commons.UI;
 using Commons.Utils;
 
@@ -61,7 +62,7 @@ namespace Traffic.MVCS.Views.UI
 
             view.Layout();
             view.SetPage(page, levels);
-
+            view.SetDebugMessage(EntryPoint.DebugMessage);
 
             base.OnRegister();
         }

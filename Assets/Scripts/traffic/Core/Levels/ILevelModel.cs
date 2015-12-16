@@ -8,17 +8,18 @@ namespace Traffic.Core
 
     public interface ILevelModel
     {
+        LevelConfig Config
+        {
+            get;
+            set;
+        }
+
         float Score {
             get;
             set;
         }
 		
 		int Progress {
-			get;
-			set;
-		}
-
-		int Target {
 			get;
 			set;
 		}
