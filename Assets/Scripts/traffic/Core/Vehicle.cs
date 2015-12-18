@@ -261,9 +261,9 @@ public class Vehicle : MonoBehaviour {
 
 	void OnCollisionEnter (Collision col)
 	{
-		if (col.gameObject.tag == "Vehicle") 
+        if (col.gameObject.tag == "Vehicle" || col.gameObject.tag == "Obstacle") 
 		{
-			GetComponent<Rigidbody> ().drag = 10;
+			GetComponent<Rigidbody> ().drag =10;
 			GetComponent<Rigidbody> ().angularDrag = 10;
 
             /*

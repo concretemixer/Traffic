@@ -16,10 +16,11 @@ namespace Traffic.MVCS.Commands
         [Inject(EntryPoint.Container.UI)]
         public GameObject uiRoot { get; set; }
 
+        [Inject(EntryPoint.Container.Stage)]
+        public GameObject stage { get; set; }
+
         public override void Execute()
         {
-
-            //UI.Show(UIMap.Id.ScreenHUD);
         }
     }
 }
