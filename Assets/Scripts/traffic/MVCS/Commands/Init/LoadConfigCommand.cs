@@ -53,7 +53,7 @@ namespace Traffic.MVCS.Commands.Init
             EntryPoint entryPoint = stage.GetComponentInParent<EntryPoint>();
             EntryPoint.DebugMessage = "Local config, v" + cfg.version;
 
-           // return;
+            return;
             WWW req = new WWW("https://docs.google.com/uc?authuser=0&id=0B0US96bFVj6rdGxCd1ZyOS1DLXM&export=download");
             entryPoint.StartCoroutine(WaitForRequest(req));
 

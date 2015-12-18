@@ -275,6 +275,7 @@ public class Vehicle : MonoBehaviour {
               */
             onVehicleCrashed.Dispatch();
 
+            Debug.Log(Time.time);
 		}
 
 		if (col.gameObject.tag == "VehicleAI") 

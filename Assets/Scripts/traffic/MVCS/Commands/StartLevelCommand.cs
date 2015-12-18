@@ -59,9 +59,12 @@ namespace Traffic.MVCS.Commands
                 {
                     injectionBinder.injector.Inject(go.GetComponent<Pitcher>());
 
-                    pitcher.Pause = levelModel.Config.pitchers[go.name].startDelay;
-                    pitcher.IntervalMax = levelModel.Config.pitchers[go.name].intervalMax;
-                    pitcher.IntervalMin = levelModel.Config.pitchers[go.name].intervalMin;
+                    if (levelModel.Config.pitchers.ContainsKey(go.name) && false)
+                    {
+                        pitcher.Pause = levelModel.Config.pitchers[go.name].startDelay;
+                        pitcher.IntervalMax = levelModel.Config.pitchers[go.name].intervalMax;
+                        pitcher.IntervalMin = levelModel.Config.pitchers[go.name].intervalMin;
+                    }
                 }
             }
            
