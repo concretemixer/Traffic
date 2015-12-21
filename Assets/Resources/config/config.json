@@ -1,6 +1,14 @@
 {
    "version":1,
    "levels":{
+      "0":{
+         "threeStarsScore":200,
+         "twoStarsScore":100,
+         "target":40,
+         "pitchers":{
+         }
+      },
+
       "1":{
          "threeStarsScore":10000,
          "twoStarsScore":5000,

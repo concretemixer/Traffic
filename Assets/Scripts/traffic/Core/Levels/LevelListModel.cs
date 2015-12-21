@@ -29,7 +29,7 @@ namespace Traffic.Core
             if (index >= LevelNames.Length)
                 return LevelState.NoLevel;
 
-            LevelState result = (LevelState)PlayerPrefs.GetInt("progress.1." + (index + 1).ToString(), 0);
+            LevelState result = (LevelState)PlayerPrefs.GetInt("progress.1." + index.ToString(), 0);
             if (result == LevelState.Locked && index == 0)
                 result = LevelState.Playable;
 
@@ -38,7 +38,7 @@ namespace Traffic.Core
 
         public void SetLevelState(int index, LevelState state)
         {
-            PlayerPrefs.SetInt("progress.1." + (index + 1).ToString(), (int)state);
+            PlayerPrefs.SetInt("progress.1." + index.ToString(), (int)state);
         }
 
 
@@ -48,7 +48,7 @@ namespace Traffic.Core
 
             LevelNames = new string[] 
 	        {
-              //  "LevelTutorial",
+                "LevelTutorial",
 		        "Level1",
 		        "Level2",
 		        "Level4_1",
