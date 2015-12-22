@@ -31,12 +31,12 @@ public class PoleMovement : MonoBehaviour {
         else
         {
             
-            if (lifetime > 6.5f)
+            if (lifetime > 7.5f)
             {
-                transform.localRotation = Quaternion.EulerAngles(0, 0, -(7.5f - lifetime));
+                transform.localRotation = Quaternion.EulerAngles(0, 0, -(8.5f - lifetime));
             }
 
-            if (lifetime > 7.5f)
+            if (lifetime > 8.5f)
             {
                 transform.localRotation = Quaternion.EulerAngles(0, 0, 0);
                 down = true;

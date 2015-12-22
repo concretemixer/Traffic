@@ -44,14 +44,15 @@ public class Vehicle : MonoBehaviour {
     private float lifetime = 0;
 
     private float scoreGrowK = 1;
+    private bool finished = false;
 
 	// Use this for initialization
 	void Start () {
 		if (tag=="VehicleAI")
 			NormalSpeed*=0.75f;
 
-		NormalSpeed += (NormalSpeed * 0.3f) * (Random.value-0.5f);
-		FastSpeed += (FastSpeed * 0.3f) * (Random.value-0.5f);
+		NormalSpeed += (NormalSpeed * 0.2f) * (Random.value-0.5f);
+		FastSpeed += (FastSpeed * 0.2f) * (Random.value-0.5f);
 
 		//Debug.Log ("S: " + NormalSpeed.ToString ());
 		if (gear==1)
@@ -232,9 +233,11 @@ public class Vehicle : MonoBehaviour {
 				stopped = true;
 			}
 		}
-		if(col.gameObject.tag == "Finish")
+		if(col.gameObject.tag == "Finish" && !finished)
 		{
+            finished = true;
             //Debug.Log("lifetime = " + lifetime);
+            //Debug.Log("F: " + gameObject.name + ":" + Time.time);
 
             if (gear==2)
                 onScoreGrow.Dispatch(100);
@@ -275,7 +278,7 @@ public class Vehicle : MonoBehaviour {
               */
             onVehicleCrashed.Dispatch();
 
-            Debug.Log(Time.time);
+            Debug.Log(gameObject.name +":"+ Time.time);
 		}
 
 		if (col.gameObject.tag == "VehicleAI") 

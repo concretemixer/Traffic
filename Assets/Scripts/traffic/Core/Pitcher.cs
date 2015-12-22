@@ -28,11 +28,12 @@ public class Pitcher : MonoBehaviour {
 	public float IntervalMin = 3;
 	public float IntervalMax = 5;
 
-	public Transform vehicle;
-
 	private float spawnTime = 0;
 
 	public Transform[] vehicles;
+
+    public bool Sequental = false;
+    private int nextVehicleIdx = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -62,7 +63,8 @@ public class Pitcher : MonoBehaviour {
 		spawnTime -= Time.deltaTime;;
 		if (spawnTime < 0) {
 			spawnTime = Random.value * (IntervalMax-IntervalMin) + IntervalMin;		
-            Transform t = (vehicles.Length==0) ? vehicle : vehicles[Random.Range(0,vehicles.Length)];
+            Transform t = Sequental ? vehicles[nextVehicleIdx] : vehicles[Random.Range(0,vehicles.Length)];
+            nextVehicleIdx = (nextVehicleIdx + 1) % vehicles.Length;
             Transform v  = Instantiate(t, this.transform.localPosition, this.transform.localRotation) as Transform;
             Vehicle v2 = v.GetComponent<Vehicle>();
 

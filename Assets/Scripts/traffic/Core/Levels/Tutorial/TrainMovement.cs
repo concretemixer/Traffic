@@ -5,7 +5,7 @@ public class TrainMovement : MonoBehaviour {
 
     float lifetime = 0;
     private float v = 0;
-    private float vmax = 26;
+    private float vmax = 30;
 	// Use this for initialization
 	void Start () {
 	
@@ -16,7 +16,7 @@ public class TrainMovement : MonoBehaviour {
 
         lifetime += Time.deltaTime;
 
-        if (lifetime < 7)
+        if (lifetime < 7.5)
             return;
 
         v += Time.deltaTime*11;
