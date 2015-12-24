@@ -37,6 +37,9 @@ public class TouchCamera : MonoBehaviour {
 
 		}
 
+        if (Time.timeScale == 0)
+            return;
+
 		if (Input.touchCount == 1) { 
 			if (Input.GetTouch (0).phase == TouchPhase.Ended) {
 				//Vector3 newVehiclePos = Camera.main.WorldToScreenPoint(touchedVehicle.transform.position);

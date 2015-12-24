@@ -67,6 +67,7 @@ namespace Traffic.MVCS
             commandBinder.Bind<LevelPause>().To<PauseLevelCommand>();
 			commandBinder.Bind<LevelResume>().To<ResumeLevelCommand>();
             commandBinder.Bind<LevelRetry>().To<RetryLevelCommand>();
+            commandBinder.Bind<TutorialPoint>().To<TutorialPointCommand>();
 //            commandBinder.Bind<StartLevelSignal>().To<StartLevelCommand>();
 
              commandBinder.Bind<SwitchToMainScreenSignal>()
@@ -100,7 +101,7 @@ namespace Traffic.MVCS
 			injectionBinder.Bind<VehicleCrashed> ().ToSingleton ();
 			injectionBinder.Bind<LevelFailed> ().ToSingleton ();
 			injectionBinder.Bind<LevelComplete> ().ToSingleton ();
-            injectionBinder.Bind<ScoreGrow>().ToSingleton();       
+            injectionBinder.Bind<ScoreGrow>().ToSingleton();         
         }
 
         void mapModels()
@@ -122,7 +123,7 @@ namespace Traffic.MVCS
             mediationBinder.Bind<PauseMenuView>().To<PauseMenuMediator>();
             mediationBinder.Bind<ScreenHUDView>().To<ScreenHUDMediator>();
             mediationBinder.Bind<LoadingScreenView>().To<LoadingScreenMediator>();
-            // mediationBinder.Bind<ScreenHUDView>().To<ScreenHUDMediator>();
+            mediationBinder.Bind<TutorialStepScreen>().To<TutorialStepMediator>();
 
         }
 

@@ -6,6 +6,9 @@ namespace Traffic.Core {
 
 public class Vehicle : MonoBehaviour {
 
+    public static int NextNumber = 1;
+
+    public int Number;
 
     public VehicleReachedDestination onVehicleReachedDestination { get; set; }
 

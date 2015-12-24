@@ -6,6 +6,7 @@ using Traffic.MVCS.Models;
 using Traffic.Core;
 using Commons.UI;
 using Commons.Utils;
+using UnityEngine;
 
 using strange.extensions.mediation.impl;
 
@@ -20,36 +21,6 @@ namespace Traffic.MVCS.Views.UI
             set;
         }
 
-        [Inject]
-        public ILevelListModel levels
-        {
-            get;
-            set;
-        }
-
-        [Inject(GameState.Current)]
-        public ILevelModel level
-        {
-            get;
-            set;
-        }
-
-        [Inject]
-        public LevelRetry onResume { get; set; }
-
-        [Inject]
-        public StartLevelSignal startLevel
-        {
-            get;
-            set;
-        }
-
-        [Inject]
-        public SwitchToMainScreenSignal toMainScreenSignal
-        {
-            get;
-            set;
-        }
 
         [Inject]
         public IUIManager UI {
@@ -57,13 +28,65 @@ namespace Traffic.MVCS.Views.UI
             set;
         }
 
+        GameObject target = null;
+
         void nextStepHandler()
         {
+            Time.timeScale = 1;
+            UI.Hide(UIMap.Id.ScreenTutorial);
         }
 
-        void homeHandler()
+        void Update()
         {
-            toMainScreenSignal.Dispatch();
+            if (view.Step < 0)
+                return;
+            if (target == null)
+            {
+
+
+                GameObject[] vehicles = GameObject.FindGameObjectsWithTag("Vehicle");
+                foreach (var v in vehicles)
+                {
+                    if (view.Step==0 && v.GetComponent<Vehicle>().Number == 1)
+                    {
+                        target = v;
+                        break;
+                    }
+                    if (view.Step == 1 && v.GetComponent<Vehicle>().Number == 3)
+                    {
+                        target = v;
+                        break;
+                    }
+                    if (view.Step == 2 && v.GetComponent<Vehicle>().Number == 3)
+                    {
+                        target = v;
+                        break;
+                    }
+                }
+
+                if (target == null)
+                    return;
+
+                Vector3 screenPos = Camera.current.WorldToScreenPoint(target.transform.position);
+
+                screenPos.x /= (float)Camera.current.pixelWidth;
+                screenPos.y /= (float)Camera.current.pixelHeight;
+
+                // Debug.Log(screenPos);
+
+
+                float w = view.gameObject.GetComponent<RectTransform>().rect.width;
+                float h = view.gameObject.GetComponent<RectTransform>().rect.height;
+
+                //   Debug.Log(w + "," + h);
+
+                w *= screenPos.x;
+                h *= screenPos.y;
+
+                //  Debug.Log(w + "," + h);
+
+                view.SetHandPos(w, h);
+            }
         }
 
         public override void OnRegister()

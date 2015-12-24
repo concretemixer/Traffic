@@ -10,6 +10,14 @@ namespace Traffic.MVCS.Views.UI
         [SerializeField]
         Button nextButton;
 
+        [SerializeField]
+        Image handImage;
+
+        int step = -1;
+        public int Step
+        {
+            get { return step; }            
+        }
 
 
         public readonly Signal onButtonNextStep = new Signal();
@@ -25,6 +33,16 @@ namespace Traffic.MVCS.Views.UI
         {
             nextButton.onClick.RemoveListener(onButtonNextStep.Dispatch);
             base.OnDestroy();
+        }
+
+        public void SetStep(int step)
+        {
+            this.step = step;
+        }
+
+        public void SetHandPos(float x, float y)
+        {
+            handImage.GetComponent<RectTransform>().anchoredPosition = new Vector3(x, y, 0);
         }
 
         public override void Layout()

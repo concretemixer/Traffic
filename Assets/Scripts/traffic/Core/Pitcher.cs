@@ -67,7 +67,8 @@ public class Pitcher : MonoBehaviour {
             nextVehicleIdx = (nextVehicleIdx + 1) % vehicles.Length;
             Transform v  = Instantiate(t, this.transform.localPosition, this.transform.localRotation) as Transform;
             Vehicle v2 = v.GetComponent<Vehicle>();
-
+            v2.Number = Vehicle.NextNumber;
+            Vehicle.NextNumber++;
             v.parent = this.gameObject.transform.parent;
 
             v2.onVehicleCrashed = onVehicleCrashed;

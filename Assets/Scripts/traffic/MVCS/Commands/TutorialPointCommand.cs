@@ -6,10 +6,12 @@ using Traffic.Components;
 using Traffic.Core;
 using Traffic.MVCS.Models;
 using Commons.Utils;
+using Traffic.MVCS.Views.UI;
+
 
 namespace Traffic.MVCS.Commands
 {
-	public class NextLevelCommand : Command
+	public class TutorialPointCommand : Command
 	{
 		[Inject]
 		public IUIManager UI { private get; set; }
@@ -17,12 +19,15 @@ namespace Traffic.MVCS.Commands
 		[Inject(EntryPoint.Container.Stage)]
 		public  GameObject stage { get  ; set ;}
 
-		[Inject]
-		public string levelName{get;set;}
+        [Inject]
+        public int Point { get; set; }
+
 
 		public override void Execute()
 		{
-			
+            Time.timeScale = 0;
+            TutorialStepScreen screen = UI.Show<TutorialStepScreen>(UIMap.Id.ScreenTutorial);
+            screen.SetStep(Point);            
 		}
 
 

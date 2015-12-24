@@ -354,7 +354,6 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
   Priority: 128
   DopplerLevel: 0
   MinDistance: 49.5049515
@@ -424,7 +423,6 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
   Priority: 128
   DopplerLevel: 0
   MinDistance: 49.5049515
@@ -490,6 +488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 020cc7e30587c324ebe19de5cb0494f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Number: 0
   crashSound:
   - {fileID: 8300000, guid: 9e32985e7954e744abee998a0e833351, type: 3}
   - {fileID: 8300000, guid: 641f2a2a9f0c4b548920ac1c246e41f6, type: 3}
@@ -500,7 +499,7 @@ MonoBehaviour:
   startSound: {fileID: 0}
   stopSound: {fileID: 0}
   NormalSpeed: 25
-  FastSpeed: 50
+  FastSpeed: 55
   CanAccelerate: 1
   IsBus: 0
   gear: 1
