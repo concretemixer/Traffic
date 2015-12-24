@@ -37,4 +37,9 @@ namespace Traffic.MVCS.Commands.Signals
     {
     }
 
+    public class TutorialPoint : Signal<int>
+    {
+    }
+
+
 }

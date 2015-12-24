@@ -48,7 +48,9 @@ namespace Traffic.MVCS.Commands
 			LevelModel levelModel = injectionBinder.GetInstance<ILevelModel>() as LevelModel;	
 			injectionBinder.Bind<ILevelModel>().To(levelModel).ToName(GameState.Current);
 
-            injectionBinder.injector.Inject(o.GetComponent<Level>());
+            MonoBehaviour[] scripts = o.GetComponents<MonoBehaviour>(); 
+            foreach(var s in scripts)
+                injectionBinder.injector.Inject(s);
 
             levelModel.Config = levels.LevelConfigs[levelIndex];            
 

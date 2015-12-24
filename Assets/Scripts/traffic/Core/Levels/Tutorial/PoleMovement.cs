@@ -1,46 +1,54 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PoleMovement : MonoBehaviour {
+namespace Traffic.Core
+{
 
-	// Use this for initialization
-    float lifetime = 0;
-    bool down = false;
+    public class PoleMovement : MonoBehaviour
+    {
 
-	void Start () {
-        transform.localRotation = Quaternion.EulerAngles(0, 0, -1);
-        transform.localPosition = Vector3.zero;
-        lifetime = 0;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        lifetime += Time.deltaTime;
-        if (down)
-        {           
-            if (lifetime > 14.5)
-            {
-                transform.localRotation = Quaternion.EulerAngles(0, 0, -(lifetime-14.5f));
-            }
+        // Use this for initialization
+        float lifetime = 0;
+        bool down = false;
 
-            if (lifetime > 15.5)
-            {
-                transform.localRotation = Quaternion.EulerAngles(0, 0, -1);                
-            }
-        }
-        else
+        void Start()
         {
-            
-            if (lifetime > 7.5f)
-            {
-                transform.localRotation = Quaternion.EulerAngles(0, 0, -(8.5f - lifetime));
-            }
+            transform.localRotation = Quaternion.EulerAngles(0, 0, -1);
+            transform.localPosition = Vector3.zero;
+            lifetime = 0;
+        }
 
-            if (lifetime > 8.5f)
+        // Update is called once per frame
+        void Update()
+        {
+            lifetime += Time.deltaTime;
+            if (down)
             {
-                transform.localRotation = Quaternion.EulerAngles(0, 0, 0);
-                down = true;
+                if (lifetime > 14.5)
+                {
+                    transform.localRotation = Quaternion.EulerAngles(0, 0, -(lifetime - 14.5f));
+                }
+
+                if (lifetime > 15.5)
+                {
+                    transform.localRotation = Quaternion.EulerAngles(0, 0, -1);
+                }
+            }
+            else
+            {
+
+                if (lifetime > 7.5f)
+                {
+                    transform.localRotation = Quaternion.EulerAngles(0, 0, -(8.5f - lifetime));
+                }
+
+                if (lifetime > 8.5f)
+                {
+                    transform.localRotation = Quaternion.EulerAngles(0, 0, 0);
+                    down = true;
+                }
             }
         }
-	}
+    }
+
 }
