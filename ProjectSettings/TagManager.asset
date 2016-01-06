@@ -45,6 +45,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Flash
+    uniqueID: 344772151
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

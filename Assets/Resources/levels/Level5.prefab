@@ -3447,7 +3447,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161714}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1351.68469, y: -1281.55237, z: 589.869934}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 458442}
@@ -3858,7 +3858,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197884}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1240.19995, y: 1281.59998, z: -580.700012}
+  m_LocalPosition: {x: -111.484741, y: .0476074219, z: 9.16992188}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 403998}
@@ -4254,7 +4254,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132812}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1333.28467, y: 1281.55237, z: -564.569946}
+  m_LocalPosition: {x: -18.4000244, y: 0, z: 25.2999878}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 403998}
@@ -4278,7 +4278,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109812}
   m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
-  m_LocalPosition: {x: 1333.58472, y: 1281.55237, z: -503.269928}
+  m_LocalPosition: {x: -18.0999756, y: 0, z: 86.6000061}
   m_LocalScale: {x: 3, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 403998}
@@ -4829,7 +4829,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 177332}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1374.09998, y: 1281.59998, z: -519.400024}
+  m_LocalPosition: {x: 22.4152832, y: .0476074219, z: 70.4699097}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 403998}
@@ -4985,7 +4985,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1333.30005, y: 1281.59998, z: -649.799988}
+  m_LocalPosition: {x: -18.3846436, y: .0476074219, z: -59.9300537}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 403998}
@@ -5225,7 +5225,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 123088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1374.88464, y: 1281.55237, z: -593.369934}
+  m_LocalPosition: {x: 23.1999512, y: 0, z: -3.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 403998}
@@ -5453,7 +5453,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 123390}
   m_LocalRotation: {x: 0, y: -.707106829, z: 0, w: .707106709}
-  m_LocalPosition: {x: 1373.98474, y: 1281.55237, z: -670.369934}
+  m_LocalPosition: {x: 22.3000488, y: 0, z: -80.5}
   m_LocalScale: {x: 3, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 403998}
@@ -5873,7 +5873,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199758}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
-  m_LocalPosition: {x: 1467, y: 1281.59998, z: -579.200012}
+  m_LocalPosition: {x: 115.315308, y: .0476074219, z: 10.6699219}
   m_LocalScale: {x: 3, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 403998}
@@ -12448,10 +12448,10 @@ MonoBehaviour:
   Pause: 2
   IntervalMin: 6
   IntervalMax: 8
-  vehicle: {fileID: 494946, guid: 593f1358152e9394fa6df101636d7a83, type: 2}
   vehicles:
   - {fileID: 494946, guid: 593f1358152e9394fa6df101636d7a83, type: 2}
   - {fileID: 494946, guid: 593f1358152e9394fa6df101636d7a83, type: 2}
+  Sequental: 0
 --- !u!114 &11414182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12499,12 +12499,12 @@ MonoBehaviour:
   Pause: 1
   IntervalMin: 4
   IntervalMax: 6
-  vehicle: {fileID: 494946, guid: 805df3109b00b7a4ba5762af7411c8ca, type: 2}
   vehicles:
   - {fileID: 494946, guid: 593f1358152e9394fa6df101636d7a83, type: 2}
   - {fileID: 494946, guid: 593f1358152e9394fa6df101636d7a83, type: 2}
   - {fileID: 494946, guid: 9f026fd6486df974d9052bb107595206, type: 2}
   - {fileID: 494946, guid: 1c99622f383d92b4d86558aa53b83c98, type: 2}
+  Sequental: 0
 --- !u!114 &11441022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12527,7 +12527,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e09256fd5665f04d83c880a0279a96c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetScore: 35
 --- !u!114 &11448326
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12553,10 +12552,10 @@ MonoBehaviour:
   Pause: 3.5
   IntervalMin: 3
   IntervalMax: 4.5
-  vehicle: {fileID: 494946, guid: 593f1358152e9394fa6df101636d7a83, type: 2}
   vehicles:
   - {fileID: 494946, guid: 805df3109b00b7a4ba5762af7411c8ca, type: 2}
   - {fileID: 494946, guid: 5550ca4bebc3e4c4b9ec3fb4565b8e14, type: 2}
+  Sequental: 0
 --- !u!114 &11486486
 MonoBehaviour:
   m_ObjectHideFlags: 1

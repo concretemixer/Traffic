@@ -11,10 +11,13 @@ namespace Traffic.Core
         float lifetime = 0;
         bool down = false;
 
+        GameObject flash;
+
         void Start()
         {
             transform.localRotation = Quaternion.EulerAngles(0, 0, -1);
             transform.localPosition = Vector3.zero;
+            flash = GameObject.Find("Flash1");
             lifetime = 0;
         }
 
@@ -32,6 +35,10 @@ namespace Traffic.Core
                 if (lifetime > 15.5)
                 {
                     transform.localRotation = Quaternion.EulerAngles(0, 0, -1);
+
+                    if (flash.GetComponent<ParticleSystem>().isPlaying)
+                        flash.GetComponent<ParticleSystem>().Stop();
+
                 }
             }
             else
@@ -40,6 +47,8 @@ namespace Traffic.Core
                 if (lifetime > 7.5f)
                 {
                     transform.localRotation = Quaternion.EulerAngles(0, 0, -(8.5f - lifetime));
+                    if (!flash.GetComponent<ParticleSystem>().isPlaying)
+                        flash.GetComponent<ParticleSystem>().Play();
                 }
 
                 if (lifetime > 8.5f)

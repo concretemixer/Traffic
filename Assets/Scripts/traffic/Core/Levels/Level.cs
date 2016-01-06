@@ -79,6 +79,7 @@ public class Level : MonoBehaviour  {
             cameraPortrait.SetActive(true);
             cameraLandscape.SetActive(false);            
             cameraLandscape = null;
+
         }
 #endif
 
