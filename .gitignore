@@ -7,3 +7,9 @@
 /metadata/
 /Library/
 /Temp/
+/Assets/VSCode*
+/obj/
+/.vscode/
+*.sln
+*.userprefs
+*.csproj
