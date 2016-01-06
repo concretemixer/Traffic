@@ -21,11 +21,10 @@ namespace Traffic.MVCS.Commands
 		public override void Execute()
 		{
 
-			Logger.Log("RESUME");
+			Loggr.Log("RESUME");
             UI.Hide(UIMap.Id.PauseMenu);	
 			Time.timeScale=1;
 
 		}
 	}
 }
-

@@ -20,7 +20,7 @@ namespace Traffic.MVCS.Commands
 
 		public override void Execute()
 		{
-			Logger.Log("PAUSE");
+			Loggr.Log("PAUSE");
 			Time.timeScale=0;
             UI.Show(UIMap.Id.PauseMenu);	
 		}

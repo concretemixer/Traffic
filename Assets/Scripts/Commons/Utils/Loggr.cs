@@ -2,12 +2,12 @@ using UnityEngine;
 
 namespace Commons.Utils
 {
-    public class Logger
+    public class Loggr
     {
-        static Logger instance;
-        static Logger()
+        static Loggr instance;
+        static Loggr()
         {
-            instance = new Logger();
+            instance = new Loggr();
         }
 
         public static void Log(params string[] _messages)

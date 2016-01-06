@@ -22,7 +22,7 @@ namespace Traffic.MVCS.Commands.Init
 
         public override void Execute()
         {
-            Logger.Log("init UI");
+            Loggr.Log("init UI");
 
             var manager = new  UIManager();
             injectionBinder.injector.Inject(manager);
