@@ -98,7 +98,7 @@ PlayerSettings:
   virtualRealitySupported: 0
   productGUID: 1781933ced5dea2438f196d0b09fbcf7
   AndroidBundleVersionCode: 5
-  AndroidMinSdkVersion: 15
+  AndroidMinSdkVersion: 16
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   apiCompatibilityLevel: 2
@@ -158,9 +158,9 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: D:/src/concretemixer.keystore
-  AndroidKeyaliasName: max
-  AndroidTVCompatibility: 1
+  AndroidKeystoreName: 
+  AndroidKeyaliasName: 
+  AndroidTVCompatibility: 0
   AndroidIsGame: 1
   androidEnableBanner: 1
   m_AndroidBanners:
