@@ -50,20 +50,20 @@ namespace Traffic.MVCS.Views.UI
 
             float ratio = (float)Screen.height / (float)Screen.width;
 
-            float scaledDimention;
+            // float scaledDimention;
 
             if (ratio < 1)
             {
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 960);
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960 * ratio);
-                scaledDimention = 960 * ratio;
+                // scaledDimention = 960 * ratio;
             }
             else
             {
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 960 / ratio);
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960);
 
-                scaledDimention = 960 / ratio;
+                // scaledDimention = 960 / ratio;
             }
             this.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
             this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);

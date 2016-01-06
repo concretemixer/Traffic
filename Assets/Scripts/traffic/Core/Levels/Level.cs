@@ -26,9 +26,9 @@ public class Level : MonoBehaviour  {
 	GameObject cameraLandscape;
 	GameObject cameraMain;
 
-	 bool Crash = false;
-	 bool Complete = false;
-	 bool PreStart = true;	
+	//  bool Crash = false;
+	//  bool Complete = false;
+	//  bool PreStart = true;	
 
 	// Use this for initialization
 	void Start () {

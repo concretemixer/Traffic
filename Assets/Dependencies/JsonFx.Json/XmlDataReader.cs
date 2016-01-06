@@ -51,7 +51,7 @@ namespace JsonFx.Xml
 		#region Fields
 
 		private readonly XmlReaderSettings Settings;
-		private readonly XmlSerializerNamespaces Namespaces;
+		// private readonly XmlSerializerNamespaces Namespaces;
 
 		#endregion Fields
 
@@ -75,7 +75,7 @@ namespace JsonFx.Xml
 				namespaces = new XmlSerializerNamespaces();
 				namespaces.Add(String.Empty, String.Empty);// tricks the serializer into not emitting default xmlns attributes
 			}
-			this.Namespaces = namespaces;
+			// this.Namespaces = namespaces;
 		}
 
 		#endregion Init

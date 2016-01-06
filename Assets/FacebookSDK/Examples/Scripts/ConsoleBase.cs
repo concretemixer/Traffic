@@ -221,14 +221,14 @@ namespace Facebook.Unity.Example
         protected void SwitchMenu(Type menuClass)
         {
             ConsoleBase.menuStack.Push(this.GetType().Name);
-            Application.LoadLevel(menuClass.Name);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(menuClass.Name);
         }
 
         protected void GoBack()
         {
             if (ConsoleBase.menuStack.Any())
             {
-                Application.LoadLevel(ConsoleBase.menuStack.Pop());
+                UnityEngine.SceneManagement.SceneManager.LoadScene(ConsoleBase.menuStack.Pop());
             }
         }
     }

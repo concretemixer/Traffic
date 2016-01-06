@@ -30,7 +30,6 @@ namespace Traffic.Core
                 v = vmax;
 
             Vector3 shift = new Vector3(0, 0, -v * Time.deltaTime);
-            Vector3 cycle = new Vector3(0, 0, 27.8f);
             for (int a = 0; a < transform.childCount; a++)
             {
                 Transform t = transform.GetChild(a);

@@ -226,7 +226,7 @@ public class Game : MonoBehaviour {
 
 	public void OnMenuPressed()
 	{
-		Application.LoadLevel("Level0");
+		UnityEngine.SceneManagement.SceneManager.LoadScene("Level0");
 		cameraMenu.SetActive (true);
 		GameObject.Find ("Canvas 1").GetComponent<Canvas> ().renderMode = RenderMode.ScreenSpaceCamera;
 		Time.timeScale = 1;
@@ -295,17 +295,11 @@ public class Game : MonoBehaviour {
 		goButton.SetActive (false);
 		pauseButton.SetActive (true);
 
-		bool gameComplete = true;
-		foreach (var l in levelState) {
-			if (l<=0)
-				gameComplete = false;
-		}
-		
 		if (currentLevelIndex == levelState.Length - 1) {
 			OnMenuPressed();
 		} else {
 			currentLevelIndex++;
-			Application.LoadLevel (levels [currentLevelIndex]);
+			UnityEngine.SceneManagement.SceneManager.LoadScene(levels [currentLevelIndex]);
 			nextButton.GetComponent<Button> ().interactable = false;
 
 			GameObject.Find ("LevelNum").GetComponent<Text> ().text = (currentLevelIndex + 1).ToString ();
@@ -320,7 +314,7 @@ public class Game : MonoBehaviour {
 		pauseButton.SetActive (true);
 		
 		currentLevelIndex--;
-		Application.LoadLevel(levels[currentLevelIndex]);
+		UnityEngine.SceneManagement.SceneManager.LoadScene(levels[currentLevelIndex]);
 		nextButton.GetComponent<Button> ().interactable = false;
 
 		GameObject.Find ("LevelNum").GetComponent<Text> ().text = (currentLevelIndex + 1).ToString ();
@@ -356,12 +350,6 @@ public class Game : MonoBehaviour {
 
 		nextButton.GetComponent<Button> ().interactable = true;
 		nextButton.transform.SetAsLastSibling ();
-
-		bool gameComplete = true;
-		foreach (var l in levelState) {
-			if (l<=0)
-				gameComplete = false;
-		}
 
 		if (currentLevelIndex == levelState.Length - 1) {
 			menuButton.GetComponent<Button> ().interactable = false;
@@ -417,7 +405,7 @@ public class Game : MonoBehaviour {
 		currentLevelIndex = level;
 		GameObject.Find ("Canvas 1").GetComponent<Canvas> ().renderMode = RenderMode.ScreenSpaceOverlay;
 		cameraMenu.SetActive (false);
-		Application.LoadLevel(levels[currentLevelIndex]);
+		UnityEngine.SceneManagement.SceneManager.LoadScene(levels[currentLevelIndex]);
 		nextButton.GetComponent<Button> ().interactable = false;
 
 		menuButton.GetComponent<Button> ().interactable = true;
