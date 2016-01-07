@@ -24,7 +24,7 @@ namespace Traffic.MVCS.Commands.Init
         {
             Loggr.Log("init UI");
 
-            var manager = new  UIManager();
+            var manager = new UIManager();
             injectionBinder.injector.Inject(manager);
 
             manager.Init(uiContainer, new LocalResourceManager());
@@ -35,8 +35,6 @@ namespace Traffic.MVCS.Commands.Init
             float ratio = (float)Screen.height / (float)Screen.width;
 
             uiContainer.GetComponent<CanvasScaler>().referenceResolution = new Vector2(960, 960 * ratio);
-
-            manager.Show(UIMap.Id.LevelListScreen);
         }
     }
 }

@@ -21,7 +21,6 @@ namespace Traffic.MVCS
         public AppContext(EntryPoint _view) : base(_view, true)
         {
             entryPoint = _view;
-
         }
 
         /// remap command binder to signals
@@ -53,8 +52,10 @@ namespace Traffic.MVCS
         {
             // init commands
             commandBinder.Bind<StartupSignal>().InSequence()
+                .To<CreateServiceItemsCommand>()
                 .To<LoadConfigCommand>()
                 .To<InitUICommand>()
+                .To<TryToLoginFBCommand>()
                 .To<StartupCommand>();
 
             commandBinder.Bind<StartLevelSignal>().To<StartLevelCommand>();
