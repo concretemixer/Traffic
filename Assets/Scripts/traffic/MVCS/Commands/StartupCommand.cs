@@ -11,6 +11,7 @@ namespace Traffic.MVCS.Commands
         public override void Execute()
         {
             UI.Show(UIMap.Id.LevelListScreen);
+            UI.Show(UIMap.Id.ScreenDebug);
         }
     }
 }

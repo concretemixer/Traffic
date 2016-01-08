@@ -3,6 +3,7 @@ using Facebook.Unity;
 using Commons.Utils;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 namespace Commons.SN
 {
@@ -23,10 +24,59 @@ namespace Commons.SN
                 FB.Init(onInitFBComplete);
         }
 
-        public void AddPremission(string premission)
+        public void Publish(string _title, string _message, Action _complete)
         {
-            if (!permissions.Contains(premission))
-                permissions.Add(premission);
+            if (!FB.IsInitialized || !FB.IsLoggedIn)
+            {
+                Init();
+                OnInitComplete.AddOnce((isSuccess) =>
+                {
+                    if (isSuccess)
+                        publish(_title, _message, _complete);
+                    else
+                        _complete();
+                });
+            }
+            else
+                publish(_title, _message, _complete);
+        }
+
+        void publish(string _title, string _message, Action _complete)
+        {
+            unityEvents.onGui.AddOnce(() =>
+            {
+                FB.LogInWithPublishPermissions(new List<string>() { "publish_actions" }, (result) =>
+                {
+                    if (AccessToken.CurrentAccessToken.Permissions.Contains("publish_actions"))
+                    {
+                        Loggr.Log("have publish actions");
+                        FB.ShareLink(new Uri("https://www.facebook.com/alexi.smallruss"), _title, _message, null, (shareResult) =>
+                        {
+                            if (shareResult.Cancelled || shareResult.Error != null)
+                            {
+                                Loggr.Error("publish falied" + shareResult.Error);
+                                _complete();
+                            }
+                            else
+                            {
+                                Loggr.Log("successefly published");
+                                _complete();
+                            }
+                        });
+                    }
+                    else
+                    {
+                        Loggr.Log("no publish actions");
+                        _complete();
+                    }
+                });
+            });
+        }
+
+        public void AddPremission(string _premission)
+        {
+            if (!permissions.Contains(_premission))
+                permissions.Add(_premission);
         }
 
         void onInitFBComplete()
@@ -47,7 +97,7 @@ namespace Commons.SN
             }
         }
 
-        void onLoginComplete(ILoginResult result = null)
+        void onLoginComplete(ILoginResult _result = null)
         {
             if (FB.IsLoggedIn)
             {
