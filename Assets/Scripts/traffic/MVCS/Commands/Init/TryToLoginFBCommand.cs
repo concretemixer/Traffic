@@ -1,8 +1,6 @@
 using strange.extensions.command.impl;
-using Facebook.Unity;
-using UnityEngine;
-using System.Collections.Generic;
 using Commons.Utils;
+using Commons.SN;
 
 namespace Traffic.MVCS.Commands.Init
 {
@@ -10,43 +8,21 @@ namespace Traffic.MVCS.Commands.Init
     {
         [Inject]
         public UnityEventProvider eventProvider { private get; set; }
+
         public override void Execute()
         {
             Retain();
-            FB.Init(() =>
-            {
-                Debug.Log("App successufly inited");
-                FB.ActivateApp();
 
-                var perms = new List<string>() { "public_profile", "email", "user_friends" };
+            injectionBinder.Bind<FacebookSN>().ToSingleton();
+            var facebook = injectionBinder.GetInstance<FacebookSN>();
 
-                eventProvider.onGui.AddOnce(() =>
-                {
-                    FB.LogInWithReadPermissions(perms, (result) =>
-                    {
-                        if (FB.IsLoggedIn)
-                        {
-                            var aToken = Facebook.Unity.AccessToken.CurrentAccessToken;
-                            // Print current access token's User ID
-                            Debug.Log(aToken.UserId);
-                            // Print current access token's granted permissions
-                            foreach (string perm in aToken.Permissions)
-                            {
-                                Debug.Log(perm);
-                            }
-                            Release();
-                        }
-                        else
-                        {
-                            Debug.Log("User cancelled login");
-                            Release();
-                        }
-                    });
-                });
-            }, (isActive) =>
-            {
-                Debug.Log(string.Format("change active project: {0}", isActive));
-            });
+            facebook.OnInitComplete.AddOnce(onCompleteInit);
+            facebook.Init();
+        }
+
+        void onCompleteInit(bool isSuccess)
+        {
+            Release();
         }
     }
 }
