@@ -12,92 +12,38 @@ namespace Commons.SN
         [Inject]
         public UnityEventProvider unityEvents { private get; set; }
         public Signal<bool> OnInitComplete = new Signal<bool>();
-        List<String> permissions = new List<string>() { "public_profile", "email", "user_friends" };
+        List<String> permissions = new List<string>() { "public_profile", "user_friends" };
 
-        public void Init()
+        void _initFb(ActionQueue.Complete _callback)
         {
-            Loggr.Log("Try to init facebook");
-
             if (FB.IsInitialized)
-                onInitFBComplete();
+                _onInitComplete(_callback);
             else
-                FB.Init(onInitFBComplete);
+                FB.Init(() => _onInitComplete(_callback));
         }
 
-        public void Publish(string _title, string _message, Action _complete)
-        {
-            if (!FB.IsInitialized || !FB.IsLoggedIn)
-            {
-                Init();
-                OnInitComplete.AddOnce((isSuccess) =>
-                {
-                    if (isSuccess)
-                        publish(_title, _message, _complete);
-                    else
-                        _complete();
-                });
-            }
-            else
-                publish(_title, _message, _complete);
-        }
-
-        void publish(string _title, string _message, Action _complete)
-        {
-            unityEvents.onGui.AddOnce(() =>
-            {
-                FB.LogInWithPublishPermissions(new List<string>() { "publish_actions" }, (result) =>
-                {
-                    if (AccessToken.CurrentAccessToken.Permissions.Contains("publish_actions"))
-                    {
-                        Loggr.Log("have publish actions");
-                        FB.ShareLink(new Uri("https://www.facebook.com/alexi.smallruss"), _title, _message, null, (shareResult) =>
-                        {
-                            if (shareResult.Cancelled || shareResult.Error != null)
-                            {
-                                Loggr.Error("publish falied" + shareResult.Error);
-                                _complete();
-                            }
-                            else
-                            {
-                                Loggr.Log("successefly published");
-                                _complete();
-                            }
-                        });
-                    }
-                    else
-                    {
-                        Loggr.Log("no publish actions");
-                        _complete();
-                    }
-                });
-            });
-        }
-
-        public void AddPremission(string _premission)
-        {
-            if (!permissions.Contains(_premission))
-                permissions.Add(_premission);
-        }
-
-        void onInitFBComplete()
+        void _onInitComplete(ActionQueue.Complete _callback)
         {
             if (FB.IsInitialized)
             {
                 FB.ActivateApp();
-
-                if (!FB.IsLoggedIn)
-                    unityEvents.onGui.AddOnce(() => FB.LogInWithReadPermissions(permissions, onLoginComplete));
-                else
-                    onLoginComplete();
+                Loggr.Log("FB app initialized");
             }
             else
-            {
                 Loggr.Log("Failed to init FB");
-                OnInitComplete.Dispatch(false);
-            }
+
+            _callback();
         }
 
-        void onLoginComplete(ILoginResult _result = null)
+        void _loginWithReadPerms(ActionQueue.Complete _callback)
+        {
+            if (!FB.IsLoggedIn)
+                unityEvents.onGui.AddOnce(() => FB.LogInWithReadPermissions(permissions, (_result) => _onLoginComplete(_callback)));
+            else
+                _onLoginComplete(_callback);
+        }
+
+        void _onLoginComplete(ActionQueue.Complete _callback)
         {
             if (FB.IsLoggedIn)
             {
@@ -116,6 +62,119 @@ namespace Commons.SN
                 Loggr.Log("Fail to login in FB");
                 OnInitComplete.Dispatch(false);
             }
+
+            _callback();
+        }
+
+        void _loginWithPublish(ActionQueue.Complete _complete)
+        {
+            unityEvents.onGui.AddOnce(() =>
+            {
+                FB.LogInWithPublishPermissions(new List<string>() { "publish_actions" }, (result) =>
+                {
+                    if (AccessToken.CurrentAccessToken.Permissions.Contains("publish_actions"))
+                        Loggr.Log("have publish actions");
+                    else
+                        Loggr.Log("no publish actions");
+
+                    _complete();
+                });
+            });
+        }
+
+        void _share(string _title, string _message, ActionQueue.Complete _complete)
+        {
+            if (isHavePublishAccess)
+            {
+                unityEvents.onGui.AddOnce(() =>
+                {
+                    FB.ShareLink(new Uri("https://www.facebook.com/alexi.smallruss"), _title, _message, null, (shareResult) =>
+                    {
+                        if (shareResult.Cancelled || shareResult.Error != null)
+                            Loggr.Error("publish falied" + shareResult.Error);
+                        else
+                            Loggr.Log("successefly published");
+
+                        _complete();
+                    });
+                });
+            }
+            else
+                _complete();
+        }
+
+        public void Init(ActionQueue.Complete _complete = null)
+        {
+            Loggr.Log("Try to init facebook");
+
+            new ActionQueue()
+            .Series(
+                _initFb,
+                _loginWithReadPerms
+            )
+            .Run(_complete);
+        }
+
+        public void Publish(string _title, string _message, ActionQueue.Complete _complete)
+        {
+            new ActionQueue().Series(
+                _initFb,
+                _loginWithPublish,
+                (_callback) =>
+                {
+                    _share(_title, _message, _callback);
+                }
+            ).Run(_complete);
+        }
+
+        public void AddPremission(string _premission)
+        {
+            if (!permissions.Contains(_premission))
+                permissions.Add(_premission);
+        }
+
+        bool isHavePublishAccess
+        {
+            get
+            {
+                return AccessToken.CurrentAccessToken.Permissions.Contains("publish_actions");
+            }
+        }
+    }
+}
+
+public class ActionQueue
+{
+    public delegate void Complete();
+
+    public delegate void ActionFn(Complete _complete);
+    Queue<ActionFn> actions;
+    Complete completeCallback;
+
+    public ActionQueue Series(params ActionFn[] _actions)
+    {
+        actions = new Queue<ActionFn>(_actions);
+        return this;
+    }
+
+    public ActionQueue Run(Complete _callback)
+    {
+        completeCallback = _callback;
+        onComplete();
+        return this;
+    }
+
+    void onComplete()
+    {
+        if (actions.Count > 0)
+        {
+            var action = actions.Dequeue();
+            action(onComplete);
+        }
+        else
+        {
+            if (completeCallback != null)
+                completeCallback();
         }
     }
 }
