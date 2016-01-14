@@ -8,5 +8,8 @@ namespace Traffic.MVCS.Views.UI.Debug
     {
         [SerializeField]
         public Button postToFBButton;
+        
+        [SerializeField]
+        public Button loginToFBButton;
     }
 }
