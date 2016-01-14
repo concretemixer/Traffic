@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Linq;
 
-namespace Traffic.Utils
+namespace Commons.Utils
 {
     public class InstantiateUtil
     {

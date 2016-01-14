@@ -1,6 +1,5 @@
 using Commons.Utils;
 using strange.extensions.command.impl;
-using Traffic.Utils;
 
 namespace Traffic.MVCS.Commands.Init
 {
