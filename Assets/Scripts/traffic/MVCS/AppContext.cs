@@ -55,8 +55,9 @@ namespace Traffic.MVCS
                 .To<CreateServiceItemsCommand>()
                 .To<LoadConfigCommand>()
                 .To<InitUICommand>()
-                .To<TryToLoginFBCommand>()
+                .To<InitSocialNetworkCommand>()
                 .To<StartupCommand>();
+
 
             commandBinder.Bind<StartLevelSignal>().To<StartLevelCommand>();
             commandBinder.Bind<LevelPause>().To<PauseLevelCommand>();

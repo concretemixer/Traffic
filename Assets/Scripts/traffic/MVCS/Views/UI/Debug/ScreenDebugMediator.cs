@@ -1,7 +1,7 @@
-using System;
-using Commons.SN;
+using Commons.SN.Facebook;
 using Commons.Utils;
 using strange.extensions.mediation.impl;
+using Traffic.MVCS.Commands.Signals;
 
 namespace Traffic.MVCS.Views.UI.Debug
 {
@@ -13,14 +13,23 @@ namespace Traffic.MVCS.Views.UI.Debug
         [Inject]
         public FacebookSN facebook { set; private get; }
 
+        [Inject]
+        public LoginCompleteSignal loginComplete { private get; set; }
+
+        [Inject]
+        public LoginToSNSignal tryLogin { private get; set; }
+
         public override void OnRegister()
         {
-            view.postToFBButton.onClick.AddListener(() => facebook.Publish("super title", "super message", completePublishHandler));
-        }
+            view.loginToFBButton.onClick.AddListener(tryLogin.Dispatch);
+            loginComplete.AddListener(onLoginComplete);
 
-        private void completePublishHandler()
+            // view.postToFBButton.onClick.AddListener(() => facebook.Publish("super title", "super message", completePublishHandler));
+        }
+        
+        void onLoginComplete()
         {
-            Loggr.Log("publish complete");
+            Loggr.Log("debug: login complete.");
         }
     }
 }
