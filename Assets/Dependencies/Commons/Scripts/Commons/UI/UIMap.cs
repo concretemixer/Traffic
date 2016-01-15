@@ -14,7 +14,8 @@ namespace Commons.UI
             {Id.LevelListScreen, "UI/LevelListScreen"},
             { Id.ScreenMain, "" },
             { Id.ScreenLoading, "UI/ScreenLoading" },
-            { Id.ScreenTutorial, "UI/TutorialStepScreen" }
+            { Id.ScreenTutorial, "UI/TutorialStepScreen" },
+            { Id.ScreenDebug, "UI/ScreenDebug" }
         };
 
         public enum Id
@@ -26,8 +27,8 @@ namespace Commons.UI
             LevelListScreen,
             ScreenMain,
             ScreenLoading,
-            ScreenTutorial
-
+            ScreenTutorial,
+            ScreenDebug
         }
 
         public static string GetPath(UIMap.Id _id)

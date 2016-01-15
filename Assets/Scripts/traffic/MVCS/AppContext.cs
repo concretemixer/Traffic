@@ -11,6 +11,7 @@ using Traffic.MVCS.Views.UI.HUD;
 using Traffic.MVCS.Views.UI;
 using Traffic.MVCS.Views.Game;
 using Traffic.MVCS.Views.UI.Loading;
+using Traffic.MVCS.Views.UI.Debug;
 
 namespace Traffic.MVCS
 {
@@ -30,7 +31,6 @@ namespace Traffic.MVCS
             base.addCoreComponents();
             injectionBinder.Unbind<ICommandBinder>();
             injectionBinder.Bind<ICommandBinder>().To<SignalCommandBinder>().ToSingleton();
-
         }
 
         public override void Launch()
@@ -55,8 +55,9 @@ namespace Traffic.MVCS
                 .To<CreateServiceItemsCommand>()
                 .To<LoadConfigCommand>()
                 .To<InitUICommand>()
-                .To<TryToLoginFBCommand>()
+                .To<InitSocialNetworkCommand>()
                 .To<StartupCommand>();
+
 
             commandBinder.Bind<StartLevelSignal>().To<StartLevelCommand>();
             commandBinder.Bind<LevelPause>().To<PauseLevelCommand>();
@@ -98,6 +99,8 @@ namespace Traffic.MVCS
             mediationBinder.Bind<ScreenHUDView>().To<ScreenHUDMediator>();
             mediationBinder.Bind<LoadingScreenView>().To<LoadingScreenMediator>();
             mediationBinder.Bind<TutorialStepScreen>().To<TutorialStepMediator>();
+            
+            mediationBinder.Bind<ScreenDebugView>().To<ScreenDebugMediator>();
         }
 
         void mapOthers()
