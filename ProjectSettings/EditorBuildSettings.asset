@@ -7,25 +7,3 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Main.unity
-  - enabled: 0
-    path: Assets/FacebookSDK/Examples/AccessTokenMenu.unity
-  - enabled: 0
-    path: Assets/FacebookSDK/Examples/AppEvents.unity
-  - enabled: 0
-    path: Assets/FacebookSDK/Examples/AppInvites.unity
-  - enabled: 0
-    path: Assets/FacebookSDK/Examples/AppLinks.unity
-  - enabled: 0
-    path: Assets/FacebookSDK/Examples/AppRequests.unity
-  - enabled: 0
-    path: Assets/FacebookSDK/Examples/DialogShare.unity
-  - enabled: 0
-    path: Assets/FacebookSDK/Examples/GameGroups.unity
-  - enabled: 0
-    path: Assets/FacebookSDK/Examples/GraphRequest.unity
-  - enabled: 0
-    path: Assets/FacebookSDK/Examples/LogView.unity
-  - enabled: 0
-    path: Assets/FacebookSDK/Examples/MainMenu.unity
-  - enabled: 0
-    path: Assets/FacebookSDK/Examples/Pay.unity
