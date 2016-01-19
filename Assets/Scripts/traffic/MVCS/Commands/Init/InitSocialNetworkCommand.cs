@@ -26,6 +26,9 @@ namespace Traffic.MVCS.Commands.Init
             
             commandBinder.Bind<LoginToSNSignal>().To<LoginToFbCommand>();
             injectionBinder.Bind<LoginCompleteSignal>().ToSingleton();
+            
+            commandBinder.Bind<GetSNFriendsSignal>().To<GetFrindsCommand>();
+            injectionBinder.Bind<FriendsLoadedSignal>().ToSingleton();
         }
 
         void onInitFail(Exception _exception)

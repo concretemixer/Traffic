@@ -4,7 +4,7 @@ using Commons.SN.Extensions;
 
 namespace Commons.SN
 {
-    public abstract class SocialNetwork : ISocialNetwork
+    public abstract class SocialNetwork
     {
         protected List<IExtension> extensions = new List<IExtension>();
 

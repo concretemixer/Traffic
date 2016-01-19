@@ -10,6 +10,9 @@ namespace Traffic.MVCS.Views.UI.Debug
         public Button postToFBButton;
         
         [SerializeField]
+        public Button getFBFriendsButton;
+        
+        [SerializeField]
         public Button loginToFBButton;
     }
 }

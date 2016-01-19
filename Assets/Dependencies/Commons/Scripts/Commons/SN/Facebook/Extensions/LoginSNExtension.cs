@@ -51,6 +51,7 @@ namespace Commons.SN.Facebook.Extensions
                 {
                     Loggr.Log(perm);
                 }
+                ((FacebookSN)network).IsLoggedIn = true;
                 _promise.Resolve();
             }
             else
