@@ -1,5 +1,4 @@
 using strange.extensions.command.impl;
-using Commons.SN.Facebook.Extensions;
 using System;
 using Commons.SN.Facebook;
 using Commons.Utils;
@@ -19,14 +18,13 @@ namespace Traffic.MVCS.Commands.Init
 
             injectionBinder.Bind<FacebookSN>().ToSingleton();
             var facebook = injectionBinder.GetInstance<FacebookSN>();
-            facebook.Init(eventProvider);
+            facebook.SetEventProvider(eventProvider);
 
-            var initExt = facebook.GetExt<InitSNExtension>();
-            initExt.Execute().Done(Release, onInitFail);
-            
+            facebook.Init().Done(Release, onInitFail);
+
             commandBinder.Bind<LoginToSNSignal>().To<LoginToFbCommand>();
             injectionBinder.Bind<LoginCompleteSignal>().ToSingleton();
-            
+
             commandBinder.Bind<GetSNFriendsSignal>().To<GetFrindsCommand>();
             injectionBinder.Bind<FriendsLoadedSignal>().ToSingleton();
         }

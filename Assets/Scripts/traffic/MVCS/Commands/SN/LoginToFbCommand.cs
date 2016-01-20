@@ -1,4 +1,3 @@
-using Commons.SN.Extensions;
 using Commons.SN.Facebook;
 using strange.extensions.command.impl;
 using Traffic.MVCS.Commands.Signals;
@@ -17,8 +16,7 @@ namespace Traffic.MVCS.Commands.SN
         {
             Retain();
 
-            var ext = facebook.GetExt<ILoginExtension>();
-            ext.Execute().Done(() =>
+            facebook.Login().Done(() =>
             {
                 loginComplete.Dispatch();
                 Release();

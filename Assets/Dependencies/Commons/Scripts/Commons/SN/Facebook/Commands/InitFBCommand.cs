@@ -1,18 +1,16 @@
 using System;
-using Commons.SN.Extensions;
 using Commons.Utils;
+using Commons.Utils.Commands;
 using Facebook.Unity;
 using RSG;
 
-namespace Commons.SN.Facebook.Extensions
+namespace Commons.SN.Facebook.Commands
 {
-    public class InitSNExtension : ExtensionBase, IInitExtension
+    public class InitFBCommand : IAsyncCommand
     {
-        public InitSNExtension(FacebookSN _facebookSN) : base(_facebookSN) { }
-
-        public IPromise Execute()
+        public IPromise<IAsyncCommand> Run()
         {
-            var promise = new Promise();
+            var promise = new Promise<IAsyncCommand>();
             if (FB.IsInitialized)
                 onInitComplete(promise);
             else
@@ -23,13 +21,13 @@ namespace Commons.SN.Facebook.Extensions
             return promise;
         }
 
-        void onInitComplete(Promise _promise)
+        void onInitComplete(Promise<IAsyncCommand> _promise)
         {
             if (FB.IsInitialized)
             {
                 FB.ActivateApp();
                 Loggr.Log("FB app initialized");
-                _promise.Resolve();
+                _promise.Resolve(this);
             }
             else
             {

@@ -1,35 +1,27 @@
 using System;
 using System.Collections.Generic;
-using Commons.SN.Extensions;
 using Commons.Utils;
+using Commons.Utils.Commands;
 using Facebook.Unity;
 using RSG;
 using Unifb = Facebook.Unity;
 
-namespace Commons.SN.Facebook.Extensions
+namespace Commons.SN.Facebook.Commands
 {
-    public class LoginSNExtension : ExtensionBase, ILoginExtension
+    public class LoginFBCommand : IAsyncCommand
     {
         UnityEventProvider unityEvents;
 
         List<String> permissions = new List<string>() { "public_profile", "user_friends" };
 
-        public LoginSNExtension(FacebookSN _facebookSN, UnityEventProvider _eventProvider) : base(_facebookSN)
+        public LoginFBCommand(UnityEventProvider _eventProvider)
         {
             unityEvents = _eventProvider;
         }
 
-        public IPromise Execute()
+        public IPromise<IAsyncCommand> Run()
         {
-            return Promise.Sequence(
-                  network.GetExt<IInitExtension>().Execute,
-                  makeLogin
-            );
-        }
-
-        Promise makeLogin()
-        {
-            var promise = new Promise();
+            var promise = new Promise<IAsyncCommand>();
 
             if (FB.IsLoggedIn)
                 onLoginComplete(promise);
@@ -39,7 +31,7 @@ namespace Commons.SN.Facebook.Extensions
             return promise;
         }
 
-        void onLoginComplete(Promise _promise)
+        void onLoginComplete(Promise<IAsyncCommand> _promise)
         {
             if (FB.IsLoggedIn)
             {
@@ -51,8 +43,7 @@ namespace Commons.SN.Facebook.Extensions
                 {
                     Loggr.Log(perm);
                 }
-                ((FacebookSN)network).IsLoggedIn = true;
-                _promise.Resolve();
+                _promise.Resolve(this);
             }
             else
             {

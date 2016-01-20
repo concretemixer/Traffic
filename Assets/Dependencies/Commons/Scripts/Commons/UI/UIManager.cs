@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Commons.Resources;
 using Traffic.MVCS.Commands.Signals;
 using Traffic.MVCS.Views.UI;
+using Commons.Utils;
 
 namespace Commons.UI
 {
@@ -45,6 +46,8 @@ namespace Commons.UI
 
         public GameObject Show(UIMap.Id _viewId)
         {
+            Loggr.Log("attempt to instantiate: " + _viewId.ToString());
+            
             if (resourceManager == null)
                 Debug.Log("NULLLLL");
 

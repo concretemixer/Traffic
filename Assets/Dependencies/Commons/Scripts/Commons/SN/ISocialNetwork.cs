@@ -1,12 +1,15 @@
-using Commons.SN.Extensions;
+using RSG;
 
 namespace Commons.SN
 {
     public interface ISocialNetwork
     {
-        void Init();
-        bool IsSupportedExt<TExtension>() where TExtension : IExtension;
-        bool IsLoggedIn {get;}
-        TExtension GetExt<TExtension>() where TExtension : IExtension;
+        IPromise Init();
+        IPromise Login();
+        bool IsLoggedIn { get; }
+        IPromise<ISNUser[]> LoadFriends();
+        void LogInBefore(SNAction _action);
+        IPromise Post(IPostData _data);
     }
+    public delegate void SNAction();
 }

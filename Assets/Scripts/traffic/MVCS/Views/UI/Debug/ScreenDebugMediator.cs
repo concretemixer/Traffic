@@ -22,7 +22,7 @@ namespace Traffic.MVCS.Views.UI.Debug
 
         [Inject]
         public GetSNFriendsSignal getFriends { private get; set; }
-        
+
         [Inject]
         public FriendsLoadedSignal friendsLoaded { private get; set; }
         public override void OnRegister()
@@ -33,13 +33,37 @@ namespace Traffic.MVCS.Views.UI.Debug
             view.getFBFriendsButton.onClick.AddListener(getFriends.Dispatch);
             friendsLoaded.AddListener(onFriendsLoaded);
 
-            // view.postToFBButton.onClick.AddListener(() => facebook.Publish("super title", "super message", completePublishHandler));
+            view.postToFBButton.onClick.AddListener(postClickHandler);
+        }
+
+        void postClickHandler()
+        {
+            var postData = new PostData()
+            {
+                Link = "https://example.com/myapp/?storyID=thelarch",
+                LinkName = "The Larch",
+                LinkCaption = "I thought up a witty tagline about larches",
+                LinkDescription = "There are a lot of larch trees around here, aren't there?",
+                Picture = "https://example.com/myapp/assets/1/larch.jpg"
+            };
+
+            facebook.Post(postData).Done(
+                () =>
+                {
+                    Loggr.Log("Post successful!");
+                },
+                (e) =>
+                {
+                    Loggr.Log(e.Message);
+                }
+            );
         }
 
         void onFriendsLoaded(ISNUser[] _friends)
         {
             Loggr.Log("Friends received!");
-            foreach(var friend in _friends) {
+            foreach (var friend in _friends)
+            {
                 Loggr.Log(friend.ToString());
             }
         }
