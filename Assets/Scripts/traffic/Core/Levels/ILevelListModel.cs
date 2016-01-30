@@ -12,7 +12,7 @@ namespace Traffic.Core
     }
 
     public class LevelConfig
-    {
+    {        
         public int threeStarsScore;
         public int twoStarsScore;
         public int target;

@@ -323,18 +323,11 @@ public class Vehicle : MonoBehaviour {
 
 	void ShowEffects()
 	{
-		if (transform.Find("Smoke")!=null)
-			transform.Find("Smoke").gameObject.GetComponent<ParticleSystem>().Play();
-		if (transform.Find("Smoke1")!=null)
-			transform.Find("Smoke1").gameObject.GetComponent<ParticleSystem>().Play();
-		if (transform.Find("Flash2")!=null)
-			transform.Find("Flash1").gameObject.GetComponent<ParticleSystem>().Play();
-		if (transform.Find("Flash2")!=null)
-			transform.Find("Flash2").gameObject.GetComponent<ParticleSystem>().Play();
-		if (transform.Find("Flash3")!=null)
-			transform.Find("Flash3").gameObject.GetComponent<ParticleSystem>().Play();
-		if (transform.Find("Flash4")!=null)
-			transform.Find("Flash4").gameObject.GetComponent<ParticleSystem>().Play();
+        foreach (var p in transform.GetComponentsInChildren<ParticleSystem>())
+        {
+            p.Play();
+        }
+                   
 		if (transform.Find ("Door") != null)
 			transform.Find ("Door").GetComponent<MeshRenderer> ().enabled = true;
 
@@ -342,18 +335,11 @@ public class Vehicle : MonoBehaviour {
 
 	void StopEffects()
 	{
-		if (transform.Find("Smoke")!=null)
-			transform.Find("Smoke").gameObject.GetComponent<ParticleSystem>().Stop();
-		if (transform.Find("Smoke1")!=null)
-			transform.Find("Smoke1").gameObject.GetComponent<ParticleSystem>().Stop();
-		if (transform.Find("Flash2")!=null)
-			transform.Find("Flash1").gameObject.GetComponent<ParticleSystem>().Stop();
-		if (transform.Find("Flash2")!=null)
-			transform.Find("Flash2").gameObject.GetComponent<ParticleSystem>().Stop();
-		if (transform.Find("Flash3")!=null)
-			transform.Find("Flash3").gameObject.GetComponent<ParticleSystem>().Stop();
-		if (transform.Find("Flash4")!=null)
-			transform.Find("Flash4").gameObject.GetComponent<ParticleSystem>().Stop();
+        foreach (var p in transform.GetComponentsInChildren<ParticleSystem>())
+        {
+            p.Stop();
+        }
+
 		if (transform.Find ("Door") != null)
 			transform.Find ("Door").GetComponent<MeshRenderer> ().enabled = false;
 

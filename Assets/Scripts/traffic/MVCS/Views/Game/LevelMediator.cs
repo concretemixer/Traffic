@@ -4,6 +4,7 @@ using UnityEngine;
 using Commons.UI;
 using Traffic.MVCS.Models;
 using Traffic.Core;
+using Traffic.Components;
 using Traffic.MVCS.Commands.Signals;
 
 using strange.extensions.mediation.impl;
@@ -14,6 +15,9 @@ namespace Traffic.MVCS.Views.Game
     {
         [Inject]
         public IUIManager UI { private get; set; }
+
+        [Inject(EntryPoint.Container.Stage)]
+        public GameObject stage { get; set; }
 
         [Inject]
         public LevelView view
@@ -67,7 +71,11 @@ namespace Traffic.MVCS.Views.Game
                 level.Failed = true;                
                // onLevelFailed.Dispatch();
                 this.Invoke("levelFailedDispatch", 1);
-                
+
+                foreach (var scenario in stage.GetComponentsInChildren<TutorialScenarioBase>())
+                {
+                    scenario.Stop();
+                }                
 			}
 		}
 

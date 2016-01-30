@@ -69,7 +69,14 @@ namespace Traffic.MVCS.Commands
                     // }
                 }
             }
-           
+
+            AudioSource menuMusic = GameObject.Find("MenuMusic").GetComponent<AudioSource>();
+            if (menuMusic.isPlaying) {
+                menuMusic.Stop();
+                AudioSource gameMusic = GameObject.Find("GameMusic").GetComponent<AudioSource>();
+                gameMusic.Play();
+            }
+
 			UI.Show(UIMap.Id.ScreenHUD);				
 		}
         /*

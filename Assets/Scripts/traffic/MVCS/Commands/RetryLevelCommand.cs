@@ -46,6 +46,11 @@ namespace Traffic.MVCS.Commands
                     go.GetComponent<Pitcher>().Reset();
             }
 
+            foreach(var scenario in stage.GetComponentsInChildren<TutorialScenarioBase>())
+            {
+                scenario.Reset();
+            }
+
             //Logger.Log("Restart");
             UI.Show(UIMap.Id.ScreenHUD);	
             UI.Hide(UIMap.Id.LevelFailedMenu);

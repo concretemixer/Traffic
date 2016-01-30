@@ -25,12 +25,24 @@ namespace Traffic.MVCS.Commands
             UI.Hide(UIMap.Id.LevelDoneMenu);
             UI.Hide(UIMap.Id.PauseMenu);
             UI.Hide(UIMap.Id.LevelListScreen);
+            UI.Hide(UIMap.Id.ScreenMain);
+            UI.Hide(UIMap.Id.ScreenTutorial);
 
 			safeUnbind<ILevelModel>(GameState.Current);
 
             if (stage.transform.childCount>0)
                 GameObject.Destroy(stage.transform.GetChild(0).gameObject);
             Time.timeScale = 1;
+
+            AudioSource gameMusic = GameObject.Find("GameMusic").GetComponent<AudioSource>();
+            AudioSource menuMusic = GameObject.Find("MenuMusic").GetComponent<AudioSource>();
+
+            if (!menuMusic.isPlaying)
+            {
+                menuMusic.Play();
+                gameMusic.Stop();
+            }
+
 
 			UI.Show(UIMap.Id.LevelListScreen);				
 		}

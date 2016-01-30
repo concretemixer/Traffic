@@ -4,7 +4,7 @@ using System.Collections;
 namespace Traffic.Core
 {
 
-    public class PoleMovement : MonoBehaviour
+    public class PoleMovement : TutorialScenarioBase
     {
 
         // Use this for initialization
@@ -15,11 +15,18 @@ namespace Traffic.Core
 
         void Start()
         {
+            flash = GameObject.Find("Flash1");
+            Reset();
+        }
+
+        public override void Reset()
+        {
             transform.localRotation = Quaternion.Euler(0, 0, -66.0f);
             transform.localPosition = Vector3.zero;
-            flash = GameObject.Find("Flash1");
             lifetime = 0;
+            down = false;
         }
+
 
         // Update is called once per frame
         void Update()

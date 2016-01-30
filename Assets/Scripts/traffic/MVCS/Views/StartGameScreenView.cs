@@ -5,39 +5,32 @@ using strange.extensions.signal.impl;
 
 namespace Traffic.MVCS.Views.UI
 {
-    public class LevelFailedMenuView : RotatableView
+    public class StartGameScreenView : RotatableView
     {
-        [SerializeField]
-        Button homeButton;
 
         [SerializeField]
-        Button retryButton;
+        Button startButton;
 
         [SerializeField]
-        Text score;
+        Button connectButton;
 
 
-        public readonly Signal onButtonRetryLevel = new Signal();
-        public readonly Signal onButtonHome = new Signal();
 
-        public void SetScore(int score)
-        {
-            this.score.text = score.ToString("D6");
-        }    
+        public readonly Signal onButtonStart = new Signal();
+        public readonly Signal onButtonConnect = new Signal();
 
         protected override void Awake()
         {
-            homeButton.onClick.AddListener(onButtonHome.Dispatch);
-            retryButton.onClick.AddListener(onButtonRetryLevel.Dispatch);
+            connectButton.onClick.AddListener(onButtonConnect.Dispatch);
+            startButton.onClick.AddListener(onButtonStart.Dispatch);
             base.Awake();
         }
-
-       
+    
 
         protected override void OnDestroy()
         {
-            homeButton.onClick.RemoveListener(onButtonHome.Dispatch);
-            retryButton.onClick.RemoveListener(onButtonRetryLevel.Dispatch);
+            connectButton.onClick.RemoveListener(onButtonConnect.Dispatch);
+            startButton.onClick.RemoveListener(onButtonStart.Dispatch);
             base.OnDestroy();
         }
 
@@ -53,21 +46,19 @@ namespace Traffic.MVCS.Views.UI
             {
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 960);
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960 * ratio);
+
+                startButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-105, 10);
+                connectButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-300, 10);
                 // scaledDimention = 960 * ratio;
-                retryButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-105, 10);
-                homeButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-250, 10);
-                score.GetComponent<RectTransform>().anchoredPosition = new Vector2(300, 172);
             }
             else
             {
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 960 / ratio);
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960);
 
-                retryButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-85, 10);
-                homeButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-215, 10);
+                startButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-85, 10);
+                connectButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-265, 10);
 
-
-                score.GetComponent<RectTransform>().anchoredPosition = new Vector2(100, 172);
                 // scaledDimention = 960 / ratio;
             }
             this.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);

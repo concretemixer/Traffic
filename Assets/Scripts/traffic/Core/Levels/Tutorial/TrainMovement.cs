@@ -4,16 +4,26 @@ using System.Collections;
 namespace Traffic.Core
 {
 
-    public class TrainMovement : MonoBehaviour
+    public class TrainMovement : TutorialScenarioBase
     {
 
         float lifetime = 0;
         private float v = 0;
         private float vmax = 30;
+        private Vector3 startPos;
+
         // Use this for initialization
         void Start()
         {
+            startPos = transform.localPosition;
+        }
 
+
+        public override void Reset()
+        {
+            lifetime = 0;
+            v = 0;
+            transform.localPosition = startPos;
         }
 
         // Update is called once per frame
@@ -29,25 +39,10 @@ namespace Traffic.Core
             if (v > vmax)
                 v = vmax;
 
-            Vector3 shift = new Vector3(0, 0, -v * Time.deltaTime);
-            for (int a = 0; a < transform.childCount; a++)
-            {
-                Transform t = transform.GetChild(a);
-                t.localPosition += shift;
+            Vector3 shift = new Vector3(-v * Time.deltaTime,0,0);
 
-                if (t.localPosition.z < -27.8f * 6)
-                {
-                    if (t.name == "Diesel")
-                        Destroy(t.gameObject);
-                    else
-                    {
-                        //   if (lifetime>12)
-                        //  Destroy(t.gameObject);
-                        // else
-                        //   t.localPosition = cycle;
-                    }
-                }
-            }
+            transform.localPosition += shift;
+
         }
     }
 

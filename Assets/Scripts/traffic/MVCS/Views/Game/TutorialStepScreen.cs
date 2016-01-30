@@ -13,6 +13,9 @@ namespace Traffic.MVCS.Views.UI
         [SerializeField]
         Image handImage;
 
+        [SerializeField]
+        Image frameImage;
+
         int step = -1;
         public int Step
         {
@@ -45,25 +48,39 @@ namespace Traffic.MVCS.Views.UI
             handImage.GetComponent<RectTransform>().anchoredPosition = new Vector3(x, y, 0);
         }
 
+        public void SetHandAlpha(float a)
+        {
+            handImage.GetComponent<Image>().color = new Color(1, 1, 1, a);
+        }
+
         public override void Layout()
         {
 
+            base.Layout();
+
             float ratio = (float)Screen.height / (float)Screen.width;
 
-            // float scaledDimention;
+            float scaledDimention;
 
             if (ratio < 1)
             {
+                scaledDimention = 960 * ratio;
+
+
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 960);
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960 * ratio);
-                // scaledDimention = 960 * ratio;
+                frameImage.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 960);
+                frameImage.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, scaledDimention - 60);
             }
             else
             {
+                scaledDimention = 960 / ratio;
+
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 960 / ratio);
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960);
+                frameImage.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, scaledDimention);
+                frameImage.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 900);
 
-                // scaledDimention = 960 / ratio;
             }
             this.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
             this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);

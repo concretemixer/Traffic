@@ -27,6 +27,12 @@ namespace Traffic.MVCS.Views.UI.HUD
             set;
         }
 
+        [Inject]
+        public ILevelListModel levels
+        {
+            get;
+            set;
+        }
 
 		[Inject]
 		public VehicleReachedDestination onVehicleReachedDestination { get; set;}
@@ -56,6 +62,8 @@ namespace Traffic.MVCS.Views.UI.HUD
             view.Layout();
             updateLevelProgress();
 
+            view.SetTutorial(levels.CurrentLevelIndex == 0);
+                
             base.OnRegister();
         }
 

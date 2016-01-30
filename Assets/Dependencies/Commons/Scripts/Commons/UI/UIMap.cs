@@ -12,7 +12,7 @@ namespace Commons.UI
             {Id.LevelFailedMenu, "UI/LevelFailedMenu"},
             {Id.LevelDoneMenu, "UI/LevelDoneMenu"},
             {Id.LevelListScreen, "UI/LevelListScreen"},
-            { Id.ScreenMain, "" },
+            { Id.ScreenMain, "UI/StartGameScreen" },
             { Id.ScreenLoading, "UI/ScreenLoading" },
             { Id.ScreenTutorial, "UI/TutorialStepScreen" },
             { Id.ScreenDebug, "UI/ScreenDebug" }

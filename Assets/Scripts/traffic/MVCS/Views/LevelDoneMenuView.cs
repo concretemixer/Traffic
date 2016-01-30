@@ -14,10 +14,10 @@ namespace Traffic.MVCS.Views.UI
         Button nextButton;
 
         [SerializeField]
-        Text score;
+        Button shareButton;
 
         [SerializeField]
-        Text scoreShadow;
+        Text score;
 
 
         public readonly Signal onButtonNextLevel = new Signal();
@@ -33,7 +33,6 @@ namespace Traffic.MVCS.Views.UI
         public void SetScore(int score)
         {
             this.score.text = score.ToString("D6");
-            this.scoreShadow.text = this.score.text;
         }       
 
         protected override void OnDestroy()
@@ -45,6 +44,7 @@ namespace Traffic.MVCS.Views.UI
 
         public override void Layout()
         {
+            base.Layout();
 
             float ratio = (float)Screen.height / (float)Screen.width;
 
@@ -55,11 +55,22 @@ namespace Traffic.MVCS.Views.UI
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 960);
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960 * ratio);
                 // scaledDimention = 960 * ratio;
+
+                nextButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-105, 10);
+                shareButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-285, 10);
+                homeButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-440, 10);
+                score.GetComponent<RectTransform>().anchoredPosition = new Vector2(300, 172);
             }
             else
             {
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 960 / ratio);
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960);
+
+                nextButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-85, 10);
+                shareButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-250, 10);
+                homeButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-390, 10);
+
+                score.GetComponent<RectTransform>().anchoredPosition = new Vector2(115, 172);
 
                 // scaledDimention = 960 / ratio;
             }

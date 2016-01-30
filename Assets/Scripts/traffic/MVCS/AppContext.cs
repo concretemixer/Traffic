@@ -98,9 +98,9 @@ namespace Traffic.MVCS
             mediationBinder.Bind<PauseMenuView>().To<PauseMenuMediator>();
             mediationBinder.Bind<ScreenHUDView>().To<ScreenHUDMediator>();
             mediationBinder.Bind<LoadingScreenView>().To<LoadingScreenMediator>();
-            mediationBinder.Bind<TutorialStepScreen>().To<TutorialStepMediator>();
-            
+            mediationBinder.Bind<TutorialStepScreen>().To<TutorialStepMediator>();            
             mediationBinder.Bind<ScreenDebugView>().To<ScreenDebugMediator>();
+            mediationBinder.Bind<StartGameScreenView>().To<StartGameScreenMediator>();
         }
 
         void mapOthers()

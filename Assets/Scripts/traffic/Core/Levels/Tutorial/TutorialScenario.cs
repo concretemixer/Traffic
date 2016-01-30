@@ -5,13 +5,14 @@ using Traffic.MVCS.Commands.Signals;
 
 namespace Traffic.Core
 {
-    public class TutorialScenario : MonoBehaviour
+    public class TutorialScenario : TutorialScenarioBase
     {
         [Inject]
         public TutorialPoint onTutorialPoint { get; set; }
 
         private int point = 0;
         private float lifetime = 0;
+        private bool stopped = false;
 
         // Use this for initialization
         void Start()
@@ -19,9 +20,23 @@ namespace Traffic.Core
 
         }
 
+        public override void Reset()
+        {
+            lifetime = 0;
+            point = 0;
+            stopped = false;
+        }
+
+        public override void Stop()
+        {
+            stopped = true;
+        }
+
         // Update is called once per frame
         void Update()
         {
+            if (stopped)
+                return;
             lifetime += Time.deltaTime * Time.timeScale;
             if (point == 0)
             {
