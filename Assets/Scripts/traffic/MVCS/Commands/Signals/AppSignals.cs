@@ -14,6 +14,10 @@ namespace Traffic.MVCS.Commands.Signals
     {
     }
 
+    public class SwitchToStartScreenSignal : Signal
+    {
+    }
+
     public class OrientationChangedSignal : Signal
     {
     }

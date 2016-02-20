@@ -2,16 +2,16 @@
    "version":1,
    "levels":{
       "0":{
-         "threeStarsScore":200,
-         "twoStarsScore":100,
+         "threeStarsScore":10,
+         "twoStarsScore":5,
          "target":4,
          "pitchers":{
          }
       },
 
       "1":{
-         "threeStarsScore":10000,
-         "twoStarsScore":5000,
+         "threeStarsScore":7000,
+         "twoStarsScore":4500,
          "target":10,
          "pitchers":{
             "Pitcher":{
@@ -29,7 +29,7 @@
       "2":{
          "threeStarsScore":10000,
          "twoStarsScore":5000,
-         "target":50,
+         "target":30,
          "pitchers":{
             "Pitcher 2":{
                "startDelay":3,
@@ -51,7 +51,7 @@
       "3":{
          "threeStarsScore":10000,
          "twoStarsScore":5000,
-         "target":50,
+         "target":30,
          "pitchers":{
             "Pitcher 2":{
                "startDelay":3.5,
@@ -68,7 +68,7 @@
       "4":{
          "threeStarsScore":10000,
          "twoStarsScore":5000,
-         "target":50,
+         "target":30,
          "pitchers":{
             "Pitcher 2":{
                "startDelay":3,
@@ -90,7 +90,7 @@
       "5":{
          "threeStarsScore":10000,
          "twoStarsScore":5000,
-         "target":50,
+         "target":30,
          "pitchers":{
             "Pitcher":{
                "startDelay":1,

@@ -75,10 +75,16 @@ namespace Traffic.MVCS.Views.UI
 
         public override void OnRegister()
         {
+            int stars = 1;
+
+            if (level.Score >= levels.LevelConfigs[levels.CurrentLevelIndex].threeStarsScore)
+                stars = 3;
+            else if (level.Score >= levels.LevelConfigs[levels.CurrentLevelIndex].twoStarsScore)
+                stars = 2;
 
             view.onButtonNextLevel.AddListener(nextLevelHandler);
             view.onButtonHome.AddListener(homeHandler);
-            view.SetScore((int)level.Score);
+            view.SetScore((int)level.Score, stars);            
             view.Layout();
 
             base.OnRegister();

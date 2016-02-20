@@ -39,9 +39,25 @@ namespace Traffic.MVCS.Views.UI
             toMainScreenSignal.Dispatch();
         }
 
+        void optionsHandler()
+        {            
+        }
+
+        void shopsHandler()
+        {
+        }
+
+        void connectHandler()
+        {
+        }
+
+
         public override void OnRegister()
         {          
             view.onButtonStart.AddListener(homeHandler);
+            view.onButtonOptions.AddListener(optionsHandler);
+            view.onButtonConnect.AddListener(connectHandler);
+            view.onButtonShop.AddListener(shopsHandler);
             view.Layout();
 
             base.OnRegister();
@@ -53,6 +69,9 @@ namespace Traffic.MVCS.Views.UI
         public override void OnRemove()
         {
             view.onButtonStart.RemoveListener(homeHandler);
+            view.onButtonOptions.RemoveListener(optionsHandler);
+            view.onButtonConnect.RemoveListener(connectHandler);
+            view.onButtonShop.RemoveListener(shopsHandler);
           
             base.OnRemove();
         }

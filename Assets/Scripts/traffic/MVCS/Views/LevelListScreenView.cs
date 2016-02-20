@@ -15,13 +15,24 @@ namespace Traffic.MVCS.Views.UI
         Button prevButton;
 
         [SerializeField]
+        Button homeButton;
+
+        [SerializeField]
         Button[] levelButtons;
 
         [SerializeField]
         Text debugMessage;
 
+        [SerializeField]
+        Image Locked;
+
+        [SerializeField]
+        Button buyButton;
+
+
         public readonly Signal onButtonNext = new Signal();
         public readonly Signal onButtonPrev = new Signal();
+        public readonly Signal onButtonHome = new Signal();
         public readonly Signal<int> onButtonLevel = new Signal<int>();
 
         private int page = 0;
@@ -32,6 +43,7 @@ namespace Traffic.MVCS.Views.UI
         {
             nextButton.onClick.AddListener(onButtonNext.Dispatch);
             prevButton.onClick.AddListener(onButtonPrev.Dispatch);
+            homeButton.onClick.AddListener(onButtonHome.Dispatch);
 
             for (int a = 0; a < levelButtons.Length; a++)
             {
@@ -57,6 +69,7 @@ namespace Traffic.MVCS.Views.UI
         {
             nextButton.onClick.RemoveListener(onButtonNext.Dispatch);
             prevButton.onClick.RemoveListener(onButtonPrev.Dispatch);
+            homeButton.onClick.RemoveListener(onButtonHome.Dispatch);
             for (int a = 0; a < levelButtons.Length; a++)
             {
                 levelButtons[a].onClick.RemoveAllListeners();
@@ -114,6 +127,8 @@ namespace Traffic.MVCS.Views.UI
                 }
                 
             }
+
+            Locked.gameObject.SetActive(page == 1);
 
         }
 

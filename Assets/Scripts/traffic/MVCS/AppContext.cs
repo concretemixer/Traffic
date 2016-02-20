@@ -65,8 +65,8 @@ namespace Traffic.MVCS
             commandBinder.Bind<LevelRetry>().To<RetryLevelCommand>();
             commandBinder.Bind<TutorialPoint>().To<TutorialPointCommand>();
 
-            commandBinder.Bind<SwitchToMainScreenSignal>()
-               .To<SwitchToMainScreenCommand>();
+            commandBinder.Bind<SwitchToMainScreenSignal>().To<SwitchToMainScreenCommand>();
+            commandBinder.Bind<SwitchToStartScreenSignal>().To<SwitchToStartScreenCommand>();
         }
 
         void mapSignals()

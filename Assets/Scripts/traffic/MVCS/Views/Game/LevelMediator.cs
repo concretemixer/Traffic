@@ -93,7 +93,25 @@ namespace Traffic.MVCS.Views.Game
         void levelCompleteHandler()
         {
             level.Complete = true;
-            levels.SetLevelState(levels.CurrentLevelIndex, LevelState.PassedOneStar);
+
+            int stars = 1;
+
+            if (level.Score >= levels.LevelConfigs[levels.CurrentLevelIndex].threeStarsScore)
+                stars = 3;
+            else if (level.Score >= levels.LevelConfigs[levels.CurrentLevelIndex].twoStarsScore)
+                stars = 2;
+
+
+            if (levels.GetLevelState(levels.CurrentLevelIndex) != LevelState.PassedThreeStars)
+            {
+                if (stars == 3)
+                    levels.SetLevelState(levels.CurrentLevelIndex, LevelState.PassedThreeStars);
+                else if (stars == 2)                
+                    levels.SetLevelState(levels.CurrentLevelIndex, LevelState.PassedTwoStars);                
+                else if (levels.GetLevelState(levels.CurrentLevelIndex) != LevelState.PassedTwoStars)
+                        levels.SetLevelState(levels.CurrentLevelIndex, LevelState.PassedOneStar);
+            }             
+
             if (levels.GetLevelState(levels.CurrentLevelIndex + 1) == LevelState.Locked)
                 levels.SetLevelState(levels.CurrentLevelIndex + 1, LevelState.Playable);
 

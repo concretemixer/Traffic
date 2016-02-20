@@ -14,13 +14,23 @@ namespace Traffic.MVCS.Views.UI
         [SerializeField]
         Button connectButton;
 
+        [SerializeField]
+        Button shopButton;
+
+        [SerializeField]
+        Button optionsButton;
+
 
 
         public readonly Signal onButtonStart = new Signal();
         public readonly Signal onButtonConnect = new Signal();
+        public readonly Signal onButtonOptions = new Signal();
+        public readonly Signal onButtonShop = new Signal();
 
         protected override void Awake()
         {
+            shopButton.onClick.AddListener(onButtonShop.Dispatch);
+            optionsButton.onClick.AddListener(onButtonOptions.Dispatch);
             connectButton.onClick.AddListener(onButtonConnect.Dispatch);
             startButton.onClick.AddListener(onButtonStart.Dispatch);
             base.Awake();
@@ -29,6 +39,8 @@ namespace Traffic.MVCS.Views.UI
 
         protected override void OnDestroy()
         {
+            shopButton.onClick.RemoveListener(onButtonShop.Dispatch);
+            optionsButton.onClick.RemoveListener(onButtonOptions.Dispatch);
             connectButton.onClick.RemoveListener(onButtonConnect.Dispatch);
             startButton.onClick.RemoveListener(onButtonStart.Dispatch);
             base.OnDestroy();
@@ -49,6 +61,7 @@ namespace Traffic.MVCS.Views.UI
 
                 startButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-105, 10);
                 connectButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-300, 10);
+                shopButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-470, 10);
                 // scaledDimention = 960 * ratio;
             }
             else
@@ -58,6 +71,7 @@ namespace Traffic.MVCS.Views.UI
 
                 startButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-85, 10);
                 connectButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-265, 10);
+                shopButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-425, 10);
 
                 // scaledDimention = 960 / ratio;
             }

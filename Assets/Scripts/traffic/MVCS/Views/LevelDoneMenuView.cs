@@ -30,9 +30,22 @@ namespace Traffic.MVCS.Views.UI
             base.Awake();
         }
 
-        public void SetScore(int score)
+        public void SetScore(int score, int stars)
         {
             this.score.text = score.ToString("D6");
+
+            if (stars >= 2 )
+            {
+                GameObject.Find("NoStar2Img").GetComponent<Image>().color = Color.clear;
+                GameObject.Find("NoStar2Img_v").GetComponent<Image>().color = Color.clear;
+            }
+
+            if (stars >= 3)
+            {
+                GameObject.Find("NoStar3Img").GetComponent<Image>().color = Color.clear;
+                GameObject.Find("NoStar3Img_v").GetComponent<Image>().color = Color.clear;
+            }
+
         }       
 
         protected override void OnDestroy()

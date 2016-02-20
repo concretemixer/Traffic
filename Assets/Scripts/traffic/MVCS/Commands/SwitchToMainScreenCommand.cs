@@ -19,7 +19,7 @@ namespace Traffic.MVCS.Commands
 
 
 		public override void Execute()
-		{
+        {
             UI.Hide(UIMap.Id.ScreenHUD);
             UI.Hide(UIMap.Id.LevelFailedMenu);
             UI.Hide(UIMap.Id.LevelDoneMenu);
@@ -28,14 +28,21 @@ namespace Traffic.MVCS.Commands
             UI.Hide(UIMap.Id.ScreenMain);
             UI.Hide(UIMap.Id.ScreenTutorial);
 
-			safeUnbind<ILevelModel>(GameState.Current);
+            safeUnbind<ILevelModel>(GameState.Current);
 
-            if (stage.transform.childCount>0)
+            if (stage.transform.childCount > 0)
                 GameObject.Destroy(stage.transform.GetChild(0).gameObject);
             Time.timeScale = 1;
 
             AudioSource gameMusic = GameObject.Find("GameMusic").GetComponent<AudioSource>();
             AudioSource menuMusic = GameObject.Find("MenuMusic").GetComponent<AudioSource>();
+
+
+            {
+                GameObject cameraMain = GameObject.Find("UI Camera");
+                cameraMain.GetComponent<Camera>().enabled = true;
+                cameraMain.GetComponent<AudioListener>().enabled = true;
+            }
 
             if (!menuMusic.isPlaying)
             {
@@ -43,9 +50,8 @@ namespace Traffic.MVCS.Commands
                 gameMusic.Stop();
             }
 
-
-			UI.Show(UIMap.Id.LevelListScreen);				
-		}
+            UI.Show(UIMap.Id.LevelListScreen);
+        }
 
 		void safeUnbind<T>()
 		{

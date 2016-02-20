@@ -40,6 +40,9 @@ namespace Traffic.MVCS.Views.UI
         [Inject]
         public StartLevelSignal startLevel { get; set; }
 
+        [Inject]
+        public SwitchToStartScreenSignal toStartScreenSignal { get; set; }
+
         int page = 0;
 
         void switchPageHandler()
@@ -53,9 +56,15 @@ namespace Traffic.MVCS.Views.UI
             levels.CurrentLevelIndex = index;            
             startLevel.Dispatch(levels.CurrentLevelIndex);
         }
-        
+
+        void homeHandler()
+        {
+            toStartScreenSignal.Dispatch();
+        }
+
         public override void OnRegister()
         {
+            view.onButtonHome.AddListener(homeHandler);
             view.onButtonNext.AddListener(switchPageHandler);
             view.onButtonPrev.AddListener(switchPageHandler);
             view.onButtonLevel.AddListener(startLevelHandler);
@@ -72,6 +81,7 @@ namespace Traffic.MVCS.Views.UI
 
         public override void OnRemove()
         {
+            view.onButtonHome.RemoveListener(homeHandler);
             view.onButtonNext.RemoveListener(switchPageHandler);
             view.onButtonPrev.RemoveListener(switchPageHandler);
             view.onButtonLevel.RemoveListener(startLevelHandler);

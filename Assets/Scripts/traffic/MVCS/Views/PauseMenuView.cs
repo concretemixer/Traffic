@@ -38,6 +38,7 @@ namespace Traffic.MVCS.Views.UI
 
         public override void Layout()
         {
+            base.Layout();
 
             float ratio = (float)Screen.height / (float)Screen.width;
 
@@ -48,11 +49,19 @@ namespace Traffic.MVCS.Views.UI
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 960);
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960 * ratio);
                 // scaledDimention = 960 * ratio;
+
+                goButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-105, 10);
+                optionsButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-250, 10);
+                homeButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-370, 10);
             }
             else
             {
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 960 / ratio);
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960);
+
+                goButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-85, 10);
+                optionsButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-215, 10);
+                homeButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-325, 10);
 
                 // scaledDimention = 960 / ratio;
             }
