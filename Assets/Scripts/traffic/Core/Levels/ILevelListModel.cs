@@ -38,6 +38,18 @@ namespace Traffic.Core
 
     public interface ILevelListModel
     {
+        int TriesLeft
+        {
+            get;
+            set;
+        }
+
+        int TriesTotal
+        {
+            get;
+            set;
+        }
+
         int CurrentLevelIndex {
             get;
             set;

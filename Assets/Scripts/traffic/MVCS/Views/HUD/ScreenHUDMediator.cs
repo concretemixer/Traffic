@@ -71,6 +71,7 @@ namespace Traffic.MVCS.Views.UI.HUD
         {
              view.SetScore((int)level.Score);			
              view.SetProgress(level.Progress, level.Config.target);
+             view.SetTries(levels.TriesLeft, levels.TriesTotal);
         }
 
         void scoreGrowHandler(float diff)

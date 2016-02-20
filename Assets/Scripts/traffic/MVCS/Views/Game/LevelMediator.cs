@@ -72,6 +72,8 @@ namespace Traffic.MVCS.Views.Game
                // onLevelFailed.Dispatch();
                 this.Invoke("levelFailedDispatch", 1);
 
+                levels.TriesLeft--;
+
                 foreach (var scenario in stage.GetComponentsInChildren<TutorialScenarioBase>())
                 {
                     scenario.Stop();

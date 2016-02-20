@@ -15,6 +15,9 @@ namespace Traffic.MVCS.Views.UI.HUD
         Text score;
 
         [SerializeField]
+        Text tries;
+
+        [SerializeField]
         RawImage progressBar;
 
         [SerializeField]
@@ -30,9 +33,6 @@ namespace Traffic.MVCS.Views.UI.HUD
         protected override void Awake()
         {
 			pauseButton.onClick.AddListener(onButtonPauseLevel.Dispatch);
-  //          retyButton.onClick.AddListener(onRetyLevel.Dispatch);
-    //        infoButton.onClick.AddListener(onInfoRequired.Dispatch);
-
             base.Awake();
         }
 
@@ -44,6 +44,11 @@ namespace Traffic.MVCS.Views.UI.HUD
         public void SetScore(int score)
         {
              this.score.text = score.ToString("D6");		    
+        }
+
+        public void SetTries(int left,int max)
+        {
+            this.tries.text = left.ToString() + "/" + max.ToString();
         }
 
         public void SetProgress(int current, int target)

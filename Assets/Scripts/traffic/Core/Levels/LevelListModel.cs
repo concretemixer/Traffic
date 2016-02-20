@@ -22,6 +22,19 @@ namespace Traffic.Core
             set;
         }
 
+        public int TriesLeft
+        {
+            get;
+            set;
+        }
+
+        public int TriesTotal
+        {
+            get;
+            set;
+        }
+
+
         public LevelState GetLevelState(int index)
         {
             if (index < 0)
@@ -45,6 +58,9 @@ namespace Traffic.Core
         public LevelListModel()
         {
             CurrentLevelIndex = 0;
+
+            TriesLeft = 3;
+            TriesTotal = 10;
 
             LevelNames = new string[] 
 	        {
