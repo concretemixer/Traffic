@@ -7,6 +7,5 @@ namespace Traffic.MVCS.Services
     {
         START = 0,
         SHOW_FIRST_HINT = 1
-
     }
 }

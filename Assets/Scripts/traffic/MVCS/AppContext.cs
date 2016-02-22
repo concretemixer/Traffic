@@ -12,6 +12,7 @@ using Traffic.MVCS.Views.UI;
 using Traffic.MVCS.Views.Game;
 using Traffic.MVCS.Views.UI.Loading;
 using Traffic.MVCS.Views.UI.Debug;
+using Traffic.MVCS.Services;
 
 namespace Traffic.MVCS
 {
@@ -107,6 +108,7 @@ namespace Traffic.MVCS
         {
             injectionBinder.Bind<GameObject>().To(entryPoint.Stage).ToName(EntryPoint.Container.Stage);
             injectionBinder.Bind<GameObject>().To(entryPoint.UI).ToName(EntryPoint.Container.UI);
+            injectionBinder.Bind<AnalyticsCollector>().To<AnalyticsCollector>().ToSingleton();
         }
     }
 }
