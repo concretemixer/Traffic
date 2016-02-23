@@ -40,7 +40,7 @@ namespace Traffic.MVCS.Views.UI
         public readonly Signal<int> onButtonLevel = new Signal<int>();
 
         private int page = 0;
-        private bool firstLevelTutorial = false;
+       // private bool firstLevelTutorial = false;
 
 
         protected override void Awake()
@@ -53,13 +53,13 @@ namespace Traffic.MVCS.Views.UI
 
             for (int a = 0; a < levelButtons.Length; a++)
             {
-                int i = a+1;
+                int i = a;
 
                 
                 levelButtons[a].onClick.AddListener( delegate {
                     int index = i + page * levelButtons.Length;
-                    if (index == 1 && firstLevelTutorial)
-                        index = 0;
+                //    if (index == 1 && firstLevelTutorial)
+                    //    index = 0;
                     onButtonLevel.Dispatch(index);
                 });
             }
@@ -104,20 +104,22 @@ namespace Traffic.MVCS.Views.UI
             nextButton.GetComponent<Button>().interactable = (page == 0);
 
             for (int a = 0; a < levelButtons.Length; a++) {
-                int n = a + levelButtons.Length * page + 1;
-                levelButtons[a].GetComponentInChildren<Text>().text = n.ToString();
+                int n = a + levelButtons.Length * page;
+                levelButtons[a].GetComponentInChildren<Text>().text = (n+1).ToString();
 
                 if (levels.GetLevelState(n) == LevelState.Locked)
                 {
                     levelButtons[a].GetComponent<Image>().sprite = spriteLocked;
                     levelButtons[a].GetComponent<Button>().interactable = false;
                     levelButtons[a].GetComponentInChildren<Text>().color = new Color32(95, 115, 139,255);
+
+                    /*
                     if (n == 1)
                     {
                         firstLevelTutorial = true;
                         levelButtons[a].GetComponent<Button>().interactable = true;
                         levelButtons[a].GetComponentInChildren<Text>().color = Color.white;
-                    }
+                    } */
                     
                 }
                 else
