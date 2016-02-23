@@ -38,6 +38,9 @@ namespace Traffic.MVCS.Views.UI
         }
 
         [Inject]
+        public IAPService iapService { get; set; }
+
+        [Inject]
         public StartLevelSignal startLevel { get; set; }
 
         [Inject]
@@ -49,6 +52,8 @@ namespace Traffic.MVCS.Views.UI
         {
             page = 1 - page;
             view.SetPage(page, levels);
+            if (page==1)
+                view.ShowLock(!iapService.IsBought(IAPType.AdditionalLevels));
         }
 
         void startLevelHandler(int index)
@@ -62,15 +67,50 @@ namespace Traffic.MVCS.Views.UI
             toStartScreenSignal.Dispatch();
         }
 
+        void closeHandler()
+        {
+            page = 0;
+            view.SetPage(page, levels);
+            view.ShowLock(false);            
+        }
+
+        void infoOkHandler()
+        {
+            if (iapService.IsBought(IAPType.AdditionalLevels))
+                view.ShowLock(false);
+        }
+
+        void buyLevelsHandler()
+        {
+            UI.Hide(UIMap.Id.InfoMessage);
+            if (iapService.Buy(IAPType.AdditionalLevels))
+            {
+                InfoMessageView view = UI.Show<InfoMessageView>(UIMap.Id.InfoMessage);
+                view.SetCaption("PURCHASE OK");
+                view.SetText("You have purchased 12 additional levels for $1");
+                view.onButtonOk.AddListener(infoOkHandler);
+            }
+            else
+            {
+                InfoMessageView view = UI.Show<InfoMessageView>(UIMap.Id.InfoMessage);
+                view.SetCaption("PURCHASE FAILED");
+                view.SetText("For some reason your purchase is failed");
+                view.onButtonOk.AddListener(infoOkHandler);
+            }
+        }
+
         public override void OnRegister()
         {
             view.onButtonHome.AddListener(homeHandler);
             view.onButtonNext.AddListener(switchPageHandler);
             view.onButtonPrev.AddListener(switchPageHandler);
             view.onButtonLevel.AddListener(startLevelHandler);
+            view.onButtonClose.AddListener(closeHandler);
+            view.onButtonBuy.AddListener(buyLevelsHandler);
 
             view.Layout();
             view.SetPage(page, levels);
+            view.ShowLock(false);            
             view.SetDebugMessage(EntryPoint.DebugMessage);
 
             base.OnRegister();
@@ -81,10 +121,13 @@ namespace Traffic.MVCS.Views.UI
 
         public override void OnRemove()
         {
+            view.onButtonBuy.RemoveListener(buyLevelsHandler);
             view.onButtonHome.RemoveListener(homeHandler);
             view.onButtonNext.RemoveListener(switchPageHandler);
             view.onButtonPrev.RemoveListener(switchPageHandler);
             view.onButtonLevel.RemoveListener(startLevelHandler);
+            view.onButtonClose.RemoveListener(closeHandler);
+
             base.OnRemove();
         }
     }

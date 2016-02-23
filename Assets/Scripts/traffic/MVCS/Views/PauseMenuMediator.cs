@@ -37,6 +37,12 @@ namespace Traffic.MVCS.Views.UI
             set;
         }
 
+        [Inject]
+        public SwitchToSettingsScreenSignal toSettingsSignal
+        {
+            get;
+            set;
+        }
         /*
         [Inject]
         public RetyLevelSignal retyLevelSignal
@@ -61,11 +67,17 @@ namespace Traffic.MVCS.Views.UI
             toMainScreenSignal.Dispatch();
         }
 
+        void settingsHandler()
+        {
+            toSettingsSignal.Dispatch();
+        }
+
         public override void OnRegister()
         {
 
             view.onButtonResumeLevel.AddListener(resumeLevelHandler);
             view.onButtonHome.AddListener(homeHandler);
+            view.onButtonSettings.AddListener(settingsHandler);
             view.Layout();
             base.OnRegister();
         }
@@ -75,6 +87,7 @@ namespace Traffic.MVCS.Views.UI
 
         public override void OnRemove()
         {
+            view.onButtonSettings.RemoveListener(settingsHandler);
             view.onButtonResumeLevel.RemoveListener(resumeLevelHandler);
             view.onButtonHome.RemoveListener(homeHandler);
 

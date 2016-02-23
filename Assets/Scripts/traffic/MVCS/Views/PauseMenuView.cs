@@ -19,11 +19,13 @@ namespace Traffic.MVCS.Views.UI
 
         public readonly Signal onButtonResumeLevel = new Signal();
         public readonly Signal onButtonHome = new Signal();
+        public readonly Signal onButtonSettings= new Signal();
 
         protected override void Awake()
         {
             goButton.onClick.AddListener(onButtonResumeLevel.Dispatch);
             homeButton.onClick.AddListener(onButtonHome.Dispatch);
+            optionsButton.onClick.AddListener(onButtonSettings.Dispatch);
             base.Awake();
         }
 
@@ -31,6 +33,7 @@ namespace Traffic.MVCS.Views.UI
 
         protected override void OnDestroy()
         {
+            optionsButton.onClick.RemoveListener(onButtonSettings.Dispatch);
             goButton.onClick.RemoveListener(onButtonResumeLevel.Dispatch);
             homeButton.onClick.RemoveListener(onButtonHome.Dispatch);
             base.OnDestroy();

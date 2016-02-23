@@ -7,6 +7,7 @@ using UnityEngine;
 using Traffic.Core;
 using Traffic.MVCS.Commands.Init;
 using Traffic.MVCS.Commands;
+using Traffic.MVCS.Models;
 using Traffic.MVCS.Views.UI.HUD;
 using Traffic.MVCS.Views.UI;
 using Traffic.MVCS.Views.Game;
@@ -65,9 +66,9 @@ namespace Traffic.MVCS
             commandBinder.Bind<LevelResume>().To<ResumeLevelCommand>();
             commandBinder.Bind<LevelRetry>().To<RetryLevelCommand>();
             commandBinder.Bind<TutorialPoint>().To<TutorialPointCommand>();
-
             commandBinder.Bind<SwitchToMainScreenSignal>().To<SwitchToMainScreenCommand>();
             commandBinder.Bind<SwitchToStartScreenSignal>().To<SwitchToStartScreenCommand>();
+            commandBinder.Bind<SwitchToSettingsScreenSignal>().To<SwitchToSettingsScreenCommand>();
         }
 
         void mapSignals()
@@ -84,6 +85,7 @@ namespace Traffic.MVCS
         {
             injectionBinder.Bind<ILevelModel>().To<LevelModel>();
             injectionBinder.Bind<ILevelListModel>().To<LevelListModel>().ToSingleton();
+            injectionBinder.Bind<IAPService>().To<IAPServiceDummy>().ToSingleton();
         }
 
         void mapStageMediators()
@@ -102,6 +104,8 @@ namespace Traffic.MVCS
             mediationBinder.Bind<TutorialStepScreen>().To<TutorialStepMediator>();            
             mediationBinder.Bind<ScreenDebugView>().To<ScreenDebugMediator>();
             mediationBinder.Bind<StartGameScreenView>().To<StartGameScreenMediator>();
+            mediationBinder.Bind<SettingsMenuView>().To<SettingsMenuMediator>();
+            mediationBinder.Bind<InfoMessageView>().To<InfoMesageMediator>();
         }
 
         void mapOthers()

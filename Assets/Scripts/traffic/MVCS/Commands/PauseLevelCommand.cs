@@ -20,8 +20,9 @@ namespace Traffic.MVCS.Commands
 
 		public override void Execute()
 		{
-			Loggr.Log("PAUSE");
 			Time.timeScale=0;
+            UI.Hide(UIMap.Id.ScreenSettings);
+            UI.Hide(UIMap.Id.ScreenSettingsIngame);	
             UI.Show(UIMap.Id.PauseMenu);	
 		}
 	}

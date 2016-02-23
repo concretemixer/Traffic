@@ -15,7 +15,10 @@ namespace Commons.UI
             { Id.ScreenMain, "UI/StartGameScreen" },
             { Id.ScreenLoading, "UI/ScreenLoading" },
             { Id.ScreenTutorial, "UI/TutorialStepScreen" },
-            { Id.ScreenDebug, "UI/ScreenDebug" }
+            { Id.ScreenDebug, "UI/ScreenDebug" },
+            { Id.ScreenSettings, "UI/SettingsMenu" },
+            { Id.ScreenSettingsIngame, "UI/SettingsMenuIngame" },
+            { Id.InfoMessage, "UI/InfoMessage" }
         };
 
         public enum Id
@@ -28,7 +31,10 @@ namespace Commons.UI
             ScreenMain,
             ScreenLoading,
             ScreenTutorial,
-            ScreenDebug
+            ScreenDebug,
+            ScreenSettings,
+            ScreenSettingsIngame,
+            InfoMessage
         }
 
         public static string GetPath(UIMap.Id _id)

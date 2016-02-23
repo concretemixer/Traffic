@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using strange.extensions.mediation.impl;
 using strange.extensions.signal.impl;
+using Traffic.MVCS.Models;
 
 namespace Traffic.MVCS.Views.UI
 {
@@ -20,30 +21,62 @@ namespace Traffic.MVCS.Views.UI
         [SerializeField]
         Button optionsButton;
 
+        [SerializeField]
+        Image shopBg;
+
+        [SerializeField]
+        Button shopCloseButton;
+
+        [SerializeField]
+        Button shopBuyLevels;
+
+        [SerializeField]
+        Button shopBuyNoAdverts;
 
 
         public readonly Signal onButtonStart = new Signal();
         public readonly Signal onButtonConnect = new Signal();
         public readonly Signal onButtonOptions = new Signal();
         public readonly Signal onButtonShop = new Signal();
+        public readonly Signal onButtonShopClose = new Signal();
+
+        public readonly Signal onButtonBuyLevels= new Signal();
+        public readonly Signal onButtonBuyNoAds= new Signal();
+
 
         protected override void Awake()
         {
+            shopCloseButton.onClick.AddListener(onButtonShopClose.Dispatch);
             shopButton.onClick.AddListener(onButtonShop.Dispatch);
             optionsButton.onClick.AddListener(onButtonOptions.Dispatch);
             connectButton.onClick.AddListener(onButtonConnect.Dispatch);
             startButton.onClick.AddListener(onButtonStart.Dispatch);
+
+            shopBuyLevels.onClick.AddListener(onButtonBuyLevels.Dispatch);
+            shopBuyNoAdverts.onClick.AddListener(onButtonBuyNoAds.Dispatch);
             base.Awake();
         }
     
 
         protected override void OnDestroy()
         {
+            shopBuyLevels.onClick.RemoveListener(onButtonBuyLevels.Dispatch);
+            shopBuyNoAdverts.onClick.RemoveListener(onButtonBuyNoAds.Dispatch);
+            shopCloseButton.onClick.RemoveListener(onButtonShopClose.Dispatch);
             shopButton.onClick.RemoveListener(onButtonShop.Dispatch);
             optionsButton.onClick.RemoveListener(onButtonOptions.Dispatch);
             connectButton.onClick.RemoveListener(onButtonConnect.Dispatch);
             startButton.onClick.RemoveListener(onButtonStart.Dispatch);
             base.OnDestroy();
+        }
+
+        public void ShowShop(bool show, IAPService iapService)
+        {
+            if (iapService.IsBought(IAPType.AdditionalLevels))
+                shopBuyLevels.gameObject.SetActive(false);
+            if (iapService.IsBought(IAPType.NoAdverts))
+                shopBuyNoAdverts.gameObject.SetActive(false);
+            shopBg.gameObject.SetActive(show);
         }
 
         public override void Layout()

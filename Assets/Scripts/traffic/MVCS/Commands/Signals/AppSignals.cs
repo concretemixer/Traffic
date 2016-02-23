@@ -18,6 +18,11 @@ namespace Traffic.MVCS.Commands.Signals
     {
     }
 
+    public class SwitchToSettingsScreenSignal : Signal
+    {
+    }
+
+
     public class OrientationChangedSignal : Signal
     {
     }

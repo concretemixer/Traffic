@@ -30,6 +30,13 @@ namespace Traffic.MVCS.Views.UI
         }
 
         [Inject]
+        public ILevelListModel levels
+        {
+            get;
+            set;
+        }
+
+        [Inject]
         public LevelRetry onRetry { get; set; }
 
 
@@ -47,9 +54,23 @@ namespace Traffic.MVCS.Views.UI
             set;
         }
 
+        void closeHandler()
+        {
+            view.SetLocked(false);
+        }
+
+        void advertHandler()
+        {
+            levels.TriesLeft = levels.TriesTotal;
+            view.SetLocked(false);
+        }
+
         void retryLevelHandler()
-        {            
-            onRetry.Dispatch();
+        {
+            if (levels.TriesLeft <= 0)
+                view.SetLocked(true);
+            else
+                onRetry.Dispatch();
         }
 
         void homeHandler()
@@ -62,7 +83,12 @@ namespace Traffic.MVCS.Views.UI
 
             view.onButtonRetryLevel.AddListener(retryLevelHandler);
             view.onButtonHome.AddListener(homeHandler);
+            view.onButtonClose.AddListener(closeHandler);
+            view.onButtonAdvert.AddListener(advertHandler);
+
+            view.SetLocked(levels.TriesLeft <= 0);
             view.Layout();
+
             base.OnRegister();
         }
 
@@ -73,7 +99,8 @@ namespace Traffic.MVCS.Views.UI
         {
             view.onButtonRetryLevel.RemoveListener(retryLevelHandler);
             view.onButtonHome.RemoveListener(homeHandler);
-
+            view.onButtonClose.RemoveListener(closeHandler);
+            view.onButtonAdvert.RemoveListener(advertHandler);
             base.OnRemove();
         }
     }

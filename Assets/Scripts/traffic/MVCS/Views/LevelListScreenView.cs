@@ -29,10 +29,14 @@ namespace Traffic.MVCS.Views.UI
         [SerializeField]
         Button buyButton;
 
+        [SerializeField]
+        Button closeButton;
 
         public readonly Signal onButtonNext = new Signal();
         public readonly Signal onButtonPrev = new Signal();
         public readonly Signal onButtonHome = new Signal();
+        public readonly Signal onButtonClose = new Signal();
+        public readonly Signal onButtonBuy = new Signal();
         public readonly Signal<int> onButtonLevel = new Signal<int>();
 
         private int page = 0;
@@ -44,6 +48,8 @@ namespace Traffic.MVCS.Views.UI
             nextButton.onClick.AddListener(onButtonNext.Dispatch);
             prevButton.onClick.AddListener(onButtonPrev.Dispatch);
             homeButton.onClick.AddListener(onButtonHome.Dispatch);
+            closeButton.onClick.AddListener(onButtonClose.Dispatch);
+            buyButton.onClick.AddListener(onButtonBuy.Dispatch);
 
             for (int a = 0; a < levelButtons.Length; a++)
             {
@@ -70,6 +76,9 @@ namespace Traffic.MVCS.Views.UI
             nextButton.onClick.RemoveListener(onButtonNext.Dispatch);
             prevButton.onClick.RemoveListener(onButtonPrev.Dispatch);
             homeButton.onClick.RemoveListener(onButtonHome.Dispatch);
+            closeButton.onClick.RemoveListener(onButtonClose.Dispatch);
+            buyButton.onClick.RemoveListener(onButtonBuy.Dispatch);
+
             for (int a = 0; a < levelButtons.Length; a++)
             {
                 levelButtons[a].onClick.RemoveAllListeners();
@@ -126,10 +135,12 @@ namespace Traffic.MVCS.Views.UI
                     levelButtons[a].GetComponent<Button>().interactable = true;
                 }
                 
-            }
+            }           
+        }
 
-            Locked.gameObject.SetActive(page == 1);
-
+        public void ShowLock(bool show)
+        {
+            Locked.gameObject.SetActive(show);
         }
 
         public void SetDebugMessage(string text)

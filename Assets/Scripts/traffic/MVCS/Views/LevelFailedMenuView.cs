@@ -14,21 +14,38 @@ namespace Traffic.MVCS.Views.UI
         Button retryButton;
 
         [SerializeField]
+        Button closeButton;
+
+        [SerializeField]
+        Button advertButton;
+
+        [SerializeField]
+        Image lockedImage;
+
+        [SerializeField]
         Text score;
 
-
+        public readonly Signal onButtonAdvert = new Signal();
         public readonly Signal onButtonRetryLevel = new Signal();
         public readonly Signal onButtonHome = new Signal();
+        public readonly Signal onButtonClose = new Signal();
 
         public void SetScore(int score)
         {
             this.score.text = score.ToString("D6");
+        }
+
+        public void SetLocked(bool locked)
+        {
+            this.lockedImage.gameObject.SetActive(locked);
         }    
 
         protected override void Awake()
         {
             homeButton.onClick.AddListener(onButtonHome.Dispatch);
             retryButton.onClick.AddListener(onButtonRetryLevel.Dispatch);
+            closeButton.onClick.AddListener(onButtonClose.Dispatch);
+            advertButton.onClick.AddListener(onButtonAdvert.Dispatch);
             base.Awake();
         }
 
@@ -38,6 +55,8 @@ namespace Traffic.MVCS.Views.UI
         {
             homeButton.onClick.RemoveListener(onButtonHome.Dispatch);
             retryButton.onClick.RemoveListener(onButtonRetryLevel.Dispatch);
+            closeButton.onClick.RemoveListener(onButtonClose.Dispatch);
+            advertButton.onClick.RemoveListener(onButtonAdvert.Dispatch);
             base.OnDestroy();
         }
 
