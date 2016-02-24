@@ -19,6 +19,12 @@ namespace Traffic.MVCS.Views.UI
         [SerializeField]
         Image shadeImage;
 
+        [SerializeField]
+        Image bubbleTopImage;
+
+        [SerializeField]
+        Image bubbleBottomImage;
+
 
         int step = -1;
         public int Step
@@ -55,6 +61,12 @@ namespace Traffic.MVCS.Views.UI
         public void SetShadePos(float x, float y)
         {
             shadeImage.GetComponent<RectTransform>().anchoredPosition = new Vector3(x, y, 0);            
+        }
+
+        public void SetBubblePos(float x, float y)
+        {
+            bubbleBottomImage.GetComponent<RectTransform>().anchoredPosition = new Vector3(x, y, 0);
+            bubbleTopImage.GetComponent<RectTransform>().anchoredPosition = new Vector3(x, y, 0);
         }
 
 

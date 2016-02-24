@@ -96,18 +96,19 @@ namespace Traffic.MVCS.Views.UI
             //Debug.Log("k = " + k);
 
             if (view.Step == 1)
-            {
-                view.SetShadePos(w, h);
+            {                
                 view.SetHandPos(w + 90 * k , h + 50.0f * (float)Math.Sqrt(k));
                 view.SetHandAlpha(2*(1 - k * k));
             }
             else
             {
                 float k2 = 1-(float)Math.Sin(Math.PI * k);
-                view.SetShadePos(w, h);
+                
                 view.SetHandPos(w - 10 * k2, h + 10.0f * k2);
                 //view.SetHandAlpha(k > 0.5 ? 0 : 1);
             }
+            view.SetShadePos(w, h);
+            view.SetBubblePos(w, h);
 
         }
 
