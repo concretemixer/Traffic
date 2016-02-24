@@ -59,7 +59,7 @@ namespace Traffic.Core
         {
             CurrentLevelIndex = 0;
 
-            TriesLeft = 3;
+            TriesLeft = 10;
             TriesTotal = 10;
 
             LevelNames = new string[] 

@@ -16,6 +16,10 @@ namespace Traffic.MVCS.Views.UI
         [SerializeField]
         Image frameImage;
 
+        [SerializeField]
+        Image shadeImage;
+
+
         int step = -1;
         public int Step
         {
@@ -45,8 +49,14 @@ namespace Traffic.MVCS.Views.UI
 
         public void SetHandPos(float x, float y)
         {
-            handImage.GetComponent<RectTransform>().anchoredPosition = new Vector3(x, y, 0);
+            handImage.GetComponent<RectTransform>().anchoredPosition = new Vector3(x, y, 0);            
         }
+
+        public void SetShadePos(float x, float y)
+        {
+            shadeImage.GetComponent<RectTransform>().anchoredPosition = new Vector3(x, y, 0);            
+        }
+
 
         public void SetHandAlpha(float a)
         {
