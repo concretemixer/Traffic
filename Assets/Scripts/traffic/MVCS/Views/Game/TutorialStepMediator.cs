@@ -108,7 +108,11 @@ namespace Traffic.MVCS.Views.UI
                 //view.SetHandAlpha(k > 0.5 ? 0 : 1);
             }
             view.SetShadePos(w, h);
-            view.SetBubblePos(w, h);
+
+            if (view.Step==0)
+                view.SetBubblePos(w, h, true);
+            else
+                view.SetBubblePos(w, h, false);
 
         }
 

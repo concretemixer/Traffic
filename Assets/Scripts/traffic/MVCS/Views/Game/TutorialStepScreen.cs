@@ -63,10 +63,12 @@ namespace Traffic.MVCS.Views.UI
             shadeImage.GetComponent<RectTransform>().anchoredPosition = new Vector3(x, y, 0);            
         }
 
-        public void SetBubblePos(float x, float y)
+        public void SetBubblePos(float x, float y, bool top)
         {
             bubbleBottomImage.GetComponent<RectTransform>().anchoredPosition = new Vector3(x, y, 0);
             bubbleTopImage.GetComponent<RectTransform>().anchoredPosition = new Vector3(x, y, 0);
+            bubbleBottomImage.gameObject.SetActive(!top);
+            bubbleTopImage.gameObject.SetActive(top);
         }
 
 
