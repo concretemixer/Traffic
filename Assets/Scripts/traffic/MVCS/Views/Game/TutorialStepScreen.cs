@@ -55,20 +55,47 @@ namespace Traffic.MVCS.Views.UI
 
         public void SetHandPos(float x, float y)
         {
+            handImage.gameObject.SetActive(true);
             handImage.GetComponent<RectTransform>().anchoredPosition = new Vector3(x, y, 0);            
         }
 
         public void SetShadePos(float x, float y)
         {
+            shadeImage.gameObject.SetActive(true);
             shadeImage.GetComponent<RectTransform>().anchoredPosition = new Vector3(x, y, 0);            
         }
 
-        public void SetBubblePos(float x, float y, bool top)
+        public void SetBubblePos(float x, float y, int shift, bool top)
         {
             bubbleBottomImage.GetComponent<RectTransform>().anchoredPosition = new Vector3(x, y, 0);
             bubbleTopImage.GetComponent<RectTransform>().anchoredPosition = new Vector3(x, y, 0);
             bubbleBottomImage.gameObject.SetActive(!top);
             bubbleTopImage.gameObject.SetActive(top);
+
+            foreach (Image bubble in bubbleTopImage.gameObject.GetComponentsInChildren<Image>())
+            {
+                if (bubble.gameObject.name == "Bubble")
+                {
+                    Vector3 pos = bubble.GetComponent<RectTransform>().anchoredPosition;
+                    bubble.GetComponent<RectTransform>().anchoredPosition = new Vector3(shift, pos.y, 0);
+                }
+            }
+            foreach (Image bubble in bubbleBottomImage.gameObject.GetComponentsInChildren<Image>())
+            {
+                if (bubble.gameObject.name == "Bubble")
+                {
+                    Vector3 pos = bubble.GetComponent<RectTransform>().anchoredPosition;
+                    bubble.GetComponent<RectTransform>().anchoredPosition = new Vector3(shift, pos.y, 0);
+                }
+            }
+        }
+
+        public void SetBubbleText(string text)
+        {
+            foreach (var t in bubbleBottomImage.gameObject.GetComponentsInChildren<Text>())
+                t.text = text;
+            foreach (var t in bubbleTopImage.gameObject.GetComponentsInChildren<Text>())
+                t.text = text;
         }
 
 

@@ -1265,7 +1265,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 8566654_
+  m_Text: 
 --- !u!114 &11421536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1358,7 +1358,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11431516}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11426086
@@ -2167,6 +2178,20 @@ MonoBehaviour:
   codeCloseButton: {fileID: 11462004}
   musicSlider: {fileID: 11407046}
   soundSlider: {fileID: 11427606}
+  codeText: {fileID: 11419828}
+  pinButtons:
+  - {fileID: 11465060}
+  - {fileID: 11424006}
+  - {fileID: 11489902}
+  - {fileID: 11403884}
+  - {fileID: 11437338}
+  - {fileID: 11496570}
+  - {fileID: 11404696}
+  - {fileID: 11454586}
+  - {fileID: 11488400}
+  - {fileID: 11445950}
+  pinDelete: {fileID: 11469450}
+  pinOk: {fileID: 11444730}
 --- !u!114 &11461766
 MonoBehaviour:
   m_ObjectHideFlags: 1
