@@ -54,6 +54,26 @@ namespace Traffic.MVCS.Services
         {
             Collector.CustomEvent("fb_share", Params.NONE);
         }
+        
+        public void AdsWindowShown()
+        {
+            Collector.CustomEvent("ads_window_shown", Params.NONE);
+        }
+        
+        public void AdsStart()
+        {
+            Collector.CustomEvent("ads_start", Params.NONE);
+        }
+        
+        public void AdsSkiped()
+        {
+            Collector.CustomEvent("ads_skiped", Params.NONE);
+        }
+        
+        public void AdsComplete()
+        {
+            Collector.CustomEvent("ads_complete", Params.NONE);
+        }
 
         void logOnePropEvent(string eventName, string paramName, object param)
         {
