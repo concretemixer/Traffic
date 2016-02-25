@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using strange.extensions.mediation.impl;
 using strange.extensions.signal.impl;
@@ -48,7 +48,10 @@ namespace Traffic.MVCS.Views.UI.HUD
 
         public void SetTries(int left,int max)
         {
-            this.tries.text = left.ToString() + "/" + max.ToString();
+            if (max==int.MaxValue)
+                this.tries.text = "∞";
+            else
+               this.tries.text = left.ToString() + "/" + max.ToString();
         }
 
         public void SetProgress(int current, int target)

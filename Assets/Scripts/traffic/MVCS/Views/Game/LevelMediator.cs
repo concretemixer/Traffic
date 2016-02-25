@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 using Commons.UI;
 using Traffic.MVCS.Models;
@@ -34,11 +35,10 @@ namespace Traffic.MVCS.Views.Game
         }
 
         [Inject]
-        public ILevelListModel levels
-        {
-            get;
-            set;
-        }
+        public IAPService iapService { get; set; }
+
+        [Inject]
+        public ILevelListModel levels { get; set; }
 
 		[Inject]
 		public VehicleReachedDestination onVehicleReachedDestination { get; set;}
@@ -57,12 +57,8 @@ namespace Traffic.MVCS.Views.Game
 			level.Progress++;
 			if (level.Progress == level.Config.target) {
 				onLevelComplete.Dispatch();
-			}
-
-           
+			}           
 		}
-
-
 
 		void vehicleCrashedHandler()
 		{
@@ -72,8 +68,15 @@ namespace Traffic.MVCS.Views.Game
                // onLevelFailed.Dispatch();
                 this.Invoke("levelFailedDispatch", 1);
 
-                if (levels.CurrentLevelIndex!=0)
-                    levels.TriesLeft--;
+                if (levels.CurrentLevelIndex != 0)
+                {
+                    if (!iapService.IsBought(IAPType.NoAdverts))
+                    {
+                        levels.TriesLeft--;
+                        if (levels.TriesLeft == 0)
+                            levels.TriesRefreshTime = DateTime.Now.AddHours(1);
+                    }
+                }
 
                 foreach (var scenario in stage.GetComponentsInChildren<TutorialScenarioBase>())
                 {

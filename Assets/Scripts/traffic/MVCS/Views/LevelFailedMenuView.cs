@@ -20,11 +20,18 @@ namespace Traffic.MVCS.Views.UI
         Button advertButton;
 
         [SerializeField]
+        Button buyButton;
+
+        [SerializeField]
         Image lockedImage;
 
         [SerializeField]
         Text score;
 
+        [SerializeField]
+        Text timerText;
+
+        public readonly Signal onButtonBuy = new Signal();
         public readonly Signal onButtonAdvert = new Signal();
         public readonly Signal onButtonRetryLevel = new Signal();
         public readonly Signal onButtonHome = new Signal();
@@ -33,6 +40,11 @@ namespace Traffic.MVCS.Views.UI
         public void SetScore(int score)
         {
             this.score.text = score.ToString("D6");
+        }
+
+        public void SetTimerText(string text)
+        {
+            this.timerText.text = text;
         }
 
         public void SetLocked(bool locked)
@@ -46,6 +58,7 @@ namespace Traffic.MVCS.Views.UI
             retryButton.onClick.AddListener(onButtonRetryLevel.Dispatch);
             closeButton.onClick.AddListener(onButtonClose.Dispatch);
             advertButton.onClick.AddListener(onButtonAdvert.Dispatch);
+            buyButton.onClick.AddListener(onButtonBuy.Dispatch);
             base.Awake();
         }
 
@@ -57,6 +70,7 @@ namespace Traffic.MVCS.Views.UI
             retryButton.onClick.RemoveListener(onButtonRetryLevel.Dispatch);
             closeButton.onClick.RemoveListener(onButtonClose.Dispatch);
             advertButton.onClick.RemoveListener(onButtonAdvert.Dispatch);
+            buyButton.onClick.RemoveListener(onButtonBuy.Dispatch);
             base.OnDestroy();
         }
 

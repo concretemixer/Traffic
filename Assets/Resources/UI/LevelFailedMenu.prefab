@@ -252,7 +252,7 @@ GameObject:
   - 222: {fileID: 22281154}
   - 114: {fileID: 11440708}
   m_Layer: 5
-  m_Name: Text1
+  m_Name: TimerText
   m_TagString: UI Horizontal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -588,7 +588,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 76a3e9ecd9a9ba247b1f005ce98f8e4a, type: 3}
-    m_FontSize: 24
+    m_FontSize: 23
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -599,7 +599,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: NO MORE TRIES LEFT
+  m_Text: TRIES WILL REFRESH AUTOMATICALY IN 20:40
 --- !u!114 &11449390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -924,8 +924,10 @@ MonoBehaviour:
   retryButton: {fileID: 11463516}
   closeButton: {fileID: 11435664}
   advertButton: {fileID: 11463648}
+  buyButton: {fileID: 11470890}
   lockedImage: {fileID: 11482360}
   score: {fileID: 11496786}
+  timerText: {fileID: 11440708}
 --- !u!114 &11482360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1102,14 +1104,10 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'TEXT
-
-    TEXT
-
-    TEXT'
+  m_Text: BUY UNLIMITED TRIES FOR $2 OR WATCH AN AVDERTISMENT TO REFRESH !
 --- !u!114 &11496786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1324,7 +1322,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -292}
-  m_SizeDelta: {x: 200, y: 60}
+  m_SizeDelta: {x: 460, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22418430
 RectTransform:
@@ -1517,7 +1515,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -95}
+  m_AnchoredPosition: {x: 0, y: -92}
   m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22483146

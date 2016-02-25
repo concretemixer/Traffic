@@ -1,5 +1,6 @@
 using Traffic.MVCS.Commands.Signals;
 using UnityEngine;
+using System;
 
 namespace Traffic.Core
 {
@@ -35,6 +36,12 @@ namespace Traffic.Core
         }
 
 
+        public DateTime TriesRefreshTime
+        {
+            get;
+            set;
+        }
+
         public LevelState GetLevelState(int index)
         {
             if (index < 0)
@@ -59,7 +66,7 @@ namespace Traffic.Core
         {
             CurrentLevelIndex = 0;
 
-            TriesLeft = 10;
+            TriesLeft = 1;
             TriesTotal = 10;
 
             LevelNames = new string[] 

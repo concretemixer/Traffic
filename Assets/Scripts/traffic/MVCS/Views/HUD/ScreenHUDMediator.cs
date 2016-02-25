@@ -34,6 +34,9 @@ namespace Traffic.MVCS.Views.UI.HUD
             set;
         }
 
+        [Inject]
+        public IAPService iapService { get; set; }
+
 		[Inject]
 		public VehicleReachedDestination onVehicleReachedDestination { get; set;}
 
@@ -71,7 +74,10 @@ namespace Traffic.MVCS.Views.UI.HUD
         {
              view.SetScore((int)level.Score);			
              view.SetProgress(level.Progress, level.Config.target);
-             view.SetTries(levels.TriesLeft, levels.TriesTotal);
+             if (iapService.IsBought(IAPType.NoAdverts))
+                view.SetTries(int.MaxValue,int.MaxValue);
+            else
+                view.SetTries(levels.TriesLeft, levels.TriesTotal);
         }
 
         void scoreGrowHandler(float diff)

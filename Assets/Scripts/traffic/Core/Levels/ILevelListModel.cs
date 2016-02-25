@@ -1,5 +1,7 @@
 using Traffic.MVCS.Commands.Signals;
 using System.Collections.Generic;
+using System;
+
 
 namespace Traffic.Core
 {
@@ -45,6 +47,12 @@ namespace Traffic.Core
         }
 
         int TriesTotal
+        {
+            get;
+            set;
+        }
+
+        DateTime TriesRefreshTime
         {
             get;
             set;
