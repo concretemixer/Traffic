@@ -110,6 +110,7 @@ namespace Traffic.MVCS
 
         void mapOthers()
         {
+            injectionBinder.Bind<GameObject>().To(entryPoint.StageMenu).ToName(EntryPoint.Container.StageMenu);
             injectionBinder.Bind<GameObject>().To(entryPoint.Stage).ToName(EntryPoint.Container.Stage);
             injectionBinder.Bind<GameObject>().To(entryPoint.UI).ToName(EntryPoint.Container.UI);
             injectionBinder.Bind<AnalyticsCollector>().To<AnalyticsCollector>().ToSingleton();

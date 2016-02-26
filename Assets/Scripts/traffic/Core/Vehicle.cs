@@ -78,15 +78,15 @@ public class Vehicle : MonoBehaviour {
 					t.gameObject.GetComponent<AudioSource> ().PlayOneShot (moveSound);
 				}
 			}
-		}
-
-        onLevelComplete.AddListener(StopOnLevelComplete);
+            onLevelComplete.AddListener(StopOnLevelComplete);
+        }
 	}
 
 
     void OnDestroy()
     {
-        onLevelComplete.RemoveListener(StopOnLevelComplete);
+        if (gameObject.tag == "Vehicle") 
+            onLevelComplete.RemoveListener(StopOnLevelComplete);
     }
 
     void StopOnLevelComplete() 
@@ -100,7 +100,8 @@ public class Vehicle : MonoBehaviour {
 
         lifetime += Time.deltaTime;
 
-        onScoreGrow.Dispatch(9.0f * Time.deltaTime * scoreGrowK);
+        if (gameObject.tag != "VehicleAI") 
+            onScoreGrow.Dispatch(9.0f * Time.deltaTime * scoreGrowK);
 
 		if (stopTimer > 0) {
 			stopTimer -= Time.deltaTime;
@@ -248,7 +249,8 @@ public class Vehicle : MonoBehaviour {
 			gameObject.GetComponent<Rigidbody>().detectCollisions = false;
 			Invoke("SelfDestroy",3);
 			//Destroy(gameObject);
-            onVehicleReachedDestination.Dispatch();
+            if (gameObject.tag == "Vehicle") 
+                onVehicleReachedDestination.Dispatch();
 
 			Transform t = transform.FindChild("AccelSource");
 			if (t!=null) {

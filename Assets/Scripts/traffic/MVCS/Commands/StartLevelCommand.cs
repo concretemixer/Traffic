@@ -19,6 +19,9 @@ namespace Traffic.MVCS.Commands
 		[Inject(EntryPoint.Container.Stage)]
 		public  GameObject stage { get  ; set ;}
 
+        [Inject(EntryPoint.Container.StageMenu)]
+        public GameObject stageMenu { get; set; }
+
         [Inject]
         public ILevelListModel levels { get; set; }
 
@@ -39,6 +42,8 @@ namespace Traffic.MVCS.Commands
 
             if (stage.transform.childCount>0)
                 GameObject.Destroy(stage.transform.GetChild(0).gameObject);
+
+            stageMenu.SetActive(false);
 
             GameObject instance = Object.Instantiate(Resources.Load("levels/" + levels.LevelNames[levelIndex], typeof(GameObject))) as GameObject;
 			instance.transform.SetParent(stage.transform);

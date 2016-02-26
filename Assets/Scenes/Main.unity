@@ -85,6 +85,33 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &60883039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 60883040}
+  m_Layer: 0
+  m_Name: StageMenu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &60883040
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 60883039}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1740177640}
+  m_RootOrder: 1
 --- !u!1 &1001199878
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +225,6 @@ GameObject:
   - 20: {fileID: 1121116700}
   - 92: {fileID: 1121116699}
   - 124: {fileID: 1121116698}
-  - 81: {fileID: 1121116697}
   m_Layer: 0
   m_Name: UI Camera
   m_TagString: MainCamera
@@ -206,13 +232,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1121116697
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1121116696}
-  m_Enabled: 1
 --- !u!124 &1121116698
 Behaviour:
   m_ObjectHideFlags: 0
@@ -299,7 +318,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1740177640}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1 &1429904453
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,7 +404,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1740177640}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -428,8 +447,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1429904457}
   - {fileID: 1267618281}
+  - {fileID: 60883040}
+  - {fileID: 1429904457}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!114 &1740177641
@@ -445,6 +465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ui: {fileID: 1429904453}
   stage: {fileID: 1267618280}
+  stageMenu: {fileID: 60883039}
 --- !u!1 &1896510437
 GameObject:
   m_ObjectHideFlags: 0

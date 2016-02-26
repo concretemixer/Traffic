@@ -17,6 +17,9 @@ namespace Traffic.MVCS.Commands
 		[Inject(EntryPoint.Container.Stage)]
 		public  GameObject stage { get  ; set ;}
 
+        [Inject(EntryPoint.Container.StageMenu)]
+        public GameObject stageMenu { get; set; }
+
 
 		public override void Execute()
         {
@@ -37,12 +40,7 @@ namespace Traffic.MVCS.Commands
             AudioSource gameMusic = GameObject.Find("GameMusic").GetComponent<AudioSource>();
             AudioSource menuMusic = GameObject.Find("MenuMusic").GetComponent<AudioSource>();
 
-
-            {
-                GameObject cameraMain = GameObject.Find("UI Camera");
-                cameraMain.GetComponent<Camera>().enabled = true;
-                cameraMain.GetComponent<AudioListener>().enabled = true;
-            }
+            stageMenu.SetActive(true);
 
             if (!menuMusic.isPlaying)
             {

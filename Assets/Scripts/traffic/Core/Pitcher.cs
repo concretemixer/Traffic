@@ -37,8 +37,11 @@ public class Pitcher : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        onLevelFailed.AddListener(stopSpawn);
-        onLevelComplete.AddListener(stopSpawn);
+
+        if (onLevelFailed != null)
+            onLevelFailed.AddListener(stopSpawn);
+        if (onLevelComplete != null)
+            onLevelComplete.AddListener(stopSpawn);
 
         _pause = Pause;
 	}
@@ -50,8 +53,10 @@ public class Pitcher : MonoBehaviour {
 
     void OnDestroy()
     {
-        onLevelFailed.RemoveListener(stopSpawn);
-        onLevelComplete.RemoveListener(stopSpawn);
+        if (onLevelFailed != null)
+            onLevelFailed.RemoveListener(stopSpawn);
+        if (onLevelComplete != null)
+            onLevelComplete.RemoveListener(stopSpawn);
     }
 
 	// Update is called once per frame

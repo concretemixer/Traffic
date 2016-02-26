@@ -12,6 +12,8 @@ namespace Traffic.Components
         GameObject ui;
         [SerializeField]
         GameObject stage;
+        [SerializeField]
+        GameObject stageMenu;
 
         void Start()
         {
@@ -34,8 +36,17 @@ namespace Traffic.Components
                 return stage;
             }
         }
-        
+
+        public GameObject StageMenu
+        {
+            get
+            {
+                return stageMenu;
+            }
+        }        
+
         public enum Container {
+            StageMenu,
             Stage,
             UI
         }

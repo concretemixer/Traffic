@@ -35,7 +35,7 @@ public class Level : MonoBehaviour  {
 		Debug.Log ("start");
 		
 
-		cameraMain = GameObject.Find("UI Camera");
+	//	cameraMain = GameObject.Find("UI Camera");
 
         GameObject levelRoot = this.transform.parent.gameObject;
 
@@ -47,8 +47,8 @@ public class Level : MonoBehaviour  {
 		{
             if (cameraMain != null)
             {
-                cameraMain.GetComponent<Camera>().enabled = false;
-                cameraMain.GetComponent<AudioListener>().enabled = false;
+             //   cameraMain.GetComponent<Camera>().enabled = false;
+             //   cameraMain.GetComponent<AudioListener>().enabled = false;
             }
 			if (cameraPortrait != null) {
 				GameObject o = new GameObject ("listener");
