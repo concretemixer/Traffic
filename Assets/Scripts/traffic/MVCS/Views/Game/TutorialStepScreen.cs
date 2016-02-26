@@ -104,12 +104,12 @@ namespace Traffic.MVCS.Views.UI
             handImage.GetComponent<Image>().color = new Color(1, 1, 1, a);
         }
 
-        public override void Layout()
+        public override void Layout(int width, int height)
         {
 
-            base.Layout();
+            base.Layout(width, height);
 
-            float ratio = (float)Screen.height / (float)Screen.width;
+            float ratio = (float)height / (float)width;
 
             float scaledDimention;
 

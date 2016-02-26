@@ -7,6 +7,7 @@ using Traffic.Core;
 using System;
 using Commons.UI;
 using Commons.Utils;
+using UnityEngine;
 
 using strange.extensions.mediation.impl;
 
@@ -133,7 +134,7 @@ namespace Traffic.MVCS.Views.UI
 
             view.SetLocked(levels.TriesLeft <= 0);
 
-            view.Layout();
+            view.Layout(Screen.width, Screen.height);
 
             base.OnRegister();
         }

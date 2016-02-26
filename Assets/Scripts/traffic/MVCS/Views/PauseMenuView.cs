@@ -39,11 +39,11 @@ namespace Traffic.MVCS.Views.UI
             base.OnDestroy();
         }
 
-        public override void Layout()
+        public override void Layout(int width, int height)
         {
-            base.Layout();
+            base.Layout(width, height);
 
-            float ratio = (float)Screen.height / (float)Screen.width;
+            float ratio = (float)height / (float)width;
 
             // float scaledDimention;
 

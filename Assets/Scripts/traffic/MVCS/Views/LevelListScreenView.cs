@@ -150,11 +150,18 @@ namespace Traffic.MVCS.Views.UI
             debugMessage.text = text;
         }
 
-        public override void Layout()
+        void Update()
         {
-            base.Layout();
+           
+        }
 
-            float ratio = (float)Screen.height / (float)Screen.width;
+        public override void Layout(int width, int height)
+        {
+            base.Layout(width, height);
+
+            SetDebugMessage(Screen.orientation.ToString() + " ( " + width + "x" + height + " )");
+
+            float ratio = (float)height / (float)width;
 
             if (ratio < 1)
             {

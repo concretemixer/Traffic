@@ -57,8 +57,9 @@ namespace Traffic.MVCS.Views.UI
         {
             view.onButtonOk.AddListener(closeHandler);
             view.onButtonClose.AddListener(closeHandler);
+
+            view.Layout(Screen.width, Screen.height);
             
-            view.Layout();
             base.OnRegister();
         }
 

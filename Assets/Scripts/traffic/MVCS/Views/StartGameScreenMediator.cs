@@ -6,6 +6,7 @@ using Traffic.MVCS.Models;
 using Traffic.Core;
 using Commons.UI;
 using Commons.Utils;
+using UnityEngine;
 
 using strange.extensions.mediation.impl;
 
@@ -109,7 +110,7 @@ namespace Traffic.MVCS.Views.UI
             view.onButtonBuyNoAds.AddListener(buyNoAdsHandler);
 
             view.ShowShop(false, iapService);
-            view.Layout();
+            view.Layout(Screen.width, Screen.height);
 
             base.OnRegister();
         }

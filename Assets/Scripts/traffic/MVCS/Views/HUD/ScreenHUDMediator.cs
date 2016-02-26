@@ -6,6 +6,7 @@ using Traffic.MVCS.Models;
 using Traffic.Core;
 using Commons.UI;
 using Commons.Utils;
+using UnityEngine;
 
 using strange.extensions.mediation.impl;
 
@@ -62,7 +63,7 @@ namespace Traffic.MVCS.Views.UI.HUD
 			view.onButtonPauseLevel.AddListener(pauseLevelHandler);
           //  view.onRetyLevel.AddListener(retyLevelHandler);
 
-            view.Layout();
+            view.Layout(Screen.width, Screen.height);
             updateLevelProgress();
 
             view.SetTutorial(levels.CurrentLevelIndex == 0);

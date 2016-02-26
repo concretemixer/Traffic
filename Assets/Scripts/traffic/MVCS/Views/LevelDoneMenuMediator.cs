@@ -6,6 +6,7 @@ using Traffic.MVCS.Models;
 using Traffic.Core;
 using Commons.UI;
 using Commons.Utils;
+using UnityEngine;
 
 using strange.extensions.mediation.impl;
 
@@ -84,8 +85,8 @@ namespace Traffic.MVCS.Views.UI
 
             view.onButtonNextLevel.AddListener(nextLevelHandler);
             view.onButtonHome.AddListener(homeHandler);
-            view.SetScore((int)level.Score, stars);            
-            view.Layout();
+            view.SetScore((int)level.Score, stars);
+            view.Layout(Screen.width, Screen.height);
 
             base.OnRegister();
         }

@@ -7,7 +7,7 @@ using Traffic.Core;
 using Traffic.Components;
 using Commons.UI;
 using Commons.Utils;
-
+using UnityEngine;
 using strange.extensions.mediation.impl;
 
 namespace Traffic.MVCS.Views.UI
@@ -108,7 +108,7 @@ namespace Traffic.MVCS.Views.UI
             view.onButtonClose.AddListener(closeHandler);
             view.onButtonBuy.AddListener(buyLevelsHandler);
 
-            view.Layout();
+            view.Layout(Screen.width, Screen.height);
             view.SetPage(page, levels);
             view.ShowLock(false);            
             view.SetDebugMessage(EntryPoint.DebugMessage);

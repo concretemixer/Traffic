@@ -30,8 +30,26 @@ namespace Traffic.Core {
         {
             if (orientation != Screen.orientation)
             {
+                int w = Screen.width;
+                int h = Screen.height;
 
-                float ratio = (float)Screen.height / (float)Screen.width;
+                if (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown)
+                {
+                    w = Math.Min(Screen.width, Screen.height);
+                    h = Math.Max(Screen.width, Screen.height);
+                }
+                if (Screen.orientation == ScreenOrientation.Landscape || Screen.orientation == ScreenOrientation.LandscapeLeft || Screen.orientation == ScreenOrientation.LandscapeRight)
+                {
+                    w = Math.Max(Screen.width, Screen.height);
+                    h = Math.Min(Screen.width, Screen.height);
+                }
+#if UNITY_STANDALONE
+                w = Screen.width;
+                h = Screen.height;
+#endif
+
+                   
+                float ratio = (float)h / (float)w;
 
                 if (ratio < 1)
                     uiRoot.GetComponent<CanvasScaler>().referenceResolution = new Vector2(960, 960 * ratio);

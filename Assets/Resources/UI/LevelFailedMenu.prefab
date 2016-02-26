@@ -65,7 +65,7 @@ GameObject:
   - 114: {fileID: 11484946}
   m_Layer: 5
   m_Name: Text1 (3)
-  m_TagString: UI Horizontal
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,7 +116,7 @@ GameObject:
   - 114: {fileID: 11483422}
   m_Layer: 5
   m_Name: Title
-  m_TagString: UI Horizontal
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,7 +133,7 @@ GameObject:
   - 114: {fileID: 11482360}
   m_Layer: 5
   m_Name: Locked
-  m_TagString: UI Horizontal
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,7 +168,7 @@ GameObject:
   - 114: {fileID: 11493542}
   m_Layer: 5
   m_Name: Text1 (1)
-  m_TagString: UI Horizontal
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,7 +185,7 @@ GameObject:
   - 114: {fileID: 11409050}
   m_Layer: 5
   m_Name: Text1 (2)
-  m_TagString: UI Horizontal
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -253,7 +253,7 @@ GameObject:
   - 114: {fileID: 11440708}
   m_Layer: 5
   m_Name: TimerText
-  m_TagString: UI Horizontal
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1268,11 +1268,11 @@ RectTransform:
   - {fileID: 22435210}
   m_Father: {fileID: 22485582}
   m_RootOrder: 9
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 960, y: 960}
-  m_Pivot: {x: 0.5, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22405124
 RectTransform:
   m_ObjectHideFlags: 1
@@ -1379,7 +1379,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -180}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 512, y: 435}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22438812

@@ -6,9 +6,9 @@ namespace Traffic.MVCS.Views.UI
 {
     public class RotatableView : View
     {
-        public virtual void Layout()
+        public virtual void Layout(int width, int height)
         {
-            bool isVertical = Screen.height > Screen.width;
+            bool isVertical = height > width;
             GameObject[] vert = GameObject.FindGameObjectsWithTag("UI Vertical");
             foreach (var o in vert)
             {

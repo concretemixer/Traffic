@@ -143,7 +143,7 @@ namespace Traffic.MVCS.Views.UI
 
             view.onButtonNextStep.AddListener(nextStepHandler);
             
-            view.Layout();
+            view.Layout(Screen.width,Screen.height);
 
             base.OnRegister();
         }

@@ -27,6 +27,7 @@ namespace Traffic.MVCS.Commands
             gameMusic.volume = PlayerPrefs.GetFloat("volume.music", 1);
             menuMusic.volume = PlayerPrefs.GetFloat("volume.sound", 1);
 
+            GameObject.Find("UI Camera").SetActive(false);
             GameObject instance = Object.Instantiate(Resources.Load("levels/level0", typeof(GameObject))) as GameObject;
             instance.transform.SetParent(stageMenu.transform);
 

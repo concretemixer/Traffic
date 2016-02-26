@@ -29,11 +29,27 @@ namespace Commons.UI
 
         void handleOrientationChange()
         {
+            int w = Screen.width;
+            int h = Screen.height;
+            if (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown)
+            {
+                w = Math.Min(Screen.width, Screen.height);
+                h = Math.Max(Screen.width, Screen.height);
+            }
+            if (Screen.orientation == ScreenOrientation.Landscape || Screen.orientation == ScreenOrientation.LandscapeLeft || Screen.orientation == ScreenOrientation.LandscapeRight)
+            {
+                w = Math.Max(Screen.width, Screen.height);
+                h = Math.Min(Screen.width, Screen.height);
+            }
+#if UNITY_STANDALONE
+            w = Screen.width;
+            h = Screen.height;
+#endif
             foreach (var key in uiElements.Keys)
             {
                 if (uiElements[key].GetComponent<RotatableView>()!=null)
                 {
-                    uiElements[key].GetComponent<RotatableView>().Layout();
+                    uiElements[key].GetComponent<RotatableView>().Layout(w,h);
                 }
             }
         }

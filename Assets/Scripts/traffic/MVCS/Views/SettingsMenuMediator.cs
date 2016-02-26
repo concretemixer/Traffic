@@ -94,8 +94,8 @@ namespace Traffic.MVCS.Views.UI
 
             view.onMusicVolume.AddListener(musicVolumeHandler);
             view.onSoundVolume.AddListener(soundVolumeHandler);
-            
-            view.Layout();
+
+            view.Layout(Screen.width, Screen.height);
             base.OnRegister();
         }
 
