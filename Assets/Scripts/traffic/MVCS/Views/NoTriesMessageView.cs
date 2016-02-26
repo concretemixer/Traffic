@@ -5,30 +5,35 @@ using strange.extensions.signal.impl;
 
 namespace Traffic.MVCS.Views.UI
 {
-    public class LevelFailedMenuView : RotatableView
+    public class NoTriesMessageView : RotatableView
     {
         [SerializeField]
-        Button homeButton;
+        Button closeButton;
 
         [SerializeField]
-        Button retryButton;
-      
+        Button advertButton;
+
         [SerializeField]
-        Text score;
+        Button buyButton;
 
+        [SerializeField]
+        Text timerText;
 
-        public readonly Signal onButtonRetryLevel = new Signal();
-        public readonly Signal onButtonHome = new Signal();
+        public readonly Signal onButtonBuy = new Signal();
+        public readonly Signal onButtonAdvert = new Signal();
+        public readonly Signal onButtonClose = new Signal();
 
-        public void SetScore(int score)
+        public void SetTimerText(string text)
         {
-            this.score.text = score.ToString("D6");
+            this.timerText.text = text;
         }
+  
 
         protected override void Awake()
         {
-            homeButton.onClick.AddListener(onButtonHome.Dispatch);
-            retryButton.onClick.AddListener(onButtonRetryLevel.Dispatch);
+            closeButton.onClick.AddListener(onButtonClose.Dispatch);
+            advertButton.onClick.AddListener(onButtonAdvert.Dispatch);
+            buyButton.onClick.AddListener(onButtonBuy.Dispatch);
             base.Awake();
         }
 
@@ -36,8 +41,9 @@ namespace Traffic.MVCS.Views.UI
 
         protected override void OnDestroy()
         {
-            homeButton.onClick.RemoveListener(onButtonHome.Dispatch);
-            retryButton.onClick.RemoveListener(onButtonRetryLevel.Dispatch);
+            closeButton.onClick.RemoveListener(onButtonClose.Dispatch);
+            advertButton.onClick.RemoveListener(onButtonAdvert.Dispatch);
+            buyButton.onClick.RemoveListener(onButtonBuy.Dispatch);
             base.OnDestroy();
         }
 
@@ -54,20 +60,12 @@ namespace Traffic.MVCS.Views.UI
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 960);
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960 * ratio);
                 // scaledDimention = 960 * ratio;
-                retryButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-105, 10);
-                homeButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-250, 10);
-                score.GetComponent<RectTransform>().anchoredPosition = new Vector2(300, 172);
             }
             else
             {
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 960 / ratio);
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960);
 
-                retryButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-85, 10);
-                homeButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-215, 10);
-
-
-                score.GetComponent<RectTransform>().anchoredPosition = new Vector2(100, 172);
                 // scaledDimention = 960 / ratio;
             }
             this.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);

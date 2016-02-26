@@ -18,7 +18,8 @@ namespace Commons.UI
             { Id.ScreenDebug, "UI/ScreenDebug" },
             { Id.ScreenSettings, "UI/SettingsMenu" },
             { Id.ScreenSettingsIngame, "UI/SettingsMenuIngame" },
-            { Id.InfoMessage, "UI/InfoMessage" }
+            { Id.InfoMessage, "UI/InfoMessage" },
+            { Id.NoTriesMessage, "UI/NoTriesMessage" }
         };
 
         public enum Id
@@ -34,7 +35,8 @@ namespace Commons.UI
             ScreenDebug,
             ScreenSettings,
             ScreenSettingsIngame,
-            InfoMessage
+            InfoMessage,
+            NoTriesMessage
         }
 
         public static string GetPath(UIMap.Id _id)

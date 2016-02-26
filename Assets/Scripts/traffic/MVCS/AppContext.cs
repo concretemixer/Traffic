@@ -106,6 +106,7 @@ namespace Traffic.MVCS
             mediationBinder.Bind<StartGameScreenView>().To<StartGameScreenMediator>();
             mediationBinder.Bind<SettingsMenuView>().To<SettingsMenuMediator>();
             mediationBinder.Bind<InfoMessageView>().To<InfoMesageMediator>();
+            mediationBinder.Bind<NoTriesMessageView>().To<NoTriesMessageMediator>();
         }
 
         void mapOthers()

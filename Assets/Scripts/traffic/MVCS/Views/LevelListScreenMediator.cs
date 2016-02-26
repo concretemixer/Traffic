@@ -58,8 +58,13 @@ namespace Traffic.MVCS.Views.UI
 
         void startLevelHandler(int index)
         {
-            levels.CurrentLevelIndex = index;            
-            startLevel.Dispatch(levels.CurrentLevelIndex);
+            if (levels.TriesLeft <= 0)
+                UI.Show(UIMap.Id.NoTriesMessage);
+            else
+            {
+                levels.CurrentLevelIndex = index;
+                startLevel.Dispatch(levels.CurrentLevelIndex);
+            }
         }
 
         void homeHandler()
