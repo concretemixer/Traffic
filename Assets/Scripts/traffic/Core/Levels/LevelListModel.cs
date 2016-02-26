@@ -23,10 +23,16 @@ namespace Traffic.Core
             set;
         }
 
+        int _TriesLeft;
         public int TriesLeft
         {
-            get;
-            set;
+            get {
+                return _TriesLeft;
+            }
+            set {
+                _TriesLeft = value;
+                PlayerPrefs.SetInt("tries.left", _TriesLeft);
+            }
         }
 
         public int TriesTotal
@@ -35,11 +41,16 @@ namespace Traffic.Core
             set;
         }
 
-
+        DateTime _TriesRefreshTime;
         public DateTime TriesRefreshTime
         {
-            get;
-            set;
+            get { return _TriesRefreshTime; }
+            set
+            {
+                _TriesRefreshTime = value;
+                Int32 unixTimestamp = (Int32)(value.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                PlayerPrefs.SetInt("tries.refresh", unixTimestamp);
+            }
         }
 
         public LevelState GetLevelState(int index)
@@ -66,8 +77,17 @@ namespace Traffic.Core
         {
             CurrentLevelIndex = 0;
 
-            TriesLeft = 1;
+            _TriesLeft = PlayerPrefs.GetInt("tries.left", 10);
             TriesTotal = 10;
+
+            Int32 unixTimestamp = PlayerPrefs.GetInt("tries.refresh", 0);
+            _TriesRefreshTime = new DateTime(1970, 1, 1).AddSeconds(unixTimestamp);
+
+            if (TriesLeft <= 0)
+            {
+                if (DateTime.Now > TriesRefreshTime)
+                    TriesLeft = TriesTotal;
+            }
 
             LevelNames = new string[] 
 	        {

@@ -9,6 +9,7 @@ using Commons.UI;
 using Commons.Utils;
 using UnityEngine;
 using strange.extensions.mediation.impl;
+using System;
 
 namespace Traffic.MVCS.Views.UI
 {
@@ -58,7 +59,18 @@ namespace Traffic.MVCS.Views.UI
 
         void startLevelHandler(int index)
         {
+            bool block = false;
+
+
             if (levels.TriesLeft <= 0)
+            {
+                if (DateTime.Now > levels.TriesRefreshTime)
+                    levels.TriesLeft = levels.TriesTotal;
+                else
+                    block = true;
+            }
+
+            if (block)
                 UI.Show(UIMap.Id.NoTriesMessage);
             else
             {
