@@ -15,6 +15,7 @@ namespace Traffic.MVCS.Commands.Init
         public override void Execute()
         {
 #if UNITY_STANDALONE
+            injectionBinder.Bind<FacebookSN>().ToSingleton();
             return;
 #endif
             Retain();
