@@ -50,9 +50,14 @@ namespace Traffic.MVCS.Services
             Collector.CustomEvent("fb_connected", Params.NONE);
         }
         
-        public void FacebookShare()
+        public void FacebookShareStart()
         {
-            Collector.CustomEvent("fb_share", Params.NONE);
+            Collector.CustomEvent("fb_share_start", Params.NONE);
+        }
+        
+        public void FacebookShareComplete()
+        {
+            Collector.CustomEvent("fb_share_complete", Params.NONE);
         }
         
         public void AdsWindowShown()

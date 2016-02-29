@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using strange.extensions.signal.impl;
-using strange.extensions.mediation.impl;
 
 namespace Traffic.MVCS.Views.UI
 {
@@ -47,10 +46,6 @@ namespace Traffic.MVCS.Views.UI
             base.Awake();
         }
 
-       
-
-
-
         protected override void OnDestroy()
         {
                okButton.onClick.RemoveListener(onButtonOk.Dispatch);
@@ -58,7 +53,6 @@ namespace Traffic.MVCS.Views.UI
 
             base.OnDestroy();
         }
-
 
         public override void Layout(int width, int height)
         {

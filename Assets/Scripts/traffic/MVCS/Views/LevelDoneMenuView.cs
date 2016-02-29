@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using strange.extensions.mediation.impl;
 using strange.extensions.signal.impl;
 
 namespace Traffic.MVCS.Views.UI
@@ -22,11 +21,13 @@ namespace Traffic.MVCS.Views.UI
 
         public readonly Signal onButtonNextLevel = new Signal();
         public readonly Signal onButtonHome = new Signal();
+        public readonly Signal onShareButton = new Signal();
 
         protected override void Awake()
         {
             homeButton.onClick.AddListener(onButtonHome.Dispatch);
             nextButton.onClick.AddListener(onButtonNextLevel.Dispatch);
+            shareButton.onClick.AddListener(onShareButton.Dispatch);
             base.Awake();
         }
 
@@ -52,6 +53,7 @@ namespace Traffic.MVCS.Views.UI
         {
             nextButton.onClick.RemoveListener(onButtonNextLevel.Dispatch);
             homeButton.onClick.RemoveListener(onButtonHome.Dispatch);
+            shareButton.onClick.RemoveListener(onShareButton.Dispatch);
             base.OnDestroy();
         }
 

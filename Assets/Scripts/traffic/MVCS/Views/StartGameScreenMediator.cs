@@ -1,14 +1,12 @@
 using Traffic.MVCS.Commands.Signals;
-//using traffic.MVCS.model;
-//using traffic.MVCS.model.level;
-using Traffic.MVCS.Views.UI.HUD;
 using Traffic.MVCS.Models;
-using Traffic.Core;
 using Commons.UI;
-using Commons.Utils;
 using UnityEngine;
 
 using strange.extensions.mediation.impl;
+using Commons.SN.Facebook;
+using Commons.Utils;
+using Traffic.MVCS.Services;
 
 namespace Traffic.MVCS.Views.UI
 {
@@ -25,6 +23,11 @@ namespace Traffic.MVCS.Views.UI
 
         [Inject]
         public SwitchToSettingsScreenSignal toSettingsSignal { get; set; }
+
+        [Inject]
+        public FacebookSN facebook { private get; set; }
+        
+        public AnalyticsCollector analytics { private get; set; }
 
         [Inject]
         public IUIManager UI { get; set; }
@@ -94,12 +97,12 @@ namespace Traffic.MVCS.Views.UI
                 view.SetCaption("PURCHASE FAILED");
                 view.SetText("For some reason your purchase is failed");
                 view.onButtonOk.AddListener(infoOkHandler);
-            }           
+            }
         }
 
 
         public override void OnRegister()
-        {          
+        {
             view.onButtonStart.AddListener(homeHandler);
             view.onButtonOptions.AddListener(optionsHandler);
             view.onButtonConnect.AddListener(connectHandler);
@@ -112,10 +115,25 @@ namespace Traffic.MVCS.Views.UI
             view.ShowShop(false, iapService);
             view.Layout(Screen.width, Screen.height);
 
-            base.OnRegister();
+            view.onButtonConnect.AddListener(connectFBClickHandler);
         }
 
-
+        void connectFBClickHandler()
+        {
+            if (facebook.IsLoggedIn)
+            {
+                var message = UI.Show<InfoMessageView>(UIMap.Id.InfoMessage);
+                message.Show(true);
+                message.SetText("You already connected to Facebook!\nShare best scores with your friends!");
+                message.SetCaption("Awesome!");
+            }
+            else
+            {
+                facebook.Login().Done(
+                    analytics.FacebookConnected
+                );
+            }
+        }
 
 
         public override void OnRemove()
@@ -125,7 +143,8 @@ namespace Traffic.MVCS.Views.UI
             view.onButtonConnect.RemoveListener(connectHandler);
             view.onButtonShop.RemoveListener(shopHandler);
             view.onButtonShopClose.RemoveListener(closeShopHandler);
-          
+            view.onButtonConnect.RemoveListener(connectFBClickHandler);
+
             base.OnRemove();
         }
     }
