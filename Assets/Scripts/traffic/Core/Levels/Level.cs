@@ -33,7 +33,7 @@ public class Level : MonoBehaviour  {
 	// Use this for initialization
 	void Start () {
 		Debug.Log ("start");
-		
+        Vehicle.NextNumber = 1;		
 
 	//	cameraMain = GameObject.Find("UI Camera");
 
@@ -84,7 +84,7 @@ public class Level : MonoBehaviour  {
 
         }
 #endif
-
+       
 
         UpdateCamera ();
 		//Time.timeScale = 3;

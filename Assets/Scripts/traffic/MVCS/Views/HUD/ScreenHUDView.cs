@@ -115,9 +115,12 @@ namespace Traffic.MVCS.Views.UI.HUD
             }
             else
             {
-               bg.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-               progressBg.GetComponent<RectTransform>().anchoredPosition = new Vector2(-36, -20);
-               progressBg.GetComponent<RectTransform>().localScale = new Vector3(0.5f, 1, 1);
+                bg.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+                progressBg.GetComponent<RectTransform>().anchoredPosition = new Vector2(-36, -20);
+                if (scaledDimention<599)
+                    progressBg.GetComponent<RectTransform>().localScale = new Vector3(0.4f, 1, 1);
+                else
+                    progressBg.GetComponent<RectTransform>().localScale = new Vector3(0.5f, 1, 1);
 
                pauseButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(50, 45);
 

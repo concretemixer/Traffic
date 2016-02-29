@@ -50,6 +50,8 @@ namespace Traffic.MVCS.Views.UI
 
         void Update()
         {
+            UnityEngine.Debug.Log("Update");
+
             if (view.Step < 0)
                 return;
             target = null;
@@ -81,7 +83,10 @@ namespace Traffic.MVCS.Views.UI
             }
 
             if (Camera.current == null)
+            {
+               // UnityEngine.Debug.Log("No camera");
                 return;
+            }
 
             float k = (Time.unscaledTime % 0.8f) / 0.8f;
 
@@ -92,18 +97,18 @@ namespace Traffic.MVCS.Views.UI
                 screenPos.x /= (float)Camera.current.pixelWidth;
                 screenPos.y /= (float)Camera.current.pixelHeight;
 
-                // Debug.Log(screenPos);
+                UnityEngine.Debug.Log(screenPos);
 
 
                 float w = view.gameObject.GetComponent<RectTransform>().rect.width;
                 float h = view.gameObject.GetComponent<RectTransform>().rect.height;
 
-                //   Debug.Log(w + "," + h);
+              //  UnityEngine.Debug.Log(w + "," + h);
 
                 w *= screenPos.x;
                 h *= screenPos.y;
 
-                //Debug.Log("k = " + k);
+              //  UnityEngine.Debug.Log("k = " + k);
 
                 if (view.Step == 1)
                 {
@@ -134,6 +139,7 @@ namespace Traffic.MVCS.Views.UI
                 if (view.Step == 3)
                     view.SetBubblePos(80, 570, 100, false);
             }
+
 
             view.SetBubbleText(texts[view.Step]);
         }

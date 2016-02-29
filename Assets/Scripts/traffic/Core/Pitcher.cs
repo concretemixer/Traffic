@@ -89,6 +89,7 @@ public class Pitcher : MonoBehaviour {
         _pause = Pause;
         spawnTime = 0;
         nextVehicleIdx = 0;
+        Vehicle.NextNumber = 1;
     }
 }
 
