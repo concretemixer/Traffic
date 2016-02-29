@@ -21,8 +21,7 @@ namespace Traffic.MVCS.Commands
 		public override void Execute()
 		{
 			Time.timeScale=0;
-            UI.Hide(UIMap.Id.ScreenSettings);
-            UI.Hide(UIMap.Id.ScreenSettingsIngame);	
+            UI.Hide(UIMap.Id.ScreenSettings);            
             UI.Show(UIMap.Id.PauseMenu);	
 		}
 	}

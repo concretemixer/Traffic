@@ -105,7 +105,7 @@ namespace Traffic.MVCS.Views.UI
             codeText.text = codeText.text.Substring(0,len-1);
         }
 
-
+        
 
         private float cursorCooldown = 0;
         private void Update()
@@ -132,6 +132,20 @@ namespace Traffic.MVCS.Views.UI
             soundSlider.onValueChanged.RemoveListener(onSoundVolume.Dispatch);
 
             base.OnDestroy();
+        }
+
+        private bool _ingame = false;
+
+        public bool Ingame
+        {
+            get { return _ingame; }
+        }
+
+
+        public void SetIngame(bool value)
+        {
+            _ingame = value;
+            codeButton.gameObject.SetActive(!value);
         }
 
         public void ShowCode(bool show)

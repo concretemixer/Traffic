@@ -5,6 +5,7 @@ using strange.extensions.context.api;
 using Traffic.Components;
 using Traffic.Core;
 using Traffic.MVCS.Models;
+using Traffic.MVCS.Views.UI;
 using Commons.Utils;
 
 namespace Traffic.MVCS.Commands
@@ -23,10 +24,8 @@ namespace Traffic.MVCS.Commands
             UI.Hide(UIMap.Id.PauseMenu);
             UI.Hide(UIMap.Id.ScreenMain);
 
-            if (Time.timeScale==0)
-                UI.Show(UIMap.Id.ScreenSettingsIngame);
-            else
-                UI.Show(UIMap.Id.ScreenSettings);
+            SettingsMenuView view = UI.Show<SettingsMenuView>(UIMap.Id.ScreenSettings);
+            view.SetIngame(Time.timeScale == 0);                
         }
 	}
 }

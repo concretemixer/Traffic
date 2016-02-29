@@ -17,7 +17,6 @@ namespace Commons.UI
             { Id.ScreenTutorial, "UI/TutorialStepScreen" },
             { Id.ScreenDebug, "UI/ScreenDebug" },
             { Id.ScreenSettings, "UI/SettingsMenu" },
-            { Id.ScreenSettingsIngame, "UI/SettingsMenuIngame" },
             { Id.InfoMessage, "UI/InfoMessage" },
             { Id.NoTriesMessage, "UI/NoTriesMessage" }
         };
@@ -34,7 +33,6 @@ namespace Commons.UI
             ScreenTutorial,
             ScreenDebug,
             ScreenSettings,
-            ScreenSettingsIngame,
             InfoMessage,
             NoTriesMessage
         }

@@ -114,11 +114,11 @@ public class Level : MonoBehaviour  {
         if (musicVolume == 0)
         {
             float soundVolume = PlayerPrefs.GetFloat("volume.sound", 1);
-            GameObject snd = GameObject.Find("AmbientSound");
-            if (snd != null)
-            {
-                snd.GetComponent<AudioSource>().volume = soundVolume;
-            }
+           // GameObject snd = GameObject.Find("AmbientSound");
+           // if (snd != null)
+          //  {
+          //      snd.GetComponent<AudioSource>().volume = soundVolume;
+         //   }
         }
 
 	}

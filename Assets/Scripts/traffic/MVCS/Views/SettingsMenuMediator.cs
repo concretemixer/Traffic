@@ -67,22 +67,26 @@ namespace Traffic.MVCS.Views.UI
         {
             PlayerPrefs.SetFloat("volume.music",value);
 
+            
             AudioSource gameMusic = GameObject.Find("GameMusic").GetComponent<AudioSource>();
             AudioSource menuMusic = GameObject.Find("MenuMusic").GetComponent<AudioSource>();
-
+            
             gameMusic.volume = value;
             menuMusic.volume = value;
+
+            AudioSource gameAmbient = GameObject.Find("GameAmbient").GetComponent<AudioSource>();
+            if (view.Ingame)
+                gameAmbient.mute = value > 0;
+            else
+                gameAmbient.mute = true;
         }
 
         void soundVolumeHandler(float value)
         {
             PlayerPrefs.SetFloat("volume.sound", value);
 
-            GameObject snd = GameObject.Find("AmbientSound");
-            if (snd != null)
-            {
-                snd.GetComponent<AudioSource>().volume = value;
-            }
+            AudioSource gameAmbient = GameObject.Find("GameAmbient").GetComponent<AudioSource>();
+            gameAmbient.GetComponent<AudioSource>().volume = value;                        
         }
 
         public override void OnRegister()
