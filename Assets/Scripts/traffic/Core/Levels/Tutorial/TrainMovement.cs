@@ -45,14 +45,8 @@ namespace Traffic.Core
             if (lifetime < 7.5)
                 return;
 
-            v += Time.deltaTime * 11;
-            if (v > vmax)
-                v = vmax;
-
-            Vector3 shift = new Vector3(-v * Time.deltaTime,0,0);
-
-            transform.localPosition += shift;
-
+            if (GetComponent<Rigidbody>().velocity.magnitude < vmax)
+                GetComponent<Rigidbody>().AddForce(-5, 0, 0, ForceMode.Force);
         }
     }
 

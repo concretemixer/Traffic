@@ -10,6 +10,7 @@ namespace Traffic.Core
         // Use this for initialization
         float lifetime = 0;
         bool down = false;
+        private bool stopped = false;
 
         GameObject flash;
 
@@ -25,12 +26,22 @@ namespace Traffic.Core
             transform.localPosition = Vector3.zero;
             lifetime = 0;
             down = false;
+            stopped = false;
+        }
+
+
+        public override void Stop()
+        {
+            stopped = true;
         }
 
 
         // Update is called once per frame
         void Update()
         {
+            if (stopped)
+                return;
+
             lifetime += Time.deltaTime;
             if (down)
             {
