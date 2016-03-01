@@ -25,7 +25,12 @@ namespace Traffic.MVCS.Commands
             AudioSource menuMusic = GameObject.Find("MenuMusic").GetComponent<AudioSource>();
 
             gameMusic.volume = PlayerPrefs.GetFloat("volume.music", 1);
-            menuMusic.volume = PlayerPrefs.GetFloat("volume.sound", 1);
+            menuMusic.volume = PlayerPrefs.GetFloat("volume.music", 1);
+
+
+            AudioSource gameAmbient = GameObject.Find("GameAmbient").GetComponent<AudioSource>();
+            gameAmbient.volume = PlayerPrefs.GetFloat("volume.sound", 1);
+            gameAmbient.mute = true;
 
             GameObject.Find("UI Camera").SetActive(false);
             GameObject instance = Object.Instantiate(Resources.Load("levels/level0", typeof(GameObject))) as GameObject;

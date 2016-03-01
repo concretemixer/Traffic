@@ -79,6 +79,7 @@ public class Pitcher : MonoBehaviour {
             v2.onVehicleCrashed = onVehicleCrashed;
             v2.onVehicleReachedDestination = onVehicleReachedDestination;
             v2.onLevelComplete = onLevelComplete;
+            v2.onLevelFailed = onLevelFailed;
             v2.onScoreGrow = onScoreGrow;
 		}
 

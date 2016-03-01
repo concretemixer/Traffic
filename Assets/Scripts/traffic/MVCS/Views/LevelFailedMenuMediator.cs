@@ -79,6 +79,7 @@ namespace Traffic.MVCS.Views.UI
             if (levels.TriesLeft <= 0)
                 UI.Show(UIMap.Id.NoTriesMessage);
 
+            view.SetScore((int)level.Score);
             view.Layout(Screen.width, Screen.height);
 
             base.OnRegister();

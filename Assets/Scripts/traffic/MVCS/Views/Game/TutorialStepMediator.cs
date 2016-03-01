@@ -129,11 +129,20 @@ namespace Traffic.MVCS.Views.UI
                 if (vertical)
                     view.SetBubblePos(w, h, -100, true, true);
                 else
-                    view.SetBubblePos(w, h, 50, true,false);
+                    view.SetBubblePos(w, h, 80, true,false);
 
             }
             else
             {
+                float ratio = (float)Screen.height / (float)Screen.width;
+
+                float scaledDimention;
+
+                if (ratio < 1)
+                    scaledDimention = 960 * ratio;            
+                else
+                    scaledDimention = 960 / ratio;
+
                 if (vertical)
                 {
                     view.SetShadePos(-160, 0);
@@ -148,11 +157,11 @@ namespace Traffic.MVCS.Views.UI
                 {
                     view.SetShadePos(0, -160);
                     if (view.Step == 1)
-                        view.SetBubblePos(300, 580, 0, false, false);
+                        view.SetBubblePos(300, scaledDimention-20, 0, false, false);
                     if (view.Step == 2)
-                        view.SetBubblePos(885, 570, -100, false, true);
+                        view.SetBubblePos(885, scaledDimention-30, -100, false, true);
                     if (view.Step == 3)
-                        view.SetBubblePos(80, 570, 100, false, false);
+                        view.SetBubblePos(80, scaledDimention-30, 100, false, false);
                 }
             }
 

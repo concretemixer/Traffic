@@ -16,6 +16,8 @@ public class Vehicle : MonoBehaviour {
   
     public LevelComplete onLevelComplete { get; set; }
 
+    public LevelFailed onLevelFailed { get; set; }
+
     public ScoreGrow onScoreGrow { get; set; }
 
 	public AudioClip[] crashSound;
@@ -48,6 +50,7 @@ public class Vehicle : MonoBehaviour {
 
     private float scoreGrowK = 1;
     private bool finished = false;
+    private bool interactable = true;
 
 	// Use this for initialization
 	void Start () {
@@ -67,8 +70,9 @@ public class Vehicle : MonoBehaviour {
 
 		GetComponent<Renderer> ().material.color = new Color (Random.value, (float)(Random.value*0.2f), Random.value);
 
-		if (gameObject.tag == "VehicleAI") {
-			ShowEffects();
+        ShowEffects();
+		if (gameObject.tag == "Vehicle") {
+			StopEffects();
 		}
 
 		if (gameObject.tag == "Vehicle") {
@@ -79,14 +83,23 @@ public class Vehicle : MonoBehaviour {
 				}
 			}
             onLevelComplete.AddListener(StopOnLevelComplete);
+            onLevelFailed.AddListener(StopOnLevelFailed);
         }
 	}
 
 
     void OnDestroy()
     {
-        if (gameObject.tag == "Vehicle") 
+        if (gameObject.tag == "Vehicle")
+        {
             onLevelComplete.RemoveListener(StopOnLevelComplete);
+            onLevelFailed.RemoveListener(StopOnLevelFailed);
+        }
+    }
+
+    void StopOnLevelFailed()
+    {
+        interactable = false;        
     }
 
     void StopOnLevelComplete() 
@@ -296,6 +309,9 @@ public class Vehicle : MonoBehaviour {
 
 	public void SlowDown()
 	{
+        if (!interactable)
+            return;
+
 		if (gear == 1) {
 			//GetComponent<Rigidbody> ().velocity = new Vector3 (0, 0, 0);
 			deceleration = true;
@@ -349,6 +365,9 @@ public class Vehicle : MonoBehaviour {
 
 	public void SpeedUp()
 	{
+        if (!interactable)
+            return;
+
 		if (gear == 0) {
 			acceleration = true;
 			targetSpeed = NormalSpeed;
