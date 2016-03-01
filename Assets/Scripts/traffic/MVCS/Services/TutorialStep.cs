@@ -3,7 +3,7 @@ using UnityEngine.Analytics;
 
 namespace Traffic.MVCS.Services
 {
-    public enum TutoroalStep
+    public enum TutorialStep
     {
         START = 0,
         SHOW_FIRST_HINT = 1

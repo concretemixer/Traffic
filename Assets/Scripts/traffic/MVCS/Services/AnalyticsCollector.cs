@@ -25,7 +25,7 @@ namespace Traffic.MVCS.Services
             }
         }
 
-        public void LogTutorialStep(TutoroalStep _step)
+        public void LogTutorialStep(TutorialStep _step)
         {
             Collector.CustomEvent("tutorial", Params.Simple("step", (int)_step));
         }

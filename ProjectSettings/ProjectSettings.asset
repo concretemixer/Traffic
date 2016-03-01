@@ -97,7 +97,7 @@ PlayerSettings:
   xboxOneDisableKinectGpuReservation: 0
   virtualRealitySupported: 0
   productGUID: 1781933ced5dea2438f196d0b09fbcf7
-  AndroidBundleVersionCode: 6
+  AndroidBundleVersionCode: 7
   AndroidMinSdkVersion: 16
   AndroidPreferredInstallLocation: 1
   aotOptions: 
@@ -158,8 +158,8 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 1
   androidSplashScreen: {fileID: 2800000, guid: 8d75fc4238bcb42a7a4d7d3c9f342f67, type: 3}
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: D:/src/concretemixer.keystore
+  AndroidKeyaliasName: max
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
   androidEnableBanner: 1
@@ -464,7 +464,7 @@ PlayerSettings:
   WebGL::emscriptenArgs: 
   WebGL::template: APPLICATION:Default
   additionalIl2CppArgs::additionalIl2CppArgs: 
-  cloudProjectId: 6d41d8c6-1449-4459-b1df-45d40c474002
+  cloudProjectId: e103e3b3-9cbb-4141-bd7c-53d4498d333f
   projectName: Traffic Storm
-  organizationId: crabscrew
+  organizationId: max-4195446
   cloudEnabled: 0
