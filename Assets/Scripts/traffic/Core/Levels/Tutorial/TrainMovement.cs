@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Traffic.MVCS.Commands.Signals;
 
 namespace Traffic.Core
 {
@@ -7,6 +8,8 @@ namespace Traffic.Core
     public class TrainMovement : TutorialScenarioBase
     {
 
+
+        bool stop = false;
         float lifetime = 0;
         private float v = 0;
         private float vmax = 30;
@@ -18,9 +21,14 @@ namespace Traffic.Core
             startPos = transform.localPosition;
         }
 
+        public override void Stop()
+        {
+            stop = true;
+        }
 
         public override void Reset()
         {
+            stop = false;
             lifetime = 0;
             v = 0;
             transform.localPosition = startPos;
@@ -29,6 +37,8 @@ namespace Traffic.Core
         // Update is called once per frame
         void Update()
         {
+            if (stop)
+                return;
 
             lifetime += Time.deltaTime;
 

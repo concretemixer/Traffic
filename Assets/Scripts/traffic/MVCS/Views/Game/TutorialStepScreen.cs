@@ -65,28 +65,31 @@ namespace Traffic.MVCS.Views.UI
             shadeImage.GetComponent<RectTransform>().anchoredPosition = new Vector3(x, y, 0);            
         }
 
-        public void SetBubblePos(float x, float y, int shift, bool top)
+        public void SetBubblePos(float x, float y, int shift, bool top, bool right)
         {
             bubbleBottomImage.GetComponent<RectTransform>().anchoredPosition = new Vector3(x, y, 0);
             bubbleTopImage.GetComponent<RectTransform>().anchoredPosition = new Vector3(x, y, 0);
             bubbleBottomImage.gameObject.SetActive(!top);
             bubbleTopImage.gameObject.SetActive(top);
 
-            foreach (Image bubble in bubbleTopImage.gameObject.GetComponentsInChildren<Image>())
+            Image bubble = top ? bubbleTopImage : bubbleBottomImage;
+
+            foreach (Image img in bubble.gameObject.GetComponentsInChildren<Image>())
             {
-                if (bubble.gameObject.name == "Bubble")
+                if (img.gameObject.name == "Bubble")
                 {
-                    Vector3 pos = bubble.GetComponent<RectTransform>().anchoredPosition;
-                    bubble.GetComponent<RectTransform>().anchoredPosition = new Vector3(shift, pos.y, 0);
+                    Vector3 pos = img.GetComponent<RectTransform>().anchoredPosition;
+                    img.GetComponent<RectTransform>().anchoredPosition = new Vector3(shift, pos.y, 0);
                 }
-            }
-            foreach (Image bubble in bubbleBottomImage.gameObject.GetComponentsInChildren<Image>())
-            {
-                if (bubble.gameObject.name == "Bubble")
+                if (img.gameObject.name == "BubbleTipLeft")
                 {
-                    Vector3 pos = bubble.GetComponent<RectTransform>().anchoredPosition;
-                    bubble.GetComponent<RectTransform>().anchoredPosition = new Vector3(shift, pos.y, 0);
+                    img.GetComponent<Image>().enabled = !right;
                 }
+                if (img.gameObject.name == "BubbleTipRight")
+                {
+                    img.GetComponent<Image>().enabled = right;
+                }
+
             }
         }
 

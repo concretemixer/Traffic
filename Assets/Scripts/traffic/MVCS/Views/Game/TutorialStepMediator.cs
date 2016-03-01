@@ -88,6 +88,8 @@ namespace Traffic.MVCS.Views.UI
                 return;
             }
 
+            bool vertical = Screen.height > Screen.width;
+
             float k = (Time.unscaledTime % 0.8f) / 0.8f;
 
             if (target != null)
@@ -124,20 +126,34 @@ namespace Traffic.MVCS.Views.UI
                 }
                 view.SetShadePos(w, h);
 
-                //if (view.Step==0)
-                view.SetBubblePos(w, h, 50, true);
-                //else
-                //  view.SetBubblePos(w, h, false);
+                if (vertical)
+                    view.SetBubblePos(w, h, -100, true, true);
+                else
+                    view.SetBubblePos(w, h, 50, true,false);
+
             }
             else
             {
-                view.SetShadePos(0, -160);
-                if (view.Step==1)
-                    view.SetBubblePos(300, 580, 0 ,false);
-                if (view.Step == 2)
-                    view.SetBubblePos(845, 570, -70, false);
-                if (view.Step == 3)
-                    view.SetBubblePos(80, 570, 100, false);
+                if (vertical)
+                {
+                    view.SetShadePos(-160, 0);
+                    if (view.Step == 1)
+                        view.SetBubblePos(300, 940, 0, false, false);
+                    if (view.Step == 2)
+                        view.SetBubblePos(510, 930, -120, false, true);
+                    if (view.Step == 3)
+                        view.SetBubblePos(80, 930, 100, false, false);
+                }
+                else
+                {
+                    view.SetShadePos(0, -160);
+                    if (view.Step == 1)
+                        view.SetBubblePos(300, 580, 0, false, false);
+                    if (view.Step == 2)
+                        view.SetBubblePos(885, 570, -100, false, true);
+                    if (view.Step == 3)
+                        view.SetBubblePos(80, 570, 100, false, false);
+                }
             }
 
 
