@@ -7,6 +7,7 @@ using Traffic.Core;
 using Traffic.MVCS.Models;
 using Commons.Utils;
 using Traffic.MVCS.Views.UI;
+using Traffic.MVCS.Services;
 
 
 namespace Traffic.MVCS.Commands
@@ -23,8 +24,13 @@ namespace Traffic.MVCS.Commands
         public int Point { get; set; }
 
 
+        [Inject]
+        public AnalyticsCollector analytics { private get; set; }
+
 		public override void Execute()
 		{
+            analytics.LogTutorialStep((TutorialStep)Point);
+
             Time.timeScale = 0;
             TutorialStepScreen screen = UI.Show<TutorialStepScreen>(UIMap.Id.ScreenTutorial);
             screen.SetStep(Point);            
