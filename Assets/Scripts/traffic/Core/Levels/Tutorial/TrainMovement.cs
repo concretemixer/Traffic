@@ -11,7 +11,6 @@ namespace Traffic.Core
 
         bool stop = false;
         float lifetime = 0;
-        private float v = 0;
         private float vmax = 30;
         private Vector3 startPos;
 
@@ -30,7 +29,6 @@ namespace Traffic.Core
         {
             stop = false;
             lifetime = 0;
-            v = 0;
             transform.localPosition = startPos;
         }
 
