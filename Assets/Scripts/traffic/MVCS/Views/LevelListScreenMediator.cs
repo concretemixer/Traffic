@@ -15,8 +15,11 @@ namespace Traffic.MVCS.Views.UI
 {
     public class LevelListScreenMediator : Mediator
     {
+        [Inject]
+        public PurshaseOk onPurchaseOk { get; set; }
 
-
+        [Inject]
+        public PurchaseFailed onPurchaseFailed { get; set; }
 
         [Inject]
         public LevelListScreenView view
@@ -97,23 +100,32 @@ namespace Traffic.MVCS.Views.UI
                 view.ShowLock(false);
         }
 
+        void purchaseOkHandler()
+        {            
+            InfoMessageView view = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
+            view.SetCaption("PURCHASE OK");
+            view.SetText("You have purchased 12 additional levels for $1");
+            view.SetMessageMode(true);
+            view.onButtonOk.AddListener(infoOkHandler);
+        }
+
+        void purchaseFailHandler()
+        {            
+            InfoMessageView view = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
+            view.SetCaption("PURCHASE FAILED");
+            view.SetText("For some reason your purchase is failed");
+            view.SetMessageMode(true);
+            view.onButtonOk.AddListener(infoOkHandler);
+        }
+
+
         void buyLevelsHandler()
         {
             UI.Hide(UIMap.Id.InfoMessage);
-            if (iapService.Buy(IAPType.AdditionalLevels))
-            {
-                InfoMessageView view = UI.Show<InfoMessageView>(UIMap.Id.InfoMessage);
-                view.SetCaption("PURCHASE OK");
-                view.SetText("You have purchased 12 additional levels for $1");
-                view.onButtonOk.AddListener(infoOkHandler);
-            }
-            else
-            {
-                InfoMessageView view = UI.Show<InfoMessageView>(UIMap.Id.InfoMessage);
-                view.SetCaption("PURCHASE FAILED");
-                view.SetText("For some reason your purchase is failed");
-                view.onButtonOk.AddListener(infoOkHandler);
-            }
+            InfoMessageView view = UI.Show<InfoMessageView>(UIMap.Id.InfoMessage);
+            view.SetMessageMode(false);
+
+            iapService.PurchaseStart(IAPType.AdditionalLevels);
         }
 
         public override void OnRegister()
@@ -124,6 +136,9 @@ namespace Traffic.MVCS.Views.UI
             view.onButtonLevel.AddListener(startLevelHandler);
             view.onButtonClose.AddListener(closeHandler);
             view.onButtonBuy.AddListener(buyLevelsHandler);
+
+            onPurchaseOk.AddListener(purchaseOkHandler);
+            onPurchaseFailed.AddListener(purchaseFailHandler);
 
             view.Layout(Screen.width, Screen.height);
             view.SetPage(page, levels);

@@ -66,7 +66,9 @@ namespace Traffic.MVCS.Views.UI
         {
             UI.Hide(UIMap.Id.InfoMessage);
 
-            if (iapService.Buy(IAPType.NoAdverts))
+            iapService.PurchaseStart(IAPType.NoAdverts);
+            /*
+            if (iapService.PurchaseStart(IAPType.NoAdverts))
             {
                 InfoMessageView view = UI.Show<InfoMessageView>(UIMap.Id.InfoMessage);
                 view.SetCaption("PURCHASE OK");
@@ -79,7 +81,7 @@ namespace Traffic.MVCS.Views.UI
                 view.SetCaption("PURCHASE FAILED");
                 view.SetText("For some reason your purchase is failed");
                 view.onButtonOk.AddListener(infoOkHandler);
-            }
+            } */
         }
 
         public override void OnRegister()

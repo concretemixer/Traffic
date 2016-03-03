@@ -2,13 +2,16 @@ using strange.extensions.signal.impl;
 
 namespace Traffic.MVCS.Commands.Signals
 {
-	public class StartupSignal : Signal {
-		
-	}
 
-	public class StartLevelSignal : Signal<int> {
-		
-	}
+    public class StartupSignal : Signal
+    {
+
+    }
+
+    public class StartLevelSignal : Signal<int>
+    {
+
+    }
 
     public class SwitchToMainScreenSignal : Signal
     {
@@ -26,6 +29,4 @@ namespace Traffic.MVCS.Commands.Signals
     public class OrientationChangedSignal : Signal
     {
     }
-
-
 }

@@ -54,6 +54,13 @@ namespace Commons.UI
             }
         }
 
+        public TViewClass Get<TViewClass>(UIMap.Id _viewId) 
+        {
+            if (uiElements.ContainsKey(_viewId))
+                return uiElements[_viewId].GetComponent<TViewClass>();
+            return default(TViewClass);
+        }
+
         public TViewClass Show<TViewClass>(UIMap.Id _viewId)
         {
             var instance = Show(_viewId);

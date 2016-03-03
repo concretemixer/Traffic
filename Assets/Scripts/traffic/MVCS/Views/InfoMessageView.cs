@@ -21,8 +21,19 @@ namespace Traffic.MVCS.Views.UI
         [SerializeField]
         Text caption;
 
+        [SerializeField]
+        Image messageImage;
+
+        [SerializeField]
+        Image rotator;
+
         public readonly Signal onButtonClose = new Signal();
         public readonly Signal onButtonOk = new Signal();
+
+        void Update()
+        {
+            rotator.GetComponent<RectTransform>().rotation = Quaternion.EulerAngles(0, 0, Time.realtimeSinceStartup*3.0f);
+        }
 
         public void Show(bool value)
         {
@@ -39,12 +50,19 @@ namespace Traffic.MVCS.Views.UI
             text.text = data;
         }
 
+        public void SetMessageMode(bool value)
+        {
+            messageImage.gameObject.SetActive(value);
+        }
+
         protected override void Awake()
         {
             okButton.onClick.AddListener(onButtonOk.Dispatch);
             closeButton.onClick.AddListener(onButtonClose.Dispatch);
             base.Awake();
         }
+
+
 
         protected override void OnDestroy()
         {
