@@ -26,15 +26,31 @@ namespace Traffic.MVCS.Models
         public IAPServiceUnity()
         {
             var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
-
+            
+            string storeName = "";
+#if UNITY_ANDRIOD
+            productIds.Add(IAPType.AdditionalLevels, "com.concretemixer.traffic.level_pack_1");
+            productIds.Add(IAPType.NoAdverts, "com.concretemixer.traffic.no_ads")
             productIds.Add(IAPType.AdditionalLevels, "android.test.purchased");
             productIds.Add(IAPType.NoAdverts, "android.test.purchased");
+            storeName = GooglePlay.Name;
+#endif
+#if UNITY_IOS
+            productIds.Add(IAPType.AdditionalLevels, "com.concretemixer.trafficstorm.level_pack_1");
+            productIds.Add(IAPType.NoAdverts, "com.concretemixer.trafficstorm.no_ads")
+            storeName = AppleAppStore.Name;
+#endif
+#if UNITY_WINPHONE
+            productIds.Add(IAPType.AdditionalLevels, "com.concretemixer.traffic.level_pack_1");
+            productIds.Add(IAPType.NoAdverts, "com.concretemixer.traffi.no_ads")
+            storeName = WindowsPhone8.Name;
+#endif
 
             // Add a product to sell / restore by way of its identifier, associating the general identifier with its store-specific identifiers.
             foreach (var key in productIds.Keys)
             {             
-                builder.AddProduct(key.ToString(), ProductType.NonConsumable, 
-                    new IDs() { { productIds[key], GooglePlay.Name } } );
+                builder.AddProduct(key.ToString(), ProductType.NonConsumable,
+                    new IDs() { { productIds[key], storeName } });
                 
             }
             UnityPurchasing.Initialize(this, builder);
