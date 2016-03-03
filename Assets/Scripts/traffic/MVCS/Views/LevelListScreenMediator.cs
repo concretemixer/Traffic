@@ -11,6 +11,7 @@ using UnityEngine;
 using strange.extensions.mediation.impl;
 using System;
 
+
 namespace Traffic.MVCS.Views.UI
 {
     public class LevelListScreenMediator : Mediator
@@ -100,16 +101,19 @@ namespace Traffic.MVCS.Views.UI
                 view.ShowLock(false);
         }
 
-        void purchaseOkHandler()
+        void purchaseOkHandler(IAPType what)
         {            
             InfoMessageView view = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
             view.SetCaption("PURCHASE OK");
-            view.SetText("You have purchased 12 additional levels for $1");
+            if (what==IAPType.AdditionalLevels)
+                view.SetText("You have purchased 12 additional levels for $1");
+            else
+                view.SetText("You have purchased something...");
             view.SetMessageMode(true);
             view.onButtonOk.AddListener(infoOkHandler);
         }
 
-        void purchaseFailHandler()
+        void purchaseFailHandler(IAPType what)
         {            
             InfoMessageView view = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
             view.SetCaption("PURCHASE FAILED");

@@ -38,6 +38,7 @@ namespace Traffic.MVCS.Models
                 
             }
             UnityPurchasing.Initialize(this, builder);
+            
         }
 
         public void OnInitialized(IStoreController controller, IExtensionProvider extensions)
@@ -59,27 +60,31 @@ namespace Traffic.MVCS.Models
         }
 
         public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args) 
-        {            
-            // A consumable product has been purchased by this user.
-            if (String.Equals(args.purchasedProduct.definition.id, "", StringComparison.Ordinal))
-            {
-                Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));//If the consumable item has been successfully purchased, add 100 coins to the player's in-game score.
-                
-            }
-           
+        {  
+            Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
+            PlayerPrefs.SetInt("iap." + args.purchasedProduct.definition.id, 1);
+            IAPType what = (IAPType)Enum.Parse(typeof(IAPType), args.purchasedProduct.definition.id, true);
+            onPurchaseOk.Dispatch(what);        
             return PurchaseProcessingResult.Complete;
         }
         
         
         public void OnPurchaseFailed(Product product, PurchaseFailureReason failureReason)
         {
+            IAPType what = (IAPType)Enum.Parse(typeof(IAPType), product.definition.id, true);
+            onPurchaseFailed.Dispatch(what);
             // A product purchase attempt did not succeed. Check failureReason for more detail. Consider sharing this reason with the user.
             Debug.Log(string.Format("OnPurchaseFailed: FAIL. Product: '{0}', PurchaseFailureReason: {1}",product.definition.storeSpecificId, failureReason));
         }
     
         public bool IsBought(IAPType what)
         {
-            return false;
+            Product product = StoreController.products.WithID(productIds[what]);
+            if (product != null && product.availableToPurchase)
+            {
+                return PlayerPrefs.GetInt("iap." + product.definition.id, 0) == 1;
+            }
+            return false;            
         }
 
         private bool IsInitialized()
@@ -107,6 +112,8 @@ namespace Traffic.MVCS.Models
                     // Otherwise ...
                     else
                     {
+                        
+                        onPurchaseFailed.Dispatch(what);  
                         // ... report the product look-up failure situation  
                         Debug.Log("BuyProductID: FAIL. Not purchasing product, either is not found or is not available for purchase");
                     }
@@ -114,6 +121,7 @@ namespace Traffic.MVCS.Models
                 // Otherwise ...
                 else
                 {
+                    onPurchaseFailed.Dispatch(what);  
                     // ... report the fact Purchasing has not succeeded initializing yet. Consider waiting longer or retrying initiailization.
                     Debug.Log("BuyProductID FAIL. Not initialized.");
                 }
@@ -121,6 +129,7 @@ namespace Traffic.MVCS.Models
             // Complete the unexpected exception handling ...
             catch (Exception e)
             {
+                onPurchaseFailed.Dispatch(what);  
                 // ... by reporting any unexpected exception for later diagnosis.
                 Debug.Log("BuyProductID: FAIL. Exception during purchase. " + e);
             }

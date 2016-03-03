@@ -37,12 +37,8 @@ namespace Traffic.MVCS.Models
 
         public void PurchaseStart(IAPType what)
         {
-            onPurchaseFailed.Dispatch();  
-        }
-
-        public void purchaseOkDispatch()
-        {
-            onPurchaseOk.Dispatch();            
+            PlayerPrefs.SetInt("iap." + what.ToString(), 1);
+            onPurchaseOk.Dispatch(what);  
         }
     }
 }

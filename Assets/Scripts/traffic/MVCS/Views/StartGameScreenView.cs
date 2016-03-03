@@ -66,6 +66,8 @@ namespace Traffic.MVCS.Views.UI
             optionsButton.onClick.RemoveListener(onButtonOptions.Dispatch);
             connectButton.onClick.RemoveListener(onButtonConnect.Dispatch);
             startButton.onClick.RemoveListener(onButtonStart.Dispatch);
+
+
             base.OnDestroy();
         }
 

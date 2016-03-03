@@ -15,6 +15,7 @@ using Traffic.MVCS.Views.UI.Loading;
 using Traffic.MVCS.Views.UI.Debug;
 using Traffic.MVCS.Services;
 
+
 namespace Traffic.MVCS
 {
     public class AppContext : MVCSContext
@@ -88,6 +89,7 @@ namespace Traffic.MVCS
             injectionBinder.Bind<ILevelModel>().To<LevelModel>();
             injectionBinder.Bind<ILevelListModel>().To<LevelListModel>().ToSingleton();
             injectionBinder.Bind<IAPService>().To<IAPServiceDummy>().ToSingleton();
+            //injectionBinder.Bind<IAPService>().To<IAPServiceUnity>().ToSingleton();
         }
 
         void mapStageMediators()
