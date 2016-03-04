@@ -99,6 +99,9 @@ namespace Traffic.MVCS.Views.UI
         {
             if (iapService.IsBought(IAPType.AdditionalLevels))
                 view.ShowLock(false);
+
+            InfoMessageView view2 = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
+            view2.onButtonOk.RemoveListener(infoOkHandler);
         }
 
         void purchaseOkHandler(IAPType what)
@@ -113,11 +116,11 @@ namespace Traffic.MVCS.Views.UI
             view.onButtonOk.AddListener(infoOkHandler);
         }
 
-        void purchaseFailHandler(IAPType what)
+        void purchaseFailHandler(IAPType what, string error)
         {            
             InfoMessageView view = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
             view.SetCaption("PURCHASE FAILED");
-            view.SetText("For some reason your purchase is failed");
+            view.SetText(error);
             view.SetMessageMode(true);
             view.onButtonOk.AddListener(infoOkHandler);
         }

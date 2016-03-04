@@ -65,6 +65,9 @@ namespace Traffic.MVCS.Views.UI
         void infoOkHandler()
         {
             view.ShowShop(true, iapService);
+
+            InfoMessageView view2 = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
+            view2.onButtonOk.RemoveListener(infoOkHandler);
         }
 
         void purchaseOkHandler(IAPType what)
@@ -83,11 +86,11 @@ namespace Traffic.MVCS.Views.UI
             view.onButtonOk.AddListener(infoOkHandler);
         }
 
-        void purchaseFailHandler(IAPType what)
+        void purchaseFailHandler(IAPType what, string error)
         {         
             InfoMessageView view = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
             view.SetCaption("PURCHASE FAILED");
-            view.SetText("For some reason your purchase is failed");
+            view.SetText(error);
             view.SetMessageMode(true);
             view.onButtonOk.AddListener(infoOkHandler);
         }
@@ -112,8 +115,15 @@ namespace Traffic.MVCS.Views.UI
         }
 
 
+        void quitHandler()
+        {
+            Application.Quit();
+        }
+
         public override void OnRegister()
         {
+            view.Layout(Screen.width, Screen.height);
+
             view.onButtonStart.AddListener(homeHandler);
             view.onButtonOptions.AddListener(optionsHandler);
             view.onButtonConnect.AddListener(connectHandler);
@@ -122,14 +132,14 @@ namespace Traffic.MVCS.Views.UI
 
             view.onButtonBuyLevels.AddListener(buyLevelsHandler);
             view.onButtonBuyNoAds.AddListener(buyNoAdsHandler);
+            view.onButtonQuit.AddListener(quitHandler);
 
             onPurchaseOk.AddListener(purchaseOkHandler);
             onPurchaseFailed.AddListener(purchaseFailHandler);
 
-            view.ShowShop(false, iapService);
-            view.Layout(Screen.width, Screen.height);
-
             view.onButtonConnect.AddListener(connectFBClickHandler);
+
+            view.ShowShop(false, iapService);
         }
 
         void connectFBClickHandler()
@@ -158,6 +168,7 @@ namespace Traffic.MVCS.Views.UI
             view.onButtonShop.RemoveListener(shopHandler);
             view.onButtonShopClose.RemoveListener(closeShopHandler);
             view.onButtonConnect.RemoveListener(connectFBClickHandler);
+            view.onButtonQuit.RemoveListener(quitHandler);
 
             onPurchaseOk.RemoveListener(purchaseOkHandler);
             onPurchaseFailed.RemoveListener(purchaseFailHandler);

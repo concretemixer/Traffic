@@ -69,7 +69,7 @@ namespace Traffic.MVCS.Views.UI
         public override void OnRemove()
         {
             view.onButtonOk.RemoveListener(closeHandler);
-            view.onButtonClose.RemoveListener(closeHandler);
+            view.onButtonClose.RemoveListener(closeHandler);                        
 
             base.OnRemove();
         }

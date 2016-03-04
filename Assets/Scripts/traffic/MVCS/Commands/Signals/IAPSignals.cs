@@ -10,7 +10,7 @@ namespace Traffic.MVCS.Commands.Signals
 
     }
 
-    public class PurchaseFailed : Signal<IAPType>
+    public class PurchaseFailed : Signal<IAPType, string>
     {
 
     }

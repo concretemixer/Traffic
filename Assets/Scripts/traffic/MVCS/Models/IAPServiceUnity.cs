@@ -28,11 +28,11 @@ namespace Traffic.MVCS.Models
             var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
             
             string storeName = "";
-#if UNITY_ANDRIOD
+#if UNITY_ANDROID
             productIds.Add(IAPType.AdditionalLevels, "com.concretemixer.traffic.level_pack_1");
-            productIds.Add(IAPType.NoAdverts, "com.concretemixer.traffic.no_ads")
-            productIds.Add(IAPType.AdditionalLevels, "android.test.purchased");
-            productIds.Add(IAPType.NoAdverts, "android.test.purchased");
+            productIds.Add(IAPType.NoAdverts, "com.concretemixer.traffic.no_ads");
+           // productIds.Add(IAPType.AdditionalLevels, "android.test.item_unavailable");
+           // productIds.Add(IAPType.NoAdverts, "android.test.canceled");
             storeName = GooglePlay.Name;
 #endif
 #if UNITY_IOS
@@ -88,14 +88,17 @@ namespace Traffic.MVCS.Models
         public void OnPurchaseFailed(Product product, PurchaseFailureReason failureReason)
         {
             IAPType what = (IAPType)Enum.Parse(typeof(IAPType), product.definition.id, true);
-            onPurchaseFailed.Dispatch(what);
+            onPurchaseFailed.Dispatch(what,"GP: "+failureReason.ToString());
             // A product purchase attempt did not succeed. Check failureReason for more detail. Consider sharing this reason with the user.
             Debug.Log(string.Format("OnPurchaseFailed: FAIL. Product: '{0}', PurchaseFailureReason: {1}",product.definition.storeSpecificId, failureReason));
         }
     
         public bool IsBought(IAPType what)
         {
-            Product product = StoreController.products.WithID(productIds[what]);
+            if (!IsInitialized())
+                return false;
+
+            Product product = StoreController.products.WithID(what.ToString());
             if (product != null && product.availableToPurchase)
             {
                 return PlayerPrefs.GetInt("iap." + product.definition.id, 0) == 1;
@@ -117,7 +120,7 @@ namespace Traffic.MVCS.Models
                 if (IsInitialized())
                 {
                     // ... look up the Product reference with the general product identifier and the Purchasing system's products collection.
-                    Product product = StoreController.products.WithID(productIds[what]);
+                    Product product = StoreController.products.WithID(what.ToString());
 
                     // If the look up found a product for this device's store and that product is ready to be sold ... 
                     if (product != null && product.availableToPurchase)
@@ -129,7 +132,7 @@ namespace Traffic.MVCS.Models
                     else
                     {
                         
-                        onPurchaseFailed.Dispatch(what);  
+                        onPurchaseFailed.Dispatch(what, "Product not available");  
                         // ... report the product look-up failure situation  
                         Debug.Log("BuyProductID: FAIL. Not purchasing product, either is not found or is not available for purchase");
                     }
@@ -137,7 +140,7 @@ namespace Traffic.MVCS.Models
                 // Otherwise ...
                 else
                 {
-                    onPurchaseFailed.Dispatch(what);  
+                    onPurchaseFailed.Dispatch(what, "Not initialized");  
                     // ... report the fact Purchasing has not succeeded initializing yet. Consider waiting longer or retrying initiailization.
                     Debug.Log("BuyProductID FAIL. Not initialized.");
                 }
@@ -145,7 +148,7 @@ namespace Traffic.MVCS.Models
             // Complete the unexpected exception handling ...
             catch (Exception e)
             {
-                onPurchaseFailed.Dispatch(what);  
+                onPurchaseFailed.Dispatch(what, "E: "+e.Message);  
                 // ... by reporting any unexpected exception for later diagnosis.
                 Debug.Log("BuyProductID: FAIL. Exception during purchase. " + e);
             }

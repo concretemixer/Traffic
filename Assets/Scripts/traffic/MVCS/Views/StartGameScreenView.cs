@@ -21,6 +21,9 @@ namespace Traffic.MVCS.Views.UI
         Button optionsButton;
 
         [SerializeField]
+        Button quitButton;
+
+        [SerializeField]
         Image shopBg;
 
         [SerializeField]
@@ -36,6 +39,7 @@ namespace Traffic.MVCS.Views.UI
         public readonly Signal onButtonStart = new Signal();
         public readonly Signal onButtonConnect = new Signal();
         public readonly Signal onButtonOptions = new Signal();
+        public readonly Signal onButtonQuit = new Signal();
         public readonly Signal onButtonShop = new Signal();
         public readonly Signal onButtonShopClose = new Signal();
 
@@ -50,6 +54,7 @@ namespace Traffic.MVCS.Views.UI
             optionsButton.onClick.AddListener(onButtonOptions.Dispatch);
             connectButton.onClick.AddListener(onButtonConnect.Dispatch);
             startButton.onClick.AddListener(onButtonStart.Dispatch);
+            quitButton.onClick.AddListener(onButtonQuit.Dispatch);
 
             shopBuyLevels.onClick.AddListener(onButtonBuyLevels.Dispatch);
             shopBuyNoAdverts.onClick.AddListener(onButtonBuyNoAds.Dispatch);
@@ -59,6 +64,7 @@ namespace Traffic.MVCS.Views.UI
 
         protected override void OnDestroy()
         {
+            quitButton.onClick.RemoveListener(onButtonQuit.Dispatch);
             shopBuyLevels.onClick.RemoveListener(onButtonBuyLevels.Dispatch);
             shopBuyNoAdverts.onClick.RemoveListener(onButtonBuyNoAds.Dispatch);
             shopCloseButton.onClick.RemoveListener(onButtonShopClose.Dispatch);
@@ -73,10 +79,13 @@ namespace Traffic.MVCS.Views.UI
 
         public void ShowShop(bool show, IAPService iapService)
         {
-            if (iapService.IsBought(IAPType.AdditionalLevels))
-                shopBuyLevels.gameObject.SetActive(false);
-            if (iapService.IsBought(IAPType.NoAdverts))
-                shopBuyNoAdverts.gameObject.SetActive(false);
+            if (show)
+            {
+                if (iapService.IsBought(IAPType.AdditionalLevels))
+                    shopBuyLevels.gameObject.SetActive(false);
+                if (iapService.IsBought(IAPType.NoAdverts))
+                    shopBuyNoAdverts.gameObject.SetActive(false);
+            }
             shopBg.gameObject.SetActive(show);
         }
 

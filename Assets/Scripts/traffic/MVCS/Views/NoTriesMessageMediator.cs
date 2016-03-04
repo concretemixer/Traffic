@@ -65,6 +65,10 @@ namespace Traffic.MVCS.Views.UI
                 levels.TriesLeft = levels.TriesTotal;
                 UI.Hide(UIMap.Id.NoTriesMessage);
             }
+
+
+            InfoMessageView view2 = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
+            view2.onButtonOk.RemoveListener(infoOkHandler);
         }
 
 
@@ -84,11 +88,11 @@ namespace Traffic.MVCS.Views.UI
             view.onButtonOk.AddListener(infoOkHandler);
         }
 
-        void purchaseFailHandler(IAPType what)
+        void purchaseFailHandler(IAPType what, string error)
         {
             InfoMessageView view = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
             view.SetCaption("PURCHASE FAILED");
-            view.SetText("For some reason your purchase is failed");
+            view.SetText(error);
             view.SetMessageMode(true);
             view.onButtonOk.AddListener(infoOkHandler);
         }
