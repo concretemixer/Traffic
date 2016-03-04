@@ -60,7 +60,7 @@ namespace Traffic.Core
             if (index >= LevelNames.Length)
                 return LevelState.NoLevel;
 
-            LevelState result = (LevelState)PlayerPrefs.GetInt("progress.1." + index.ToString(), 0);
+            LevelState result = (LevelState)PlayerPrefs.GetInt("progress.1." + index.ToString(), 1);
             if (result == LevelState.Locked && index == 0)
                 result = LevelState.Playable;
 
@@ -99,16 +99,14 @@ namespace Traffic.Core
 		        "Level3_1",
 		        "Level4",
 		        "Level10",
-
 		        "Level6",
+
 		        "Level5",
 		        "Level3",
-
 		        "Level18_1",
 		        "Level8",
+
 		        "Level7",
-
-
 		        "Level21",
 		        "Level13_1",
 		        "Level9",
@@ -116,14 +114,14 @@ namespace Traffic.Core
 		        "Level11",
 		        "Level12",
 		        "Level14",
-
 		        "Level15",
+
 		        "Level13",	
 		        "Level16",
-
 		        "Level17",
-		        "Level18",
-		        "Level19",
+		        "Level18"
+
+		        //"Level19",
 	        };
 
         }

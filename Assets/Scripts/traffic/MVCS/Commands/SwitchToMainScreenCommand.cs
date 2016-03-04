@@ -39,6 +39,9 @@ namespace Traffic.MVCS.Commands
 
             AudioSource gameMusic = GameObject.Find("GameMusic").GetComponent<AudioSource>();
             AudioSource menuMusic = GameObject.Find("MenuMusic").GetComponent<AudioSource>();
+            AudioSource gameAmbient = GameObject.Find("GameAmbient").GetComponent<AudioSource>();
+
+            gameAmbient.mute = true;
 
             stageMenu.SetActive(true);
 

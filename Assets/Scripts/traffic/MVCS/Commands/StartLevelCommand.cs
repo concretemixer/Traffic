@@ -82,6 +82,16 @@ namespace Traffic.MVCS.Commands
                 gameMusic.Play();
             }
 
+
+            AudioSource gameAmbient = GameObject.Find("GameAmbient").GetComponent<AudioSource>();
+            AmbientTrackList gameAmbientTracks = GameObject.Find("GameAmbient").GetComponent<AmbientTrackList>();
+
+            gameAmbient.clip = gameAmbientTracks.Tracks[levelIndex];
+            float musicVolume = PlayerPrefs.GetFloat("volume.music", 1);
+            gameAmbient.mute = musicVolume > 0;
+            gameAmbient.Play();
+
+
 			UI.Show(UIMap.Id.ScreenHUD);				
 		}
         /*
