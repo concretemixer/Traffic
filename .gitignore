@@ -8,7 +8,10 @@
 /Temp/
 /Assets/VSCode*
 /obj/
+/out
 /.vscode/
 *.sln
 *.userprefs
 *.csproj
+/.idea
+*.iml
