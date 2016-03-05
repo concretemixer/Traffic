@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 using UnityEngine;
@@ -37,12 +36,12 @@ namespace Traffic.MVCS.Models
 #endif
 #if UNITY_IOS
             productIds.Add(IAPType.AdditionalLevels, "com.concretemixer.trafficstorm.level_pack_1");
-            productIds.Add(IAPType.NoAdverts, "com.concretemixer.trafficstorm.no_ads")
+            productIds.Add(IAPType.NoAdverts, "com.concretemixer.trafficstorm.no_ads");
             storeName = AppleAppStore.Name;
 #endif
 #if UNITY_WINPHONE
             productIds.Add(IAPType.AdditionalLevels, "com.concretemixer.traffic.level_pack_1");
-            productIds.Add(IAPType.NoAdverts, "com.concretemixer.traffi.no_ads")
+            productIds.Add(IAPType.NoAdverts, "com.concretemixer.traffi.no_ads");
             storeName = WindowsPhone8.Name;
 #endif
 
