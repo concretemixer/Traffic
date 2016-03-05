@@ -115,7 +115,7 @@ namespace Traffic.MVCS.Views.UI
             };
 
             facebook.Post(postData).Done(
-                analytics.FacebookShareComplete
+                () => analytics.FacebookShareComplete()
             );
         }
 

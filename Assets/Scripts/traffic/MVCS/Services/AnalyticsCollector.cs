@@ -5,20 +5,22 @@ namespace Traffic.MVCS.Services
 {
     public class AnalyticsCollector
     {
-        class Params
+        static class Params
         {
             public static readonly Dictionary<string, object> NONE = new Dictionary<string, object>();
 
             public static Dictionary<string, object> Simple(string key, object val)
             {
-                return new Dictionary<string, object>() {
+                return new Dictionary<string, object>()
+                {
                     {key, val}
                 };
             }
 
             public static Dictionary<string, object> Level(int levelId, int score)
             {
-                return new Dictionary<string, object>() {
+                return new Dictionary<string, object>()
+                {
                     {"level", levelId},
                     {"score", score}
                 };
@@ -27,7 +29,7 @@ namespace Traffic.MVCS.Services
 
         public void LogTutorialStep(TutorialStep _step)
         {
-            Collector.CustomEvent("tutorial", Params.Simple("step", (int)_step));
+            Collector.CustomEvent("tutorial", Params.Simple("step", (int) _step));
         }
 
         public void LevelStart(int levelId)
@@ -49,42 +51,35 @@ namespace Traffic.MVCS.Services
         {
             Collector.CustomEvent("fb_connected", Params.NONE);
         }
-        
+
         public void FacebookShareStart()
         {
             Collector.CustomEvent("fb_share_start", Params.NONE);
         }
-        
+
         public void FacebookShareComplete()
         {
             Collector.CustomEvent("fb_share_complete", Params.NONE);
         }
-        
+
         public void AdsWindowShown()
         {
             Collector.CustomEvent("ads_window_shown", Params.NONE);
         }
-        
+
         public void AdsStart()
         {
             Collector.CustomEvent("ads_start", Params.NONE);
         }
-        
+
         public void AdsSkiped()
         {
             Collector.CustomEvent("ads_skiped", Params.NONE);
         }
-        
+
         public void AdsComplete()
         {
             Collector.CustomEvent("ads_complete", Params.NONE);
-        }
-
-        void logOnePropEvent(string eventName, string paramName, object param)
-        {
-            Collector.CustomEvent(eventName, new Dictionary<string, object>() {
-                {paramName, param}
-            });
         }
     }
 }

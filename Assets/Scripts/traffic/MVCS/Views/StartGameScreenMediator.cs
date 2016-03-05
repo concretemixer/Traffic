@@ -5,7 +5,6 @@ using UnityEngine;
 
 using strange.extensions.mediation.impl;
 using Commons.SN.Facebook;
-using Commons.Utils;
 using Traffic.MVCS.Services;
 
 namespace Traffic.MVCS.Views.UI
@@ -154,7 +153,7 @@ namespace Traffic.MVCS.Views.UI
             else
             {
                 facebook.Login().Done(
-                    analytics.FacebookConnected
+                    () => analytics.FacebookConnected()
                 );
             }
         }

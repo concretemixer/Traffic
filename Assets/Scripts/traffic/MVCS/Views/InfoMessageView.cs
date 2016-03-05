@@ -66,7 +66,7 @@ namespace Traffic.MVCS.Views.UI
 
         protected override void OnDestroy()
         {
-               okButton.onClick.RemoveListener(onButtonOk.Dispatch);
+            okButton.onClick.RemoveListener(onButtonOk.Dispatch);
             closeButton.onClick.RemoveListener(onButtonClose.Dispatch);
 
             base.OnDestroy();
@@ -74,7 +74,7 @@ namespace Traffic.MVCS.Views.UI
 
         public override void Layout(int width, int height)
         {
-            base.Layout(width,height);
+            base.Layout(width, height);
             this.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
             this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         }
