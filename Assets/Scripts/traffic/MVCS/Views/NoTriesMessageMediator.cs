@@ -1,12 +1,8 @@
 using Traffic.MVCS.Commands.Signals;
-//using traffic.MVCS.model;
-//using traffic.MVCS.model.level;
-using Traffic.MVCS.Views.UI.HUD;
 using Traffic.MVCS.Models;
 using Traffic.Core;
 using System;
 using Commons.UI;
-using Commons.Utils;
 using UnityEngine;
 
 using strange.extensions.mediation.impl;
@@ -23,7 +19,7 @@ namespace Traffic.MVCS.Views.UI
 
         [Inject]
         public NoTriesMessageView view { get; set; }
-       
+
         [Inject]
         public ILevelListModel levels { get; set; }
 
@@ -32,6 +28,9 @@ namespace Traffic.MVCS.Views.UI
 
         [Inject]
         public IUIManager UI { get; set; }
+        
+        [Inject]
+        public ShowAdsSignal showAds { private get; set; }
 
         public void Update()
         {
@@ -49,13 +48,13 @@ namespace Traffic.MVCS.Views.UI
 
         void closeHandler()
         {
-            UI.Hide(UIMap.Id.NoTriesMessage);            
+            UI.Hide(UIMap.Id.NoTriesMessage);
         }
 
         void advertHandler()
         {
-            levels.TriesLeft = levels.TriesTotal;
             UI.Hide(UIMap.Id.NoTriesMessage);
+            showAds.Dispatch();
         }
 
         void infoOkHandler()
@@ -66,11 +65,9 @@ namespace Traffic.MVCS.Views.UI
                 UI.Hide(UIMap.Id.NoTriesMessage);
             }
 
-
             InfoMessageView view2 = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
             view2.onButtonOk.RemoveListener(infoOkHandler);
         }
-
 
         void purchaseOkHandler(IAPType what)
         {
@@ -109,7 +106,6 @@ namespace Traffic.MVCS.Views.UI
 
         public override void OnRegister()
         {
-
             view.onButtonClose.AddListener(closeHandler);
             view.onButtonAdvert.AddListener(advertHandler);
             view.onButtonBuy.AddListener(buyHandler);
@@ -117,14 +113,10 @@ namespace Traffic.MVCS.Views.UI
             onPurchaseOk.AddListener(purchaseOkHandler);
             onPurchaseFailed.AddListener(purchaseFailHandler);
 
-
             view.Layout(Screen.width, Screen.height);
 
             base.OnRegister();
         }
-
-
-
 
         public override void OnRemove()
         {
