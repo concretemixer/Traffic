@@ -37,6 +37,9 @@ namespace Traffic.MVCS.Views.UI
         [Inject]
         public IUIManager UI { get; set; }
 
+        [Inject]
+        public ShowAdsSignal showAds { private get; set; }
+        
         void homeHandler()
         {
             toMainScreenSignal.Dispatch();
@@ -143,6 +146,8 @@ namespace Traffic.MVCS.Views.UI
 
         void connectFBClickHandler()
         {
+            showAds.Dispatch();
+            return;
             if (facebook.IsLoggedIn)
             {
                 var message = UI.Show<InfoMessageView>(UIMap.Id.InfoMessage);

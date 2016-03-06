@@ -51,10 +51,13 @@ namespace Traffic.Core {
                    
                 float ratio = (float)h / (float)w;
 
+                var scaler = uiRoot.GetComponent<CanvasScaler>();
+                if(scaler == null) return; 
+                
                 if (ratio < 1)
-                    uiRoot.GetComponent<CanvasScaler>().referenceResolution = new Vector2(960, 960 * ratio);
+                    scaler.referenceResolution = new Vector2(960, 960 * ratio);
                 else
-                    uiRoot.GetComponent<CanvasScaler>().referenceResolution = new Vector2(960 / ratio, 960);
+                    scaler.referenceResolution = new Vector2(960 / ratio, 960);
 
                 orientation = Screen.orientation;
                 onOrientationChanged.Dispatch();                

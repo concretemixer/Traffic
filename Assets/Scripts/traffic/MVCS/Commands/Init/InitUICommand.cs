@@ -30,7 +30,8 @@ namespace Traffic.MVCS.Commands.Init
             manager.Init(uiContainer, new LocalResourceManager());
             binder.Bind<IUIManager>().ToValue(manager);
 
-            injectionBinder.injector.Inject(uiContainer.GetComponent<UIWatcher>());
+            var watcher = uiContainer.gameObject.AddComponent<UIWatcher>();
+            injectionBinder.injector.Inject(watcher);
 
             float ratio = (float)Screen.height / (float)Screen.width;
 

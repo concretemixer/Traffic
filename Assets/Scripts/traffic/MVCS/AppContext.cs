@@ -7,6 +7,7 @@ using UnityEngine;
 using Traffic.Core;
 using Traffic.MVCS.Commands.Init;
 using Traffic.MVCS.Commands;
+using Traffic.MVCS.Commands.Ads;
 using Traffic.MVCS.Models;
 using Traffic.MVCS.Views.UI.HUD;
 using Traffic.MVCS.Views.UI;
@@ -56,11 +57,11 @@ namespace Traffic.MVCS
             // init commands
             commandBinder.Bind<StartupSignal>().InSequence()
                 .To<CreateServiceItemsCommand>()
+                .To<InitializeUnityAdsCommand>()
                 .To<LoadConfigCommand>()
                 .To<InitUICommand>()
                 .To<InitSocialNetworkCommand>()
                 .To<StartupCommand>();
-
 
             commandBinder.Bind<StartLevelSignal>().To<StartLevelCommand>();
             commandBinder.Bind<LevelPause>().To<PauseLevelCommand>();
@@ -70,6 +71,10 @@ namespace Traffic.MVCS
             commandBinder.Bind<SwitchToMainScreenSignal>().To<SwitchToMainScreenCommand>();
             commandBinder.Bind<SwitchToStartScreenSignal>().To<SwitchToStartScreenCommand>();
             commandBinder.Bind<SwitchToSettingsScreenSignal>().To<SwitchToSettingsScreenCommand>();
+
+            // Ads commands
+            commandBinder.Bind<ShowAdsSignal>().To<ShowAdsCommand>();
+            commandBinder.Bind<AddLivesForAdsSignal>().To<AddLivesForAdsCommad>();
         }
 
         void mapSignals()

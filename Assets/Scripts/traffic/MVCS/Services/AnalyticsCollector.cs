@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Collector = UnityEngine.Analytics.Analytics;
 
@@ -29,7 +30,7 @@ namespace Traffic.MVCS.Services
 
         public void LogTutorialStep(TutorialStep _step)
         {
-            Collector.CustomEvent("tutorial", Params.Simple("step", (int) _step));
+            Collector.CustomEvent("tutorial", Params.Simple("step", (int)_step));
         }
 
         public void LevelStart(int levelId)
@@ -80,6 +81,11 @@ namespace Traffic.MVCS.Services
         public void AdsComplete()
         {
             Collector.CustomEvent("ads_complete", Params.NONE);
+        }
+
+        public void AdsFailed()
+        {
+            Collector.CustomEvent("ads_failed", Params.NONE);
         }
     }
 }
