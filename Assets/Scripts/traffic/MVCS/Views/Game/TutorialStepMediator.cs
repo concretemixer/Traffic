@@ -114,7 +114,7 @@ namespace Traffic.MVCS.Views.UI
 
               //  UnityEngine.Debug.Log("k = " + k);
 
-                if (view.Step == 1)
+                if (view.Step == 4)
                 {
                     view.SetHandPos(w + 90 * k, h + 50.0f * (float)Math.Sqrt(k));
                     view.SetHandAlpha(2 * (1 - k * k));
@@ -129,7 +129,7 @@ namespace Traffic.MVCS.Views.UI
                 view.SetShadePos(w, h);
 
                 if (vertical)
-                    view.SetBubblePos(w, h, -100, true, true);
+                    view.SetBubblePos(w, h, -120, true, true);
                 else
                     view.SetBubblePos(w, h, 80, true,false);
 
@@ -151,7 +151,7 @@ namespace Traffic.MVCS.Views.UI
                     if (view.Step == 1)
                         view.SetBubblePos(300, 940, 0, false, false);
                     if (view.Step == 2)
-                        view.SetBubblePos(510, 930, -120, false, true);
+                        view.SetBubblePos(510, 930, -140, false, true);
                     if (view.Step == 3)
                         view.SetBubblePos(80, 930, 100, false, false);
                 }

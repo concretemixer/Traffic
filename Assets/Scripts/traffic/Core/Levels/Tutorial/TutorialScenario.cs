@@ -72,7 +72,7 @@ namespace Traffic.Core
             }
             else if (point == 4)
             {
-                if (lifetime > 11)
+                if (lifetime > 11.5)
                 {
                     onTutorialPoint.Dispatch(point);
                     point++;
