@@ -7,6 +7,7 @@ using Traffic.Core;
 using Commons.UI;
 using Commons.Utils;
 using UnityEngine;
+using Traffic.Components;
 
 using strange.extensions.mediation.impl;
 
@@ -28,6 +29,9 @@ namespace Traffic.MVCS.Views.UI
             get;
             set;
         }
+
+        [Inject(EntryPoint.Container.Stage)]
+        public GameObject stage { get; set; }
 
         [Inject]
         public LevelPause onPause { get; set; }
@@ -86,7 +90,11 @@ namespace Traffic.MVCS.Views.UI
             PlayerPrefs.SetFloat("volume.sound", value);
 
             AudioSource gameAmbient = GameObject.Find("GameAmbient").GetComponent<AudioSource>();
-            gameAmbient.GetComponent<AudioSource>().volume = value;                        
+            gameAmbient.GetComponent<AudioSource>().volume = value;
+            foreach (AudioSource src in stage.GetComponentsInChildren<AudioSource>())
+            {
+                src.volume = value;
+            }
         }
 
         public override void OnRegister()

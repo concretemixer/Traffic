@@ -91,6 +91,11 @@ namespace Traffic.MVCS.Commands
             gameAmbient.mute = musicVolume > 0;
             gameAmbient.Play();
 
+            float soundVolume = PlayerPrefs.GetFloat("volume.sound", 1);
+            foreach (AudioSource src in stage.GetComponentsInChildren<AudioSource>())
+            {
+                src.volume = soundVolume;
+            }
 
 			UI.Show(UIMap.Id.ScreenHUD);				
 		}

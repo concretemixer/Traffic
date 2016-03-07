@@ -75,11 +75,13 @@ public class Vehicle : MonoBehaviour {
 			StopEffects();
 		}
 
+        float soundVolume = PlayerPrefs.GetFloat("volume.sound", 1);
+
 		if (gameObject.tag == "Vehicle") {
 			if (moveSound != null) {
 				Transform t = transform.FindChild ("MoveSource");
 				if (t != null && moveSound!=null) {
-					t.gameObject.GetComponent<AudioSource> ().PlayOneShot (moveSound);
+                    t.gameObject.GetComponent<AudioSource>().PlayOneShot(moveSound, soundVolume);
 				}
 			}
             onLevelComplete.AddListener(StopOnLevelComplete);
@@ -368,6 +370,8 @@ public class Vehicle : MonoBehaviour {
         if (!interactable)
             return;
 
+        float soundVolume = PlayerPrefs.GetFloat("volume.sound", 1);
+
 		if (gear == 0) {
 			acceleration = true;
 			targetSpeed = NormalSpeed;
@@ -375,7 +379,7 @@ public class Vehicle : MonoBehaviour {
 			if (startSound!=null) {
 				Transform t = transform.FindChild("AccelSource");
 				if (t!=null) {
-					t.gameObject.GetComponent<AudioSource>().PlayOneShot(startSound);
+                    t.gameObject.GetComponent<AudioSource>().PlayOneShot(startSound, soundVolume);
 				}
 			}
 
@@ -393,7 +397,7 @@ public class Vehicle : MonoBehaviour {
 				if (accelSound!=null) {
 					Transform t = transform.FindChild("AccelSource");
 					if (t!=null) {
-						t.gameObject.GetComponent<AudioSource>().PlayOneShot(accelSound[Random.Range(0,accelSound.Length)]);
+                        t.gameObject.GetComponent<AudioSource>().PlayOneShot(accelSound[Random.Range(0, accelSound.Length)], soundVolume);
 					}
 				}
 
