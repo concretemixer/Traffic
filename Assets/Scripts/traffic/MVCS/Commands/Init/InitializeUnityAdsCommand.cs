@@ -3,6 +3,7 @@ using System.Collections;
 using Commons.Utils;
 using strange.extensions.command.impl;
 using UnityEngine.Advertisements;
+using System;
 
 public class InitializeUnityAdsCommand : Command
 {
@@ -11,6 +12,10 @@ public class InitializeUnityAdsCommand : Command
 
     public override void Execute()
     {
+#if UNITY_STANDALONE
+        return;
+#endif
+
         Retain();
         CheckPlatfromSupport();
         InitializeUnityAds();
@@ -18,6 +23,8 @@ public class InitializeUnityAdsCommand : Command
 
     private void CheckPlatfromSupport()
     {
+
+
 #if !UNITY_ADS
         throw new NotSupportedException("Platform is not supported for unity ads");
 #endif

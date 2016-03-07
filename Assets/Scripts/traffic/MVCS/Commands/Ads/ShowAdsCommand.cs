@@ -30,20 +30,22 @@ namespace Traffic.MVCS.Commands.Ads
             switch (result)
             {
                 case ShowResult.Finished:
-                    analitycs.AdsComplete();
                     Loggr.Log("Video completed. User rewarded credits.");
+                    addLives.Dispatch();
+                    analitycs.AdsComplete();
                     break;
                 case ShowResult.Skipped:
                     Loggr.Log("Video was skipped.");
+                    addLives.Dispatch();
                     analitycs.AdsSkiped();
                     break;
                 case ShowResult.Failed:
+                    Loggr.Log("Video failed to show.");
                     addLives.Dispatch();
                     analitycs.AdsFailed();
-                    Loggr.Log("Video failed to show.");
                     break;
             }
-            addLives.Dispatch();
+            
             Release();
         }
     }

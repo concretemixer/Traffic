@@ -52,6 +52,40 @@ namespace Traffic.MVCS.Views.Game
 		[Inject]
 		public LevelComplete onLevelComplete { get; set;}
 
+        float shakeTimer = 0;
+        const float shakeTime  = 0.5f;
+        Vector3 cameraStartPos;
+        float[] ampsX = { -3, 6, 2 };
+        float[] periodsX = { 5f, 5f, 3f };
+        float[] ampsY = { 3, -6, -1 };
+        float[] periodsY = { 5f, 5f, 2f };
+
+        void Update()
+        {
+
+
+            if (shakeTimer>0) {
+                float t = (shakeTime - shakeTimer) / shakeTime;
+
+
+                Camera.main.transform.localPosition = cameraStartPos;
+
+                for (int a = 0; a < ampsX.Length; a++)
+                {
+                    Camera.main.transform.localPosition += 
+                        new Vector3((float)Math.Sin(periodsX[a] * Math.PI * t) * ampsX[a],
+                                    (float)Math.Sin(periodsY[a] * Math.PI * t) * ampsY[a],
+                                   0) *  (1 - t);
+                }
+                shakeTimer -= Time.deltaTime;
+                if (shakeTimer <= 0)
+                {
+                    Camera.main.transform.localPosition = cameraStartPos;
+                }
+            }
+        }
+
+
 		void vehicleReachedHandler()
 		{
 			level.Progress++;
@@ -63,8 +97,19 @@ namespace Traffic.MVCS.Views.Game
 		void vehicleCrashedHandler()
 		{
 			if (!level.Failed) {
-                //levelFailedDispatch();
-                level.Failed = true;                
+                cameraStartPos = Camera.main.transform.localPosition;
+                shakeTimer = shakeTime;
+                level.Failed = true;
+
+                for (int a = 0; a < ampsX.Length; a++)
+                {
+                    ampsX[a] = UnityEngine.Random.Range(-2f, 2f);
+                    ampsY[a] = UnityEngine.Random.Range(-1f, 1f);
+                    periodsX[a] = UnityEngine.Random.Range(3f, 6f);
+                    periodsY[a] = UnityEngine.Random.Range(3f, 6f);                    
+                }
+
+              
                // onLevelFailed.Dispatch();
                 this.Invoke("levelFailedDispatch", 1);
 
