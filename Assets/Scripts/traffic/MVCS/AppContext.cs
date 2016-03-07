@@ -85,6 +85,7 @@ namespace Traffic.MVCS
             injectionBinder.Bind<LevelFailed>().ToSingleton();
             injectionBinder.Bind<LevelComplete>().ToSingleton();
             injectionBinder.Bind<ScoreGrow>().ToSingleton();
+            injectionBinder.Bind<ResumeTutorial>().ToSingleton();
             injectionBinder.Bind<PurchaseFailed>().ToSingleton();
             injectionBinder.Bind<PurshaseOk>().ToSingleton();
         }

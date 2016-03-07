@@ -31,9 +31,14 @@ namespace Traffic.MVCS.Commands
 		{
             analytics.LogTutorialStep((TutorialStep)Point);
 
-            Time.timeScale = 0;
+            Time.timeScale = 0.0f;
             TutorialStepScreen screen = UI.Show<TutorialStepScreen>(UIMap.Id.ScreenTutorial);
-            screen.SetStep(Point);            
+            screen.SetStep(Point);
+
+            foreach (var camera in stage.GetComponentsInChildren<TutorialTouchCamera>())
+            {
+                injectionBinder.injector.Inject(camera);
+            }
 		}
 
 

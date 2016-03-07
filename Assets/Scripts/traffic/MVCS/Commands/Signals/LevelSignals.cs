@@ -41,5 +41,8 @@ namespace Traffic.MVCS.Commands.Signals
     {
     }
 
+    public class ResumeTutorial : Signal
+    {
+    }
 
 }

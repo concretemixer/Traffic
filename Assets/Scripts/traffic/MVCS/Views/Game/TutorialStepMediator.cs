@@ -3,8 +3,9 @@ using Traffic.MVCS.Commands.Signals;
 //using traffic.MVCS.model.level;
 using Traffic.MVCS.Views.UI.HUD;
 using Traffic.MVCS.Models;
-
+using Traffic.Components;
 using Traffic.Core;
+
 using Commons.UI;
 using Commons.Utils;
 using UnityEngine;
@@ -23,12 +24,18 @@ namespace Traffic.MVCS.Views.UI
             set;
         }
 
+        [Inject]
+        public ResumeTutorial onResumeTutorial { get; set; }
+
 
         [Inject]
         public IUIManager UI {
             get;
             set;
         }
+
+        [Inject(EntryPoint.Container.Stage)]
+        public GameObject stage { get; set; }
 
         GameObject target = null;
 
@@ -80,7 +87,10 @@ namespace Traffic.MVCS.Views.UI
                     }
                 }
 
-
+                foreach (TutorialTouchCamera camera in stage.GetComponentsInChildren<TutorialTouchCamera>())
+                {
+                    camera.SetTarget(target==null ? null : target.GetComponent<Vehicle>(), view.Step!=4);
+                }
 
             }
 
@@ -175,7 +185,7 @@ namespace Traffic.MVCS.Views.UI
         {
 
             view.onButtonNextStep.AddListener(nextStepHandler);
-            
+            onResumeTutorial.AddListener(nextStepHandler);
             view.Layout(Screen.width,Screen.height);
 
             base.OnRegister();
@@ -187,8 +197,7 @@ namespace Traffic.MVCS.Views.UI
         public override void OnRemove()
         {
             view.onButtonNextStep.RemoveListener(nextStepHandler);
-            
-
+            onResumeTutorial.RemoveListener(nextStepHandler);            
 
             base.OnRemove();
         }
