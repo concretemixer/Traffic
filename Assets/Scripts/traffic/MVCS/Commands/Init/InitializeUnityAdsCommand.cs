@@ -32,12 +32,15 @@ public class InitializeUnityAdsCommand : Command
 
     private void InitializeUnityAds()
     {
+#if !UNITY_STANDALONE
         var appId = GetAppId();
         Advertisement.Initialize(appId, true);
 
         Provider.StartCoroutine(WaitForAdReady());
+#endif
     }
 
+#if !UNITY_STANDALONE
     private IEnumerator WaitForAdReady()
     {
         while (!Advertisement.isInitialized || !Advertisement.IsReady())
@@ -46,6 +49,7 @@ public class InitializeUnityAdsCommand : Command
         Debug.Log("Ads ready!");
         Release();
     }
+#endif
 
     private string GetAppId()
     {

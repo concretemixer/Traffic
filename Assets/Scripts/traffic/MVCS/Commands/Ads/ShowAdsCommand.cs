@@ -14,6 +14,12 @@ namespace Traffic.MVCS.Commands.Ads
         [Inject]
         public AnalyticsCollector analitycs { private get; set; }
 
+#if UNITY_STANDALONE
+        public override void Execute()
+        {
+            addLives.Dispatch();
+        }
+#else
         public override void Execute()
         {
             Retain();
@@ -24,7 +30,7 @@ namespace Traffic.MVCS.Commands.Ads
             Advertisement.Show(null, options);
             analitycs.AdsStart();
         }
-
+              
         void showResultHandler(ShowResult result)
         {
             switch (result)
@@ -48,5 +54,6 @@ namespace Traffic.MVCS.Commands.Ads
             
             Release();
         }
+#endif
     }
 }

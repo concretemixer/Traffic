@@ -57,9 +57,9 @@ namespace Traffic.MVCS
             // init commands
             commandBinder.Bind<StartupSignal>().InSequence()
                 .To<CreateServiceItemsCommand>()
+                .To<InitUICommand>()
                 .To<InitializeUnityAdsCommand>()
                 .To<LoadConfigCommand>()
-                .To<InitUICommand>()
                 .To<InitSocialNetworkCommand>()
                 .To<StartupCommand>();
 

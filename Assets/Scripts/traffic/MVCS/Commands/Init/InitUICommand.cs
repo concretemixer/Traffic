@@ -35,7 +35,14 @@ namespace Traffic.MVCS.Commands.Init
 
             float ratio = (float)Screen.height / (float)Screen.width;
 
-            uiContainer.GetComponent<CanvasScaler>().referenceResolution = new Vector2(960, 960 * ratio);
+
+
+            if (ratio < 1)
+                uiContainer.GetComponent<CanvasScaler>().referenceResolution = new Vector2(960, 960 * ratio);
+            else
+                uiContainer.GetComponent<CanvasScaler>().referenceResolution = new Vector2(960 / ratio, 960);
+
+            manager.Show(UIMap.Id.ScreenLoading);
         }
     }
 }

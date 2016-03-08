@@ -58,6 +58,7 @@ namespace Traffic.MVCS.Commands
             }
             */
 
+            UI.Hide(UIMap.Id.ScreenLoading);
             // UI.Show(UIMap.Id.ScreenDebug);
             UI.Show(UIMap.Id.ScreenMain);
             //UI.Show(UIMap.Id.InfoMessage);

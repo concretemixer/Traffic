@@ -1,15 +1,16 @@
 using strange.extensions.mediation.impl;
+using UnityEngine;
 
 namespace Traffic.MVCS.Views.UI.Loading
 {
     public class LoadingScreenMediator : Mediator
     {
         [Inject]
-        public LoadingScreenView View { set; private get; }
+        public LoadingScreenView view { set; private get; }
 		
         override public void OnRegister()
         {
-            View.SetStatus("default status");
+            view.Layout(Screen.width, Screen.height);   
         }
     }
 }
