@@ -432,6 +432,7 @@ public class Vehicle : MonoBehaviour {
         {
             var m = Resources.Load("tmp/Multiplier");
             GameObject mesh = (GameObject)GameObject.Instantiate(m, transform.position + new Vector3(0, 5, 0), Quaternion.EulerRotation(0, 0, 0));
+            mesh.transform.parent = transform.parent;
             if (scoreGrowK>19)
                 mesh.GetComponent<TextMesh>().color = Color.yellow;
             else if (scoreGrowK > 7)

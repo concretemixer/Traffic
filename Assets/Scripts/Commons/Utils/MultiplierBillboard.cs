@@ -15,6 +15,7 @@ public class MultiplierBillboard : MonoBehaviour {
         myContainer = new GameObject();
         myContainer.name = "GRP_" + transform.gameObject.name;
         myContainer.transform.position = transform.position;
+        myContainer.transform.parent = transform.parent;
         transform.parent = myContainer.transform;
     }    
 
@@ -31,5 +32,9 @@ public class MultiplierBillboard : MonoBehaviour {
         Color c = GetComponent<TextMesh>().color;
         GetComponent<TextMesh>().color = new Color(c.r, c.g, c.b, 1.0f - ((lifetime / life) * (lifetime / life)));
 
+        if (lifetime > life)
+        {
+            Destroy(myContainer);
+        }
     }
 }
