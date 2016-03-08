@@ -21,7 +21,10 @@ namespace Traffic.MVCS.Models
         private IExtensionProvider StoreExtensionProvider;
 
         private Dictionary<IAPType, string> productIds = new Dictionary<IAPType,string>();
-       
+
+        
+
+
         public IAPServiceUnity()
         {
             var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
@@ -56,6 +59,30 @@ namespace Traffic.MVCS.Models
             
         }
 
+        public bool GetProductPrice(IAPType what, out float price, out string currency)
+        {
+            price = 1000;
+            currency = "Gold";
+
+            if (!IsInitialized())
+                return false;
+
+            var product = StoreController.products.WithID(what.ToString());
+
+            if (product==null)
+                return false;
+
+            currency = product.metadata.isoCurrencyCode;
+            price = (float)product.metadata.localizedPrice;
+
+            if (currency == "USD")
+                currency = "$";
+            if (currency == "EUR")
+                currency = "€";
+
+            return true;
+        }
+
         public void OnInitialized(IStoreController controller, IExtensionProvider extensions)
         {
             // Purchasing has succeeded initializing. Collect our Purchasing references.
@@ -65,6 +92,7 @@ namespace Traffic.MVCS.Models
             StoreController = controller;
             // Store specific subsystem, for accessing device-specific store features.
             StoreExtensionProvider = extensions;
+            
         }
 
 

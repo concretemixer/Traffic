@@ -547,6 +547,8 @@ MonoBehaviour:
   quitButton: {fileID: 11410320}
   shopBg: {fileID: 11468492}
   shopCloseButton: {fileID: 11491814}
+  shopLevelsDesc: {fileID: 11476404}
+  shopNoAdvertsDesc: {fileID: 11416944}
   shopBuyLevels: {fileID: 11491766}
   shopBuyNoAdverts: {fileID: 11489136}
 --- !u!114 &11410320
@@ -655,7 +657,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: TURN OFF ADVERTISMENTS FOR $2
+  m_Text: TURN OFF ADVERTISMENTS FOR %PRICE%
 --- !u!114 &11422918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1081,7 +1083,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 12 ADDITIONAL LEVELS FOR $1
+  m_Text: 12 ADDITIONAL LEVELS FOR %PRICE%
 --- !u!114 &11479306
 MonoBehaviour:
   m_ObjectHideFlags: 1

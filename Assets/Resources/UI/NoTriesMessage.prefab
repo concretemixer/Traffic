@@ -231,6 +231,7 @@ MonoBehaviour:
   advertButton: {fileID: 11459446}
   buyButton: {fileID: 11424384}
   timerText: {fileID: 11476466}
+  priceText: {fileID: 11475112}
 --- !u!114 &11424384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -446,7 +447,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: BUY UNLIMITED TRIES FOR $2 OR WATCH AN AVDERTISMENT TO REFRESH !
+  m_Text: BUY UNLIMITED TRIES FOR %PRICE% OR WATCH AN AVDERTISMENT TO REFRESH !
 --- !u!114 &11476350
 MonoBehaviour:
   m_ObjectHideFlags: 1

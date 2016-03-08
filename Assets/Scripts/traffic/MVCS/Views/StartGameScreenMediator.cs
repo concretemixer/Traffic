@@ -73,11 +73,18 @@ namespace Traffic.MVCS.Views.UI
         {
             InfoMessageView view = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
 
+            float price;
+            string currency="?";
+
+            iapService.GetProductPrice(what, out price, out currency);
+
             view.SetCaption("PURCHASE OK");
-            if (what == IAPType.AdditionalLevels)
-                view.SetText("You have purchased 12 additional levels for $1");
-            else if (what == IAPType.NoAdverts)
-                view.SetText("You have purchased the permanent advert removal for $2");
+            if (what == IAPType.AdditionalLevels) {
+                view.SetText("You have purchased 12 additional levels for "+currency + (currency.Length > 1 ? " " : "") + price.ToString("F2"));
+            }
+            else if (what == IAPType.NoAdverts) {
+                view.SetText("You have purchased the permanent advert removal for "+currency + (currency.Length > 1 ? " " : "") + price.ToString("F2"));
+            }
             else
                 view.SetText("You have purchased something...");            
 

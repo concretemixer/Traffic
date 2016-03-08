@@ -57,8 +57,17 @@ namespace Traffic.MVCS.Views.UI
         {
             page = 1 - page;
             view.SetPage(page, levels);
-            if (page==1)
+            if (page == 1)
+            {
+                float price;
+                string currency;
+                if (iapService.GetProductPrice(IAPType.AdditionalLevels, out price, out currency))
+                {
+                    view.shopLevelsDesc.text = view.shopLevelsDesc.text.Replace("%PRICE%",
+                        currency + (currency.Length > 1 ? " " : "") + price.ToString("F2"));
+                }
                 view.ShowLock(!iapService.IsBought(IAPType.AdditionalLevels));
+            }
         }
 
         void startLevelHandler(int index)
@@ -108,10 +117,25 @@ namespace Traffic.MVCS.Views.UI
         {            
             InfoMessageView view = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
             view.SetCaption("PURCHASE OK");
-            if (what==IAPType.AdditionalLevels)
-                view.SetText("You have purchased 12 additional levels for $1");
+
+            float price;
+            string currency = "?";
+
+            iapService.GetProductPrice(what, out price, out currency);
+
+            view.SetCaption("PURCHASE OK");
+            if (what == IAPType.AdditionalLevels)
+            {
+                view.SetText("You have purchased 12 additional levels for " + currency + (currency.Length > 1 ? " " : "") + price.ToString("F2"));
+            }
+            else if (what == IAPType.NoAdverts)
+            {
+                view.SetText("You have purchased the permanent advert removal for " + currency + (currency.Length > 1 ? " " : "") + price.ToString("F2"));
+            }
             else
-                view.SetText("You have purchased something...");
+                view.SetText("You have purchased something...");            
+
+
             view.SetMessageMode(true);
             view.onButtonOk.AddListener(infoOkHandler);
         }

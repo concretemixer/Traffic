@@ -15,6 +15,8 @@ namespace Traffic.MVCS.Models
         bool IsBought(IAPType what);
         void PurchaseStart(IAPType what);
 
+        bool GetProductPrice(IAPType what, out float price, out string currency);
+
         PurshaseOk onPurchaseOk { get; set; }
         PurchaseFailed onPurchaseFailed { get; set; }
     }
@@ -29,6 +31,13 @@ namespace Traffic.MVCS.Models
 
         [Inject(EntryPoint.Container.Stage)]
         public GameObject stage { get; set; }
+
+        public bool GetProductPrice(IAPType what, out float price, out string currency)
+        {
+            price = 1;
+            currency = "USD";
+            return true;
+        }
 
         public bool IsBought(IAPType what)
         {

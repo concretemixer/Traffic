@@ -19,6 +19,9 @@ namespace Traffic.MVCS.Views.UI
         [SerializeField]
         Text timerText;
 
+        [SerializeField]
+        public Text priceText;
+
         public readonly Signal onButtonBuy = new Signal();
         public readonly Signal onButtonAdvert = new Signal();
         public readonly Signal onButtonClose = new Signal();

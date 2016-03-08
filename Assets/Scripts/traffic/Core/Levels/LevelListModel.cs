@@ -60,7 +60,7 @@ namespace Traffic.Core
             if (index >= LevelNames.Length)
                 return LevelState.NoLevel;
 
-            LevelState result = (LevelState)PlayerPrefs.GetInt("progress.1." + index.ToString(), 1);
+            LevelState result = (LevelState)PlayerPrefs.GetInt("progress.1." + index.ToString(), 0);
             if (result == LevelState.Locked && index == 0)
                 result = LevelState.Playable;
 

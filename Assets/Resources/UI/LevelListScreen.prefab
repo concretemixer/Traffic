@@ -2037,7 +2037,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: YOU CAN BUY ADDITIONAL 12 LEVELS FOR $2
+  m_Text: YOU CAN BUY ADDITIONAL 12 LEVELS FOR %PRICE%
 --- !u!114 &11467902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2535,6 +2535,7 @@ MonoBehaviour:
   Locked: {fileID: 11450470}
   buyButton: {fileID: 11438242}
   closeButton: {fileID: 11409186}
+  shopLevelsDesc: {fileID: 11462770}
 --- !u!114 &11498270
 MonoBehaviour:
   m_ObjectHideFlags: 1

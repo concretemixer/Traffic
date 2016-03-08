@@ -74,12 +74,24 @@ namespace Traffic.MVCS.Views.UI
             InfoMessageView view = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
 
             view.SetCaption("PURCHASE OK");
+
+            float price;
+            string currency = "?";
+
+            iapService.GetProductPrice(what, out price, out currency);
+
+            view.SetCaption("PURCHASE OK");
             if (what == IAPType.AdditionalLevels)
-                view.SetText("You have purchased 12 additional levels for $1");
+            {
+                view.SetText("You have purchased 12 additional levels for " + currency + (currency.Length > 1 ? " " : "") + price.ToString("F2"));
+            }
             else if (what == IAPType.NoAdverts)
-                view.SetText("You have purchased the permanent advert removal for $2");
+            {
+                view.SetText("You have purchased the permanent advert removal for " + currency + (currency.Length > 1 ? " " : "") + price.ToString("F2"));
+            }
             else
-                view.SetText("You have purchased something...");
+                view.SetText("You have purchased something...");            
+
 
             view.SetMessageMode(true);
             view.onButtonOk.AddListener(infoOkHandler);
@@ -114,6 +126,15 @@ namespace Traffic.MVCS.Views.UI
             onPurchaseFailed.AddListener(purchaseFailHandler);
 
             view.Layout(Screen.width, Screen.height);
+
+            float price;
+            string currency;
+
+            if (iapService.GetProductPrice(IAPType.NoAdverts, out price, out currency))
+            {
+                view.priceText.text = view.priceText.text.Replace("%PRICE%",
+                    currency + (currency.Length > 1 ? " " : "") + price.ToString("F2"));
+            }
 
             base.OnRegister();
         }

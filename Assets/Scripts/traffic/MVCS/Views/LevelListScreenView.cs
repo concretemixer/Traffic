@@ -32,6 +32,9 @@ namespace Traffic.MVCS.Views.UI
         [SerializeField]
         Button closeButton;
 
+        [SerializeField]
+        public Text shopLevelsDesc;
+
         public readonly Signal onButtonNext = new Signal();
         public readonly Signal onButtonPrev = new Signal();
         public readonly Signal onButtonHome = new Signal();
