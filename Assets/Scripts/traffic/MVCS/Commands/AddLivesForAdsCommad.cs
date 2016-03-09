@@ -3,6 +3,7 @@ using Commons.Utils;
 using strange.extensions.command.impl;
 using Traffic.Core;
 using Traffic.MVCS.Views.UI;
+using Traffic.MVCS.Models;
 
 namespace Traffic.MVCS.Commands
 {
@@ -14,6 +15,9 @@ namespace Traffic.MVCS.Commands
         [Inject]
         public IUIManager UI { get; set; }
 
+        [Inject]
+        public ILocaleService localeService { get; set; }
+
         public override void Execute()
         {
             Loggr.Log("increease tryies for ad watching");
@@ -21,8 +25,8 @@ namespace Traffic.MVCS.Commands
             levels.TriesLeft = receivedTries;
 
             var view = UI.Show<InfoMessageView>(UIMap.Id.InfoMessage);
-            view.SetCaption("Congrats!");
-            view.SetText("Your tries completely restored!");
+            view.SetCaption(localeService.ProcessString("%NEW_TRIES_TITLE%"));
+            view.SetText(localeService.ProcessString("%NEW_TRIES_DESC%"));
             view.SetMessageMode(true);
         }
     }

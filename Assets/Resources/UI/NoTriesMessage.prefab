@@ -414,7 +414,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: NO MORE TRIES LEFT
+  m_Text: '%NO_TRIES_TITLE%'
 --- !u!114 &11475112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -447,7 +447,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: BUY UNLIMITED TRIES FOR %PRICE% OR WATCH AN AVDERTISMENT TO REFRESH !
+  m_Text: '%NO_TRIES_DESC%'
 --- !u!114 &11476350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -480,7 +480,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: BUY
+  m_Text: '%BUY%'
 --- !u!114 &11476466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -513,7 +513,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: TRIES WILL REFRESH AUTOMATICALY IN 20:40
+  m_Text: '%NO_TRIES_TIMER%'
 --- !u!114 &11481800
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -597,10 +597,10 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
+    m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: ADVERT
+    m_LineSpacing: 0.8
+  m_Text: '%NO_TRIES_ADVERT%'
 --- !u!114 &11488934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -831,8 +831,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -4}
-  m_SizeDelta: {x: 200, y: 59.93}
+  m_AnchoredPosition: {x: 0, y: -3}
+  m_SizeDelta: {x: 140, y: 59.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22487668
 RectTransform:
@@ -865,8 +865,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -4}
-  m_SizeDelta: {x: 200, y: 59.93}
+  m_AnchoredPosition: {x: 0, y: -3}
+  m_SizeDelta: {x: 140, y: 59.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22490226
 RectTransform:

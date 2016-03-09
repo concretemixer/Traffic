@@ -43,6 +43,9 @@ namespace Traffic.MVCS.Views.UI
         }
 
         [Inject]
+        public ILocaleService localeService { get; set; }
+
+        [Inject]
         public IAPService iapService { get; set; }
 
         [Inject]
@@ -116,24 +119,12 @@ namespace Traffic.MVCS.Views.UI
         void purchaseOkHandler(IAPType what)
         {            
             InfoMessageView view = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
-            view.SetCaption("PURCHASE OK");
 
-            float price;
-            string currency = "?";
-
-            iapService.GetProductPrice(what, out price, out currency);
-
-            view.SetCaption("PURCHASE OK");
+            view.SetCaption(localeService.ProcessString("%PURCHASE_OK%"));
             if (what == IAPType.AdditionalLevels)
-            {
-                view.SetText("You have purchased 12 additional levels for " + currency + (currency.Length > 1 ? " " : "") + price.ToString("F2"));
-            }
+                view.SetText(localeService.ProcessString("%LEVELS_BOUGHT%"));
             else if (what == IAPType.NoAdverts)
-            {
-                view.SetText("You have purchased the permanent advert removal for " + currency + (currency.Length > 1 ? " " : "") + price.ToString("F2"));
-            }
-            else
-                view.SetText("You have purchased something...");            
+                view.SetText(localeService.ProcessString("%NO_ADS_BOUGHT%"));        
 
 
             view.SetMessageMode(true);
@@ -143,7 +134,7 @@ namespace Traffic.MVCS.Views.UI
         void purchaseFailHandler(IAPType what, string error)
         {            
             InfoMessageView view = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
-            view.SetCaption("PURCHASE FAILED");
+            view.SetCaption(localeService.ProcessString("%PURCHASE_FAILED%"));
             view.SetText(error);
             view.SetMessageMode(true);
             view.onButtonOk.AddListener(infoOkHandler);

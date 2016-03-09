@@ -30,12 +30,6 @@ namespace Traffic.MVCS.Views.UI
         Button shopCloseButton;
 
         [SerializeField]
-        Text shopLevelsDesc;
-
-        [SerializeField]
-        Text shopNoAdvertsDesc;
-
-        [SerializeField]
         Button shopBuyLevels;
 
         [SerializeField]
@@ -91,20 +85,6 @@ namespace Traffic.MVCS.Views.UI
                     shopBuyLevels.gameObject.SetActive(false);
                 if (iapService.IsBought(IAPType.NoAdverts))
                     shopBuyNoAdverts.gameObject.SetActive(false);
-
-                float price;
-                string currency;
-
-                if (iapService.GetProductPrice(IAPType.NoAdverts,out price, out currency)) {
-                    shopNoAdvertsDesc.text = shopNoAdvertsDesc.text.Replace("%PRICE%",
-                        currency + (currency.Length>1 ? " " : "") + price.ToString("F2"));
-                }
-                if (iapService.GetProductPrice(IAPType.AdditionalLevels, out price, out currency))
-                {
-                    shopLevelsDesc.text = shopLevelsDesc.text.Replace("%PRICE%",
-                        currency + (currency.Length > 1 ? " " : "") + price.ToString("F2"));
-                }
-
             }
             shopBg.gameObject.SetActive(show);
         }

@@ -1232,7 +1232,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: SETTINGS
+  m_Text: '%SETTINGS%'
 --- !u!114 &11419828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1784,7 +1784,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: ENTER CODE
+  m_Text: '%ENTER_CODE%'
 --- !u!114 &11445950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1858,7 +1858,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: SOUND
+  m_Text: '%SOUND%'
 --- !u!114 &11447202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2420,7 +2420,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: MUSIC
+  m_Text: '%MUSIC%'
 --- !u!114 &11467210
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2534,7 +2534,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: MUSIC
+  m_Text: '%MUSIC%'
 --- !u!114 &11469190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2930,7 +2930,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: PROMOTION
+  m_Text: '%PROMO_TITLE%'
 --- !u!114 &11496570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3112,7 +3112,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: SETTINGS
+  m_Text: '%SETTINGS%'
 --- !u!114 &11499774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3145,7 +3145,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: SOUND
+  m_Text: '%SOUND%'
 --- !u!222 &22204412
 CanvasRenderer:
   m_ObjectHideFlags: 1

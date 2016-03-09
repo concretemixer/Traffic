@@ -77,8 +77,8 @@ namespace Traffic.MVCS.Models
 
             if (currency == "USD")
                 currency = "$";
-            if (currency == "EUR")
-                currency = "€";
+        //    if (currency == "EUR")
+       //         currency = "€";
 
             return true;
         }

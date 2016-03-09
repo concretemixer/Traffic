@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Commons.Resources;
 using Traffic.MVCS.Commands.Signals;
+using Traffic.MVCS.Models;
 using Traffic.MVCS.Views.UI;
 using Commons.Utils;
 
@@ -12,6 +13,10 @@ namespace Commons.UI
     {
         [Inject]
         public OrientationChangedSignal onOrientationChanged { get; set; }
+
+        [Inject]
+        public ILocaleService localeService { get; set; }
+
 
         GameObject container;
 
@@ -81,7 +86,11 @@ namespace Commons.UI
             instance.transform.SetParent(container.transform);
     	    instance.transform.localPosition = Vector3.zero;
 
+            localeService.SetAllTexts(instance.gameObject);
+
             uiElements[_viewId] = instance;
+
+
 
             return instance;
         }

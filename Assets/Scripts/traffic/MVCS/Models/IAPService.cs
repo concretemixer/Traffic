@@ -35,7 +35,7 @@ namespace Traffic.MVCS.Models
         public bool GetProductPrice(IAPType what, out float price, out string currency)
         {
             price = 1;
-            currency = "USD";
+            currency = "$";
             return true;
         }
 
