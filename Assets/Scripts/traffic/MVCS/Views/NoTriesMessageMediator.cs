@@ -117,15 +117,6 @@ namespace Traffic.MVCS.Views.UI
 
             view.Layout(Screen.width, Screen.height);
 
-            float price;
-            string currency;
-
-            if (iapService.GetProductPrice(IAPType.NoAdverts, out price, out currency))
-            {
-                view.priceText.text = view.priceText.text.Replace("%PRICE%",
-                    currency + (currency.Length > 1 ? " " : "") + price.ToString("F2"));
-            }
-
             base.OnRegister();
         }
 

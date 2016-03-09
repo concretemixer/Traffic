@@ -87,6 +87,23 @@ namespace Traffic.Core
                     point++;
                 }
             }
+            else if (point == 6)
+            {
+                if (lifetime > 22)
+                {
+                    onTutorialPoint.Dispatch(point);
+                    point++;
+                }
+            }
+            else if (point == 7)
+            {
+                if (lifetime > 24.5)
+                {
+                    onTutorialPoint.Dispatch(point);
+                    point++;
+                }
+            }
+
         }
     }
 }

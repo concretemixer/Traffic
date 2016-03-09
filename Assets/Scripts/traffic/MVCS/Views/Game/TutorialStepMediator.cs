@@ -34,6 +34,9 @@ namespace Traffic.MVCS.Views.UI
             set;
         }
 
+        [Inject]
+        public ILocaleService localeService { get; set; }
+
         [Inject(EntryPoint.Container.Stage)]
         public GameObject stage { get; set; }
 
@@ -47,15 +50,6 @@ namespace Traffic.MVCS.Views.UI
             target = null;
 
         }
-
-        string[] texts = {
-            "The cars are about to crash! TAP the car to accelerate it.",
-            "Progress bar. It grows as a vehicle reaches the edge of the screen.",
-            "Score. Accelerate vehicles to gain more point!",
-            "Attempts count. It decreases with every crash. Once it reaches zero, you have to refill it in various ways.",
-            "SWIPE the car to stop it or to decelerate.",
-            "TAP the car to make it move again."};
-
 
         void Update()
         {
@@ -85,7 +79,15 @@ namespace Traffic.MVCS.Views.UI
                         target = v;
                         break;
                     }
+                    if (view.Step == 7 && v.GetComponent<Vehicle>().Number == 5)
+                    {
+                        target = v;
+                        break;
+                    }
                 }
+
+                if (view.Step == 6)
+                    target = GameObject.Find("StopHelper");
 
                 foreach (TutorialTouchCamera camera in stage.GetComponentsInChildren<TutorialTouchCamera>())
                 {
@@ -129,12 +131,16 @@ namespace Traffic.MVCS.Views.UI
                     view.SetHandPos(w + 90 * k, h + 50.0f * (float)Math.Sqrt(k));
                     view.SetHandAlpha(2 * (1 - k * k));
                 }
+                else if (view.Step == 6 || view.Step == 7)
+                {
+                    view.SetHandAlpha(0);
+                }
                 else
                 {
                     float k2 = 1 - (float)Math.Sin(Math.PI * k);
 
                     view.SetHandPos(w - 10 * k2, h + 10.0f * k2);
-                    //view.SetHandAlpha(k > 0.5 ? 0 : 1);
+                    view.SetHandAlpha(1);
                 }
                 view.SetShadePos(w, h);
 
@@ -178,7 +184,7 @@ namespace Traffic.MVCS.Views.UI
             }
 
 
-            view.SetBubbleText(texts[view.Step]);
+            view.SetBubbleText(localeService.ProcessString("%TUTOR_STEP_"+view.Step.ToString()+"%"));
         }
 
         public override void OnRegister()

@@ -25,7 +25,8 @@ namespace Traffic.MVCS.Models
             entries.Add("%ENTER_CODE%", "ENTER CODE");
             entries.Add("%SETTINGS%", "SETTINGS");
             entries.Add("%SHOP%", "SHOP");
-            entries.Add("%BUY%", "BUY");
+            entries.Add("%BUY%", " BUY");
+            //entries.Add("%BUY%", "йсохрэ");
 
             entries.Add("%LEVELS_DESC_SHOP%", "12 ADDITIONAL LEVELS FOR %PRICE_NO_ADS%");
             entries.Add("%NO_ADS_DESC_SHOP%", "TURN OFF ADVERTISMENTS FOR %PRICE_LEVELS%");
@@ -46,6 +47,15 @@ namespace Traffic.MVCS.Models
 
             entries.Add("%NEW_TRIES_TITLE%", "CONGRATULATIONS");
             entries.Add("%NEW_TRIES_DESC%", "YOU TRIES HAS BEEN RESTORED!");
+
+            entries.Add("%TUTOR_STEP_0%", "The cars are about to crash! To avoid the crash, <color=lime>TAP</color> the car to accelerate it.");
+            entries.Add("%TUTOR_STEP_1%", "Progress bar. It grows as a vehicle reaches the edge of the screen.");
+            entries.Add("%TUTOR_STEP_2%", "Score. Accelerate vehicles to gain more point!");
+            entries.Add("%TUTOR_STEP_3%", "Attempts count. It decreases with every crash. Once it reaches zero, you have to refill it in various ways.");
+            entries.Add("%TUTOR_STEP_4%", "There is an obstacle ahead! <color=lime>SWIPE</color> the car to stop it or to decelerate.");
+            entries.Add("%TUTOR_STEP_5%", "<color=lime>TAP</color> the car to make it move again and avoid being hitting from behind.");
+            entries.Add("%TUTOR_STEP_6%", "This is the <color=yellow>bus stop</color>. The place where buses stop :)");
+            entries.Add("%TUTOR_STEP_7%", "And here is the <color=yellow>bus</color> heading for the <color=yellow>bus stop</color>. You cannot control buses, so be careful and watch the other vehicles.");
 
 
         }

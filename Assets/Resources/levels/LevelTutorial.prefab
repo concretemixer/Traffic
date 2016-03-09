@@ -1256,6 +1256,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &129456
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 470590}
+  m_Layer: 0
+  m_Name: StopHelper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &130052
 GameObject:
   m_ObjectHideFlags: 1
@@ -4703,6 +4718,7 @@ Transform:
   - {fileID: 434596}
   - {fileID: 496100}
   - {fileID: 429726}
+  - {fileID: 470590}
   m_Father: {fileID: 411332}
   m_RootOrder: 6
 --- !u!4 &416212
@@ -6221,6 +6237,18 @@ Transform:
   - {fileID: 431936}
   m_Father: {fileID: 434214}
   m_RootOrder: 0
+--- !u!4 &470590
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129456}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 20, y: 0, z: 30.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 416116}
+  m_RootOrder: 76
 --- !u!4 &470722
 Transform:
   m_ObjectHideFlags: 1

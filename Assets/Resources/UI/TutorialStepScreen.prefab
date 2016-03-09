@@ -381,12 +381,12 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: EN TE R CO D EEN TE R CO D EEN TE R CO D EEN TE R CO D EEN TE R CO D EEN
-    TE R CO D EEN TE R CO D EEN TE R CO D EEN TE R CO D EEN TE R CO D EEN TE R CO
+    m_LineSpacing: 0.95
+  m_Text: EN <color=#00ff00>TE R CO D</color> EEN TE R CO D EEN TE R CO D EEN TE R
+    CO D EEN TE R CO D EEN TE R CO D EEN TE R CO D EEN TE R CO D EEN TE R CO D EEN
+    TE R CO D EEN TE R CO D EEN TE R CO fD EEN TE R CO D EEN TE R CO D EEN TE R CO
     D EEN TE R CO D EEN TE R CO D EEN TE R CO D EEN TE R CO D EEN TE R CO D EEN TE
-    R CO D EEN TE R CO D EEN TE R CO D EEN TE R CO D EEN TE R CO D EEN TE R CO D EEN
-    TE R CO D EEN TE R CO D E
+    R CO D EEN TE R CO D EEN TE R CO D EEN TE R CO D E
 --- !u!114 &11408500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -543,7 +543,7 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
+    m_LineSpacing: 0.95
   m_Text: EN TE R CO D EEN TE R CO D EEN TE R CO D EEN TE R CO D EEN TE R CO D EEN
     TE R CO D EEN TE R CO D EEN TE R CO D EEN TE R CO D EEN TE R CO D EEN TE R CO
     D EEN TE R CO D EEN TE R CO D EEN TE R CO D EEN TE R CO D EEN TE R CO D EEN TE
@@ -1011,7 +1011,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 55}
-  m_SizeDelta: {x: 328, y: 144}
+  m_SizeDelta: {x: 328, y: 164}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!224 &22416232
 RectTransform:
@@ -1116,7 +1116,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -6}
-  m_SizeDelta: {x: 290, y: 120}
+  m_SizeDelta: {x: 290, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22441756
 RectTransform:
@@ -1157,7 +1157,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -56}
-  m_SizeDelta: {x: 328, y: 144}
+  m_SizeDelta: {x: 328, y: 164}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &22444694
 RectTransform:
@@ -1228,7 +1228,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -6}
-  m_SizeDelta: {x: 290, y: 120}
+  m_SizeDelta: {x: 290, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22456672
 RectTransform:
