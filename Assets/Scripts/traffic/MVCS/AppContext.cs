@@ -94,8 +94,11 @@ namespace Traffic.MVCS
         {
             injectionBinder.Bind<ILevelModel>().To<LevelModel>();
             injectionBinder.Bind<ILevelListModel>().To<LevelListModel>().ToSingleton();
-            //injectionBinder.Bind<IAPService>().To<IAPServiceDummy>().ToSingleton();
+#if UNITY_STANDALONE
+            injectionBinder.Bind<IAPService>().To<IAPServiceDummy>().ToSingleton();
+#else
             injectionBinder.Bind<IAPService>().To<IAPServiceUnity>().ToSingleton();
+#endif
             injectionBinder.Bind<ILocaleService>().To<LocaleService>().ToSingleton();
         }
 
