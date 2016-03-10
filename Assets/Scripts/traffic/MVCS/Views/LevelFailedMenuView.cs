@@ -16,6 +16,11 @@ namespace Traffic.MVCS.Views.UI
         [SerializeField]
         Text score;
 
+        [SerializeField]
+        Text failedVertical;
+
+        [SerializeField]
+        Text failedHorizontal;
 
         public readonly Signal onButtonRetryLevel = new Signal();
         public readonly Signal onButtonHome = new Signal();
@@ -23,6 +28,12 @@ namespace Traffic.MVCS.Views.UI
         public void SetScore(int score)
         {
             this.score.text = score.ToString("D6");
+        }
+
+        public void SetMessage(string text)
+        {
+            this.failedVertical.text = text;
+            this.failedHorizontal.text = text;
         }
 
         protected override void Awake()

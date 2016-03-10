@@ -65,6 +65,9 @@ namespace Traffic.MVCS.Views.UI
         [Inject]
         public AnalyticsCollector analytics { private get; set; }
 
+        [Inject]
+        public ILocaleService localeService { get; set; }
+
         int acheivedStars;
 
         void nextLevelHandler()
@@ -95,6 +98,9 @@ namespace Traffic.MVCS.Views.UI
             view.onButtonNextLevel.AddListener(nextLevelHandler);
             view.onButtonHome.AddListener(homeHandler);
             view.onShareButton.AddListener(shareHandler);
+
+            view.SetMessage(acheivedStars == 1 ? localeService.ProcessString("%LEVEL_WON_1%") :
+                (acheivedStars == 3 ? localeService.ProcessString("%LEVEL_WON_3%") : localeService.ProcessString("%LEVEL_WON_2%")));
 
             view.SetScore((int)level.Score, acheivedStars);
             view.Layout(Screen.width, Screen.height);

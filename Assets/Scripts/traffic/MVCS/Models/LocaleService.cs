@@ -26,6 +26,7 @@ namespace Traffic.MVCS.Models
             entries.Add("%SETTINGS%", "SETTINGS");
             entries.Add("%SHOP%", "SHOP");
             entries.Add("%BUY%", " BUY");
+            entries.Add("%LOADING%", " LOADING...");
             //entries.Add("%BUY%", "йсохрэ");
 
             entries.Add("%LEVELS_DESC_SHOP%", "12 ADDITIONAL LEVELS FOR %PRICE_NO_ADS%");
@@ -57,23 +58,44 @@ namespace Traffic.MVCS.Models
             entries.Add("%TUTOR_STEP_6%", "This is the <color=yellow>bus stop</color>. The place where buses stop :)");
             entries.Add("%TUTOR_STEP_7%", "And here is the <color=yellow>bus</color> heading for the <color=yellow>bus stop</color>. You cannot control buses, so be careful and watch the other vehicles.");
 
+            entries.Add("%LEVEL_LOST_1%", "CRASHED!");
+            entries.Add("%LEVEL_LOST_2%", "NICE TRY, BUT...");
+            entries.Add("%LEVEL_LOST_3%", "ALMOST THERE...");
+
+            entries.Add("%LEVEL_WON_1%", "DONE IT!");
+            entries.Add("%LEVEL_WON_2%", "EXCELENT!");
+            entries.Add("%LEVEL_WON_3%", "PERFECT!");
+
+            entries.Add("%YOUR_SCORE%", "YOUR SCORE:");
 
         }
 
+
+        bool priceStringsOk = false;
         [PostConstruct]
         public void UpdatePriceStrings()
         {
+            if (priceStringsOk)
+                return;
+
             float price = 1000;
             string currency = "?";
 
             if (iapService.GetProductPrice(IAPType.NoAdverts, out price, out currency))
+            {
                 entries.Add("%PRICE_NO_ADS%", currency + (currency.Length > 1 ? " " : "") + price.ToString("F2"));
+                priceStringsOk = true;
+            }
             if (iapService.GetProductPrice(IAPType.AdditionalLevels, out price, out currency))
+            {
                 entries.Add("%PRICE_LEVELS%", currency + (currency.Length > 1 ? " " : "") + price.ToString("F2"));
+                priceStringsOk = true;
+            }
         }
 
         public void SetAllTexts(GameObject root)         
         {
+            UpdatePriceStrings();
             foreach (Text textField in root.GetComponentsInChildren<Text>())
             {
                 textField.text = ProcessString(textField.text);

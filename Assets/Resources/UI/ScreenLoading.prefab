@@ -111,7 +111,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Loading...
+  m_Text: '%LOADING%'
 --- !u!114 &11443836
 MonoBehaviour:
   m_ObjectHideFlags: 1

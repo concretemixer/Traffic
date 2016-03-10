@@ -18,6 +18,13 @@ namespace Traffic.MVCS.Views.UI
         [SerializeField]
         Text score;
 
+        [SerializeField]
+        Text doneVertical;
+
+        [SerializeField]
+        Text doneHorizontal;
+
+
 
         public readonly Signal onButtonNextLevel = new Signal();
         public readonly Signal onButtonHome = new Signal();
@@ -47,7 +54,13 @@ namespace Traffic.MVCS.Views.UI
                 GameObject.Find("NoStar3Img_v").GetComponent<Image>().color = Color.clear;
             }
 
-        }       
+        }
+
+        public void SetMessage(string text)
+        {
+            this.doneVertical.text = text;
+            this.doneHorizontal.text = text;
+        }
 
         protected override void OnDestroy()
         {

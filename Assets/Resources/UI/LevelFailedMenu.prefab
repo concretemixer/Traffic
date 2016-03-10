@@ -298,7 +298,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: LOOOOOSER!
+  m_Text: '%LEVEL_LOST_1%'
 --- !u!114 &11456474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -331,7 +331,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'YOUR SCORE:'
+  m_Text: '%YOUR_SCORE%'
 --- !u!114 &11460292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -364,7 +364,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: LOOOOOSER!
+  m_Text: '%LEVEL_LOST_1%'
 --- !u!114 &11463516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -438,7 +438,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'YOUR SCORE:'
+  m_Text: '%YOUR_SCORE%'
 --- !u!114 &11480208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -452,12 +452,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   homeButton: {fileID: 11406862}
   retryButton: {fileID: 11463516}
-  closeButton: {fileID: 0}
-  advertButton: {fileID: 0}
-  buyButton: {fileID: 0}
-  lockedImage: {fileID: 0}
   score: {fileID: 11496786}
-  timerText: {fileID: 0}
+  failedVertical: {fileID: 11451574}
+  failedHorizontal: {fileID: 11460292}
 --- !u!114 &11487558
 MonoBehaviour:
   m_ObjectHideFlags: 1

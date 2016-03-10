@@ -38,6 +38,9 @@ namespace Traffic.MVCS.Views.UI
         public IAPService iapService { get; set; }
 
         [Inject]
+        public ILocaleService localeService { get; set; }
+
+        [Inject]
         public LevelRetry onRetry { get; set; }
 
 
@@ -80,6 +83,12 @@ namespace Traffic.MVCS.Views.UI
                 UI.Show(UIMap.Id.NoTriesMessage);
 
             view.SetScore((int)level.Score);
+
+            float k = (float)level.Progress / (float)levels.LevelConfigs[levels.CurrentLevelIndex].target;
+
+            view.SetMessage(k < 0.3 ? localeService.ProcessString("%LEVEL_LOST_1%") :
+                (k > 0.8 ? localeService.ProcessString("%LEVEL_LOST_3%") : localeService.ProcessString("%LEVEL_LOST_2%")));
+
             view.Layout(Screen.width, Screen.height);
 
             base.OnRegister();
