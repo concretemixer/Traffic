@@ -1,0 +1,113 @@
+fileFormatVersion: 2
+guid: 7a59fe4c9b9f92d48888f57181d4a99b
+timeCreated: 1451715567
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: bogie_tripple
+    100002: diesel
+    100004: diesel_fast
+    100006: //RootNode
+    100008: diesel_fast_blue
+    100010: diesel_navy
+    100012: diesel_fast_green
+    100014: diesel_fast_red
+    100016: diesel_green
+    100018: diesel_grey
+    400000: bogie_tripple
+    400002: diesel
+    400004: diesel_fast
+    400006: //RootNode
+    400008: diesel_fast_blue
+    400010: diesel_navy
+    400012: diesel_fast_green
+    400014: diesel_fast_red
+    400016: diesel_green
+    400018: diesel_grey
+    2300000: bogie_tripple
+    2300002: diesel
+    2300004: diesel_fast
+    2300006: diesel_fast_blue
+    2300008: diesel_navy
+    2300010: diesel_fast_green
+    2300012: diesel_fast_red
+    2300014: diesel_green
+    2300016: diesel_grey
+    3300000: bogie_tripple
+    3300002: diesel
+    3300004: diesel_fast
+    3300006: diesel_fast_blue
+    3300008: diesel_navy
+    3300010: diesel_fast_green
+    3300012: diesel_fast_red
+    3300014: diesel_green
+    3300016: diesel_grey
+    4300000: diesel
+    4300002: bogie_tripple
+    4300004: diesel_fast
+    4300006: diesel_navy
+    4300008: diesel_fast_blue
+    4300010: diesel_grey
+    4300012: diesel_fast_green
+    4300014: diesel_fast_red
+    4300016: diesel_green
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
