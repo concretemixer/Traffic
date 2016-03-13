@@ -88,15 +88,19 @@ namespace Traffic.MVCS.Views.Game
 
 		void vehicleReachedHandler()
 		{
-			level.Progress++;
-			if (level.Progress == level.Config.target) {
-				onLevelComplete.Dispatch();
-			}           
+            if (!level.Failed && !level.Complete)
+            {
+                level.Progress++;
+                if (level.Progress == level.Config.target)
+                {
+                    onLevelComplete.Dispatch();
+                }
+            }
 		}
 
 		void vehicleCrashedHandler()
 		{
-			if (!level.Failed) {
+			if (!level.Failed && !level.Complete) {
                 cameraStartPos = Camera.main.transform.localPosition;
                 shakeTimer = shakeTime;
                 level.Failed = true;

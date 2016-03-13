@@ -96,7 +96,7 @@ namespace Traffic.MVCS.Views.UI
 
             }
 
-            if (Camera.current == null)
+            if (Camera.main == null)
             {
                // UnityEngine.Debug.Log("No camera");
                 return;
@@ -108,7 +108,7 @@ namespace Traffic.MVCS.Views.UI
 
             if (target != null)
             {
-                Vector3 screenPos = Camera.current.WorldToScreenPoint(target.transform.position);
+                Vector3 screenPos = Camera.main.WorldToScreenPoint(target.transform.position);
 
                 screenPos.x /= (float)Camera.current.pixelWidth;
                 screenPos.y /= (float)Camera.current.pixelHeight;

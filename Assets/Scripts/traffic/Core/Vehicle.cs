@@ -51,6 +51,7 @@ public class Vehicle : MonoBehaviour {
     private float scoreGrowK = 1;
     private bool finished = false;
     private bool interactable = true;
+    private bool crashed = false;
 
 	// Use this for initialization
 	void Start () {
@@ -289,13 +290,15 @@ public class Vehicle : MonoBehaviour {
 			GetComponent<Rigidbody> ().drag =10;
 			GetComponent<Rigidbody> ().angularDrag = 10;
 
-            /*
-			if (level!=null) {
-				if (crashSound!=null && !level.Crash) 
-					AudioSource.PlayClipAtPoint(crashSound[Random.Range(0,crashSound.Length)],col.contacts[0].point);
-				level.OnCrash(); 
-			}
-              */
+
+            if (crashSound != null && !crashed)
+            {
+                AudioSource.PlayClipAtPoint(crashSound[Random.Range(0, crashSound.Length)], col.contacts[0].point);
+                crashed = true;
+                if (col.gameObject.GetComponent<Vehicle>()!=null)
+                    col.gameObject.GetComponent<Vehicle>().crashed = true;
+            }
+
             onVehicleCrashed.Dispatch();
 
             Debug.Log(gameObject.name +":"+ Time.time);

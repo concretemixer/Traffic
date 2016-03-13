@@ -143,7 +143,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183408}
-  m_LocalRotation: {x: 0, y: -.707106829, z: 0, w: .707106709}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -169,7 +169,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129050}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 59.3007278, y: 192.225067, z: 159.76973}
+  m_LocalPosition: {x: 59.300728, y: 192.22507, z: 159.76973}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 436260}
@@ -196,8 +196,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -220,8 +222,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -249,7 +253,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: .0500000007
+  m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -265,7 +269,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 11, y: 4, z: 5.30000019}
+  m_Size: {x: 11, y: 4, z: 5.3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &6524632
 BoxCollider:
@@ -277,7 +281,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 11, y: 4, z: 5.30000019}
+  m_Size: {x: 11, y: 4, z: 5.3}
   m_Center: {x: 0, y: 2, z: 0}
 --- !u!82 &8237830
 AudioSource:
@@ -294,9 +298,10 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
+  Spatialize: 0
   Priority: 128
   DopplerLevel: 0
-  MinDistance: 49.5049515
+  MinDistance: 49.50495
   MaxDistance: 150
   Pan2D: 0
   rolloffMode: 1
@@ -318,6 +323,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -328,6 +334,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -338,6 +345,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -348,6 +356,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!82 &8249494
 AudioSource:
   m_ObjectHideFlags: 1
@@ -363,9 +372,10 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
+  Spatialize: 0
   Priority: 128
   DopplerLevel: 0
-  MinDistance: 49.5049515
+  MinDistance: 49.50495
   MaxDistance: 150
   Pan2D: 0
   rolloffMode: 1
@@ -387,6 +397,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -397,6 +408,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -407,6 +419,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -417,6 +430,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &11440284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -428,6 +442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 020cc7e30587c324ebe19de5cb0494f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Number: 0
   crashSound:
   - {fileID: 8300000, guid: 9e32985e7954e744abee998a0e833351, type: 3}
   - {fileID: 8300000, guid: 641f2a2a9f0c4b548920ac1c246e41f6, type: 3}
@@ -436,7 +451,6 @@ MonoBehaviour:
   accelSound:
   - {fileID: 8300000, guid: cde8b734fbb6b51419eac6d7e788f39c, type: 3}
   - {fileID: 8300000, guid: 0ca1473cdbe54f945870022c617f4065, type: 3}
-  - {fileID: 8300000, guid: 5855eb69d871af945b56faabd013a93c, type: 3}
   startSound: {fileID: 0}
   stopSound: {fileID: 0}
   NormalSpeed: 25
@@ -462,7 +476,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: accelSound.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: accelSound.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5855eb69d871af945b56faabd013a93c, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 129050}
