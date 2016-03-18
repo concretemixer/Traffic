@@ -27,6 +27,7 @@ namespace Traffic.MVCS.Views.UI
         [SerializeField]
         Image badge;
 
+        public AudioClip successSound;
 
         public readonly Signal onButtonNextLevel = new Signal();
         public readonly Signal onButtonHome = new Signal();

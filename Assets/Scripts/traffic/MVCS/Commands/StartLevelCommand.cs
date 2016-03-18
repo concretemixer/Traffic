@@ -86,10 +86,10 @@ namespace Traffic.MVCS.Commands
             AudioSource gameAmbient = GameObject.Find("GameAmbient").GetComponent<AudioSource>();
             AmbientTrackList gameAmbientTracks = GameObject.Find("GameAmbient").GetComponent<AmbientTrackList>();
 
-            gameAmbient.clip = gameAmbientTracks.Tracks[levelIndex];
+            gameAmbient.clip = null;// gameAmbientTracks.Tracks[levelIndex];
             float musicVolume = PlayerPrefs.GetFloat("volume.music", 1);
-            gameAmbient.mute = musicVolume > 0;
-            gameAmbient.Play();
+            gameAmbient.mute = true;// musicVolume > 0;
+            //gameAmbient.Play();
 
             float soundVolume = PlayerPrefs.GetFloat("volume.sound", 1);
             foreach (AudioSource src in stage.GetComponentsInChildren<AudioSource>())

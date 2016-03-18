@@ -9,6 +9,7 @@ using strange.extensions.mediation.impl;
 using Commons.SN.Facebook;
 using Commons.SN;
 using Traffic.MVCS.Services;
+using Traffic.Components;
 
 namespace Traffic.MVCS.Views.UI
 {
@@ -27,6 +28,9 @@ namespace Traffic.MVCS.Views.UI
             get;
             set;
         }
+
+        [Inject(EntryPoint.Container.UI)]
+        public GameObject UI { get; set; }
 
         [Inject(GameState.Current)]
         public ILevelModel level
@@ -53,11 +57,14 @@ namespace Traffic.MVCS.Views.UI
         }
 
         [Inject]
-        public IUIManager UI
+        public IUIManager uiManager
         {
             get;
             set;
         }
+
+        [Inject]
+        public IAPService iapService { get; set; }
 
         [Inject]
         public FacebookSN facebook { private get; set; }
@@ -72,12 +79,12 @@ namespace Traffic.MVCS.Views.UI
 
         void nextLevelHandler()
         {
-            if (levels.GetLevelState(levels.CurrentLevelIndex + 1) == LevelState.NoLevel)
-            {
+            if (levels.GetLevelState(levels.CurrentLevelIndex + 1) == LevelState.NoLevel) {
+                 uiManager.Show(UIMap.Id.GameCompleteMessage);            
             }
-            else if (levels.CurrentLevelIndex == 11)
+            else if (levels.CurrentLevelIndex == 11 && !iapService.IsBought(IAPType.AdditionalLevels))
             {
-                UI.Show(UIMap.Id.LevelPackDoneMessage);
+                uiManager.Show(UIMap.Id.LevelPackDoneMessage);
             }
             else
             {
@@ -115,6 +122,8 @@ namespace Traffic.MVCS.Views.UI
                 view.ShowBadge(true);
 
             view.Layout(Screen.width, Screen.height);
+
+            UI.GetComponent<AudioSource>().PlayOneShot(view.successSound);
         }
 
         void shareHandler()

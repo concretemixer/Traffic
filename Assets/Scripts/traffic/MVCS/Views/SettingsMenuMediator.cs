@@ -80,7 +80,7 @@ namespace Traffic.MVCS.Views.UI
 
             AudioSource gameAmbient = GameObject.Find("GameAmbient").GetComponent<AudioSource>();
             if (view.Ingame)
-                gameAmbient.mute = value > 0;
+                gameAmbient.mute = true;// value > 0;
             else
                 gameAmbient.mute = true;
         }

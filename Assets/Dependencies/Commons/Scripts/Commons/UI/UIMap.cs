@@ -19,7 +19,8 @@ namespace Commons.UI
             { Id.ScreenSettings, "UI/SettingsMenu" },
             { Id.InfoMessage, "UI/InfoMessage" },
             { Id.NoTriesMessage, "UI/NoTriesMessage" },
-            { Id.LevelPackDoneMessage, "UI/LevelPackDoneMessage" }
+            { Id.LevelPackDoneMessage, "UI/LevelPackDoneMessage" },
+            { Id.GameCompleteMessage, "UI/GameCompleteMessage" }
         };
 
         public enum Id
@@ -36,7 +37,8 @@ namespace Commons.UI
             ScreenSettings,
             InfoMessage,
             NoTriesMessage,
-            LevelPackDoneMessage
+            LevelPackDoneMessage,
+            GameCompleteMessage
         }
 
         public static string GetPath(UIMap.Id _id)

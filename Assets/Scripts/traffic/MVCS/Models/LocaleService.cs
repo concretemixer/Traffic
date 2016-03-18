@@ -73,6 +73,9 @@ namespace Traffic.MVCS.Models
             entries.Add("%FREE_LEVELS_COMPLETE%",
                 "YOU HAVE COMPLETED ALL THE FREE LEVELS OF THE GAME! 12 MORE EXCITING LEVELS ARE JUST AROUND THE CORNER FOR THE <color=white>%PRICE_LEVELS%</color> ONLY!");
 
+            entries.Add("%GAME_COMPLETE_CAPTION%", "UNBELIEVABLE!");
+            entries.Add("%GAME_COMPLETE%", "YOU HAVE COMPLETED ALL THE LEVELS! WE ARE IMPRESSED.");
+
         }
 
 
