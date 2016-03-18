@@ -121,6 +121,8 @@ namespace Traffic.MVCS
             mediationBinder.Bind<SettingsMenuView>().To<SettingsMenuMediator>();
             mediationBinder.Bind<InfoMessageView>().To<InfoMesageMediator>();
             mediationBinder.Bind<NoTriesMessageView>().To<NoTriesMessageMediator>();
+            mediationBinder.Bind<LevelPackDoneMessageView>().To<LevelPackDoneMessageMediator>();
+            
         }
 
         void mapOthers()

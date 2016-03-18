@@ -182,6 +182,8 @@ namespace Traffic.MVCS.Views.UI
             view.onButtonLevel.RemoveListener(startLevelHandler);
             view.onButtonClose.RemoveListener(closeHandler);
 
+            onPurchaseOk.RemoveListener(purchaseOkHandler);
+            onPurchaseFailed.RemoveListener(purchaseFailHandler);
             base.OnRemove();
         }
     }

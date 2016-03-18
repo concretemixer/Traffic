@@ -24,6 +24,8 @@ namespace Traffic.MVCS.Views.UI
         [SerializeField]
         Text doneHorizontal;
 
+        [SerializeField]
+        Image badge;
 
 
         public readonly Signal onButtonNextLevel = new Signal();
@@ -36,6 +38,11 @@ namespace Traffic.MVCS.Views.UI
             nextButton.onClick.AddListener(onButtonNextLevel.Dispatch);
             shareButton.onClick.AddListener(onShareButton.Dispatch);
             base.Awake();
+        }
+
+        public void ShowBadge(bool value)
+        {
+            badge.gameObject.SetActive(value);
         }
 
         public void SetScore(int score, int stars)

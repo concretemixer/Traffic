@@ -26,6 +26,7 @@ namespace Traffic.MVCS.Models
             entries.Add("%SETTINGS%", "SETTINGS");
             entries.Add("%SHOP%", "SHOP");
             entries.Add("%BUY%", " BUY");
+            entries.Add("%HOME%", " HOME");
             entries.Add("%LOADING%", " LOADING...");
             //entries.Add("%BUY%", "йсохрэ");
 
@@ -63,10 +64,14 @@ namespace Traffic.MVCS.Models
             entries.Add("%LEVEL_LOST_3%", "ALMOST THERE...");
 
             entries.Add("%LEVEL_WON_1%", "DONE IT!");
-            entries.Add("%LEVEL_WON_2%", "EXCELENT!");
+            entries.Add("%LEVEL_WON_2%", "EXCELLENT!");
             entries.Add("%LEVEL_WON_3%", "PERFECT!");
 
             entries.Add("%YOUR_SCORE%", "YOUR SCORE:");
+
+            entries.Add("%FREE_LEVELS_COMPLETE_CAPTION%", "INCREDIBLE!");
+            entries.Add("%FREE_LEVELS_COMPLETE%",
+                "YOU HAVE COMPLETED ALL THE FREE LEVELS OF THE GAME! 12 MORE EXCITING LEVELS ARE JUST AROUND THE CORNER FOR THE <color=white>%PRICE_LEVELS%</color> ONLY!");
 
         }
 

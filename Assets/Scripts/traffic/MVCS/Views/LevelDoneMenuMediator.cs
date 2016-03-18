@@ -73,7 +73,12 @@ namespace Traffic.MVCS.Views.UI
         void nextLevelHandler()
         {
             if (levels.GetLevelState(levels.CurrentLevelIndex + 1) == LevelState.NoLevel)
-                toMainScreenSignal.Dispatch();
+            {
+            }
+            else if (levels.CurrentLevelIndex == 11)
+            {
+                UI.Show(UIMap.Id.LevelPackDoneMessage);
+            }
             else
             {
                 levels.CurrentLevelIndex = levels.CurrentLevelIndex + 1;
@@ -103,6 +108,12 @@ namespace Traffic.MVCS.Views.UI
                 (acheivedStars == 3 ? localeService.ProcessString("%LEVEL_WON_3%") : localeService.ProcessString("%LEVEL_WON_2%")));
 
             view.SetScore((int)level.Score, acheivedStars);
+
+            if (levels.CurrentLevelIndex == 11)
+                view.ShowBadge(true);
+            if (levels.CurrentLevelIndex == 23)
+                view.ShowBadge(true);
+
             view.Layout(Screen.width, Screen.height);
         }
 
