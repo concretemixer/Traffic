@@ -22,6 +22,8 @@ namespace Traffic.MVCS.Views.UI
             set;
         }
 
+        [Inject]
+        public ILocaleService localeService { get; set; }
                  
         [Inject]
         public SwitchToStartScreenSignal toStartScreenSignal
@@ -29,6 +31,9 @@ namespace Traffic.MVCS.Views.UI
             get;
             set;
         }
+
+        [Inject]
+        public IAPService iapService { get; set; }
 
         [Inject(EntryPoint.Container.Stage)]
         public GameObject stage { get; set; }
@@ -57,6 +62,33 @@ namespace Traffic.MVCS.Views.UI
         void codeCloseHandler()
         {
             view.ShowCode(false);
+        }
+
+
+        void infoOkHandler()
+        {
+            InfoMessageView view2 = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
+            view2.onButtonOk.RemoveListener(infoOkHandler);
+        }
+
+        void codeOkHandler()
+        {
+            view.ShowCode(false);
+            InfoMessageView view2 = UI.Show<InfoMessageView>(UIMap.Id.InfoMessage);
+            if (iapService.ApplyCode(view.Code))
+            {
+                view2.SetCaption(localeService.ProcessString("%CODE_CAPTION%"));
+                view2.SetText(localeService.ProcessString("%CODE_OK%"));
+            }
+            else
+            {
+                
+                view2.SetCaption(localeService.ProcessString("%CODE_CAPTION%"));
+                view2.SetText(localeService.ProcessString("%CODE_FAIL%"));
+            }
+            view2.SetMessageMode(true);
+            view2.onButtonOk.AddListener(infoOkHandler);
+
         }
 
         void homeHandler()
@@ -103,6 +135,7 @@ namespace Traffic.MVCS.Views.UI
             view.onButtonBack.AddListener(homeHandler);
             view.onButtonCode.AddListener(codeHandler);
             view.onButtonCodeClose.AddListener(codeCloseHandler);
+            view.onButtonCodeOk.AddListener(codeOkHandler);
 
             view.onMusicVolume.AddListener(musicVolumeHandler);
             view.onSoundVolume.AddListener(soundVolumeHandler);

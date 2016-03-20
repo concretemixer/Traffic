@@ -57,7 +57,7 @@ namespace Traffic.MVCS.Models
             entries.Add("%TUTOR_STEP_4%", "There is an obstacle ahead! <color=lime>SWIPE</color> the car to stop it or to decelerate.");
             entries.Add("%TUTOR_STEP_5%", "<color=lime>TAP</color> the car to make it move again and avoid being hitting from behind.");
             entries.Add("%TUTOR_STEP_6%", "This is the <color=yellow>bus stop</color>. The place where buses stop :)");
-            entries.Add("%TUTOR_STEP_7%", "And here is the <color=yellow>bus</color> heading for the <color=yellow>bus stop</color>. You cannot control buses, so be careful and watch the other vehicles.");
+            entries.Add("%TUTOR_STEP_7%", "And here is the <color=yellow>bus</color> heading for the <color=yellow>bus stop</color>.\nYou <color=#ff5500>CANNOT CONTROL</color> buses, so be careful and watch the other vehicles.");
 
             entries.Add("%LEVEL_LOST_1%", "CRASHED!");
             entries.Add("%LEVEL_LOST_2%", "NICE TRY, BUT...");
@@ -75,6 +75,12 @@ namespace Traffic.MVCS.Models
 
             entries.Add("%GAME_COMPLETE_CAPTION%", "UNBELIEVABLE!");
             entries.Add("%GAME_COMPLETE%", "YOU HAVE COMPLETED ALL THE LEVELS! WE ARE IMPRESSED.");
+
+            entries.Add("%TUTORIAL_COMPLETE%", "Tutorial complete. Now you are ready for the real TRAFFIC STORM!");
+
+            entries.Add("%CODE_CAPTION%", "INFORMATION");
+            entries.Add("%CODE_OK%", "CODE OK!");
+            entries.Add("%CODE_FAIL%", "UNKNOWN CODE");
 
         }
 

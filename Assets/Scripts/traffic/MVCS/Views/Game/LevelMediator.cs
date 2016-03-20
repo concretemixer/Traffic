@@ -171,7 +171,10 @@ namespace Traffic.MVCS.Views.Game
                 levels.SetLevelState(levels.CurrentLevelIndex + 1, LevelState.Playable);
 
             UI.Hide(UIMap.Id.ScreenHUD);
-            UI.Show(UIMap.Id.LevelDoneMenu);
+            if (levels.CurrentLevelIndex==0)
+                UI.Show(UIMap.Id.TutorialDoneMenu);
+            else
+                UI.Show(UIMap.Id.LevelDoneMenu);
         }
 
         public override void OnRegister()

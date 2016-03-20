@@ -37,6 +37,10 @@ namespace Traffic.MVCS.Views.UI
         [SerializeField]
         Button pinOk;
 
+        public string Code {
+            get { return codeText.text; }
+        }
+
         public readonly Signal onButtonCode = new Signal();
         public readonly Signal onButtonCodeClose = new Signal();
         public readonly Signal onButtonCodeOk = new Signal();

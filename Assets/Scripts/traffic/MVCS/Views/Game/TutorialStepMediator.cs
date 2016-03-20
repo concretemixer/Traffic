@@ -110,8 +110,8 @@ namespace Traffic.MVCS.Views.UI
             {
                 Vector3 screenPos = Camera.main.WorldToScreenPoint(target.transform.position);
 
-                screenPos.x /= (float)Camera.current.pixelWidth;
-                screenPos.y /= (float)Camera.current.pixelHeight;
+                screenPos.x /= (float)Camera.main.pixelWidth;
+                screenPos.y /= (float)Camera.main.pixelHeight;
 
                 UnityEngine.Debug.Log(screenPos);
 

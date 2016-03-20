@@ -59,6 +59,18 @@ namespace Traffic.MVCS.Models
             
         }
 
+        public bool ApplyCode(string code)
+        {
+            if (code=="55555")
+                PlayerPrefs.SetInt("iap." + IAPType.AdditionalLevels.ToString(), 1);
+            else if (code == "88888")
+                PlayerPrefs.SetInt("iap." + IAPType.NoAdverts.ToString(), 1);
+            else
+                return false;
+
+            return true;
+        }
+
         public bool GetProductPrice(IAPType what, out float price, out string currency)
         {
             price = 1000;

@@ -12,6 +12,8 @@ namespace Traffic.MVCS.Models
 
     public interface IAPService
     {
+        bool ApplyCode(string code);
+
         bool IsBought(IAPType what);
         void PurchaseStart(IAPType what);
 
@@ -31,6 +33,11 @@ namespace Traffic.MVCS.Models
 
         [Inject(EntryPoint.Container.Stage)]
         public GameObject stage { get; set; }
+
+        public bool ApplyCode(string code)
+        {
+            return false;
+        }
 
         public bool GetProductPrice(IAPType what, out float price, out string currency)
         {

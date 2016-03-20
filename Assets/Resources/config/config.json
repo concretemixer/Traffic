@@ -109,24 +109,24 @@
          }
       },
       "6":{
-         "threeStarsScore":24000,
-         "twoStarsScore":15000,
+         "threeStarsScore":27000,
+         "twoStarsScore":17000,
          "target":50,
          "pitchers":{
+            "Pitcher 2":{
+               "startDelay":3,
+               "intervalMin":3,
+               "intervalMax":5
+            },
+            "Pitcher":{
+               "startDelay":2,
+               "intervalMin":5,
+               "intervalMax":8
+            },
             "Pitcher 1":{
                "startDelay":1,
                "intervalMin":2,
                "intervalMax":4
-            },
-            "Pitcher 3":{
-               "startDelay":1,
-               "intervalMin":3,
-               "intervalMax":4.5
-            },
-            "Pitcher 2":{
-               "startDelay":3,
-               "intervalMin":5,
-               "intervalMax":8
             }
          }
       },
@@ -180,24 +180,24 @@
          }
       },
       "9":{
-         "threeStarsScore":27000,
-         "twoStarsScore":17000,
+         "threeStarsScore":21500,
+         "twoStarsScore":15000,
          "target":50,
          "pitchers":{
-            "Pitcher 2":{
-               "startDelay":3,
-               "intervalMin":3,
-               "intervalMax":5
-            },
-            "Pitcher":{
-               "startDelay":2,
-               "intervalMin":5,
-               "intervalMax":8
-            },
             "Pitcher 1":{
                "startDelay":1,
                "intervalMin":2,
                "intervalMax":4
+            },
+            "Pitcher 3":{
+               "startDelay":1,
+               "intervalMin":3,
+               "intervalMax":4.5
+            },
+            "Pitcher 2":{
+               "startDelay":3,
+               "intervalMin":5,
+               "intervalMax":8
             }
          }
       },
@@ -256,8 +256,8 @@
          }
       },
       "12":{
-         "threeStarsScore":10000,
-         "twoStarsScore":5000,
+         "threeStarsScore":18000,
+         "twoStarsScore":12000,
          "target":50,
          "pitchers":{
             "Pitcher 1":{
@@ -288,35 +288,8 @@
          }
       },
       "13":{
-         "threeStarsScore":10000,
-         "twoStarsScore":5000,
-         "target":50,
-         "pitchers":{
-            "Pitcher 2":{
-               "startDelay":7,
-               "intervalMin":8,
-               "intervalMax":10
-            },
-            "Pitcher 4":{
-               "startDelay":3,
-               "intervalMin":8,
-               "intervalMax":10
-            },
-            "Pitcher 5":{
-               "startDelay":3,
-               "intervalMin":8,
-               "intervalMax":10
-            },
-            "Pitcher 1":{
-               "startDelay":1,
-               "intervalMin":3,
-               "intervalMax":5
-            }
-         }
-      },
-      "14":{
-         "threeStarsScore":10000,
-         "twoStarsScore":5000,
+         "threeStarsScore":31000,
+         "twoStarsScore":20000,
          "target":50,
          "pitchers":{
             "Pitcher 2":{
@@ -341,9 +314,9 @@
             }
          }
       },
-      "15":{
-         "threeStarsScore":10000,
-         "twoStarsScore":5000,
+      "14":{
+         "threeStarsScore":17000,
+         "twoStarsScore":12000,
          "target":50,
          "pitchers":{
             "Pitcher 3":{
@@ -368,9 +341,9 @@
             }
          }
       },
-      "16":{
-         "threeStarsScore":10000,
-         "twoStarsScore":5000,
+      "15":{
+         "threeStarsScore":21500,
+         "twoStarsScore":14000,
          "target":50,
          "pitchers":{
             "Pitcher 2":{
@@ -387,6 +360,38 @@
                "startDelay":1,
                "intervalMin":2,
                "intervalMax":4
+            },
+            "Pitcher 3":{
+               "startDelay":2,
+               "intervalMin":4,
+               "intervalMax":8
+            }
+         }
+      },
+      "16":{
+         "threeStarsScore":18000,
+         "twoStarsScore":12000,
+         "target":50,
+         "pitchers":{
+            "Pitcher":{
+               "startDelay":2,
+               "intervalMin":6,
+               "intervalMax":8
+            },
+            "Pitcher 1":{
+               "startDelay":1,
+               "intervalMin":2,
+               "intervalMax":4
+            },
+            "Pitcher 2":{
+               "startDelay":3,
+               "intervalMin":5,
+               "intervalMax":8
+            },
+            "Pitcher 4":{
+               "startDelay":3,
+               "intervalMin":5,
+               "intervalMax":8
             },
             "Pitcher 3":{
                "startDelay":2,
@@ -396,72 +401,40 @@
          }
       },
       "17":{
-         "threeStarsScore":10000,
-         "twoStarsScore":5000,
+         "threeStarsScore":18500,
+         "twoStarsScore":12500,
          "target":50,
          "pitchers":{
             "Pitcher":{
                "startDelay":2,
-               "intervalMin":6,
-               "intervalMax":8
+               "intervalMin":3,
+               "intervalMax":6
+            },
+            "Pitcher 4":{
+               "startDelay":2,
+               "intervalMin":5,
+               "intervalMax":6
+            },
+            "Pitcher 2":{
+               "startDelay":3,
+               "intervalMin":3,
+               "intervalMax":5
+            },
+            "Pitcher 3":{
+               "startDelay":2,
+               "intervalMin":3,
+               "intervalMax":5
             },
             "Pitcher 1":{
                "startDelay":1,
                "intervalMin":2,
                "intervalMax":4
-            },
-            "Pitcher 2":{
-               "startDelay":3,
-               "intervalMin":5,
-               "intervalMax":8
-            },
-            "Pitcher 4":{
-               "startDelay":3,
-               "intervalMin":5,
-               "intervalMax":8
-            },
-            "Pitcher 3":{
-               "startDelay":2,
-               "intervalMin":4,
-               "intervalMax":8
             }
          }
       },
       "18":{
-         "threeStarsScore":10000,
-         "twoStarsScore":5000,
-         "target":50,
-         "pitchers":{
-            "Pitcher":{
-               "startDelay":2,
-               "intervalMin":3,
-               "intervalMax":6
-            },
-            "Pitcher 4":{
-               "startDelay":2,
-               "intervalMin":5,
-               "intervalMax":6
-            },
-            "Pitcher 2":{
-               "startDelay":3,
-               "intervalMin":3,
-               "intervalMax":5
-            },
-            "Pitcher 3":{
-               "startDelay":2,
-               "intervalMin":3,
-               "intervalMax":5
-            },
-            "Pitcher 1":{
-               "startDelay":1,
-               "intervalMin":2,
-               "intervalMax":4
-            }
-         }
-      },
-      "19":{
-         "threeStarsScore":10000,
-         "twoStarsScore":5000,
+         "threeStarsScore":18000,
+         "twoStarsScore":12000,
          "target":50,
          "pitchers":{
             "Pitcher 3":{
@@ -496,9 +469,9 @@
             }
          }
       },
-      "20":{
-         "threeStarsScore":10000,
-         "twoStarsScore":5000,
+      "19":{
+         "threeStarsScore":22000,
+         "twoStarsScore":14500,
          "target":50,
          "pitchers":{
             "Pitcher 2":{
@@ -523,9 +496,9 @@
             }
          }
       },
-      "21":{
-         "threeStarsScore":10000,
-         "twoStarsScore":5000,
+      "20":{
+         "threeStarsScore":21000,
+         "twoStarsScore":13000,
          "target":50,
          "pitchers":{
             "Pitcher 4":{
@@ -555,9 +528,9 @@
             }
          }
       },
-      "22":{
-         "threeStarsScore":10000,
-         "twoStarsScore":5000,
+      "21":{
+         "threeStarsScore":17000,
+         "twoStarsScore":12000,
          "target":50,
          "pitchers":{
             "Pitcher 5":{
@@ -587,9 +560,9 @@
             }
          }
       },
-      "23":{
-         "threeStarsScore":10000,
-         "twoStarsScore":5000,
+      "22":{
+         "threeStarsScore":18500,
+         "twoStarsScore":12500,
          "target":50,
          "pitchers":{
             "Pitcher 4":{
@@ -619,9 +592,9 @@
             }
          }
       },
-      "24":{
-         "threeStarsScore":10000,
-         "twoStarsScore":5000,
+      "23":{
+         "threeStarsScore":19500,
+         "twoStarsScore":13000,
          "target":50,
          "pitchers":{
             "Pitcher 5":{
