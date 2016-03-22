@@ -27,31 +27,36 @@ namespace Traffic.MVCS.Commands.Ads
             ShowOptions options = new ShowOptions();
             options.resultCallback = showResultHandler;
 
-            Advertisement.Show(null, options);
-            analitycs.AdsStart();
+            if (Advertisement.isInitialized && Advertisement.IsReady())
+            {
+                Advertisement.Show(null, options);
+                analitycs.AdsStart();
+            }
+            else
+            {
+                showResultHandler(ShowResult.Failed);
+            }
         }
-              
+
         void showResultHandler(ShowResult result)
         {
             switch (result)
             {
                 case ShowResult.Finished:
                     Loggr.Log("Video completed. User rewarded credits.");
-                    addLives.Dispatch();
                     analitycs.AdsComplete();
                     break;
                 case ShowResult.Skipped:
                     Loggr.Log("Video was skipped.");
-                    addLives.Dispatch();
                     analitycs.AdsSkiped();
                     break;
                 case ShowResult.Failed:
                     Loggr.Log("Video failed to show.");
-                    addLives.Dispatch();
                     analitycs.AdsFailed();
                     break;
             }
-            
+            addLives.Dispatch();
+
             Release();
         }
 #endif

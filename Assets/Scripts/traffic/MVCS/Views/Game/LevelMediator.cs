@@ -9,6 +9,7 @@ using Traffic.Components;
 using Traffic.MVCS.Commands.Signals;
 
 using strange.extensions.mediation.impl;
+using Traffic.MVCS.Services;
 
 namespace Traffic.MVCS.Views.Game
 {
@@ -52,6 +53,9 @@ namespace Traffic.MVCS.Views.Game
 		[Inject]
 		public LevelComplete onLevelComplete { get; set;}
 
+        [Inject]
+        public AnalyticsCollector analitics { private get; set; }
+
         float shakeTimer = 0;
         const float shakeTime  = 0.5f;
         Vector3 cameraStartPos;
@@ -62,8 +66,6 @@ namespace Traffic.MVCS.Views.Game
 
         void Update()
         {
-
-
             if (shakeTimer>0) {
                 float t = (shakeTime - shakeTimer) / shakeTime;
 
@@ -93,6 +95,7 @@ namespace Traffic.MVCS.Views.Game
                 level.Progress++;
                 if (level.Progress == level.Config.target)
                 {
+                    analitics.LevelComplete(level.LevelIndex, level.Score);
                     onLevelComplete.Dispatch();
                 }
             }
@@ -137,6 +140,7 @@ namespace Traffic.MVCS.Views.Game
         void levelFailedDispatch()
         {
             onLevelFailed.Dispatch();
+            analitics.LevelFail(level.LevelIndex, level.Score);
         }
 
         void levelFailedHandler()

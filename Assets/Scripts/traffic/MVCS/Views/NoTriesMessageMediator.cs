@@ -6,6 +6,7 @@ using Commons.UI;
 using UnityEngine;
 
 using strange.extensions.mediation.impl;
+using Traffic.MVCS.Services;
 
 namespace Traffic.MVCS.Views.UI
 {
@@ -34,6 +35,9 @@ namespace Traffic.MVCS.Views.UI
         
         [Inject]
         public ShowAdsSignal showAds { private get; set; }
+        
+        [Inject]
+        public AnalyticsCollector analitics { private get; set; }
 
         public void Update()
         {
@@ -108,6 +112,7 @@ namespace Traffic.MVCS.Views.UI
 
         public override void OnRegister()
         {
+            analitics.NoTriesWindowShown();
             view.onButtonClose.AddListener(closeHandler);
             view.onButtonAdvert.AddListener(advertHandler);
             view.onButtonBuy.AddListener(buyHandler);

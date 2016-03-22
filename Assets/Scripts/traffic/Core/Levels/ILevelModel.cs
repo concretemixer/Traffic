@@ -36,5 +36,7 @@ namespace Traffic.Core
             get;
             set;
         }
+        
+        int LevelIndex { get; set; }
     }
 }

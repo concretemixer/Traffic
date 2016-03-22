@@ -33,6 +33,12 @@ namespace Traffic.Core
             get;
             set;
         }
+        
+        public int LevelIndex
+        {
+            get; 
+            set;
+        }
 
     }
 }

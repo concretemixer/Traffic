@@ -18,7 +18,7 @@ namespace Traffic.MVCS.Services
                 };
             }
 
-            public static Dictionary<string, object> Level(int levelId, int score)
+            public static Dictionary<string, object> Level(int levelId, float score)
             {
                 return new Dictionary<string, object>()
                 {
@@ -38,12 +38,12 @@ namespace Traffic.MVCS.Services
             Collector.CustomEvent("level_start", Params.Simple("level", levelId));
         }
 
-        public void LevelFail(int levelId, int score)
+        public void LevelFail(int levelId, float score)
         {
             Collector.CustomEvent("level_fail", Params.Level(levelId, score));
         }
 
-        public void LevelComplete(int levelId, int score)
+        public void LevelComplete(int levelId, float score)
         {
             Collector.CustomEvent("level_complete", Params.Level(levelId, score));
         }
@@ -63,9 +63,9 @@ namespace Traffic.MVCS.Services
             Collector.CustomEvent("fb_share_complete", Params.NONE);
         }
 
-        public void AdsWindowShown()
+        public void NoTriesWindowShown()
         {
-            Collector.CustomEvent("ads_window_shown", Params.NONE);
+            Collector.CustomEvent("no_tries_window_shown", Params.NONE);
         }
 
         public void AdsStart()

@@ -7,6 +7,7 @@ using Traffic.Core;
 using Traffic.MVCS.Models;
 using Commons.Utils;
 using System.IO;
+using Traffic.MVCS.Services;
 
 namespace Traffic.MVCS.Commands
 {
@@ -28,7 +29,8 @@ namespace Traffic.MVCS.Commands
 		[Inject]
 		public int levelIndex{get;set;}
 
-
+        [Inject]
+        public AnalyticsCollector analitics { private get; set; }
         
 		public override void Execute()
 		{
@@ -57,7 +59,8 @@ namespace Traffic.MVCS.Commands
             foreach(var s in scripts)
                 injectionBinder.injector.Inject(s);
 
-            levelModel.Config = levels.LevelConfigs[levelIndex];            
+            levelModel.Config = levels.LevelConfigs[levelIndex];  
+            levelModel.LevelIndex = levelIndex;          
 
             foreach (var go in GameObject.FindGameObjectsWithTag("Respawn"))
             {
@@ -97,7 +100,9 @@ namespace Traffic.MVCS.Commands
                 src.volume = soundVolume;
             }
 
-			UI.Show(UIMap.Id.ScreenHUD);				
+			UI.Show(UIMap.Id.ScreenHUD);	
+
+            analitics.LevelStart(levelIndex);
 		}
         /*
         public override void Execute()

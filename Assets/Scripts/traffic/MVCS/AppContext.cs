@@ -73,7 +73,9 @@ namespace Traffic.MVCS
             commandBinder.Bind<SwitchToSettingsScreenSignal>().To<SwitchToSettingsScreenCommand>();
 
             // Ads commands
-            commandBinder.Bind<ShowAdsSignal>().To<ShowAdsCommand>();
+            commandBinder.Bind<ShowAdsSignal>().InSequence().
+                To<InitializeUnityAdsCommand>().
+                To<ShowAdsCommand>();
             commandBinder.Bind<AddLivesForAdsSignal>().To<AddLivesForAdsCommad>();
         }
 
