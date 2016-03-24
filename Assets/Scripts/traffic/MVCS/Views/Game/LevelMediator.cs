@@ -145,8 +145,11 @@ namespace Traffic.MVCS.Views.Game
 
         void levelFailedHandler()
         {
-            UI.Hide(UIMap.Id.ScreenHUD);	
-            UI.Show(UIMap.Id.LevelFailedMenu);	
+            UI.Hide(UIMap.Id.ScreenHUD);
+	        if (levels.CurrentLevelIndex==0)
+                UI.Show(UIMap.Id.TutorialFailedMenu);	
+            else
+                UI.Show(UIMap.Id.LevelFailedMenu);	
         }
 
         void levelCompleteHandler()

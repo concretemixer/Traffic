@@ -77,6 +77,7 @@ namespace Traffic.MVCS.Models
             entries.Add("%GAME_COMPLETE%", "YOU HAVE COMPLETED ALL THE LEVELS! WE ARE IMPRESSED.");
 
             entries.Add("%TUTORIAL_COMPLETE%", "Tutorial complete. Now you are ready for the real TRAFFIC STORM!");
+            entries.Add("%TUTORIAL_FAILED%", "No pain - no gain! Try once more.");
 
             entries.Add("%CODE_CAPTION%", "INFORMATION");
             entries.Add("%CODE_OK%", "CODE OK!");

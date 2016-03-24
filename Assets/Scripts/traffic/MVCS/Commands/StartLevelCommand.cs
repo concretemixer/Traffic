@@ -37,6 +37,8 @@ namespace Traffic.MVCS.Commands
             UI.Hide(UIMap.Id.ScreenHUD);
             UI.Hide(UIMap.Id.LevelFailedMenu);
             UI.Hide(UIMap.Id.LevelDoneMenu);
+            UI.Hide(UIMap.Id.TutorialDoneMenu);
+            UI.Hide(UIMap.Id.TutorialFailedMenu);            
             UI.Hide(UIMap.Id.PauseMenu);
             UI.Hide(UIMap.Id.LevelListScreen);
 

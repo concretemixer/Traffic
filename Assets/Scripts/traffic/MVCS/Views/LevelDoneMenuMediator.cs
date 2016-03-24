@@ -123,8 +123,15 @@ namespace Traffic.MVCS.Views.UI
 
             view.Layout(Screen.width, Screen.height);
 
+            this.Invoke("PlaySuccessSound", 0.5f);
+           
+        }
+
+        void PlaySuccessSound()
+        {
             UI.GetComponent<AudioSource>().PlayOneShot(view.successSound);
         }
+
 
         void shareHandler()
         {

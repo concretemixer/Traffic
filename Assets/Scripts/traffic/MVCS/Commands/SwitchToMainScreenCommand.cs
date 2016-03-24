@@ -30,6 +30,9 @@ namespace Traffic.MVCS.Commands
             UI.Hide(UIMap.Id.LevelListScreen);
             UI.Hide(UIMap.Id.ScreenMain);
             UI.Hide(UIMap.Id.ScreenTutorial);
+            UI.Hide(UIMap.Id.TutorialDoneMenu);
+            UI.Hide(UIMap.Id.TutorialFailedMenu);            
+
 
             safeUnbind<ILevelModel>(GameState.Current);
 
