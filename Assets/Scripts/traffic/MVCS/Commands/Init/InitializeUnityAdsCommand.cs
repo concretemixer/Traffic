@@ -3,6 +3,7 @@ using System.Collections;
 using Commons.Utils;
 using strange.extensions.command.impl;
 using UnityEngine.Advertisements;
+using System;
 
 /// <summary>
 /// Команда инициализации рекламмы, елси рекламма уже инициализирована просто возвращаем управление.

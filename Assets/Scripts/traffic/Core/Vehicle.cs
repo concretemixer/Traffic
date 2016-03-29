@@ -261,6 +261,7 @@ public class Vehicle : MonoBehaviour {
 
             if (gear==2)
                 onScoreGrow.Dispatch(100);
+            scoreGrowK = 0;
 
 			gameObject.GetComponent<Rigidbody>().detectCollisions = false;
 			Invoke("SelfDestroy",3);
@@ -293,7 +294,13 @@ public class Vehicle : MonoBehaviour {
 
             if (crashSound != null && !crashed)
             {
-                AudioSource.PlayClipAtPoint(crashSound[Random.Range(0, crashSound.Length)], col.contacts[0].point);
+                Transform t = transform.FindChild("AccelSource");
+                if (t != null && crashSound!=null  && crashSound.Length>0)
+                {
+                    float soundVolume = PlayerPrefs.GetFloat("volume.sound", 1);
+                    t.gameObject.GetComponent<AudioSource>().PlayOneShot(crashSound[Random.Range(0, crashSound.Length)], soundVolume);
+                }
+                   
                 crashed = true;
                 if (col.gameObject.GetComponent<Vehicle>()!=null)
                     col.gameObject.GetComponent<Vehicle>().crashed = true;
@@ -338,7 +345,10 @@ public class Vehicle : MonoBehaviour {
 		acceleration = false;
 
         if (gear == 0)
+        {
             scoreGrowK = 0.1f;
+            onScoreGrow.Dispatch(50);
+        }
         if (gear == 1)
             scoreGrowK = 1;
 

@@ -38,7 +38,7 @@ namespace Traffic.MVCS.Views.UI.HUD
 
         public void SetTutorial(bool value)
         {
-            this.pauseButton.gameObject.SetActive(!value);
+         //   this.pauseButton.gameObject.SetActive(!value);
         }
 
         public void SetScore(int score)

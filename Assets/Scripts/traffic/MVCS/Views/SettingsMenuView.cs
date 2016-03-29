@@ -162,7 +162,12 @@ namespace Traffic.MVCS.Views.UI
             base.Layout(width, height);
 
             if (Time.timeScale == 0)
+            {
                 codeButton.gameObject.SetActive(false);
+                backButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(5, -50); 
+            }
+            else
+                backButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(5, -5); 
 
             float ratio = (float)height / (float)width;
 
