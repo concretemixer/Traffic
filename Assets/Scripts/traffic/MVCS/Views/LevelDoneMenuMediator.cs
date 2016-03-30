@@ -134,6 +134,7 @@ namespace Traffic.MVCS.Views.UI
 
         void shareHandler()
         {
+            Loggr.Log("Click to Facebook share.");
             analytics.FacebookShareStart();
 
             var level = levels.CurrentLevelIndex + 1;

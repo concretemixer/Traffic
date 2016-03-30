@@ -16,6 +16,7 @@ namespace Commons.SN.Facebook.Commands
 
         public GrantPostPermissionsCommand(UnityEventProvider _eventProvider)
         {
+            Loggr.Log("Try to grant post permissions");
             unityEvents = _eventProvider;
         }
 
@@ -23,24 +24,36 @@ namespace Commons.SN.Facebook.Commands
         {
             var promise = new Promise<IAsyncCommand>();
 
-            if (FB.IsLoggedIn)
+            if (hasPublishPremissions)
                 onLoginComplete(promise);
             else
-                unityEvents.onGui.AddOnce(() => FB.LogInWithReadPermissions(new List<string> { PUBLISH_PERMISSION }, (_result) => onLoginComplete(promise)));
+                unityEvents.onGui.AddOnce(() => FB.LogInWithPublishPermissions(new List<string> { PUBLISH_PERMISSION }, (_result) => onLoginComplete(promise)));
 
             return promise;
         }
 
         void onLoginComplete(Promise<IAsyncCommand> _promise)
         {
-            if (AccessToken.CurrentAccessToken.Permissions.Contains(PUBLISH_PERMISSION))
+            foreach (var perm in AccessToken.CurrentAccessToken.Permissions)
+                Loggr.Log("Granted: " + perm);
+
+            if (hasPublishPremissions)
             {
                 Loggr.Log("Publish permissions grunted!");
                 _promise.Resolve(this);
             }
             else
             {
+                Loggr.Log("Premissions not granted ((");
                 _promise.Reject(new Exception("Publish permissions not grunted"));
+            }
+        }
+
+        bool hasPublishPremissions
+        {
+            get
+            {
+                return AccessToken.CurrentAccessToken.Permissions.Contains(PUBLISH_PERMISSION);
             }
         }
     }
