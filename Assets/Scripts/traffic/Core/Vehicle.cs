@@ -346,8 +346,9 @@ public class Vehicle : MonoBehaviour {
 
         if (gear == 0)
         {
+            if (tag != "VehicleAI")                
+                onScoreGrow.Dispatch(50);
             scoreGrowK = 0.1f;
-            onScoreGrow.Dispatch(50);
         }
         if (gear == 1)
             scoreGrowK = 1;
