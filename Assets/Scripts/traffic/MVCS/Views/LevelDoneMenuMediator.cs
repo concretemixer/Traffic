@@ -132,7 +132,6 @@ namespace Traffic.MVCS.Views.UI
             UI.GetComponent<AudioSource>().PlayOneShot(view.successSound);
         }
 
-
         void shareHandler()
         {
             analytics.FacebookShareStart();
@@ -142,7 +141,7 @@ namespace Traffic.MVCS.Views.UI
             {
                 Link = "https://www.facebook.com/trafficstorm/",
                 LinkName = "I did it!!!",
-                LinkCaption = string.Format("I achieved {0} level for {1} stars!", level, acheivedStars),
+                LinkCaption = string.Format("I achieved level {0} for {1} stars!", level, acheivedStars),
                 LinkDescription = "Try to beat me at hardcoriest game Traffic Storm.",
                 Picture = "https://scontent.xx.fbcdn.net/hphotos-xpa1/t31.0-8/12778873_462805340596055_5575106335908842951_o.png"
             };

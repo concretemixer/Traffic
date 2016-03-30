@@ -28,13 +28,12 @@ namespace Commons.SN.Facebook.Commands
 
             unityEvents.onGui.AddOnce(() =>
             {
-                FB.FeedShare(
-                    link: new Uri(postData.Link),
-                    linkName: postData.LinkName,
-                    linkCaption: postData.LinkCaption,
-                    linkDescription: postData.LinkDescription,
-                    picture: new Uri(postData.Picture),
-
+                FB.ShareLink(
+                    contentURL: new Uri(postData.Link),
+                    contentTitle: postData.LinkName,
+                    contentDescription: postData.LinkCaption,
+                    photoURL: new Uri(postData.Picture),
+                    
                     callback: delegate (IShareResult _result)
                     {
                         if (_result.Error != null || _result.Cancelled)
@@ -43,6 +42,21 @@ namespace Commons.SN.Facebook.Commands
                             promise.Resolve(this);
                     }
                 );
+                // FB.FeedShare(
+                //     link: new Uri(postData.Link),
+                //     linkName: postData.LinkName,
+                //     linkCaption: postData.LinkCaption,
+                //     linkDescription: postData.LinkDescription,
+                //     picture: new Uri(postData.Picture),
+
+                //     callback: delegate (IShareResult _result)
+                //     {
+                //         if (_result.Error != null || _result.Cancelled)
+                //             promise.Reject(new Exception("Post failed!" + _result.Error));
+                //         else
+                //             promise.Resolve(this);
+                //     }
+                // );
             });
 
             return promise;
