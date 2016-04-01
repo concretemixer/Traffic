@@ -37,6 +37,7 @@ public class InitializeUnityAdsCommand : Command
 
     private void InitializeUnityAds()
     {
+#if UNITY_ADS
         if (Advertisement.isInitialized && Advertisement.IsReady())
             Release();
         else
@@ -46,7 +47,10 @@ public class InitializeUnityAdsCommand : Command
 
             Provider.StartCoroutine(WaitForAdReady());
         }
+#endif
     }
+
+#if UNITY_ADS
 
     private IEnumerator WaitForAdReady()
     {
@@ -68,6 +72,7 @@ public class InitializeUnityAdsCommand : Command
         Debug.Log("Ads ready!");
         Release();
     }
+#endif
 
     private string GetAppId()
     {

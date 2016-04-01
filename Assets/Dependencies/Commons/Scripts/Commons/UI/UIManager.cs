@@ -103,5 +103,13 @@ namespace Commons.UI
                 uiElements.Remove(_viewId);
             }     
         }
+
+        public void HideAll()
+        {
+            foreach(var id in uiElements.Keys)
+                GameObject.Destroy(uiElements[id]);
+
+            uiElements.Clear();
+        }
     }
 }

@@ -23,16 +23,7 @@ namespace Traffic.MVCS.Commands
 
 		public override void Execute()
         {
-            UI.Hide(UIMap.Id.ScreenHUD);
-            UI.Hide(UIMap.Id.LevelFailedMenu);
-            UI.Hide(UIMap.Id.LevelDoneMenu);
-            UI.Hide(UIMap.Id.PauseMenu);
-            UI.Hide(UIMap.Id.LevelListScreen);
-            UI.Hide(UIMap.Id.ScreenMain);
-            UI.Hide(UIMap.Id.ScreenTutorial);
-            UI.Hide(UIMap.Id.TutorialDoneMenu);
-            UI.Hide(UIMap.Id.TutorialFailedMenu);            
-
+            UI.HideAll();
 
             safeUnbind<ILevelModel>(GameState.Current);
 
