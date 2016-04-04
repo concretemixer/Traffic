@@ -12,7 +12,7 @@ namespace Commons.SN.Facebook.Commands
     {
         UnityEventProvider unityEvents;
 
-        List<String> permissions = new List<string>() { "public_profile", "user_friends" };
+        List<String> permissions = new List<string>() { "public_profile" };
 
         public LoginFBCommand(UnityEventProvider _eventProvider)
         {
