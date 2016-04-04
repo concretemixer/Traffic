@@ -123,24 +123,33 @@ PlayerSettings:
   uIStatusBarHidden: 1
   uIExitOnSuspend: 0
   uIStatusBarStyle: 0
-  iPhoneSplashScreen: {fileID: 0}
-  iPhoneHighResSplashScreen: {fileID: 0}
-  iPhoneTallHighResSplashScreen: {fileID: 0}
-  iPhone47inSplashScreen: {fileID: 0}
-  iPhone55inPortraitSplashScreen: {fileID: 0}
-  iPhone55inLandscapeSplashScreen: {fileID: 0}
-  iPadPortraitSplashScreen: {fileID: 0}
-  iPadHighResPortraitSplashScreen: {fileID: 0}
-  iPadLandscapeSplashScreen: {fileID: 0}
-  iPadHighResLandscapeSplashScreen: {fileID: 0}
+  iPhoneSplashScreen: {fileID: 2800000, guid: a8542faf25eb84da881f3af3104e677a, type: 3}
+  iPhoneHighResSplashScreen: {fileID: 2800000, guid: a8542faf25eb84da881f3af3104e677a,
+    type: 3}
+  iPhoneTallHighResSplashScreen: {fileID: 2800000, guid: a8542faf25eb84da881f3af3104e677a,
+    type: 3}
+  iPhone47inSplashScreen: {fileID: 2800000, guid: a8542faf25eb84da881f3af3104e677a,
+    type: 3}
+  iPhone55inPortraitSplashScreen: {fileID: 2800000, guid: a8542faf25eb84da881f3af3104e677a,
+    type: 3}
+  iPhone55inLandscapeSplashScreen: {fileID: 2800000, guid: a8542faf25eb84da881f3af3104e677a,
+    type: 3}
+  iPadPortraitSplashScreen: {fileID: 2800000, guid: a8542faf25eb84da881f3af3104e677a,
+    type: 3}
+  iPadHighResPortraitSplashScreen: {fileID: 2800000, guid: a8542faf25eb84da881f3af3104e677a,
+    type: 3}
+  iPadLandscapeSplashScreen: {fileID: 2800000, guid: a8542faf25eb84da881f3af3104e677a,
+    type: 3}
+  iPadHighResLandscapeSplashScreen: {fileID: 2800000, guid: a8542faf25eb84da881f3af3104e677a,
+    type: 3}
   appleTVSplashScreen: {fileID: 0}
   tvOSSmallIconLayers: []
   tvOSLargeIconLayers: []
   tvOSTopShelfImageLayers: []
   iOSLaunchScreenType: 1
-  iOSLaunchScreenPortrait: {fileID: 2800000, guid: 19ac828bfe3564c8b8bd7a11dc28286c,
+  iOSLaunchScreenPortrait: {fileID: 2800000, guid: a8542faf25eb84da881f3af3104e677a,
     type: 3}
-  iOSLaunchScreenLandscape: {fileID: 2800000, guid: 19ac828bfe3564c8b8bd7a11dc28286c,
+  iOSLaunchScreenLandscape: {fileID: 2800000, guid: a8542faf25eb84da881f3af3104e677a,
     type: 3}
   iOSLaunchScreenBackgroundColor:
     serializedVersion: 2
@@ -159,7 +168,7 @@ PlayerSettings:
   iOSDeviceRequirements: []
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 1
-  androidSplashScreen: {fileID: 2800000, guid: 19ac828bfe3564c8b8bd7a11dc28286c, type: 3}
+  androidSplashScreen: {fileID: 2800000, guid: a8542faf25eb84da881f3af3104e677a, type: 3}
   AndroidKeystoreName: 
   AndroidKeyaliasName: 
   AndroidTVCompatibility: 0
@@ -170,7 +179,8 @@ PlayerSettings:
     height: 180
     banner: {fileID: 0}
   androidGamepadSupportLevel: 0
-  resolutionDialogBanner: {fileID: 0}
+  resolutionDialogBanner: {fileID: 2800000, guid: a8542faf25eb84da881f3af3104e677a,
+    type: 3}
   m_BuildTargetIcons:
   - m_BuildTarget: 
     m_Icons:

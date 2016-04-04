@@ -1,4 +1,3 @@
-using strange.extensions.mediation.impl;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +7,10 @@ namespace Traffic.MVCS.Views.UI.Loading
     {
         [SerializeField]
         Text statusLabel;
+        [SerializeField]
+        GameObject splash;
+        [SerializeField]
+        GameObject preloader;
 
         public void SetStatus(string text)
         {
@@ -37,6 +40,12 @@ namespace Traffic.MVCS.Views.UI.Loading
             }
             this.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
             this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+        }
+
+        public void ShowPreloader()
+        {
+            splash.SetActive(false);
+            preloader.SetActive(true);
         }
     }
 }

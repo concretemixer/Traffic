@@ -35,8 +35,6 @@ namespace Traffic.MVCS.Commands.Init
 
             float ratio = (float)Screen.height / (float)Screen.width;
 
-
-
             if (ratio < 1)
                 uiContainer.GetComponent<CanvasScaler>().referenceResolution = new Vector2(960, 960 * ratio);
             else
