@@ -50,7 +50,7 @@ namespace Commons.SN.Facebook
         public IPromise Post(IPostData _data)
         {
             return Promise.Sequence(
-                () => runCommand(new GrantPostPermissionsCommand(eventProvider)),
+                () => runCommand(new LoginFBCommand(eventProvider)),
                 () => runCommand(new PostToFBCommand(eventProvider).SetData(_data))
             );
         }
