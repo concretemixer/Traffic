@@ -55,6 +55,7 @@ namespace Traffic.MVCS.Commands
             //Logger.Log("Restart");
             UI.Show(UIMap.Id.ScreenHUD);	
             UI.Hide(UIMap.Id.LevelFailedMenu);
+            UI.Hide(UIMap.Id.TutorialFailedMenu);
 		}
 	}
 }

@@ -42,10 +42,10 @@ namespace Traffic.MVCS.Views.UI.Loading
             this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         }
 
-        public void ShowPreloader()
+        public void ShowPreloader(bool show)
         {
-            splash.SetActive(false);
-            preloader.SetActive(true);
+            splash.SetActive(!show);
+            preloader.SetActive(show);
         }
     }
 }

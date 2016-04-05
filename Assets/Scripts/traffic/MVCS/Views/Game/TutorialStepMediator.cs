@@ -145,7 +145,7 @@ namespace Traffic.MVCS.Views.UI
                 view.SetShadePos(w, h);
 
                 if (vertical)
-                    view.SetBubblePos(w, h, -120, true, true);
+                    view.SetBubblePos(w, h, view.Step==7 ? -170 : -120, true, true);
                 else
                     view.SetBubblePos(w, h, 80, true,false);
 

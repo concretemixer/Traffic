@@ -129,7 +129,8 @@ namespace Traffic.MVCS.Views.UI
 
         void PlaySuccessSound()
         {
-            UI.GetComponent<AudioSource>().PlayOneShot(view.successSound);
+            float soundVolume = PlayerPrefs.GetFloat("volume.sound", 1);
+            UI.GetComponent<AudioSource>().PlayOneShot(view.successSound, soundVolume);
         }
 
         void shareHandler()

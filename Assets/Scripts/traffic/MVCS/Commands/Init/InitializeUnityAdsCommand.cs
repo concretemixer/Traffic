@@ -11,6 +11,7 @@ using System;
 public class InitializeUnityAdsCommand : Command
 {
     const float MAX_WAITING_TIME = 5;
+    const float MIN_WAITING_TIME = 2;
 
     [Inject]
     public UnityEventProvider Provider { private get; set; }
@@ -54,6 +55,12 @@ public class InitializeUnityAdsCommand : Command
 
     private IEnumerator WaitForAdReady()
     {
+        if (elapsedTime < MIN_WAITING_TIME)
+        {
+            elapsedTime += 0.5f;
+            yield return new WaitForSeconds(0.5f);
+        }
+
         while (!Advertisement.isInitialized || !Advertisement.IsReady())
         {
             if (elapsedTime > MAX_WAITING_TIME)

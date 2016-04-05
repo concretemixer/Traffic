@@ -30,6 +30,7 @@ namespace Traffic.Core
             stop = false;
             lifetime = 0;
             transform.localPosition = startPos;
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
 
         // Update is called once per frame
