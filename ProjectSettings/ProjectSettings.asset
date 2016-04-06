@@ -169,7 +169,7 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 1
   androidSplashScreen: {fileID: 2800000, guid: a8542faf25eb84da881f3af3104e677a, type: 3}
-  AndroidKeystoreName: D:/src/concretemixer.keystore
+  AndroidKeystoreName: concretemixer.keystore
   AndroidKeyaliasName: max
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
