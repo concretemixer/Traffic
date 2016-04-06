@@ -769,7 +769,7 @@ MonoBehaviour:
   doneVertical: {fileID: 11424540}
   doneHorizontal: {fileID: 11408482}
   badge: {fileID: 11492356}
-  successSound: {fileID: 8300000, guid: dde0d3d6540240545a8d98caf9aca5c6, type: 3}
+  successSound: {fileID: 8300000, guid: 15d0946c75c765b4eaa3e523d76760ef, type: 3}
 --- !u!114 &11491026
 MonoBehaviour:
   m_ObjectHideFlags: 1

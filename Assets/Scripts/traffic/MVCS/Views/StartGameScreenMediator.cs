@@ -91,6 +91,7 @@ namespace Traffic.MVCS.Views.UI
         {         
             InfoMessageView view = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
             view.SetCaption(localeService.ProcessString("%PURCHASE_FAILED%"));
+            view.SetText(error);
             view.SetMessageMode(true);
             view.onButtonOk.AddListener(infoOkHandler);
         }
