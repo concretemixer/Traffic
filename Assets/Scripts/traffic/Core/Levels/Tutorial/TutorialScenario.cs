@@ -83,7 +83,17 @@ namespace Traffic.Core
             {
                 if (lifetime > 17)
                 {
-                    onTutorialPoint.Dispatch(point);
+                    GameObject[] vehicles = GameObject.FindGameObjectsWithTag("Vehicle");
+                    foreach (var v in vehicles)
+                    {
+                        if (v.GetComponent<Vehicle>().Number == 3)
+                        {
+                            if (v.GetComponent<Rigidbody>().velocity.magnitude<0.01)
+                                onTutorialPoint.Dispatch(point);
+                            break;
+                        }
+                    }
+                    
                     point++;
                 }
             }
