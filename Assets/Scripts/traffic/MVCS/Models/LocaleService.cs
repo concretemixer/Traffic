@@ -113,6 +113,7 @@ namespace Traffic.MVCS.Models
 #if UNITY_IOS
             entries.Add("%PRICE_NO_ADS%", "$2");
             entries.Add("%PRICE_LEVELS%", "$1.5");
+            priceStringsOk = true;
 #else
             if (iapService.GetProductPrice(IAPType.NoAdverts, out price, out currency))
             {
