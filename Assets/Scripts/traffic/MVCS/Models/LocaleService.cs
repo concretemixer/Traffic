@@ -110,11 +110,6 @@ namespace Traffic.MVCS.Models
             float price = 1000;
             string currency = "?";
 
-#if UNITY_IOS
-            entries.Add("%PRICE_NO_ADS%", "$2");
-            entries.Add("%PRICE_LEVELS%", "$1.5");
-            priceStringsOk = true;
-#else
             if (iapService.GetProductPrice(IAPType.NoAdverts, out price, out currency))
             {
                 entries.Add("%PRICE_NO_ADS%", currency + (currency.Length > 1 ? " " : "") + price.ToString("F2"));
@@ -125,7 +120,6 @@ namespace Traffic.MVCS.Models
                 entries.Add("%PRICE_LEVELS%", currency + (currency.Length > 1 ? " " : "") + price.ToString("F2"));
                 priceStringsOk = true;
             }
-#endif
         }
 
         public void SetAllTexts(GameObject root)         
