@@ -103,7 +103,17 @@ namespace Traffic.MVCS.Views.UI.HUD
 			onResume.Dispatch ();
 			view.onButtonPauseLevel.AddListener(pauseLevelHandler);
 		}
-		
+
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (Time.timeScale>0)
+                    pauseLevelHandler();
+            }
+        }
+
+
 		void retyLevelHandler()
         {
         }

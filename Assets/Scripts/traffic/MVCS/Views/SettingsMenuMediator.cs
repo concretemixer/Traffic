@@ -112,6 +112,15 @@ namespace Traffic.MVCS.Views.UI
                 toStartScreenSignal.Dispatch();
         }
 
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                homeHandler();
+            }
+        }
+
+
         void musicVolumeHandler(float value)
         {
             PlayerPrefs.SetFloat("volume.music",value);

@@ -121,6 +121,12 @@ namespace Traffic.MVCS.Views.UI
             Application.Quit();
         }
 
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+                quitHandler();
+        }
+
         public override void OnRegister()
         {
             view.Layout(Screen.width, Screen.height);

@@ -100,6 +100,15 @@ namespace Traffic.MVCS.Views.UI
             toStartScreenSignal.Dispatch();
         }
 
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                homeHandler();
+            }
+        }
+
+
         void closeHandler()
         {
             page = 0;

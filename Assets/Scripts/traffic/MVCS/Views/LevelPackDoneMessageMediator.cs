@@ -46,6 +46,14 @@ namespace Traffic.MVCS.Views.UI
             toMainScreen.Dispatch(); 
         }
 
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                homeHandler();
+            }
+        }
+
         void infoOkHandler()
         {
             if (iapService.IsBought(IAPType.AdditionalLevels))

@@ -98,6 +98,14 @@ namespace Traffic.MVCS.Views.UI
             toMainScreenSignal.Dispatch();
         }
 
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                homeHandler();
+            }
+        }
+
         public override void OnRegister()
         {
             acheivedStars = 1;
