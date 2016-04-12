@@ -434,10 +434,14 @@ public class Vehicle : MonoBehaviour {
         {
             if (lifetime<1.5)
                 scoreGrowK = 20;
+            else if (lifetime < 2.75)
+                scoreGrowK = 12;
             else if (lifetime < 3)
                 scoreGrowK = 8;
-            else
+            else if (lifetime < 4)
                 scoreGrowK = 4;
+            else
+                scoreGrowK = 2;
 
           //  Debug.Log(scoreGrowK);
         }
