@@ -91,6 +91,19 @@ namespace Traffic.MVCS.Views.UI
 
         }
 
+        void langHandler()
+        {
+            if (localeService.GetCurrentLanguage() == SystemLanguage.Russian)
+                localeService.SetCurrentLanguage(SystemLanguage.English);
+            else
+                localeService.SetCurrentLanguage(SystemLanguage.Russian);
+            view.SetLanguage(localeService.GetCurrentLanguage());
+
+            UI.Hide(UIMap.Id.ScreenSettings);
+            UI.Show(UIMap.Id.ScreenSettings);
+        }
+
+
         void homeHandler()
         {
             if (Time.timeScale == 0)
@@ -140,6 +153,9 @@ namespace Traffic.MVCS.Views.UI
             view.onMusicVolume.AddListener(musicVolumeHandler);
             view.onSoundVolume.AddListener(soundVolumeHandler);
 
+            view.onButtonLang.AddListener(langHandler);
+
+            view.SetLanguage(localeService.GetCurrentLanguage());
             view.Layout(Screen.width, Screen.height);
             base.OnRegister();
         }

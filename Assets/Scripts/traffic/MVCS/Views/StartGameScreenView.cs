@@ -36,6 +36,13 @@ namespace Traffic.MVCS.Views.UI
         Button shopBuyNoAdverts;
 
 
+        [SerializeField]
+        Image shopLevelsBought;
+
+        [SerializeField]
+        Image shopNoAdvertsBought;
+
+
         public readonly Signal onButtonStart = new Signal();
         public readonly Signal onButtonConnect = new Signal();
         public readonly Signal onButtonOptions = new Signal();
@@ -82,9 +89,15 @@ namespace Traffic.MVCS.Views.UI
             if (show)
             {
                 if (iapService.IsBought(IAPType.AdditionalLevels))
+                {
                     shopBuyLevels.gameObject.SetActive(false);
+                    shopLevelsBought.gameObject.SetActive(true);
+                }
                 if (iapService.IsBought(IAPType.NoAdverts))
+                {
                     shopBuyNoAdverts.gameObject.SetActive(false);
+                    shopNoAdvertsBought.gameObject.SetActive(true);
+                }
             }
             shopBg.gameObject.SetActive(show);
         }

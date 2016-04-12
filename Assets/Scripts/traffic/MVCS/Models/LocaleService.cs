@@ -4,6 +4,7 @@ using Traffic.MVCS.Commands.Signals;
 using System.Threading;
 using Traffic.Components;
 using System.Collections.Generic;
+using System;
 
 namespace Traffic.MVCS.Models
 {
@@ -11,6 +12,12 @@ namespace Traffic.MVCS.Models
 
     public class LocaleService : ILocaleService 
     {
+        private static Dictionary<SystemLanguage, string> map = new Dictionary<SystemLanguage, string>
+        {
+            {SystemLanguage.English, "locale/default"},
+            {SystemLanguage.Russian, "locale/ru"}
+        };
+
         [Inject]
         public IAPService iapService { get; set; }
 
@@ -18,7 +25,14 @@ namespace Traffic.MVCS.Models
 
         public LocaleService()
         {
-           entries.Add("%START%", "START!");
+            currentLanguage = GetDefaultLanguage();
+            TryLoadLanguage(currentLanguage);
+        }
+
+        void SetDefaultStrings()
+        {
+            entries.Clear();
+            entries.Add("%START%", "START!!");
             entries.Add("%MUSIC%", "MUSIC");
             entries.Add("%SOUND%", "SOUND");
             entries.Add("%PROMO_TITLE%", "PROMOTION");
@@ -83,21 +97,67 @@ namespace Traffic.MVCS.Models
             entries.Add("%CODE_CAPTION%", "INFORMATION");
             entries.Add("%CODE_OK%", "CODE OK!");
             entries.Add("%CODE_FAIL%", "UNKNOWN CODE");
-        
-/*            
-            TextAsset locale;
-            locale = UnityEngine.Resources.Load<TextAsset>("locale/default");           
-            string[] lines = locale.text.Split(new char[] {'\r','\n'});
-
-            foreach (var line in lines) 
-            {
-                string[] parts = line.Split(new char[] { '|' });
-                if (parts.Length >= 2)
-                {
-                    entries.Add(parts[0],parts[1].Replace("<br>","\n"));
-                }
-            }  */           
         }
+
+        void TryLoadLanguage(SystemLanguage lang)
+        {
+            TextAsset locale;
+            locale = UnityEngine.Resources.Load<TextAsset>(map[lang]);
+
+            if (locale != null)
+            {
+                string[] lines = locale.text.Split(new char[] { '\r', '\n' });
+                entries.Clear();
+                foreach (var line in lines)
+                {
+                    string[] parts = line.Split(new char[] { '|' });
+                    if (parts.Length >= 2)
+                    {
+                        entries.Add(parts[0], parts[1].Replace("<br>", "\n"));
+                    }
+                }
+                canChangeLang = true;
+            }
+            else
+            {
+                canChangeLang = false;
+                SetDefaultStrings();
+            }
+        }
+
+        bool canChangeLang = false;
+        SystemLanguage currentLanguage = SystemLanguage.English;
+
+        public bool CanChange()
+        {
+            return canChangeLang;
+        }
+
+        public SystemLanguage GetCurrentLanguage()
+        {
+            return currentLanguage;
+        }
+
+        public void SetCurrentLanguage(SystemLanguage lang)
+        {
+            currentLanguage = lang;
+            PlayerPrefs.SetString("language", lang.ToString());
+            priceStringsOk = false;
+            TryLoadLanguage(lang);
+        }
+
+        private SystemLanguage GetDefaultLanguage()
+        {
+            string langStr = PlayerPrefs.GetString("language", "");
+            if (!string.IsNullOrEmpty(langStr))
+                return (SystemLanguage)Enum.Parse(typeof(SystemLanguage), langStr);
+
+            if (map.ContainsKey(Application.systemLanguage))
+                return Application.systemLanguage;
+
+            return SystemLanguage.English;
+        }
+
 
 
         bool priceStringsOk = false;
@@ -127,6 +187,7 @@ namespace Traffic.MVCS.Models
             UpdatePriceStrings();
             foreach (Text textField in root.GetComponentsInChildren<Text>())
             {
+                Debug.Log(textField.gameObject.name);
                 textField.text = ProcessString(textField.text);
             }
         }

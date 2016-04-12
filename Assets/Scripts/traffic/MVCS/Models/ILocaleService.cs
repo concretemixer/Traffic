@@ -9,6 +9,11 @@ namespace Traffic.MVCS.Models
     public interface ILocaleService 
     {
         void SetAllTexts(GameObject root);
-        string ProcessString(string template);    
+        string ProcessString(string template);
+
+        bool CanChange();
+        SystemLanguage GetCurrentLanguage();
+        void SetCurrentLanguage(SystemLanguage lang);
+        
     }
 }

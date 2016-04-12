@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using strange.extensions.signal.impl;
 using strange.extensions.mediation.impl;
+using System.Collections.Generic;
 
 namespace Traffic.MVCS.Views.UI
 {
@@ -12,6 +13,10 @@ namespace Traffic.MVCS.Views.UI
 
         [SerializeField]
         Button codeButton;
+
+
+        [SerializeField]
+        Button langButton;
 
         [SerializeField]
         Image codeBg;
@@ -45,6 +50,7 @@ namespace Traffic.MVCS.Views.UI
         public readonly Signal onButtonCodeClose = new Signal();
         public readonly Signal onButtonCodeOk = new Signal();
         public readonly Signal onButtonBack = new Signal();
+        public readonly Signal onButtonLang = new Signal();
         
 
         public readonly Signal<float> onMusicVolume= new Signal<float>();
@@ -55,10 +61,13 @@ namespace Traffic.MVCS.Views.UI
             backButton.onClick.AddListener(onButtonBack.Dispatch);
             codeButton.onClick.AddListener(onButtonCode.Dispatch);
             codeCloseButton.onClick.AddListener(onButtonCodeClose.Dispatch);
-            pinOk.onClick.AddListener(onButtonCodeOk.Dispatch);
 
             musicSlider.onValueChanged.AddListener(onMusicVolume.Dispatch);
             soundSlider.onValueChanged.AddListener(onSoundVolume.Dispatch);
+
+            langButton.onClick.AddListener(onButtonLang.Dispatch);
+
+            pinOk.onClick.AddListener(onButtonCodeOk.Dispatch);
 
             musicSlider.value = PlayerPrefs.GetFloat("volume.music", 1);
             soundSlider.value = PlayerPrefs.GetFloat("volume.sound", 1);
@@ -73,6 +82,30 @@ namespace Traffic.MVCS.Views.UI
             
 
             base.Awake();
+        }
+
+        protected override void OnDestroy()
+        {
+            backButton.onClick.RemoveListener(onButtonBack.Dispatch);
+            codeButton.onClick.RemoveListener(onButtonCode.Dispatch);
+            codeCloseButton.onClick.RemoveListener(onButtonCodeClose.Dispatch);
+
+            musicSlider.onValueChanged.RemoveListener(onMusicVolume.Dispatch);
+            soundSlider.onValueChanged.RemoveListener(onSoundVolume.Dispatch);
+
+            langButton.onClick.RemoveListener(onButtonLang.Dispatch);
+
+            pinOk.onClick.RemoveListener(onButtonCodeOk.Dispatch);
+
+            foreach (Button b in pinButtons)
+            {                
+                b.onClick.RemoveAllListeners();
+            }
+
+            pinDelete.onClick.RemoveListener(OnPinDelete);
+
+
+            base.OnDestroy();
         }
 
         private void OnPinClick(string text)
@@ -126,17 +159,7 @@ namespace Traffic.MVCS.Views.UI
             }
         }
 
-        protected override void OnDestroy()
-        {
-            backButton.onClick.RemoveListener(onButtonBack.Dispatch);
-            codeButton.onClick.RemoveListener(onButtonCode.Dispatch);
-            codeCloseButton.onClick.RemoveListener(onButtonCodeClose.Dispatch);
 
-            musicSlider.onValueChanged.RemoveListener(onMusicVolume.Dispatch);
-            soundSlider.onValueChanged.RemoveListener(onSoundVolume.Dispatch);
-
-            base.OnDestroy();
-        }
 
         private bool _ingame = false;
 
@@ -155,6 +178,18 @@ namespace Traffic.MVCS.Views.UI
         public void ShowCode(bool show)
         {
             codeBg.gameObject.SetActive(show);
+        }
+
+        private static Dictionary<SystemLanguage, string> map = new Dictionary<SystemLanguage, string>
+        {
+            {SystemLanguage.English, "locale/icons/eng"},
+            {SystemLanguage.Russian, "locale/icons/ru"}
+        };
+
+        public void SetLanguage(SystemLanguage lang)
+        {
+             Sprite img = UnityEngine.Resources.Load<Sprite>(map[lang]);
+             langButton.image.sprite = img;
         }
 
         public override void Layout(int width, int height)
@@ -183,6 +218,9 @@ namespace Traffic.MVCS.Views.UI
                 musicSlider.GetComponent<RectTransform>().anchoredPosition = new Vector2(153, 156);
                 soundSlider.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 540);
                 soundSlider.GetComponent<RectTransform>().anchoredPosition = new Vector2(153, 87);
+
+                langButton.GetComponent<RectTransform>().localScale = new Vector2(1,1);
+                langButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(440, 195);
             }
             else
             {
@@ -195,6 +233,9 @@ namespace Traffic.MVCS.Views.UI
                 soundSlider.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 304);
                 soundSlider.GetComponent<RectTransform>().anchoredPosition = new Vector2(108, 75);
 
+
+                langButton.GetComponent<RectTransform>().localScale = new Vector2(0.6f, 0.6f);
+                langButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(272, 178);
                 // scaledDimention = 960 / ratio;
             }
 
