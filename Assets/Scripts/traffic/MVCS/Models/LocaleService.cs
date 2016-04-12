@@ -187,7 +187,7 @@ namespace Traffic.MVCS.Models
             UpdatePriceStrings();
             foreach (Text textField in root.GetComponentsInChildren<Text>())
             {
-                Debug.Log(textField.gameObject.name);
+              //  Debug.Log(textField.gameObject.name);
                 textField.text = ProcessString(textField.text);
             }
         }

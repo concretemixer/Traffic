@@ -61,15 +61,37 @@ namespace Traffic.MVCS.Models
 
         public bool ApplyCode(string code)
         {
-            /*
-            if (code=="55555")
-                PlayerPrefs.SetInt("iap." + IAPType.AdditionalLevels.ToString(), 1);
-            else if (code == "88888")
-                PlayerPrefs.SetInt("iap." + IAPType.NoAdverts.ToString(), 1);
-            else
-                return false;
+//            UnityEngine.Debug.Log(code);
 
-            return true;*/
+            DateTime expireTime = DateTime.Now.AddDays(-1);
+
+//#if UNITY_ANDROID            
+            if (code == "862270")
+                expireTime = new DateTime(2016, 4, 24, 23, 59, 59, DateTimeKind.Utc);
+            if (code == "488910")
+                expireTime = new DateTime(2016, 4, 23, 23, 59, 59, DateTimeKind.Utc);
+            if (code == "389245")
+                expireTime = new DateTime(2016, 4, 22, 23, 59, 59, DateTimeKind.Utc);
+            if (code == "254493")
+                expireTime = new DateTime(2016, 4, 21, 23, 59, 59, DateTimeKind.Utc);
+            if (code == "454584")
+                expireTime = new DateTime(2016, 4, 20, 23, 59, 59, DateTimeKind.Utc);
+            if (code == "715871")
+                expireTime = new DateTime(2016, 4, 19, 23, 59, 59, DateTimeKind.Utc);
+            if (code == "998421")
+                expireTime = new DateTime(2016, 4, 18, 23, 59, 59, DateTimeKind.Utc);
+            if (code == "932337")
+                expireTime = new DateTime(2016, 4, 17, 23, 59, 59, DateTimeKind.Utc);
+            if (code == "167735")
+                expireTime = new DateTime(2016, 4, 16, 23, 59, 59, DateTimeKind.Utc);
+//#endif
+
+            if (DateTime.Now < expireTime)
+            {
+                PlayerPrefs.SetInt("iap." + IAPType.AdditionalLevels.ToString(), 1);
+                return true;
+            }
+
             return false;
         }
 

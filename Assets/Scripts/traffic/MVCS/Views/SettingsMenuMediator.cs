@@ -75,7 +75,7 @@ namespace Traffic.MVCS.Views.UI
         {
             view.ShowCode(false);
             InfoMessageView view2 = UI.Show<InfoMessageView>(UIMap.Id.InfoMessage);
-            if (iapService.ApplyCode(view.Code))
+            if (iapService.ApplyCode(view.Code.Replace("_","")))
             {
                 view2.SetCaption(localeService.ProcessString("%CODE_CAPTION%"));
                 view2.SetText(localeService.ProcessString("%CODE_OK%"));

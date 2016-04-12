@@ -2,6 +2,7 @@ using UnityEngine;
 using Traffic.MVCS.Commands.Signals;
 using System.Threading;
 using Traffic.Components;
+using System;
 
 namespace Traffic.MVCS.Models
 {
@@ -36,7 +37,7 @@ namespace Traffic.MVCS.Models
 
         public bool ApplyCode(string code)
         {
-            return false;
+            return false;            
         }
 
         public bool GetProductPrice(IAPType what, out float price, out string currency)
