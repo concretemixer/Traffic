@@ -42,6 +42,15 @@ namespace Traffic.MVCS.Views.UI
         [SerializeField]
         Button pinOk;
 
+        [SerializeField]
+        Image langBg;
+
+        [SerializeField]
+        Button langCloseButton;
+
+        [SerializeField]
+        Button[] languages;
+
         public string Code {
             get { return codeText.text; }
         }
@@ -51,10 +60,13 @@ namespace Traffic.MVCS.Views.UI
         public readonly Signal onButtonCodeOk = new Signal();
         public readonly Signal onButtonBack = new Signal();
         public readonly Signal onButtonLang = new Signal();
+        public readonly Signal onButtonLangClose = new Signal();
         
 
         public readonly Signal<float> onMusicVolume= new Signal<float>();
         public readonly Signal<float> onSoundVolume = new Signal<float>();
+
+        public readonly Signal<SystemLanguage> onLangChoosen = new Signal<SystemLanguage>();
 
         protected override void Awake()
         {
@@ -66,6 +78,7 @@ namespace Traffic.MVCS.Views.UI
             soundSlider.onValueChanged.AddListener(onSoundVolume.Dispatch);
 
             langButton.onClick.AddListener(onButtonLang.Dispatch);
+            langCloseButton.onClick.AddListener(onButtonLangClose.Dispatch);
 
             pinOk.onClick.AddListener(onButtonCodeOk.Dispatch);
 
@@ -79,7 +92,9 @@ namespace Traffic.MVCS.Views.UI
             }
 
             pinDelete.onClick.AddListener(OnPinDelete);
-            
+
+            languages[0].onClick.AddListener(delegate { onLangChoosen.Dispatch(SystemLanguage.English); });
+            languages[1].onClick.AddListener(delegate { onLangChoosen.Dispatch(SystemLanguage.Russian); });
 
             base.Awake();
         }
@@ -94,6 +109,7 @@ namespace Traffic.MVCS.Views.UI
             soundSlider.onValueChanged.RemoveListener(onSoundVolume.Dispatch);
 
             langButton.onClick.RemoveListener(onButtonLang.Dispatch);
+            langCloseButton.onClick.RemoveListener(onButtonLangClose.Dispatch);
 
             pinOk.onClick.RemoveListener(onButtonCodeOk.Dispatch);
 
@@ -103,6 +119,11 @@ namespace Traffic.MVCS.Views.UI
             }
 
             pinDelete.onClick.RemoveListener(OnPinDelete);
+
+            foreach (Button b in languages)
+            {
+                b.onClick.RemoveAllListeners();
+            }
 
 
             base.OnDestroy();
@@ -180,6 +201,11 @@ namespace Traffic.MVCS.Views.UI
             codeBg.gameObject.SetActive(show);
         }
 
+        public void ShowLangSelection(bool show)
+        {
+            langBg.gameObject.SetActive(show);
+        }
+
         private static Dictionary<SystemLanguage, string> map = new Dictionary<SystemLanguage, string>
         {
             {SystemLanguage.English, "locale/icons/eng"},
@@ -188,8 +214,13 @@ namespace Traffic.MVCS.Views.UI
 
         public void SetLanguage(SystemLanguage lang)
         {
-             Sprite img = UnityEngine.Resources.Load<Sprite>(map[lang]);
-             langButton.image.sprite = img;
+            Sprite img = UnityEngine.Resources.Load<Sprite>(map[lang]);
+            langButton.image.sprite = img;
+
+            if (lang == SystemLanguage.English)
+                languages[0].image.color = new Color32(255, 255, 255, 150);
+            if (lang == SystemLanguage.Russian)
+                languages[1].image.color = new Color32(255, 255, 255, 150);
         }
 
         public override void Layout(int width, int height)

@@ -64,6 +64,20 @@ namespace Traffic.MVCS.Views.UI
             view.ShowCode(false);
         }
 
+        void langCloseHandler()
+        {
+            view.ShowLangSelection(false);
+        }
+
+        void langChosenHandler(SystemLanguage lang)
+        {
+            view.ShowLangSelection(false);
+
+            localeService.SetCurrentLanguage(lang);            
+
+            UI.Hide(UIMap.Id.ScreenSettings);
+            UI.Show(UIMap.Id.ScreenSettings);
+        }
 
         void infoOkHandler()
         {
@@ -93,6 +107,8 @@ namespace Traffic.MVCS.Views.UI
 
         void langHandler()
         {
+            view.ShowLangSelection(true);
+            return;
             if (localeService.GetCurrentLanguage() == SystemLanguage.Russian)
                 localeService.SetCurrentLanguage(SystemLanguage.English);
             else
@@ -154,6 +170,8 @@ namespace Traffic.MVCS.Views.UI
         public override void OnRegister()
         {
             view.ShowCode(false);
+            view.ShowLangSelection(false);
+
             view.onButtonBack.AddListener(homeHandler);
             view.onButtonCode.AddListener(codeHandler);
             view.onButtonCodeClose.AddListener(codeCloseHandler);
@@ -163,6 +181,9 @@ namespace Traffic.MVCS.Views.UI
             view.onSoundVolume.AddListener(soundVolumeHandler);
 
             view.onButtonLang.AddListener(langHandler);
+            view.onButtonLangClose.AddListener(langCloseHandler);
+
+            view.onLangChoosen.AddListener(langChosenHandler);
 
             view.SetLanguage(localeService.GetCurrentLanguage());
             view.Layout(Screen.width, Screen.height);
@@ -180,6 +201,11 @@ namespace Traffic.MVCS.Views.UI
             view.onButtonBack.RemoveListener(homeHandler);
             view.onButtonCode.RemoveListener(codeHandler);
             view.onButtonCodeClose.RemoveListener(codeCloseHandler);
+            view.onButtonCodeOk.RemoveListener(codeOkHandler);
+
+            view.onButtonLang.RemoveListener(langHandler);
+            view.onButtonLangClose.RemoveListener(langCloseHandler);
+
             base.OnRemove();
         }
     }

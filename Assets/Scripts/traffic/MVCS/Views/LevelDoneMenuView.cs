@@ -93,8 +93,8 @@ namespace Traffic.MVCS.Views.UI
                 // scaledDimention = 960 * ratio;
 
                 nextButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-105, 10);
-                shareButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-285, 10);
-                homeButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-440, 10);
+                shareButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-261, 10);
+                homeButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-392, 10);
                 score.GetComponent<RectTransform>().anchoredPosition = new Vector2(300, 172);
             }
             else
@@ -103,8 +103,8 @@ namespace Traffic.MVCS.Views.UI
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960);
 
                 nextButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-85, 10);
-                shareButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-250, 10);
-                homeButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-390, 10);
+                shareButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-225, 10);
+                homeButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-342, 10);
 
                 score.GetComponent<RectTransform>().anchoredPosition = new Vector2(115, 172);
 

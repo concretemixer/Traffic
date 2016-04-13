@@ -66,6 +66,10 @@ namespace Traffic.MVCS.Models
             DateTime expireTime = DateTime.Now.AddDays(-1);
 
 //#if UNITY_ANDROID            
+            if (code == "299883")
+                expireTime = new DateTime(2016, 4, 26, 23, 59, 59, DateTimeKind.Utc);
+            if (code == "458109")
+                expireTime = new DateTime(2016, 4, 25, 23, 59, 59, DateTimeKind.Utc);
             if (code == "862270")
                 expireTime = new DateTime(2016, 4, 24, 23, 59, 59, DateTimeKind.Utc);
             if (code == "488910")

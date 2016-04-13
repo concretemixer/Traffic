@@ -163,7 +163,7 @@ namespace Traffic.MVCS.Views.UI
 
                 if (vertical)
                 {
-                    view.SetShadePos(-160, 0);
+                    view.SetShadePos(-160, 10);
                     if (view.Step == 1)
                         view.SetBubblePos(300, 940, 0, false, false);
                     if (view.Step == 2)
@@ -173,7 +173,7 @@ namespace Traffic.MVCS.Views.UI
                 }
                 else
                 {
-                    view.SetShadePos(0, -160);
+                    view.SetShadePos(10, -160);
                     if (view.Step == 1)
                         view.SetBubblePos(300, scaledDimention-20, 0, false, false);
                     if (view.Step == 2)

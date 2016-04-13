@@ -43,7 +43,7 @@ namespace Traffic.MVCS.Models
             entries.Add("%HOME%", " HOME");
             entries.Add("%PAUSE%", " PAUSE");
             entries.Add("%LOADING%", " LOADING...");
-            //entries.Add("%BUY%", "йсохрэ");
+            entries.Add("%CHOOSE_LANG%", "CHOOSE LANGUAGE");
 
             entries.Add("%LEVELS_DESC_SHOP%", "12 ADDITIONAL LEVELS FOR %PRICE_NO_ADS%");
             entries.Add("%NO_ADS_DESC_SHOP%", "TURN OFF ADVERTISMENTS FOR %PRICE_LEVELS%");

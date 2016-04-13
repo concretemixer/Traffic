@@ -511,7 +511,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 76a3e9ecd9a9ba247b1f005ce98f8e4a, type: 3}
-    m_FontSize: 64
+    m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 5
@@ -522,7 +522,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: '%LEVEL_WON_1%'
+  m_Text: 023456789
 --- !u!114 &11424660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1106,7 +1106,7 @@ RectTransform:
   m_RootOrder: 6
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 85, y: 390}
+  m_AnchoredPosition: {x: 97, y: 395}
   m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22425372
@@ -1175,7 +1175,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -285, y: 10}
-  m_SizeDelta: {x: 168, y: 104}
+  m_SizeDelta: {x: 120, y: 104}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!224 &22442428
 RectTransform:

@@ -116,8 +116,8 @@ namespace Traffic.MVCS.Views.UI
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960 * ratio);
 
                 startButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-105, 10);
-                connectButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-300, 10);
-                shopButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-470, 10);
+                connectButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-235, 10);
+                shopButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-345, 10);
                 // scaledDimention = 960 * ratio;
             }
             else
@@ -126,13 +126,17 @@ namespace Traffic.MVCS.Views.UI
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960);
 
                 startButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-85, 10);
-                connectButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-265, 10);
-                shopButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-425, 10);
+                connectButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-212, 10);
+                shopButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-320, 10);
 
                 // scaledDimention = 960 / ratio;
             }
             this.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
             this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+
+#if UNITY_IOS
+            quitButton.gameObject.SetActive(false)l
+#endif
         }
     }
 }

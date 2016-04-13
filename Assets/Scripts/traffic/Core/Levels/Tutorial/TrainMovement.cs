@@ -44,8 +44,9 @@ namespace Traffic.Core
             if (lifetime < 7.5)
                 return;
 
-            if (GetComponent<Rigidbody>().velocity.magnitude < vmax)
-                GetComponent<Rigidbody>().AddForce(-5, 0, 0, ForceMode.Force);
+            if (Time.timeScale>0)
+                if (GetComponent<Rigidbody>().velocity.magnitude < vmax)
+                    GetComponent<Rigidbody>().AddForce(-10, 0, 0, ForceMode.Force);
         }
     }
 
