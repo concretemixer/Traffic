@@ -135,7 +135,7 @@ namespace Traffic.MVCS.Views.UI
             this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
 
 #if UNITY_IOS
-            quitButton.gameObject.SetActive(false)l
+            quitButton.gameObject.SetActive(false);
 #endif
         }
     }
