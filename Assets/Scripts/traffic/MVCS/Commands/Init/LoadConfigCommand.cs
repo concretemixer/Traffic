@@ -1,6 +1,6 @@
 using strange.extensions.command.impl;
-using JsonFx.Json;
 using System.Collections;
+using System.Collections.Generic;
 using Traffic.Core;
 using Traffic.Components;
 using UnityEngine;
@@ -35,10 +35,14 @@ namespace Traffic.MVCS.Commands.Init
              
             //https://docs.google.com/uc?authuser=0&id=0B0US96bFVj6rdGxCd1ZyOS1DLXM&export=download
 
-
             string json = Resources.Load<TextAsset>("config/config").text;
-            GameplayConfig cfg = new GameplayConfig();
-            cfg = JsonReader.Deserialize<GameplayConfig>(json);
+
+//            var cfg = JsonUtility.FromJson<GameplayConfig>(json);
+            var cfg = Newtonsoft.Json.JsonConvert.DeserializeObject<GameplayConfig>(json);
+
+
+
+//            cfg = JsonReader.Deserialize<GameplayConfig>(json);
 
             levels.LevelConfigs = new LevelConfig[cfg.levels.Count];
             foreach (string key in cfg.levels.Keys)
