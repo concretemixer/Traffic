@@ -451,7 +451,7 @@ PlayerSettings:
   WebGL::memorySize: 256
   iOS::Architecture: 0
   iOS::EnableIncrementalBuildSupportForIl2cpp: 0
-  iOS::ScriptingBackend: 0
+  iOS::ScriptingBackend: 1
   boolPropertyNames:
   - WebGL::analyzeBuildSize
   - WebGL::dataCaching
