@@ -8,13 +8,17 @@ namespace Traffic.Core
 
     public class PitcherConfig
     {
+        public PitcherConfig(){}
+
         public float startDelay;
         public float intervalMin;
         public float intervalMax;
     }
 
     public class LevelConfig
-    {        
+    {
+        public LevelConfig(){}
+
         public int threeStarsScore;
         public int twoStarsScore;
         public int target;
@@ -23,6 +27,8 @@ namespace Traffic.Core
 
     public class GameplayConfig
     {
+        public GameplayConfig() {}
+
         public int version;
         public Dictionary<string, LevelConfig> levels = new Dictionary<string, LevelConfig>();
     }
