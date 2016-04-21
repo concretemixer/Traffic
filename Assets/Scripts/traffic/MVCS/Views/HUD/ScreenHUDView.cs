@@ -18,10 +18,13 @@ namespace Traffic.MVCS.Views.UI.HUD
         Text tries;
 
         [SerializeField]
-        RawImage progressBar;
+        Image progressBar;
 
         [SerializeField]
-        RawImage progressBg;
+        Image progressBg;
+
+        [SerializeField]
+        Image progressShade;
 
         [SerializeField]
         Image bg;
@@ -61,8 +64,8 @@ namespace Traffic.MVCS.Views.UI.HUD
             if (current >= target)
                 k = 1;
 
-            progressBar.GetComponent<RectTransform>().localScale = new Vector3(k,1,1);
-            progressBar.GetComponent<RawImage>().uvRect = new Rect(0, 0, k, 1);
+            progressShade.GetComponent<RectTransform>().localScale = new Vector3(k-1,1,1);
+  //          progressBar.GetComponent<RawImage>().uvRect = new Rect(0, 0, k, 1);
         }
 
 
