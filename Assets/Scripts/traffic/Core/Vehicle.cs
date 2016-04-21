@@ -53,6 +53,8 @@ public class Vehicle : MonoBehaviour {
     private bool interactable = true;
     private bool crashed = false;
 
+    private bool onceVisible = false;
+
 	// Use this for initialization
 	void Start () {
 		if (tag=="VehicleAI")
@@ -68,8 +70,7 @@ public class Vehicle : MonoBehaviour {
 			GetComponent<Rigidbody> ().velocity = transform.rotation * new Vector3 (FastSpeed, 0, 0);
 
 		//level = GameObject.Find ("Level").GetComponent<Level>();
-
-		GetComponent<Renderer> ().material.color = new Color (Random.value, (float)(Random.value*0.2f), Random.value);
+		
 
         ShowEffects();
 		if (gameObject.tag == "Vehicle") {
@@ -112,63 +113,74 @@ public class Vehicle : MonoBehaviour {
         targetSpeed = 0;
     }
 	// Update is called once per frame
-	void Update () {
+    void Update()
+    {
 
         lifetime += Time.deltaTime;
 
-        if (gameObject.tag != "VehicleAI") 
+        if (gameObject.tag != "VehicleAI")
             onScoreGrow.Dispatch(9.0f * Time.deltaTime * scoreGrowK);
 
-		if (stopTimer > 0) {
-			stopTimer -= Time.deltaTime;
-			if (stopTimer<=0)
-				gear = 0;
-				SpeedUp();
-		}
+        if (stopTimer > 0)
+        {
+            stopTimer -= Time.deltaTime;
+            if (stopTimer <= 0)
+                gear = 0;
+            SpeedUp();
+        }
 
-		if (deceleration) {
-			float speed = GetComponent<Rigidbody> ().velocity.magnitude;
-			if (speed - decelRate*Time.deltaTime > targetSpeed)
-				GetComponent<Rigidbody> ().velocity = transform.rotation * new Vector3 (speed - decelRate*Time.deltaTime, 0, 0);
-			else {
-				GetComponent<Rigidbody> ().velocity = transform.rotation * new Vector3 (targetSpeed, 0, 0);
-				deceleration = false;
-			}
-		}
-		if (acceleration) {
-			float speed = GetComponent<Rigidbody> ().velocity.magnitude;
-			if (speed + accelRate*Time.deltaTime > targetSpeed)
-				GetComponent<Rigidbody> ().velocity = transform.rotation * new Vector3 (speed + accelRate*Time.deltaTime, 0, 0);
-			else {
-				GetComponent<Rigidbody> ().velocity = transform.rotation * new Vector3 (targetSpeed, 0, 0);
-				acceleration = false;
-			}
-		}
+        if (deceleration)
+        {
+            float speed = GetComponent<Rigidbody>().velocity.magnitude;
+            if (speed - decelRate * Time.deltaTime > targetSpeed)
+                GetComponent<Rigidbody>().velocity = transform.rotation * new Vector3(speed - decelRate * Time.deltaTime, 0, 0);
+            else
+            {
+                GetComponent<Rigidbody>().velocity = transform.rotation * new Vector3(targetSpeed, 0, 0);
+                deceleration = false;
+            }
+        }
+        if (acceleration)
+        {
+            float speed = GetComponent<Rigidbody>().velocity.magnitude;
+            if (speed + accelRate * Time.deltaTime > targetSpeed)
+                GetComponent<Rigidbody>().velocity = transform.rotation * new Vector3(speed + accelRate * Time.deltaTime, 0, 0);
+            else
+            {
+                GetComponent<Rigidbody>().velocity = transform.rotation * new Vector3(targetSpeed, 0, 0);
+                acceleration = false;
+            }
+        }
 
-		if (gameObject.tag == "VehicleAI") {
-			RaycastHit hit;
-			if (gear>0) {
-				Ray ray = new Ray(transform.position, transform.rotation * new Vector3 (1, 0, 0));
-				if ( Physics.Raycast(ray, out hit)) {
-					//Debug.Log(hit.transform.gameObject.name);
-					if (hit.transform.gameObject.tag == "VehicleAI" && hit.distance<10)
-					{
-						SlowDown();
-						aiStopCooldown=0.5f;
-					}
-				}
-				ray = new Ray(transform.position, transform.rotation * new Vector3 (1, 0, -0.8f));
-				if ( Physics.Raycast(ray, out hit)) {
-					//Debug.Log(hit.transform.gameObject.name);
-					if (hit.transform.gameObject.tag == "VehicleAI" && hit.distance<15)
-					{
-						Vector3 dir = hit.transform.rotation * new Vector3 (1, 0, 0);
-						if (Vector3.Dot(dir,ray.direction)<0) {
-							SlowDown();
-							aiStopCooldown=1;
-						}
-					}
-				}/*
+        if (gameObject.tag == "VehicleAI")
+        {
+            RaycastHit hit;
+            if (gear > 0)
+            {
+                Ray ray = new Ray(transform.position, transform.rotation * new Vector3(1, 0, 0));
+                if (Physics.Raycast(ray, out hit))
+                {
+                    //Debug.Log(hit.transform.gameObject.name);
+                    if (hit.transform.gameObject.tag == "VehicleAI" && hit.distance < 10)
+                    {
+                        SlowDown();
+                        aiStopCooldown = 0.5f;
+                    }
+                }
+                ray = new Ray(transform.position, transform.rotation * new Vector3(1, 0, -0.8f));
+                if (Physics.Raycast(ray, out hit))
+                {
+                    //Debug.Log(hit.transform.gameObject.name);
+                    if (hit.transform.gameObject.tag == "VehicleAI" && hit.distance < 15)
+                    {
+                        Vector3 dir = hit.transform.rotation * new Vector3(1, 0, 0);
+                        if (Vector3.Dot(dir, ray.direction) < 0)
+                        {
+                            SlowDown();
+                            aiStopCooldown = 1;
+                        }
+                    }
+                }/*
 				ray = new Ray(transform.position, transform.rotation * new Vector3 (1, 0, -2));
 				if ( Physics.Raycast(ray, out hit)) {
 					//Debug.Log(hit.transform.gameObject.name);
@@ -182,54 +194,82 @@ public class Vehicle : MonoBehaviour {
 					}
 				}
 */
-			}
-			else if (gear==0) {
-				aiStopCooldown-=Time.deltaTime;
-				if (aiStopCooldown<-3.0f)
-					SelfDestroy();
-				else if (aiStopCooldown<0) {				
-					bool go = true;
+            }
+            else if (gear == 0)
+            {
+                aiStopCooldown -= Time.deltaTime;
+                if (aiStopCooldown < -3.0f)
+                    SelfDestroy();
+                else if (aiStopCooldown < 0)
+                {
+                    bool go = true;
 
-					Ray ray = new Ray(transform.position, transform.rotation * new Vector3 (1, 0, 0));
-					if ( Physics.Raycast(ray, out hit)) {
-						//Debug.Log(hit.transform.gameObject.name);
-						if (hit.transform.gameObject.tag == "VehicleAI" && hit.distance<10)
-						{
-							go = false;
-						}
-					}
-					ray = new Ray(transform.position, transform.rotation * new Vector3 (1, 0, -0.8f));
-					if ( Physics.Raycast(ray, out hit)) {
-						//Debug.Log(hit.transform.gameObject.name);
-						if (hit.transform.gameObject.tag == "VehicleAI" && hit.distance<15)
-						{
-							Vector3 dir = hit.transform.rotation * new Vector3 (1, 0, 0);
-							if (Vector3.Dot(dir,ray.direction)<0) {
-								go = false;
-							}
-						}
-					}
-					ray = new Ray(transform.position, transform.rotation * new Vector3 (1, 0, -2));
-					if ( Physics.Raycast(ray, out hit)) {
-						//Debug.Log(hit.transform.gameObject.name);
-						if (hit.transform.gameObject.tag == "VehicleAI" && hit.distance<20)
-						{
-							Vector3 dir = hit.transform.rotation * new Vector3 (1, 0, 0);
-							if (Vector3.Dot(dir,ray.direction)<0) {
-								go = false;
-							}
-						}
-					}
+                    Ray ray = new Ray(transform.position, transform.rotation * new Vector3(1, 0, 0));
+                    if (Physics.Raycast(ray, out hit))
+                    {
+                        //Debug.Log(hit.transform.gameObject.name);
+                        if (hit.transform.gameObject.tag == "VehicleAI" && hit.distance < 10)
+                        {
+                            go = false;
+                        }
+                    }
+                    ray = new Ray(transform.position, transform.rotation * new Vector3(1, 0, -0.8f));
+                    if (Physics.Raycast(ray, out hit))
+                    {
+                        //Debug.Log(hit.transform.gameObject.name);
+                        if (hit.transform.gameObject.tag == "VehicleAI" && hit.distance < 15)
+                        {
+                            Vector3 dir = hit.transform.rotation * new Vector3(1, 0, 0);
+                            if (Vector3.Dot(dir, ray.direction) < 0)
+                            {
+                                go = false;
+                            }
+                        }
+                    }
+                    ray = new Ray(transform.position, transform.rotation * new Vector3(1, 0, -2));
+                    if (Physics.Raycast(ray, out hit))
+                    {
+                        //Debug.Log(hit.transform.gameObject.name);
+                        if (hit.transform.gameObject.tag == "VehicleAI" && hit.distance < 20)
+                        {
+                            Vector3 dir = hit.transform.rotation * new Vector3(1, 0, 0);
+                            if (Vector3.Dot(dir, ray.direction) < 0)
+                            {
+                                go = false;
+                            }
+                        }
+                    }
 
 
-					if (go) {
-						SpeedUp();
-					}
-				}
+                    if (go)
+                    {
+                        SpeedUp();
+                    }
+                }
 
-			}
-		}
-	}
+            }
+        }
+
+        if (Camera.main != null)
+        {
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
+
+            float bx = Camera.main.pixelWidth * 0.02f;
+            float by = Camera.main.pixelHeight* 0.02f;
+
+            if (screenPos.x < -bx || screenPos.y < -by || screenPos.x > Camera.main.pixelWidth+bx || screenPos.y > Camera.main.pixelHeight+by)
+            {
+                if (onceVisible)
+                {
+                    //gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                    gameObject.GetComponent<Rigidbody>().detectCollisions = false;
+                }
+            }
+            else
+                onceVisible = true;
+        }
+
+    }
 
 
 	void OnTriggerEnter(Collider col)
