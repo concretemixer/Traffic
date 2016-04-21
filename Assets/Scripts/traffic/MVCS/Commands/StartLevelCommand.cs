@@ -74,6 +74,16 @@ namespace Traffic.MVCS.Commands
                 }
             }
 
+
+            foreach (var go in GameObject.FindGameObjectsWithTag("Finish"))
+            {
+                MeshRenderer r = go.GetComponent<MeshRenderer>();
+                if (r != null)
+                {
+                    r.enabled = false;                   
+                }
+            }
+
             AudioSource menuMusic = GameObject.Find("MenuMusic").GetComponent<AudioSource>();
             if (menuMusic.isPlaying) {
                 menuMusic.Stop();
