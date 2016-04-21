@@ -54,6 +54,7 @@ public class Vehicle : MonoBehaviour {
     private bool crashed = false;
 
     private bool onceVisible = false;
+    private bool wentOffscreen = false;
 
 	// Use this for initialization
 	void Start () {
@@ -254,15 +255,18 @@ public class Vehicle : MonoBehaviour {
         {
             Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
 
-            float bx = Camera.main.pixelWidth * 0.02f;
-            float by = Camera.main.pixelHeight* 0.02f;
+            float bx = 0;// Camera.main.pixelWidth * 0.02f;
+            float by = 0;//Camera.main.pixelHeight* 0.02f;
 
             if (screenPos.x < -bx || screenPos.y < -by || screenPos.x > Camera.main.pixelWidth+bx || screenPos.y > Camera.main.pixelHeight+by)
             {
                 if (onceVisible)
-                {
-                    //gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                    gameObject.GetComponent<Rigidbody>().detectCollisions = false;
+                {                   
+                    foreach (var c in gameObject.GetComponents<BoxCollider>())
+                    {
+                        if (!c.isTrigger)
+                            gameObject.GetComponent<BoxCollider>().enabled = false;
+                    }
                 }
             }
             else
@@ -328,6 +332,7 @@ public class Vehicle : MonoBehaviour {
 	{
         if (col.gameObject.tag == "Vehicle" || col.gameObject.tag == "Obstacle") 
 		{
+          
 			GetComponent<Rigidbody> ().drag =10;
 			GetComponent<Rigidbody> ().angularDrag = 10;
 
