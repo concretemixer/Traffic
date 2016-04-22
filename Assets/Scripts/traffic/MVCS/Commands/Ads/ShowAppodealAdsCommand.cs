@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Traffic.MVCS.Commands.Ads
 {
-    public class ShowAppodealAdsCommand : Command, INonSkippableVideoAdListener
+    public class ShowAppodealAdsCommand : Command, ISkippableVideoAdListener
     {
         [Inject]
         public AddLivesForAdsSignal addLives { private get; set; }
@@ -21,43 +21,22 @@ namespace Traffic.MVCS.Commands.Ads
         {
             Debug.Log("HERE");
 
-            Appodeal.setNonSkippableVideoCallbacks(this);
+            Appodeal.setSkippableVideoCallbacks(this);
 
             analitycs.AdsStart();
-            Appodeal.show(Appodeal.NON_SKIPPABLE_VIDEO);
+            Appodeal.show(Appodeal.SKIPPABLE_VIDEO);
             addLives.Dispatch();
 
           // 
         }
 
-        #region NonSkippable Video callback handlers
-        public void onNonSkippableVideoLoaded() 
-        { 
-            Debug.Log("Video loaded"); 
-        }
-
-        public void onNonSkippableVideoFailedToLoad() 
-        {
-            analitycs.AdsFailed();
-            Debug.Log("Video failed"); 
-        }
-
-        public void onNonSkippableVideoShown() 
-        { 
-            Debug.Log("Video shown"); 
-        }
-
-        public void onNonSkippableVideoClosed() 
-        {
-
-            Debug.Log("Video closed"); 
-        }
-
-        public void onNonSkippableVideoFinished() 
-        {
-            analitycs.AdsComplete();
-            Debug.Log("onNonSkippableVideoFinished"); 
-        }
-        #endregion
+        #region Video callback handlers
+        public void onSkippableVideoLoaded() {  }
+        public void onSkippableVideoFailedToLoad() { analitycs.AdsFailed(); }
+        public void onSkippableVideoShown() {  }
+        public void onSkippableVideoFinished() { analitycs.AdsComplete(); }
+        public void onSkippableVideoClosed() { analitycs.AdsSkiped(); }
+        #endregion       
+       
     }
 }
