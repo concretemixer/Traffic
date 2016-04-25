@@ -14,7 +14,7 @@ public class AppodealPostProcess : MonoBehaviour
 		UnityEngine.Debug.Log("===================== appodeal postbuild start ====================");
 
 		// !TODO: set this to path, where you download native Appodeal ios sdk
-		string appodealSdkPath = "/Users/NazarKozak/Appodeal/ios/Appodeal/";
+		string appodealSdkPath = "/Users/silvertoad/soft/Appodeal/";
 
 		Process pythonProcess = new Process();
 		pythonProcess.StartInfo.FileName = "python";

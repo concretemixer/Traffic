@@ -193,10 +193,6 @@ void AppodealSetUserBirthday(const char *birthday) {
     }
 }
 
-void AppodealSetUserId(const char * userId) {
-    [Appodeal setUserId:AppodealStringFromUTF8String(userId)];
-}
-
 void AppodealSetUserEmail(const char * email) {
     [Appodeal setUserEmail:AppodealStringFromUTF8String(email)];
 }

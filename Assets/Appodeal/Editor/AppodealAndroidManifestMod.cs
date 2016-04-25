@@ -37,7 +37,6 @@ public class AppodealAndroidManifestMod {
 	public const string nexageMraidActivityName = "org.nexage.sourcekit.mraid.MRAIDBrowser";
 	public const string nexageVastActivityName = "org.nexage.sourcekit.vast.activity.VASTActivity";
 	public const string nexageVpaidActivityName = "org.nexage.sourcekit.vast.activity.VPAIDActivity";
-	public const string appodealVpaidActivityName = "com.appodeal.ads.networks.vpaid.VPAIDActivity";
 	public const string amazonAdsActivityName = "com.amazon.device.ads.AdActivity";
 	public const string mailruActivityName = "ru.mail.android.mytarget.ads.MyTargetActivity";
 	public const string spotxActivityName = "com.appodeal.ads.networks.SpotXActivity";
@@ -459,20 +458,6 @@ public class AppodealAndroidManifestMod {
 				dict.AppendChild(nexageVpaidActivity);
 			}
 		}
-		XmlElement appodealVpaidActivity = FindElementWithAndroidName(activity, "name", ns, appodealVpaidActivityName, dict);
-		if (appodealVpaidActivity == null)
-		{
-			if(check) {
-				bool val = EditorUtility.DisplayDialog("Appodeal Manifest Editor", appodealVpaidActivityName + " is missing from AdnroidManifest.xml, would you like to add it?", "Yes", "No");
-				if (val) { 
-					appodealVpaidActivity = CreateActivityElement(doc, ns, appodealVpaidActivityName, null, "@android:style/Theme.NoTitleBar.Fullscreen");
-					dict.AppendChild(appodealVpaidActivity);
-				}
-			} else {
-				appodealVpaidActivity = CreateActivityElement(doc, ns, appodealVpaidActivityName, null, "@android:style/Theme.NoTitleBar.Fullscreen");
-				dict.AppendChild(appodealVpaidActivity);
-			}
-		}
 		XmlElement spotxActivity = FindElementWithAndroidName(activity, "name", ns, spotxActivityName, dict);
 		if (spotxActivity == null)
 		{
@@ -647,7 +632,7 @@ public class AppodealAndroidManifestMod {
 					dataElement.SetAttribute("scheme", ns, "metrica");
 					XmlElement yandexMetaDataElement = doc.CreateElement("meta-data");
 					yandexMetaDataElement.SetAttribute("name", ns, "metrica:api:level");
-					yandexMetaDataElement.SetAttribute("value", ns, "41");
+					yandexMetaDataElement.SetAttribute("value", ns, "32");
 					dict.AppendChild(yandexService);
 					yandexService.AppendChild(intentElement);
 					yandexService.AppendChild(yandexMetaDataElement);
@@ -670,7 +655,7 @@ public class AppodealAndroidManifestMod {
 				dataElement.SetAttribute("scheme", ns, "metrica");
 				XmlElement yandexMetaDataElement = doc.CreateElement("meta-data");
 				yandexMetaDataElement.SetAttribute("name", ns, "metrica:api:level");
-				yandexMetaDataElement.SetAttribute("value", ns, "41");
+				yandexMetaDataElement.SetAttribute("value", ns, "32");
 				dict.AppendChild(yandexService);
 				yandexService.AppendChild(intentElement);
 				yandexService.AppendChild(yandexMetaDataElement);

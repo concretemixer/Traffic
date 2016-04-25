@@ -80,9 +80,6 @@ namespace AppodealAds.Unity.iOS
 		
 		
 		[DllImport("__Internal")]
-		internal static extern void AppodealSetUserId(string id);
-
-		[DllImport("__Internal")]
 		internal static extern void AppodealSetUserAge(int age);
 		
 		[DllImport("__Internal")]

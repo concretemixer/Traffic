@@ -10,14 +10,12 @@ namespace AppodealAds.Unity.Common {
 		void disableNetwork (String network);
 		void disableNetwork (String network, int type);
 		void disableLocationPermissionCheck();
-		void disableWriteExternalStoragePermissionCheck();
 
 		void setInterstitialCallbacks (IInterstitialAdListener listener);
 		void setSkippableVideoCallbacks (ISkippableVideoAdListener listener);
 		void setNonSkippableVideoCallbacks (INonSkippableVideoAdListener listener);
 		void setRewardedVideoCallbacks (IRewardedVideoAdListener listener);
 		void setBannerCallbacks (IBannerAdListener listener);
-		void requestAndroidMPermissions(IPermissionGrantedListener listener);
 		void cache (int adTypes);
 		void confirm(int adTypes);
 		
@@ -35,7 +33,6 @@ namespace AppodealAds.Unity.Common {
 		
 		string getVersion();
 
-		void setUserId(string id);
 		void setAge(int age);
 		void setBirthday(string bDay);
 		void setEmail(String email);

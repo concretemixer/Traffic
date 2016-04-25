@@ -80,10 +80,6 @@ namespace AppodealAds.Unity.iOS
 				AppodealAdsClient.interstitialListener.onInterstitialShown();
 			}
 		}
-
-		public void requestAndroidMPermissions(IPermissionGrantedListener listener) {
-			// not supported on ios
-		}
 		
 		public void setInterstitialCallbacks(IInterstitialAdListener listener) {
 			AppodealAdsClient.interstitialListener = listener;
@@ -388,12 +384,6 @@ namespace AppodealAds.Unity.iOS
 		public void confirm(int adTypes) {
 			// TODO: not implented in iOS SDK yet
 		}
-
-
-		public void disableWriteExternalStoragePermissionCheck() 
-		{
-			// Not supported on ios
-		}
 		
 		public void disableNetwork(String network) {
 			AppodealObjCBridge.AppodealDisableNetwork(network);
@@ -420,13 +410,7 @@ namespace AppodealAds.Unity.iOS
 		public void getUserSettings() {
 			// No additional state change required on iOS
 		}
-
-
-		public void setUserId(string id) 
-		{
-			AppodealObjCBridge.AppodealSetUserId(id);
-		}
-
+		
 		public void setAge(int age) 
 		{
 			AppodealObjCBridge.AppodealSetUserAge(age);

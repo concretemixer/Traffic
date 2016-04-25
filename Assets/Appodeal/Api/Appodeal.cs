@@ -165,21 +165,7 @@ namespace AppodealAds.Unity.Api
 			#if UNITY_ANDROID && !UNITY_EDITOR || UNITY_IPHONE && !UNITY_EDITOR
 			getInstance().disableLocationPermissionCheck ();
 			#endif
-		}	
-
-		public static void disableWriteExternalStoragePermissionCheck() 
-		{
-			#if UNITY_ANDROID && !UNITY_EDITOR || UNITY_IPHONE && !UNITY_EDITOR
-			getInstance().disableWriteExternalStoragePermissionCheck ();
-			#endif
-		}
-
-		public static void requestAndroidMPermissions(IPermissionGrantedListener listener)
-		{
-			#if UNITY_ANDROID && !UNITY_EDITOR
-			getInstance().requestAndroidMPermissions (listener);
-			#endif
-		}
+		}		
 		
 		public static void setTesting(bool test) 
 		{
@@ -249,14 +235,6 @@ namespace AppodealAds.Unity.Api
 			#if UNITY_ANDROID && !UNITY_EDITOR || UNITY_IPHONE && !UNITY_EDITOR
 			getInstance().getUserSettings();
 			#endif
-		}
-
-		public UserSettings setUserId(string id)
-		{
-			#if UNITY_ANDROID && !UNITY_EDITOR || UNITY_IPHONE && !UNITY_EDITOR
-			getInstance().setUserId(id);
-			#endif
-			return this;
 		}
 		
 		public UserSettings setAge(int age)

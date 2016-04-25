@@ -120,16 +120,6 @@ namespace AppodealAds.Unity.Android
 		{
 			getAppodealClass().CallStatic("disableLocationPermissionCheck");
 		}
-
-		public void disableWriteExternalStoragePermissionCheck() 
-		{
-			getAppodealClass().CallStatic("disableWriteExternalStoragePermissionCheck");
-		}
-
-		public void requestAndroidMPermissions(IPermissionGrantedListener listener) 
-		{
-			getAppodealClass().CallStatic("requestAndroidMPermissions", getActivity(), new AppodealPermissionCallbacks(listener));
-		}
 		
 		public void orientationChange()
 		{
@@ -161,11 +151,6 @@ namespace AppodealAds.Unity.Android
 		public void getUserSettings() 
 		{
 			userSettings = getAppodealClass().CallStatic<AndroidJavaObject>("getUserSettings", getActivity());
-		}
-
-		public void setUserId(string id) 
-		{
-			userSettings.Call<AndroidJavaObject>("setUserId", id);
 		}
 
 		public void setAge(int age) 
