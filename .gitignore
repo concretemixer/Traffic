@@ -1,8 +1,11 @@
+*.suo
+*.pdb
 *.exe
 *.log
 *.bin
 *.apk
 /traffic_Data/
+/ts_Data/
 /metadata/
 /Library/
 /Temp/
