@@ -17,10 +17,11 @@ public class InitializeAppodealCommand : Command
 
     public override void Execute()
     {
+        String appKey = "";
         #if UNITY_IOS
-        String appKey = "18e77ef8f5b7a2c7ca4a48464eb27de51c7364b9917032fe";
+        appKey = "18e77ef8f5b7a2c7ca4a48464eb27de51c7364b9917032fe";
         #elif UNITY_ANDROID
-        String appKey = "3e28bb6cebdf9e7bba63c8bb376df09ec65dd8eea3b8ec12";
+        appKey = "3e28bb6cebdf9e7bba63c8bb376df09ec65dd8eea3b8ec12";
         #endif
      //   Appodeal.setTesting(true);
     //    Appodeal.setLogging(true);
