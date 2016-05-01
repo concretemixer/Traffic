@@ -52,6 +52,7 @@ namespace Traffic.MVCS.Commands
                 scenario.Reset();
             }
 
+            Time.timeScale = 0.85f;
             //Logger.Log("Restart");
             UI.Show(UIMap.Id.ScreenHUD);	
             UI.Hide(UIMap.Id.LevelFailedMenu);

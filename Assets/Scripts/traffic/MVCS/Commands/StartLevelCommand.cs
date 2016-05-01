@@ -34,7 +34,10 @@ namespace Traffic.MVCS.Commands
         
 		public override void Execute()
 		{
+
             UI.HideAll();
+
+            Time.timeScale = 0.85f;
 
 			safeUnbind<ILevelModel>(GameState.Current);
 

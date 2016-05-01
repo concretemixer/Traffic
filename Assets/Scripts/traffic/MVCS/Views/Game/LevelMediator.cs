@@ -139,8 +139,8 @@ namespace Traffic.MVCS.Views.Game
 
         void levelFailedDispatch()
         {
-            onLevelFailed.Dispatch();
             analitics.LevelFail(level.LevelIndex, level.Score);
+            onLevelFailed.Dispatch();
         }
 
         void levelFailedHandler()

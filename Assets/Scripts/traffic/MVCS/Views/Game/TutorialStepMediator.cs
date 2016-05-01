@@ -45,7 +45,8 @@ namespace Traffic.MVCS.Views.UI
 
         void nextStepHandler()
         {
-            Time.timeScale = 1;
+            Time.timeScale = 0.85f;
+            
             UI.Hide(UIMap.Id.ScreenTutorial);
             target = null;
 

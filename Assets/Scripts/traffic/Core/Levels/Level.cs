@@ -87,7 +87,7 @@ public class Level : MonoBehaviour  {
        
 
         UpdateCamera ();
-		//Time.timeScale = 3;
+		
 			/*
 		Ingame = GameObject.Find ("Game") != null;
 

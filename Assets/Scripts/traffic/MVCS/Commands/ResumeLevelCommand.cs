@@ -23,7 +23,7 @@ namespace Traffic.MVCS.Commands
 
 			Loggr.Log("RESUME");
             UI.Hide(UIMap.Id.PauseMenu);	
-			Time.timeScale=1;
+			Time.timeScale=0.85f;
 
 		}
 	}

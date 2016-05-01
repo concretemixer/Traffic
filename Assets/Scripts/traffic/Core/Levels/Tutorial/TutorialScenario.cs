@@ -37,7 +37,8 @@ namespace Traffic.Core
         {
             if (stopped)
                 return;
-            lifetime += Time.deltaTime * Time.timeScale;
+            if (Time.timeScale>0)
+                lifetime += Time.deltaTime;
             if (point == 0)
             {
                 if (lifetime > 3)
