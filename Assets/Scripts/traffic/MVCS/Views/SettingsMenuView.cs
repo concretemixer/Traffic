@@ -95,6 +95,7 @@ namespace Traffic.MVCS.Views.UI
 
             languages[0].onClick.AddListener(delegate { onLangChoosen.Dispatch(SystemLanguage.English); });
             languages[1].onClick.AddListener(delegate { onLangChoosen.Dispatch(SystemLanguage.Russian); });
+            languages[2].onClick.AddListener(delegate { onLangChoosen.Dispatch(SystemLanguage.French); });
 
             base.Awake();
         }
@@ -209,7 +210,8 @@ namespace Traffic.MVCS.Views.UI
         private static Dictionary<SystemLanguage, string> map = new Dictionary<SystemLanguage, string>
         {
             {SystemLanguage.English, "locale/icons/eng"},
-            {SystemLanguage.Russian, "locale/icons/ru"}
+            {SystemLanguage.Russian, "locale/icons/ru"},
+            {SystemLanguage.French, "locale/icons/fr"}
         };
 
         public void SetLanguage(SystemLanguage lang)
@@ -221,6 +223,8 @@ namespace Traffic.MVCS.Views.UI
                 languages[0].image.color = new Color32(255, 255, 255, 150);
             if (lang == SystemLanguage.Russian)
                 languages[1].image.color = new Color32(255, 255, 255, 150);
+            if (lang == SystemLanguage.French)
+                languages[2].image.color = new Color32(255, 255, 255, 150);
         }
 
         public override void Layout(int width, int height)

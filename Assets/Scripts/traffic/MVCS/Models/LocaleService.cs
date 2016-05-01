@@ -15,7 +15,8 @@ namespace Traffic.MVCS.Models
         private static Dictionary<SystemLanguage, string> map = new Dictionary<SystemLanguage, string>
         {
             {SystemLanguage.English, "locale/default"},
-            {SystemLanguage.Russian, "locale/ru"}
+            {SystemLanguage.Russian, "locale/ru"},
+            {SystemLanguage.French, "locale/fr"}
         };
 
         [Inject]
@@ -148,6 +149,7 @@ namespace Traffic.MVCS.Models
 
         private SystemLanguage GetDefaultLanguage()
         {
+         
             string langStr = PlayerPrefs.GetString("language", "");
             if (!string.IsNullOrEmpty(langStr))
                 return (SystemLanguage)Enum.Parse(typeof(SystemLanguage), langStr);

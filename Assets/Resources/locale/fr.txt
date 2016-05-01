@@ -1,0 +1,65 @@
+﻿%START%|JOUER!
+%MUSIC%|MUSIQUE
+%SOUND%|SONS
+%PROMO_TITLE%|PROMO
+%ENTER_CODE%|INSÉREZ LE CODE
+%SETTINGS%|PARAMÈTRES
+%SHOP%|MAGASIN
+%BUY%|ACHETER
+%HOME%|RETOUR A L’ACCUEIL
+%LOADING%| CHARGEMENT EN COURS...
+%PAUSE%|PAUSE
+%CHOOSE_LANG%|VOTRE LANGUE
+
+
+%LEVELS_DESC_SHOP%|12 NIVEAUX DE PLUS POUR %PRICE_NO_ADS%
+%NO_ADS_DESC_SHOP%|DÉSACTIVER LA PUBLICITÉ POUR %PRICE_LEVELS%
+
+%PURCHASE_OK%|ACHAT RÉUSSI
+%PURCHASE_FAILED%|ACHAT RATÉ
+
+%LEVELS_BOUGHT%|Vous avez acheté 12 niveaux additionnels pour %PRICE_LEVELS%
+%NO_ADS_BOUGHT%|Vous avez désactivé la publicité pour %PRICE_NO_ADS%
+
+%LEVELS_LOCKED_TITLE%|ATTENTION
+%LEVELS_LOCKED_TEXT%|VOUS POUVEZ ACHETER 12 NIVEAUX DE PLUS POUR %PRICE_LEVELS%
+%NO_TRIES_TITLE%|PLUS D’ESSAIS
+%NO_TRIES_DESC%|ACHETER LES ESSAIS ILLIMITÉS POUR $100 OU REGARDEZ LA PUBLICITÉ POUR LES RÉCUPÉRER !
+%NO_TRIES_TIMER%|LES ESSAIS SERONT RÉCUPÉRÉS<br>AUTOMATIQUEMENT DANS {0}m{1}s
+
+%NO_TRIES_ADVERT%|REGARDER LA<br>PUBLICITÉ
+
+%NEW_TRIES_TITLE%|FÉLICITATIONS
+%NEW_TRIES_DESC%|VOS ESSAIS SONT RÉCUPÉRÉS !
+
+%TUTOR_STEP_0%|Les voitures vont se percuter! <color=lime>TOUCHER</color> la voiture pour l’accélérer.
+%TUTOR_STEP_1%|Plus de voitures passent, plus vous progressez.
+%TUTOR_STEP_2%|Score. Plus d’accélérations − plus de points !
+%TUTOR_STEP_3%|Le nombre d’essais diminue avec chaque accident. Si il n’y a plus d’essais, il faut les récupérer.
+%TUTOR_STEP_4%|Attention à l’obstacle! <color=lime>TIRER</color> la voiture pour l’arrêter ou ralentir.
+%TUTOR_STEP_5%|<color=lime>TOUCHER</color> la voiture encore une fois pour qu’elle démarre et pour éviter l’accident.
+%TUTOR_STEP_6%|C’est <color=yellow>un arrêt de bus</color>. Les bus s’arrêtent ici :)
+%TUTOR_STEP_7%|Et voilà <color=yellow>le bus</color> qui s’approche. <color=#ff5500>ON NE DIRIGE PAS</color> les bus, donc attention au trafic.
+
+%LEVEL_LOST_1%|ACCIDENT!
+%LEVEL_LOST_2%|PAS MAL MAIS...
+%LEVEL_LOST_3%|PRESQUE, PRESQUE...
+
+%LEVEL_WON_1%|PAS MAL!
+%LEVEL_WON_2%|SUPER!
+%LEVEL_WON_3%|EXCELLENT!
+
+%YOUR_SCORE%|VOTRE SCORE:
+
+%FREE_LEVELS_COMPLETE_CAPTION%|INCROYABLE !
+%FREE_LEVELS_COMPLETE%|VOUS AVEZ RÉUSSI TOUS LES NIVEAUX GRATUITS! 12 NIVEAUX FASCINANTS DE PLUS SONT DISPONIBLES POUR SEULEMENT <color=white>%PRICE_LEVELS%</color>!
+
+%GAME_COMPLETE_CAPTION%|INCROYABLE!!!
+%GAME_COMPLETE%|VOUS AVEZ RÉUSSI TOUS LES NIVEAUX! C’EST GÉNIAL!
+
+%TUTORIAL_COMPLETE%|L’instruction est terminée.<br>Un vrai TRAFFIC STORM<br>vous attend!
+%TUTORIAL_FAILED%|On n’a rien sans rien! Essayez encore une fois.
+
+%CODE_CAPTION%|INFORMATION
+%CODE_OK%|CODE CORRECT!
+%CODE_FAIL%|CODE INCONNU
