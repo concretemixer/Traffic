@@ -18,6 +18,12 @@
 %PURCHASE_OK%|ПОКУПКА УСПЕШНА
 %PURCHASE_FAILED%|ПОКУПКА НЕ УДАЛАСЬ
 
+%PURCHASE_RESTORED%|ВАШИ ПОКУПКИ
+%PURCHASE_RESTORED_TEXT%|Вы восстановили все свои покупки
+%PURCHASE_RESTORE_FAIL%|ОШИБКА
+%PURCHASE_RESTORE_FAIL_TEXT%|Восстановление покупок не удалось
+
+
 %LEVELS_BOUGHT%|Вы приобрели 12 дополнительных уровней за %PRICE_LEVELS%
 %NO_ADS_BOUGHT%|Вы отключили рекламу в приложении за %PRICE_NO_ADS%
 

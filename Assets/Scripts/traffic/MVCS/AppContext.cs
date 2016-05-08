@@ -93,6 +93,7 @@ namespace Traffic.MVCS
             injectionBinder.Bind<ScoreGrow>().ToSingleton();
             injectionBinder.Bind<ResumeTutorial>().ToSingleton();
             injectionBinder.Bind<PurchaseFailed>().ToSingleton();
+            injectionBinder.Bind<RestorePurchasesFailed>().ToSingleton();
             injectionBinder.Bind<PurshaseOk>().ToSingleton();
         }
 

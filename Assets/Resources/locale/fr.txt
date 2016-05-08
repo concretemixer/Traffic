@@ -18,6 +18,11 @@
 %PURCHASE_OK%|ACHAT RÉUSSI
 %PURCHASE_FAILED%|ACHAT RATÉ
 
+%PURCHASE_RESTORED%|ACHATS RESTAURÉES
+%PURCHASE_RESTORED_TEXT%|Vous avez restauré tout les voz achats
+%PURCHASE_RESTORE_FAIL%|RESTAURATION RATÉ
+%PURCHASE_RESTORE_FAIL_TEXT%|Impossible d'restaurer vos achats
+
 %LEVELS_BOUGHT%|Vous avez acheté 12 niveaux additionnels pour %PRICE_LEVELS%
 %NO_ADS_BOUGHT%|Vous avez désactivé la publicité pour %PRICE_NO_ADS%
 

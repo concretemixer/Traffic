@@ -15,6 +15,8 @@ namespace Traffic.MVCS.Commands.Signals
 
     }
 
-
+    public class RestorePurchasesFailed : Signal
+    {
+    }
 
 }

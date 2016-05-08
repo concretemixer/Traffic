@@ -35,6 +35,8 @@ namespace Traffic.MVCS.Views.UI
         [SerializeField]
         Button shopBuyNoAdverts;
 
+        [SerializeField]
+        Button shopRestore;
 
         [SerializeField]
         Image shopLevelsBought;
@@ -49,6 +51,7 @@ namespace Traffic.MVCS.Views.UI
         public readonly Signal onButtonQuit = new Signal();
         public readonly Signal onButtonShop = new Signal();
         public readonly Signal onButtonShopClose = new Signal();
+        public readonly Signal onButtonShopRestore = new Signal();
 
         public readonly Signal onButtonBuyLevels= new Signal();
         public readonly Signal onButtonBuyNoAds= new Signal();
@@ -65,6 +68,9 @@ namespace Traffic.MVCS.Views.UI
 
             shopBuyLevels.onClick.AddListener(onButtonBuyLevels.Dispatch);
             shopBuyNoAdverts.onClick.AddListener(onButtonBuyNoAds.Dispatch);
+
+            shopRestore.onClick.AddListener(onButtonShopRestore.Dispatch);
+
             base.Awake();
         }
     
@@ -80,6 +86,7 @@ namespace Traffic.MVCS.Views.UI
             connectButton.onClick.RemoveListener(onButtonConnect.Dispatch);
             startButton.onClick.RemoveListener(onButtonStart.Dispatch);
 
+            shopRestore.onClick.RemoveListener(onButtonShopRestore.Dispatch);
 
             base.OnDestroy();
         }
@@ -100,6 +107,11 @@ namespace Traffic.MVCS.Views.UI
                 }
             }
             shopBg.gameObject.SetActive(show);
+#if UNITY_IOS            
+            shopRestore.gameObject.SetActive(show);
+#else
+            shopRestore.gameObject.SetActive(false);
+#endif          
         }
 
         public override void Layout(int width, int height)
@@ -115,9 +127,10 @@ namespace Traffic.MVCS.Views.UI
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 960);
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960 * ratio);
 
-                startButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-105, 10);
+                startButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-105, 10);                
                 connectButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-235, 10);
                 shopButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-345, 10);
+                shopRestore.GetComponent<RectTransform>().anchoredPosition = new Vector2(-105, 10);
                 // scaledDimention = 960 * ratio;
             }
             else
@@ -126,6 +139,7 @@ namespace Traffic.MVCS.Views.UI
                 this.gameObject.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 960);
 
                 startButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-85, 10);
+                shopRestore.GetComponent<RectTransform>().anchoredPosition = new Vector2(-85, 10);
                 connectButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-212, 10);
                 shopButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-320, 10);
 

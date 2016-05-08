@@ -20,17 +20,23 @@ namespace Traffic.MVCS.Models
 
         bool GetProductPrice(IAPType what, out float price, out string currency);
 
+        void RestorePurchases();
+
         PurshaseOk onPurchaseOk { get; set; }
         PurchaseFailed onPurchaseFailed { get; set; }
+        RestorePurchasesFailed onRestorePurchaseFailed { get; set; }
     }
 
-    public class IAPServiceDummy :  IAPService 
+    public class IAPServiceDummy : IAPService
     {
         [Inject]
         public PurshaseOk onPurchaseOk { get; set; }
 
         [Inject]
         public PurchaseFailed onPurchaseFailed { get; set; }
+
+        [Inject]
+        public RestorePurchasesFailed onRestorePurchaseFailed { get; set; }
 
         [Inject(EntryPoint.Container.Stage)]
         public GameObject stage { get; set; }
@@ -45,6 +51,13 @@ namespace Traffic.MVCS.Models
             price = 1;
             currency = "$";
             return true;
+        }
+
+        public void RestorePurchases()
+        {
+            onRestorePurchaseFailed.Dispatch();
+            //PurchaseStart(IAPType.NoAdverts);
+            //PurchaseStart(IAPType.AdditionalLevels);            
         }
 
         public bool IsBought(IAPType what)

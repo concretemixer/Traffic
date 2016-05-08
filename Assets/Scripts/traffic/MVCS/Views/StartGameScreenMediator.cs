@@ -18,6 +18,9 @@ namespace Traffic.MVCS.Views.UI
         public PurchaseFailed onPurchaseFailed { get; set; }
 
         [Inject]
+        public RestorePurchasesFailed onRestorePurchaseFailed { get; set; }
+
+        [Inject]
         public StartGameScreenView view { get; set; }
 
         [Inject]
@@ -39,6 +42,9 @@ namespace Traffic.MVCS.Views.UI
 
         [Inject]
         public ILocaleService localeService { get; set; }
+
+
+        private bool restoring = false;
         
         void homeHandler()
         {
@@ -76,14 +82,28 @@ namespace Traffic.MVCS.Views.UI
         {
             InfoMessageView view = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
 
-            view.SetCaption(localeService.ProcessString("%PURCHASE_OK%"));
-            if (what == IAPType.AdditionalLevels) 
-                view.SetText(localeService.ProcessString("%LEVELS_BOUGHT%"));            
-            else if (what == IAPType.NoAdverts) 
-                view.SetText(localeService.ProcessString("%NO_ADS_BOUGHT%"));
-            
+            if (view==null)
+                view = UI.Show<InfoMessageView>(UIMap.Id.InfoMessage);
 
             view.SetMessageMode(true);
+
+            if (restoring)
+            {
+                view.SetCaption(localeService.ProcessString("%PURCHASE_RESTORED%"));
+                view.SetText(localeService.ProcessString("%PURCHASE_RESTORED_TEXT%"));
+            }
+            else
+            {
+                view.SetCaption(localeService.ProcessString("%PURCHASE_OK%"));
+                if (what == IAPType.AdditionalLevels)
+                    view.SetText(localeService.ProcessString("%LEVELS_BOUGHT%"));
+                else if (what == IAPType.NoAdverts)
+                    view.SetText(localeService.ProcessString("%NO_ADS_BOUGHT%"));
+            }
+            
+
+           
+            view.onButtonOk.RemoveListener(infoOkHandler);
             view.onButtonOk.AddListener(infoOkHandler);
         }
 
@@ -96,8 +116,22 @@ namespace Traffic.MVCS.Views.UI
             view.onButtonOk.AddListener(infoOkHandler);
         }
 
+        void purchaseRestoreFailHandler()
+        {
+            restoring = false;
+            InfoMessageView view = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
+            if (view == null)
+                view = UI.Show<InfoMessageView>(UIMap.Id.InfoMessage);
+
+            view.SetCaption(localeService.ProcessString("%PURCHASE_RESTORE_FAIL%"));
+            view.SetText(localeService.ProcessString("%PURCHASE_RESTORE_FAIL_TEXT%"));
+            view.SetMessageMode(true);
+            view.onButtonOk.AddListener(infoOkHandler);
+        }
+
         void buyLevelsHandler()
         {
+            restoring = false;
             UI.Hide(UIMap.Id.InfoMessage);
 
             InfoMessageView view = UI.Show<InfoMessageView>(UIMap.Id.InfoMessage);
@@ -107,6 +141,7 @@ namespace Traffic.MVCS.Views.UI
 
         void buyNoAdsHandler()
         {
+            restoring = false;
             UI.Hide(UIMap.Id.InfoMessage);
 
             InfoMessageView view = UI.Show<InfoMessageView>(UIMap.Id.InfoMessage);
@@ -119,6 +154,13 @@ namespace Traffic.MVCS.Views.UI
         void quitHandler()
         {
             Application.Quit();
+        }
+
+        void restorePurchasesHandler()
+        {            
+            UI.Hide(UIMap.Id.InfoMessage);
+            restoring = true;
+            iapService.RestorePurchases();
         }
 
         void Update()
@@ -143,8 +185,10 @@ namespace Traffic.MVCS.Views.UI
 
             onPurchaseOk.AddListener(purchaseOkHandler);
             onPurchaseFailed.AddListener(purchaseFailHandler);
+            onRestorePurchaseFailed.AddListener(purchaseRestoreFailHandler);
 
             view.onButtonConnect.AddListener(connectFBClickHandler);
+            view.onButtonShopRestore.AddListener(restorePurchasesHandler);
 
             view.ShowShop(false, iapService);
         }
@@ -179,6 +223,9 @@ namespace Traffic.MVCS.Views.UI
 
             onPurchaseOk.RemoveListener(purchaseOkHandler);
             onPurchaseFailed.RemoveListener(purchaseFailHandler);
+            onRestorePurchaseFailed.RemoveListener(purchaseRestoreFailHandler);
+
+            view.onButtonShopRestore.RemoveListener(restorePurchasesHandler);
 
             base.OnRemove();
         }

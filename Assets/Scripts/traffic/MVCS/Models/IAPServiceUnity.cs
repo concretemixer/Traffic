@@ -17,6 +17,9 @@ namespace Traffic.MVCS.Models
         [Inject]
         public PurchaseFailed onPurchaseFailed { get; set; }
 
+        [Inject]
+        public RestorePurchasesFailed onRestorePurchaseFailed { get; set; }
+
         private IStoreController StoreController;             
         private IExtensionProvider StoreExtensionProvider;
 
@@ -144,6 +147,8 @@ namespace Traffic.MVCS.Models
 
         public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args) 
         {  
+            
+
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
             PlayerPrefs.SetInt("iap." + args.purchasedProduct.definition.id, 1);
             IAPType what = (IAPType)Enum.Parse(typeof(IAPType), args.purchasedProduct.definition.id, true);
@@ -155,7 +160,7 @@ namespace Traffic.MVCS.Models
         public void OnPurchaseFailed(Product product, PurchaseFailureReason failureReason)
         {
             IAPType what = (IAPType)Enum.Parse(typeof(IAPType), product.definition.id, true);
-            onPurchaseFailed.Dispatch(what,"GP: "+failureReason.ToString());
+            onPurchaseFailed.Dispatch(what,failureReason.ToString());
             // A product purchase attempt did not succeed. Check failureReason for more detail. Consider sharing this reason with the user.
             Debug.Log(string.Format("OnPurchaseFailed: FAIL. Product: '{0}', PurchaseFailureReason: {1}",product.definition.storeSpecificId, failureReason));
         }
@@ -178,6 +183,48 @@ namespace Traffic.MVCS.Models
             // Only say we are initialized if both the Purchasing references are set.
             return StoreController != null && StoreExtensionProvider != null;
         }
+
+
+        // Restore purchases previously made by this customer. Some platforms automatically restore purchases. Apple currently requires explicit purchase restoration for IAP.
+        public void RestorePurchases()
+        {
+            // If Purchasing has not yet been set up ...
+            if (!IsInitialized())
+            {
+                // ... report the situation and stop restoring. Consider either waiting longer, or retrying initialization.
+                Debug.Log("RestorePurchases FAIL. Not initialized.");
+                onRestorePurchaseFailed.Dispatch();
+                return;
+            }
+
+            // If we are running on an Apple device ... 
+            if (Application.platform == RuntimePlatform.IPhonePlayer ||
+                Application.platform == RuntimePlatform.OSXPlayer)
+            {
+                // ... begin restoring purchases
+                Debug.Log("RestorePurchases started ...");
+
+                // Fetch the Apple store-specific subsystem.
+                IAppleExtensions apple = StoreExtensionProvider.GetExtension<IAppleExtensions>();
+                
+                // Begin the asynchronous process of restoring purchases. Expect a confirmation response in the Action<bool> below, and ProcessPurchase if there are previously purchased products to restore.
+                apple.RestoreTransactions((result) =>
+                {
+                    if (!result)
+                        onRestorePurchaseFailed.Dispatch();
+                    // The first phase of restoration. If no more responses are received on ProcessPurchase then no purchases are available to be restored.
+                    Debug.Log("RestorePurchases continuing: " + result + ". If no further messages, no purchases available to restore.");
+                });
+            }
+            // Otherwise ...
+            else
+            {
+                // We are not running on an Apple device. No work is necessary to restore purchases.
+                onRestorePurchaseFailed.Dispatch();
+                Debug.Log("RestorePurchases FAIL. Not supported on this platform. Current = " + Application.platform);
+            }
+        }
+        
 
         public void PurchaseStart(IAPType what)
         {
