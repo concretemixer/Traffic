@@ -24,7 +24,7 @@ namespace Traffic.MVCS.Commands.Ads
             Appodeal.setSkippableVideoCallbacks(this);
 
             analitycs.AdsStart();
-            Appodeal.show(Appodeal.SKIPPABLE_VIDEO);
+            Appodeal.show(Appodeal.NON_SKIPPABLE_VIDEO);
             addLives.Dispatch();
 
           // 

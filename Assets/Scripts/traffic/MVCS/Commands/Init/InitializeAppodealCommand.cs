@@ -26,6 +26,7 @@ public class InitializeAppodealCommand : Command
      //   Appodeal.setTesting(true);
     //    Appodeal.setLogging(true);
         Appodeal.disableLocationPermissionCheck();
-        Appodeal.initialize(appKey, Appodeal.SKIPPABLE_VIDEO);
+        Appodeal.confirm(Appodeal.NON_SKIPPABLE_VIDEO);
+        Appodeal.initialize(appKey, Appodeal.NON_SKIPPABLE_VIDEO);
     }
 }
