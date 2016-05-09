@@ -15,15 +15,15 @@ namespace Traffic.MVCS.Views.UI
             foreach (var o in vert)
             {
                 if (o.GetComponent<Image>() != null) {                    
-                    o.GetComponent<Image>().enabled = isVertical;
-                    if (ratio>1 && o.GetComponent<RectTransform>().rect.width > 599)
+                    o.GetComponent<Image>().enabled = isVertical;     
+                    if (ratio>1 && o.GetComponent<RectTransform>().rect.width > 599 && o.GetComponent<RectTransform>().rect.width < 601)
                     {
                         float k = (960 / ratio) / o.GetComponent<RectTransform>().rect.width;
                         if (k < 1)
                             k = 1;
 
                         o.GetComponent<RectTransform>().localScale = new Vector3(k,1 , 1);                        
-                    }
+                    }                                                   
                 }
                 if (o.GetComponent<Text>() != null)
                     o.GetComponent<Text>().enabled = isVertical;
