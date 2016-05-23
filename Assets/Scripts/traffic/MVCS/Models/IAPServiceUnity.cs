@@ -70,7 +70,7 @@ namespace Traffic.MVCS.Models
 
 //#if UNITY_ANDROID            
             if (code == "299883")
-                expireTime = new DateTime(2016, 4, 26, 23, 59, 59, DateTimeKind.Utc);
+                expireTime = new DateTime(2016, 6, 26, 23, 59, 59, DateTimeKind.Utc);
             if (code == "458109")
                 expireTime = new DateTime(2016, 4, 25, 23, 59, 59, DateTimeKind.Utc);
             if (code == "862270")
