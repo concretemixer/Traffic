@@ -97,7 +97,7 @@ PlayerSettings:
   xboxOneDisableKinectGpuReservation: 0
   virtualRealitySupported: 0
   productGUID: 1781933ced5dea2438f196d0b09fbcf7
-  AndroidBundleVersionCode: 24
+  AndroidBundleVersionCode: 25
   AndroidMinSdkVersion: 16
   AndroidPreferredInstallLocation: 1
   aotOptions: nimt-trampolines=4096
@@ -171,7 +171,7 @@ PlayerSettings:
   iOSDeviceRequirements: []
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 1
-  androidSplashScreen: {fileID: 2800000, guid: a8542faf25eb84da881f3af3104e677a, type: 3}
+  androidSplashScreen: {fileID: 2800000, guid: 6dd362d947bc84f72847d2784ae898e7, type: 3}
   AndroidKeystoreName: concretemixer.keystore
   AndroidKeyaliasName: max
   AndroidTVCompatibility: 0
