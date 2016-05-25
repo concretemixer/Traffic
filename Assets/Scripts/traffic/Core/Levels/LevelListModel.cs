@@ -77,8 +77,8 @@ namespace Traffic.Core
         {
             CurrentLevelIndex = 0;
 
-            _TriesLeft = PlayerPrefs.GetInt("tries.left", 10);
-            TriesTotal = 10;
+            _TriesLeft = PlayerPrefs.GetInt("tries.left", 5);
+            TriesTotal = 5;
 
             Int32 unixTimestamp = PlayerPrefs.GetInt("tries.refresh", 0);
             _TriesRefreshTime = new DateTime(1970, 1, 1).AddSeconds(unixTimestamp);
