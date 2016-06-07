@@ -44,7 +44,7 @@ namespace Traffic.MVCS.Views.UI.Loading
 
         public void ShowPreloader(bool show)
         {
-            // splash.SetActive(!show);
+            splash.SetActive(!show);
             preloader.SetActive(show);
         }
     }

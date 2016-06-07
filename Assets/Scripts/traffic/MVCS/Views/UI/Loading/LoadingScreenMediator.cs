@@ -10,24 +10,21 @@ namespace Traffic.MVCS.Views.UI.Loading
         [Inject]
         public LoadingScreenView view { set; private get; }
 
-        // Signal timerDoneSignal;
+        Signal timerDoneSignal;
 
         override public void OnRegister()
         {
-            timerDoneHandler();      
+            view.Layout(Screen.width, Screen.height);
+            view.ShowPreloader(false);
 
-            // view.Layout(Screen.width, Screen.height);
-            // view.ShowPreloader(false);
-
-            // timerDoneHandler();
-            //timerDoneSignal = DummyTimer.WaitFor(1000, "WaitTimer");
-            //timerDoneSignal.AddListener(timerDoneHandler);
+            timerDoneSignal = DummyTimer.WaitFor(1000, "WaitTimer");
+            timerDoneSignal.AddListener(timerDoneHandler);
         }
 
-        // override public void OnRemove()
-        // {
-        //     timerDoneSignal.RemoveListener(timerDoneHandler);
-        // }
+        override public void OnRemove()
+        {
+            timerDoneSignal.RemoveListener(timerDoneHandler);
+        }
 
         void timerDoneHandler()
         {            
