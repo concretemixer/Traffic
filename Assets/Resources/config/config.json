@@ -1,5 +1,5 @@
 {
-   "version":1,
+   "version":2,
    "levels":{
       "0":{
          "threeStarsScore":1,
@@ -628,6 +628,22 @@
                "intervalMax":10
             }
          }
-      }
+      },
+     "24":{
+         "threeStarsScore":11500,
+         "twoStarsScore":8000,
+         "target":50
+	 },
+     "25":{
+         "threeStarsScore":11500,
+         "twoStarsScore":8000,
+         "target":50
+	 },
+     "26":{
+         "threeStarsScore":11500,
+         "twoStarsScore":8000,
+         "target":50
+	 }
+
    }
 }

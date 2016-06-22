@@ -60,7 +60,7 @@ namespace Traffic.MVCS.Views.UI
 
                 
                 levelButtons[a].onClick.AddListener( delegate {
-                    int index = i + page * levelButtons.Length;
+					int index = i + page * 9;//levelButtons.Length;
                 //    if (index == 1 && firstLevelTutorial)
                     //    index = 0;
                     onButtonLevel.Dispatch(index);
@@ -91,7 +91,7 @@ namespace Traffic.MVCS.Views.UI
 
         public void SetPage(int page,ILevelListModel levels) 
         {
-            if (page != 1 && page != 0)
+			if (page != 1 && page != 0 && page != 2)
                 return;
 
             Sprite spriteCurrent = Resources.Load<Sprite>("UI/Sprites/Level_Current");
@@ -103,12 +103,12 @@ namespace Traffic.MVCS.Views.UI
 
             this.page = page;
 
-            prevButton.GetComponent<Button>().interactable = (page == 1);
-            nextButton.GetComponent<Button>().interactable = (page == 0);
+            prevButton.GetComponent<Button>().interactable = (page != 0);
+            nextButton.GetComponent<Button>().interactable = (page != 2);
 
             for (int a = 0; a < levelButtons.Length; a++) {
-                int n = a + levelButtons.Length * page;
-                levelButtons[a].GetComponentInChildren<Text>().text = (n+1).ToString();
+				int n = a+page*9;
+				levelButtons[a].GetComponentInChildren<Text>().text = (page+1).ToString()+"-"+(a+1).ToString();
 
                 if (levels.GetLevelState(n) == LevelState.Locked)
                 {
@@ -181,8 +181,8 @@ namespace Traffic.MVCS.Views.UI
             this.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
             this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
 
-            int w = ratio < 1 ? 4 : 3;
-            int h = ratio < 1 ? 3 : 4;
+            int w = ratio < 1 ? 3 : 3;
+            int h = ratio < 1 ? 3 : 3;
 
             int n = 0;
             for (int a = 0; a < h; a++)
@@ -191,12 +191,12 @@ namespace Traffic.MVCS.Views.UI
                 {
                     if (ratio < 1)
                     {
-                        levelButtons[n].GetComponent<RectTransform>().anchoredPosition = new Vector2(-270 + b * 180, 50 - 130 * a);
+                        levelButtons[n].GetComponent<RectTransform>().anchoredPosition = new Vector2(-180 + b * 180, 50 - 130 * a);
 
                     }
                     else
                     {
-                        levelButtons[n].GetComponent<RectTransform>().anchoredPosition = new Vector2(-180 + b * 180, 160 - 130 * a);
+                        levelButtons[n].GetComponent<RectTransform>().anchoredPosition = new Vector2(-180 + b * 180, 100 - 130 * a);
 
                     }
 

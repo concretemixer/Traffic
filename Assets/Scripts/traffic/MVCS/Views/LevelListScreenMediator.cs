@@ -54,24 +54,20 @@ namespace Traffic.MVCS.Views.UI
         [Inject]
         public SwitchToStartScreenSignal toStartScreenSignal { get; set; }
 
-        int page = 0;
+        static int page = 0;
 
-        void switchPageHandler()
+        void switchPageHandlerNext()
         {
-            page = 1 - page;
+            page = page < 2 ? page+1 : page;
             view.SetPage(page, levels);
-            if (page == 1)
-            {
-                float price;
-                string currency;
-                if (iapService.GetProductPrice(IAPType.AdditionalLevels, out price, out currency))
-                {
-                    view.shopLevelsDesc.text = view.shopLevelsDesc.text.Replace("%PRICE%",
-                        currency + (currency.Length > 1 ? " " : "") + price.ToString("F2"));
-                }
-                view.ShowLock(!iapService.IsBought(IAPType.AdditionalLevels));
-            }
         }
+
+		void switchPageHandlerPrev()
+		{
+			page = page > 0 ? page-1 : page;
+			view.SetPage(page, levels);
+		}
+
 
         void startLevelHandler(int index)
         {
@@ -162,8 +158,8 @@ namespace Traffic.MVCS.Views.UI
         public override void OnRegister()
         {
             view.onButtonHome.AddListener(homeHandler);
-            view.onButtonNext.AddListener(switchPageHandler);
-            view.onButtonPrev.AddListener(switchPageHandler);
+            view.onButtonNext.AddListener(switchPageHandlerNext);
+            view.onButtonPrev.AddListener(switchPageHandlerPrev);
             view.onButtonLevel.AddListener(startLevelHandler);
             view.onButtonClose.AddListener(closeHandler);
             view.onButtonBuy.AddListener(buyLevelsHandler);
@@ -186,8 +182,8 @@ namespace Traffic.MVCS.Views.UI
         {
             view.onButtonBuy.RemoveListener(buyLevelsHandler);
             view.onButtonHome.RemoveListener(homeHandler);
-            view.onButtonNext.RemoveListener(switchPageHandler);
-            view.onButtonPrev.RemoveListener(switchPageHandler);
+            view.onButtonNext.RemoveListener(switchPageHandlerNext);
+            view.onButtonPrev.RemoveListener(switchPageHandlerPrev);
             view.onButtonLevel.RemoveListener(startLevelHandler);
             view.onButtonClose.RemoveListener(closeHandler);
 
