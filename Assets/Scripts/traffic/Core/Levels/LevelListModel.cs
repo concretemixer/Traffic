@@ -53,6 +53,20 @@ namespace Traffic.Core
             }
         }
 
+        public int LevelsLeft
+        {
+            get {
+                int left = LevelNames.Length;
+                for (int a = 0; a < LevelNames.Length; a++)
+                {
+                    LevelState s = GetLevelState(a);
+                    if (s == LevelState.PassedOneStar || s == LevelState.PassedTwoStars|| s == LevelState.PassedThreeStars)
+                        left--;
+                }
+                return left;
+            }            
+        }
+
         public LevelState GetLevelState(int index)
         {
             if (index < 0)
@@ -60,7 +74,7 @@ namespace Traffic.Core
             if (index >= LevelNames.Length)
                 return LevelState.NoLevel;
 
-            LevelState result = (LevelState)PlayerPrefs.GetInt("progress.1." + index.ToString(), 1);
+            LevelState result = (LevelState)PlayerPrefs.GetInt("progress.2." + index.ToString(), 0);
             if (result == LevelState.Locked && index % 9 == 0)
                 result = LevelState.Playable;
 
@@ -69,7 +83,7 @@ namespace Traffic.Core
 
         public void SetLevelState(int index, LevelState state)
         {
-            PlayerPrefs.SetInt("progress.1." + index.ToString(), (int)state);
+            PlayerPrefs.SetInt("progress.2." + index.ToString(), (int)state);
         }
 
 
@@ -77,8 +91,8 @@ namespace Traffic.Core
         {
             CurrentLevelIndex = 0;
 
-            _TriesLeft = PlayerPrefs.GetInt("tries.left", 5);
-            TriesTotal = 5;
+            _TriesLeft = PlayerPrefs.GetInt("tries.left", 7);
+            TriesTotal = 7;
 
             Int32 unixTimestamp = PlayerPrefs.GetInt("tries.refresh", 0);
             _TriesRefreshTime = new DateTime(1970, 1, 1).AddSeconds(unixTimestamp);

@@ -79,10 +79,10 @@ namespace Traffic.MVCS.Views.UI
 
         void nextLevelHandler()
         {
-            if (levels.GetLevelState(levels.CurrentLevelIndex + 1) == LevelState.NoLevel) {
+            if (levels.LevelsLeft==0) {
                  uiManager.Show(UIMap.Id.GameCompleteMessage);            
             }
-            else if (levels.CurrentLevelIndex == 11 && !iapService.IsBought(IAPType.AdditionalLevels))
+            else if (levels.CurrentLevelIndex % 9 == 8)
             {
                 uiManager.Show(UIMap.Id.LevelPackDoneMessage);
             }

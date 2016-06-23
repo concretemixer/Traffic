@@ -68,7 +68,12 @@ namespace Traffic.Core
             get;
             set;
         }
-		
+
+        int LevelsLeft
+        {
+            get;            
+        }
+
 		string[] LevelNames {
 			get;
 			set;
@@ -82,5 +87,7 @@ namespace Traffic.Core
 
         LevelState GetLevelState(int index);
         void SetLevelState(int index, LevelState state);
+
+        
     }
 }
