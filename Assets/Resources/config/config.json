@@ -1,14 +1,14 @@
 {
    "version":2,
    "levels":{
-      "0":{
+      "LevelTutorial":{
          "threeStarsScore":1,
          "twoStarsScore":2,
          "target":7,
          "pitchers":{
          }
       },
-      "1":{
+      "Level1":{
          "threeStarsScore":3000,
          "twoStarsScore":2000,
          "target":10,
@@ -25,7 +25,7 @@
             }
          }
       },
-      "2":{
+      "Level2":{
          "threeStarsScore":8000,
          "twoStarsScore":5500,
          "target":30,
@@ -47,7 +47,7 @@
             }
          }
       },
-      "3":{
+      "Level4_1":{
          "threeStarsScore":7500,
          "twoStarsScore":5000,
          "target":30,
@@ -64,7 +64,7 @@
             }
          }
       },
-      "4":{
+      "Level3_1":{
          "threeStarsScore":10500,
          "twoStarsScore":7000,
          "target":30,
@@ -86,7 +86,7 @@
             }
          }
       },
-      "5":{
+      "Level4":{
          "threeStarsScore":7500,
          "twoStarsScore":5000,
          "target":30,
@@ -108,7 +108,7 @@
             }
          }
       },
-      "6":{
+      "Level3":{
          "threeStarsScore":15000,
          "twoStarsScore":10000,
          "target":50,
@@ -130,7 +130,7 @@
             }
          }
       },
-      "7":{
+      "Level6":{
          "threeStarsScore":12500,
          "twoStarsScore":8000,
          "target":50,
@@ -157,7 +157,7 @@
             }
          }
       },
-      "8":{
+      "Level5":{
          "threeStarsScore":6000,
          "twoStarsScore":4000,
          "target":35,
@@ -179,7 +179,7 @@
             }
          }
       },
-      "9":{
+      "Level10":{
          "threeStarsScore":11000,
          "twoStarsScore":7500,
          "target":50,
@@ -201,7 +201,7 @@
             }
          }
       },
-      "10":{
+      "Level18_1":{
          "threeStarsScore":12500,
          "twoStarsScore":8500,
          "target":50,
@@ -228,7 +228,7 @@
             }
          }
       },
-      "11":{
+      "Level8":{
          "threeStarsScore":11000,
          "twoStarsScore":7500,
          "target":50,
@@ -255,7 +255,7 @@
             }
          }
       },
-      "12":{
+      "Level7":{
          "threeStarsScore":12500,
          "twoStarsScore":8500,
          "target":50,
@@ -287,7 +287,7 @@
             }
          }
       },
-      "13":{
+      "Level13_1":{
          "threeStarsScore":13000,
          "twoStarsScore":9000,
          "target":50,
@@ -314,7 +314,7 @@
             }
          }
       },
-      "14":{
+      "Level9":{
          "threeStarsScore":10000,
          "twoStarsScore":7000,
          "target":50,
@@ -341,7 +341,7 @@
             }
          }
       },
-      "15":{
+      "Level11":{
          "threeStarsScore":12500,
          "twoStarsScore":8500,
          "target":50,
@@ -368,7 +368,7 @@
             }
          }
       },
-      "16":{
+      "Level12":{
          "threeStarsScore":11000,
          "twoStarsScore":7500,
          "target":50,
@@ -400,7 +400,7 @@
             }
          }
       },
-      "17":{
+      "Level14":{
          "threeStarsScore":11000,
          "twoStarsScore":7500,
          "target":50,
@@ -432,7 +432,7 @@
             }
          }
       },
-      "18":{
+      "Level15":{
          "threeStarsScore":11000,
          "twoStarsScore":7500,
          "target":50,
@@ -469,7 +469,7 @@
             }
          }
       },
-      "19":{
+      "Level13":{
          "threeStarsScore":12000,
          "twoStarsScore":8500,
          "target":50,
@@ -496,7 +496,7 @@
             }
          }
       },
-      "20":{
+      "Level16":{
          "threeStarsScore":11000,
          "twoStarsScore":7500,
          "target":50,
@@ -528,7 +528,7 @@
             }
          }
       },
-      "21":{
+      "Level17":{
          "threeStarsScore":10500,
          "twoStarsScore":7500,
          "target":50,
@@ -560,7 +560,7 @@
             }
          }
       },
-      "22":{
+      "Level18":{
          "threeStarsScore":11500,
          "twoStarsScore":8000,
          "target":50,
@@ -592,7 +592,7 @@
             }
          }
       },
-      "23":{
+      "Level19":{
          "threeStarsScore":11500,
          "twoStarsScore":8000,
          "target":50,
@@ -629,19 +629,19 @@
             }
          }
       },
-     "24":{
-         "threeStarsScore":11500,
-         "twoStarsScore":8000,
+     "Level21":{
+         "threeStarsScore":13500,
+         "twoStarsScore":10000,
          "target":50
 	 },
-     "25":{
-         "threeStarsScore":11500,
-         "twoStarsScore":8000,
+     "Level22":{
+         "threeStarsScore":13000,
+         "twoStarsScore":9000,
          "target":50
 	 },
-     "26":{
-         "threeStarsScore":11500,
-         "twoStarsScore":8000,
+     "Level23":{
+         "threeStarsScore":16000,
+         "twoStarsScore":11000,
          "target":50
 	 }
 

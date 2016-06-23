@@ -59,7 +59,9 @@ namespace Traffic.MVCS.Models
                 
             }
             UnityPurchasing.Initialize(this, builder);
-            
+
+            if (PlayerPrefs.GetInt("iap." + IAPType.AdditionalLevels, 0) == 1)
+                PlayerPrefs.SetInt("iap." + IAPType.NoAdverts, 1);
         }
 
         public bool ApplyCode(string code)
@@ -167,6 +169,9 @@ namespace Traffic.MVCS.Models
     
         public bool IsBought(IAPType what)
         {
+            if (PlayerPrefs.GetInt("iap." + what.ToString(), 0) == 1)
+                return true;
+
             if (!IsInitialized())
                 return false;
 

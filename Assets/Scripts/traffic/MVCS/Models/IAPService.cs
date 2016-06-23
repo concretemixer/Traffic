@@ -62,7 +62,7 @@ namespace Traffic.MVCS.Models
 
         public bool IsBought(IAPType what)
         {
-			return true;// PlayerPrefs.GetInt("iap." + what.ToString(), 0) == 1;
+			return PlayerPrefs.GetInt("iap." + what.ToString(), 0) == 1;
         }
 
         public void PurchaseStart(IAPType what)

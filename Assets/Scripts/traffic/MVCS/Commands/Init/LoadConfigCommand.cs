@@ -45,10 +45,29 @@ namespace Traffic.MVCS.Commands.Init
 //            cfg = JsonReader.Deserialize<GameplayConfig>(json);
 
             levels.LevelConfigs = new LevelConfig[cfg.levels.Count];
+            int c = levels.LevelNames.Length;
             foreach (string key in cfg.levels.Keys)
             {
-                int index = int.Parse(key);
-                levels.LevelConfigs[index] = cfg.levels[key];
+                int index = -1;
+                for (int a = 0; a < levels.LevelNames.Length; a++)
+                {
+                    if (levels.LevelNames[a] == key)
+                    {
+                        c--;
+                        index = a;
+                        levels.LevelConfigs[index] = cfg.levels[key];
+                        break;
+                    }
+                }
+
+                if (index == -1)
+                {
+                    Debug.LogError("Config error: " + key);
+                }
+            }
+            if (c > 0)
+            {
+                Debug.LogError(c.ToString() + " level(s) without cfg");
             }
 
             EntryPoint.DebugMessage = "Local config, v" + cfg.version;
