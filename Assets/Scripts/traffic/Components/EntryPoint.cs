@@ -15,7 +15,7 @@ namespace Traffic.Components
 
         void Start()
         {
-            CrashReporting.Init("6d41d8c6-1449-4459-b1df-45d40c474002");
+         //   CrashReporting.Init("6d41d8c6-1449-4459-b1df-45d40c474002");
             context = new AppContext(this);
             context.Start();
         }

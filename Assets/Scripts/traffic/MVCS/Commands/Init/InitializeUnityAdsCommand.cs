@@ -2,7 +2,7 @@
 using System.Collections;
 using Commons.Utils;
 using strange.extensions.command.impl;
-using UnityEngine.Advertisements;
+using UnityEngine.Analytics;
 using System;
 
 /// <summary>
