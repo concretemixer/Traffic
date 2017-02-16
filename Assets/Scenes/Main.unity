@@ -71,7 +71,8 @@ LightmapSettings:
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 1024
     m_ReflectionCompression: 2
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000001, guid: 1fa88314064c1984b99c0b00a4099492,
+    type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
 NavMeshSettings:
@@ -629,31 +630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5d20165f8e597d4f961b2d3d6b4e3f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tracks:
-  - {fileID: 8300000, guid: 2e14a794bf4d4d3418bfca2ca5922525, type: 3}
-  - {fileID: 8300000, guid: 7adbab80a3c3d2047a5973ea4703a62d, type: 3}
-  - {fileID: 8300000, guid: 7adbab80a3c3d2047a5973ea4703a62d, type: 3}
-  - {fileID: 8300000, guid: 2e14a794bf4d4d3418bfca2ca5922525, type: 3}
-  - {fileID: 8300000, guid: 2e14a794bf4d4d3418bfca2ca5922525, type: 3}
-  - {fileID: 8300000, guid: 2e14a794bf4d4d3418bfca2ca5922525, type: 3}
-  - {fileID: 8300000, guid: 794f0dd3b8f8a4a49bc9e3de77d47833, type: 3}
-  - {fileID: 8300000, guid: 794f0dd3b8f8a4a49bc9e3de77d47833, type: 3}
-  - {fileID: 8300000, guid: 2e14a794bf4d4d3418bfca2ca5922525, type: 3}
-  - {fileID: 8300000, guid: 2e14a794bf4d4d3418bfca2ca5922525, type: 3}
-  - {fileID: 8300000, guid: 794f0dd3b8f8a4a49bc9e3de77d47833, type: 3}
-  - {fileID: 8300000, guid: 7adbab80a3c3d2047a5973ea4703a62d, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  Tracks: []
 --- !u!1 &1740177639
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,9 +674,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 878ffac0921ee4d42a145991e5332d1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ui: {fileID: 1429904453}
-  stage: {fileID: 1267618280}
-  stageMenu: {fileID: 60883039}
+  ui: {fileID: 0}
+  stage: {fileID: 0}
+  stageMenu: {fileID: 0}
 --- !u!1 &1896510437
 GameObject:
   m_ObjectHideFlags: 0
