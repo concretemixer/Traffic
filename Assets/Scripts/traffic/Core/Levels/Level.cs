@@ -39,6 +39,19 @@ public class Level : MonoBehaviour  {
 
         GameObject levelRoot = this.transform.parent.gameObject;
 
+            Light[] lights = transform.parent.GetComponentsInChildren<Light>(true);
+            if (lights.Length > 1)
+            {
+                foreach (var light in lights) {
+                    if (light.gameObject.name.Contains("Baked")) {
+                        light.enabled = false;
+                    }
+                    if (light.gameObject.name.Contains("Realtime"))
+                    {
+                        light.enabled = true;
+                    }
+                }
+            }
 
 
         cameraPortrait = levelRoot.transform.FindChild("Main Camera Portrait").gameObject;

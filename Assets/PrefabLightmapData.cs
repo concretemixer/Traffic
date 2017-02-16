@@ -19,11 +19,13 @@ public class PrefabLightmapData : MonoBehaviour
 
 	void Awake ()
 	{
+        return;
+
 		if (m_RendererInfo == null || m_RendererInfo.Length == 0)
 			return;
 
 		var lightmaps = LightmapSettings.lightmaps;
-		var combinedLightmaps = new LightmapData[lightmaps.Length + m_Lightmaps.Length];
+        var combinedLightmaps = new LightmapData[lightmaps.Length + m_Lightmaps.Length];
 
 		lightmaps.CopyTo(combinedLightmaps, 0);
 		for (int i = 0; i < m_Lightmaps.Length;i++)
@@ -48,6 +50,38 @@ public class PrefabLightmapData : MonoBehaviour
 	}
 
 #if UNITY_EDITOR
+	[UnityEditor.MenuItem("Assets/Save Prefab Lightmaps Data")]
+	static void GenerateLightmapInfo2 ()
+	{
+		if (UnityEditor.Lightmapping.giWorkflowMode != UnityEditor.Lightmapping.GIWorkflowMode.OnDemand)
+		{
+			Debug.LogError("ExtractLightmapData requires that you have baked you lightmaps and Auto mode is disabled.");
+			return;
+		}
+		//UnityEditor.Lightmapping.Bake();
+
+		PrefabLightmapData[] prefabs = FindObjectsOfType<PrefabLightmapData>();
+
+		foreach (var instance in prefabs)
+		{
+			var gameObject = instance.gameObject;
+			var rendererInfos = new List<RendererInfo>();
+			var lightmaps = new List<Texture2D>();
+			
+			GenerateLightmapInfo(gameObject, rendererInfos, lightmaps);
+			
+			instance.m_RendererInfo = rendererInfos.ToArray();
+			instance.m_Lightmaps = lightmaps.ToArray();
+
+			var targetPrefab = UnityEditor.PrefabUtility.GetPrefabParent(gameObject) as GameObject;
+			if (targetPrefab != null)
+			{
+				//UnityEditor.Prefab
+				UnityEditor.PrefabUtility.ReplacePrefab(gameObject, targetPrefab);
+			}
+		}
+	}
+
 	[UnityEditor.MenuItem("Assets/Bake Prefab Lightmaps")]
 	static void GenerateLightmapInfo ()
 	{
