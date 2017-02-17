@@ -549,43 +549,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1271523106493530, guid: f9684779a4a4ca3478bb1f5c9e2a72bb, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 23084377362195768, guid: f9684779a4a4ca3478bb1f5c9e2a72bb,
-        type: 2}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2342150, guid: f9684779a4a4ca3478bb1f5c9e2a72bb, type: 2}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2332860, guid: f9684779a4a4ca3478bb1f5c9e2a72bb, type: 2}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2335420, guid: f9684779a4a4ca3478bb1f5c9e2a72bb, type: 2}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2303096, guid: f9684779a4a4ca3478bb1f5c9e2a72bb, type: 2}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2373372, guid: f9684779a4a4ca3478bb1f5c9e2a72bb, type: 2}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2347834, guid: f9684779a4a4ca3478bb1f5c9e2a72bb, type: 2}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2374036, guid: f9684779a4a4ca3478bb1f5c9e2a72bb, type: 2}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9684779a4a4ca3478bb1f5c9e2a72bb, type: 2}
   m_IsPrefabParent: 0
