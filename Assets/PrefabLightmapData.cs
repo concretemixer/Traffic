@@ -19,7 +19,7 @@ public class PrefabLightmapData : MonoBehaviour
 
 	void Awake ()
 	{
-        return;
+     //   return;
 
 		if (m_RendererInfo == null || m_RendererInfo.Length == 0)
 			return;
