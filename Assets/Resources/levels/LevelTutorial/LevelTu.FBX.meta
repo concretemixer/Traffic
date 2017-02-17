@@ -1,35 +1,22 @@
 fileFormatVersion: 2
-guid: 28850fa8aca5e574a8c25da40d684c46
-timeCreated: 1487245624
+guid: 8bd8dae86ad5f6d45a0f4b6426a38001
+timeCreated: 1487265410
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Rails
-    100004: RoadAll
-    100006: _AllRoad
-    100008: _Fence
-    400000: //RootNode
-    400002: Rails
-    400004: RoadAll
-    400006: _AllRoad
-    400008: _Fence
-    2300000: //RootNode
-    2300002: Rails
-    2300004: RoadAll
-    2300006: _AllRoad
-    2300008: _Fence
-    3300000: //RootNode
-    3300002: Rails
-    3300004: RoadAll
-    3300006: _AllRoad
-    3300008: _Fence
-    4300000: RoadAll
-    4300002: Rails
-    4300004: _AllRoad
-    4300006: _Fence
-    7400000: Take 001
+    100000: _Rails
+    100002: _RoadAll
+    100004: //RootNode
+    400000: _Rails
+    400002: _RoadAll
+    400004: //RootNode
+    2300000: _Rails
+    2300002: _RoadAll
+    3300000: _Rails
+    3300002: _RoadAll
+    4300000: _RoadAll
+    4300002: _Rails
     9500000: //RootNode
   materials:
     importMaterials: 1

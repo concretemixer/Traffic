@@ -1,40 +1,20 @@
 fileFormatVersion: 2
-guid: 28850fa8aca5e574a8c25da40d684c46
-timeCreated: 1487245624
+guid: 6652427efe307ae4a99dd897341d870f
+timeCreated: 1487265857
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Rails
-    100004: RoadAll
-    100006: _AllRoad
-    100008: _Fence
     400000: //RootNode
-    400002: Rails
-    400004: RoadAll
-    400006: _AllRoad
-    400008: _Fence
     2300000: //RootNode
-    2300002: Rails
-    2300004: RoadAll
-    2300006: _AllRoad
-    2300008: _Fence
     3300000: //RootNode
-    3300002: Rails
-    3300004: RoadAll
-    3300006: _AllRoad
-    3300008: _Fence
-    4300000: RoadAll
-    4300002: Rails
-    4300004: _AllRoad
-    4300006: _Fence
-    7400000: Take 001
-    9500000: //RootNode
+    4300000: AllRoad
+    4300002: AllRoads
   materials:
     importMaterials: 1
-    materialName: 0
-    materialSearch: 1
+    materialName: 1
+    materialSearch: 2
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -60,7 +40,7 @@ ModelImporter:
     addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
@@ -73,7 +53,7 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 3
+    tangentImportMode: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -93,7 +73,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
