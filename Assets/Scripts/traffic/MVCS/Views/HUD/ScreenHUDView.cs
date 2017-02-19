@@ -113,7 +113,7 @@ namespace Traffic.MVCS.Views.UI.HUD
 
 
                 pauseButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(50, 45);
-                score.GetComponent<RectTransform>().anchoredPosition = new Vector2(-85, -30);
+                score.GetComponent<RectTransform>().anchoredPosition = new Vector2(-85, -24);
 
             }
             else
@@ -127,7 +127,7 @@ namespace Traffic.MVCS.Views.UI.HUD
 
                pauseButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(50, 45);
 
-               score.GetComponent<RectTransform>().anchoredPosition = new Vector2(-85, -30);
+               score.GetComponent<RectTransform>().anchoredPosition = new Vector2(-85, -24);
 
             }
         }
