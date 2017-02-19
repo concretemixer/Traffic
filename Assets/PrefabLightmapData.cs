@@ -44,6 +44,9 @@ public class PrefabLightmapData : MonoBehaviour
 		for (int i=0;i<infos.Length;i++)
 		{
 			var info = infos[i];
+            if (info.renderer == null)
+                continue;
+                
 			info.renderer.lightmapIndex = info.lightmapIndex + lightmapOffsetIndex;
 			info.renderer.lightmapScaleOffset = info.lightmapOffsetScale;
 		}

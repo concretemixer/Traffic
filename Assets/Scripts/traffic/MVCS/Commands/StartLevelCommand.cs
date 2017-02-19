@@ -46,6 +46,8 @@ namespace Traffic.MVCS.Commands
 
             stageMenu.SetActive(false);
 
+	    Debug.Log("LVL: "+levels.LevelNames[levelIndex]);
+
             GameObject instance = Object.Instantiate(Resources.Load("levels/" + levels.LevelNames[levelIndex], typeof(GameObject))) as GameObject;
 			instance.transform.SetParent(stage.transform);
 

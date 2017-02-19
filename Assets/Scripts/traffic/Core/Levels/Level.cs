@@ -49,6 +49,7 @@ public class Level : MonoBehaviour  {
                     if (light.gameObject.name.Contains("Realtime"))
                     {
                         light.enabled = true;
+                       // light.enabled = false;
                     }
                 }
             }
