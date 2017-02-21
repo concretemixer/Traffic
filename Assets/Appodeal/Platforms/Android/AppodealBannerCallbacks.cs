@@ -14,7 +14,7 @@ namespace AppodealAds.Unity.Android
 			this.listener = listener;
 		}
 
-		void onBannerLoaded() {
+		void onBannerLoaded(int height, Boolean isPrecache) {
 			listener.onBannerLoaded();
 		}
 			

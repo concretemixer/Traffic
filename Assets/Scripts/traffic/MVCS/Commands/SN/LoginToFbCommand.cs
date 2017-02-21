@@ -4,6 +4,7 @@ using Traffic.MVCS.Commands.Signals;
 
 namespace Traffic.MVCS.Commands.SN
 {
+    /*
     public class LoginToFbCommand : Command
     {
         [Inject]
@@ -22,5 +23,5 @@ namespace Traffic.MVCS.Commands.SN
                 Release();
             });
         }
-    }
+    } */
 }

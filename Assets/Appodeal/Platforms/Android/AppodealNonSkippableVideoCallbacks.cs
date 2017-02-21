@@ -22,7 +22,7 @@ namespace AppodealAds.Unity.Android
 			listener.onNonSkippableVideoFailedToLoad();
 		}
 		
-		void onNonSkippableRVideoShown() {
+		void onNonSkippableVideoShown() {
 			listener.onNonSkippableVideoShown();
 		}
 		
@@ -30,7 +30,7 @@ namespace AppodealAds.Unity.Android
 			listener.onNonSkippableVideoFinished();
 		}
 		
-		void onNonSkippableVideoClosed() {
+		void onNonSkippableVideoClosed(bool finished) {
 			listener.onNonSkippableVideoClosed();
 		}
 	}

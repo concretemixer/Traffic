@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using Commons.Utils;
 using Commons.Utils.Commands;
-using Facebook.Unity;
+//using Facebook.Unity;
 using RSG;
-using Unifb = Facebook.Unity;
+//using Unifb = Facebook.Unity;
 
 namespace Commons.SN.Facebook.Commands
 {
+    /*
     public class LoginFBCommand : IAsyncCommand
     {
         UnityEventProvider unityEvents;
@@ -51,5 +52,5 @@ namespace Commons.SN.Facebook.Commands
                 _promise.Reject(new Exception("Fail to login in FB"));
             }
         }
-    }
+    }*/
 }

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Commons.Utils;
 using Commons.Utils.Commands;
-using Facebook.Unity;
+//using Facebook.Unity;
 using RSG;
 
 namespace Commons.SN.Facebook.Commands
 {
+  /*
     public class GrantPostPermissionsCommand : IAsyncCommand
     {
         const string PUBLISH_PERMISSION = "publish_actions";
@@ -56,5 +57,5 @@ namespace Commons.SN.Facebook.Commands
                 return AccessToken.CurrentAccessToken.Permissions.Contains(PUBLISH_PERMISSION);
             }
         }
-    }
+    }*/
 }

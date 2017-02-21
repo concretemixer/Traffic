@@ -59,9 +59,9 @@ namespace Traffic.MVCS
                 .To<CreateServiceItemsCommand>()
                 .To<InitUICommand>()
                // .To<InitializeUnityAdsCommand>()
-                .To<InitializeAppodealCommand>()
+             //   .To<InitializeAppodealCommand>()
                 .To<LoadConfigCommand>()
-                .To<InitSocialNetworkCommand>()
+               // .To<InitSocialNetworkCommand>()
                 .To<StartupCommand>();
 
             commandBinder.Bind<StartLevelSignal>().To<StartLevelCommand>();

@@ -2,11 +2,12 @@ using System;
 using Commons.SN.Facebook.Commands;
 using Commons.Utils;
 using Commons.Utils.Commands;
-using Facebook.Unity;
+//using Facebook.Unity;
 using RSG;
 
 namespace Commons.SN.Facebook
 {
+    /*
     public class FacebookSN : ISocialNetwork
     {
         UnityEventProvider eventProvider;
@@ -64,5 +65,5 @@ namespace Commons.SN.Facebook
 
             return promise;
         }
-    }
+    }*/
 }

@@ -30,7 +30,7 @@ namespace AppodealAds.Unity.Android
 			listener.onSkippableVideoFinished();
 		}
 		
-		void onSkippableVideoClosed() {
+		void onSkippableVideoClosed(bool finished) {
 			listener.onSkippableVideoClosed();
 		}
 	}

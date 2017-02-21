@@ -32,8 +32,8 @@ namespace Traffic.MVCS.Views.UI
         [Inject]
         public SwitchToSettingsScreenSignal toSettingsSignal { get; set; }
 
-        [Inject]
-        public FacebookSN facebook { private get; set; }
+    //    [Inject]
+    //    public FacebookSN facebook { private get; set; }
         
         public AnalyticsCollector analytics { private get; set; }
 
@@ -195,6 +195,7 @@ namespace Traffic.MVCS.Views.UI
 
         void connectFBClickHandler()
         {
+            /*
             if (facebook.IsLoggedIn)
             {
                 var message = UI.Show<InfoMessageView>(UIMap.Id.InfoMessage);
@@ -207,7 +208,7 @@ namespace Traffic.MVCS.Views.UI
                 facebook.Login().Done(
                     () => analytics.FacebookConnected()
                 );
-            }
+            } */
         }
 
 

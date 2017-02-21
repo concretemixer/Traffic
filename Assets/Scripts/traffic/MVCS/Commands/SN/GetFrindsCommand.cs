@@ -4,6 +4,7 @@ using Traffic.MVCS.Commands.Signals;
 
 namespace Traffic.MVCS.Commands.SN
 {
+    /*
     public class GetFrindsCommand : Command
     {
         [Inject]
@@ -22,4 +23,5 @@ namespace Traffic.MVCS.Commands.SN
             });
         }
     }
+    */
 }

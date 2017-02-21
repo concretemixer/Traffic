@@ -3,10 +3,8 @@ using System;
 using System.Collections;
 using AppodealAds.Unity.Common;
 
-namespace AppodealAds.Unity.Api 
-{
-	public class Appodeal 
-	{
+namespace AppodealAds.Unity.Api {
+	public class Appodeal {
 
 		public const int NONE                = 0;
 		public const int INTERSTITIAL        = 1;
@@ -14,9 +12,12 @@ namespace AppodealAds.Unity.Api
 		public const int BANNER              = 4;
 		public const int BANNER_BOTTOM       = 8;
 		public const int BANNER_TOP          = 16;
-		public const int BANNER_CENTER       = 32;
 		public const int REWARDED_VIDEO      = 128;
+		#if UNITY_ANDROID || UNITY_EDITOR
 		public const int NON_SKIPPABLE_VIDEO = 128;
+		#elif UNITY_IPHONE
+		public const int NON_SKIPPABLE_VIDEO = 256;
+		#endif
 
 		private static IAppodealAdsClient client;
 		private static IAppodealAdsClient getInstance() {
@@ -165,7 +166,21 @@ namespace AppodealAds.Unity.Api
 			#if UNITY_ANDROID && !UNITY_EDITOR || UNITY_IPHONE && !UNITY_EDITOR
 			getInstance().disableLocationPermissionCheck ();
 			#endif
-		}		
+		}	
+
+		public static void disableWriteExternalStoragePermissionCheck() 
+		{
+			#if UNITY_ANDROID && !UNITY_EDITOR || UNITY_IPHONE && !UNITY_EDITOR
+			getInstance().disableWriteExternalStoragePermissionCheck ();
+			#endif
+		}
+
+		public static void requestAndroidMPermissions(IPermissionGrantedListener listener)
+		{
+			#if UNITY_ANDROID && !UNITY_EDITOR
+			getInstance().requestAndroidMPermissions (listener);
+			#endif
+		}
 		
 		public static void setTesting(bool test) 
 		{
@@ -196,7 +211,54 @@ namespace AppodealAds.Unity.Api
 			getInstance().trackInAppPurchase(amount, currency);
 			#endif
 		}
-	
+
+		public static void setCustomRule(string name, bool value)
+		{
+			#if UNITY_ANDROID && !UNITY_EDITOR || UNITY_IPHONE && !UNITY_EDITOR
+			getInstance().setCustomRule(name, value);
+			#endif
+		}
+
+		public static void setCustomRule(string name, int value)
+		{
+			#if UNITY_ANDROID && !UNITY_EDITOR || UNITY_IPHONE && !UNITY_EDITOR
+			getInstance().setCustomRule(name, value);
+			#endif
+		}
+
+		public static void setCustomRule(string name, double value)
+		{
+			#if UNITY_ANDROID && !UNITY_EDITOR || UNITY_IPHONE && !UNITY_EDITOR
+			getInstance().setCustomRule(name, value);
+			#endif
+		}
+
+		public static void setCustomRule(string name, string value)
+		{
+			#if UNITY_ANDROID && !UNITY_EDITOR || UNITY_IPHONE && !UNITY_EDITOR
+			getInstance().setCustomRule(name, value);
+			#endif
+		}
+
+		public static void setSmartBanners(Boolean value)
+		{
+			#if UNITY_ANDROID && !UNITY_EDITOR || UNITY_IPHONE && !UNITY_EDITOR
+			getInstance().setSmartBanners(value);
+			#endif
+		}
+
+		public static void setBannerBackground(bool value) {
+			#if UNITY_ANDROID && !UNITY_EDITOR || UNITY_IPHONE && !UNITY_EDITOR
+			getInstance().setBannerBackground(value);
+			#endif
+		}
+
+		public static void setBannerAnimation(bool value) {
+			#if UNITY_ANDROID && !UNITY_EDITOR || UNITY_IPHONE && !UNITY_EDITOR
+			getInstance().setBannerAnimation(value);
+			#endif
+		}
+
 	}
 
 	public class UserSettings
@@ -236,6 +298,14 @@ namespace AppodealAds.Unity.Api
 			getInstance().getUserSettings();
 			#endif
 		}
+
+		public UserSettings setUserId(string id)
+		{
+			#if UNITY_ANDROID && !UNITY_EDITOR || UNITY_IPHONE && !UNITY_EDITOR
+			getInstance().setUserId(id);
+			#endif
+			return this;
+		}
 		
 		public UserSettings setAge(int age)
 		{
@@ -260,23 +330,7 @@ namespace AppodealAds.Unity.Api
 			#endif
 			return this;
 		}
-		
-		public UserSettings setFacebookId(string fbId)
-		{
-			#if UNITY_ANDROID && !UNITY_EDITOR || UNITY_IPHONE && !UNITY_EDITOR
-			getInstance().setFacebookId(fbId);
-			#endif
-			return this;
-		}
-		
-		public UserSettings setVkId(string vkId)
-		{
-			#if UNITY_ANDROID && !UNITY_EDITOR || UNITY_IPHONE && !UNITY_EDITOR
-			getInstance().setVkId(vkId);
-			#endif
-			return this;
-		}
-		
+
 		public UserSettings setGender(Gender gender)
 		{
 			switch(gender) {

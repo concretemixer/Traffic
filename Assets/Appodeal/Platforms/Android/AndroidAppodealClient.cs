@@ -88,7 +88,7 @@ namespace AppodealAds.Unity.Android
 
 		public Boolean show(int adTypes, string placement)
 		{
-			return getAppodealClass().CallStatic<Boolean>("show", getActivity(), adTypes);
+			return getAppodealClass().CallStatic<Boolean>("show", getActivity(), adTypes, placement);
 		}
 		
 		public void hide(int adTypes)
@@ -120,6 +120,16 @@ namespace AppodealAds.Unity.Android
 		{
 			getAppodealClass().CallStatic("disableLocationPermissionCheck");
 		}
+
+		public void disableWriteExternalStoragePermissionCheck() 
+		{
+			getAppodealClass().CallStatic("disableWriteExternalStoragePermissionCheck");
+		}
+
+		public void requestAndroidMPermissions(IPermissionGrantedListener listener) 
+		{
+			getAppodealClass().CallStatic("requestAndroidMPermissions", getActivity(), new AppodealPermissionCallbacks(listener));
+		}
 		
 		public void orientationChange()
 		{
@@ -133,7 +143,11 @@ namespace AppodealAds.Unity.Android
 
 		public void setLogging(Boolean logging)
 		{
-			getAppodealClass().CallStatic("setLogging", logging);
+			if(logging) {
+				getAppodealClass().CallStatic("setLogLevel", new AndroidJavaClass("com.appodeal.ads.utils.Log$LogLevel").GetStatic<AndroidJavaObject>("verbose"));
+			} else {
+				getAppodealClass().CallStatic("setLogLevel", new AndroidJavaClass("com.appodeal.ads.utils.Log$LogLevel").GetStatic<AndroidJavaObject>("none"));
+			}
 		}
 		
 		public string getVersion()
@@ -146,11 +160,44 @@ namespace AppodealAds.Unity.Android
 			getAppodealClass().CallStatic("trackInAppPurchase", getActivity(), amount, currency);
 		}
 
+		public void setCustomRule(string name, Boolean value) {
+			getAppodealClass().CallStatic("setCustomRule", name, value);
+		}
+
+		public void setCustomRule(string name, int value) {
+			getAppodealClass().CallStatic("setCustomRule", name, value);
+		}
+
+		public void setCustomRule(string name, double value) {
+			getAppodealClass().CallStatic("setCustomRule", name, value);
+		}
+
+		public void setCustomRule(string name, string value) {
+			getAppodealClass().CallStatic("setCustomRule", name, value);
+		}
+
+		public void setSmartBanners(Boolean value) {
+			getAppodealClass().CallStatic("setSmartBanners", value);
+		}
+
+		public void setBannerAnimation(bool value) {
+			getAppodealClass().CallStatic("setBannerAnimation", value);
+		}
+
+		public void setBannerBackground(bool value) {
+			//getAppodealClass().CallStatic("setBannerBackground", value);
+		}
+
 		//User Settings
 
 		public void getUserSettings() 
 		{
 			userSettings = getAppodealClass().CallStatic<AndroidJavaObject>("getUserSettings", getActivity());
+		}
+
+		public void setUserId(string id) 
+		{
+			userSettings.Call<AndroidJavaObject>("setUserId", id);
 		}
 
 		public void setAge(int age) 
@@ -166,16 +213,6 @@ namespace AppodealAds.Unity.Android
 		public void setEmail(String email)
 		{
 			userSettings.Call<AndroidJavaObject> ("setEmail", email);
-		}
-
-		public void setFacebookId(String fbId)
-		{
-			userSettings.Call<AndroidJavaObject> ("setFacebookId", fbId);
-		}
-
-		public void setVkId(String vkId)
-		{
-			userSettings.Call<AndroidJavaObject> ("setVkId", vkId);
 		}
 
 		public void setGender(int gender)
