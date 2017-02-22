@@ -10,6 +10,7 @@ using Commons.Utils;
 using UnityEngine;
 using strange.extensions.mediation.impl;
 using System;
+using System.Collections;
 
 
 namespace Traffic.MVCS.Views.UI
@@ -52,6 +53,9 @@ namespace Traffic.MVCS.Views.UI
         public StartLevelSignal startLevel { get; set; }
 
         [Inject]
+        public InitLevelSignal initLevel { get; set; }
+
+        [Inject]
         public SwitchToStartScreenSignal toStartScreenSignal { get; set; }
 
         static int page = 0;
@@ -68,6 +72,18 @@ namespace Traffic.MVCS.Views.UI
 			view.SetPage(page, levels);
 		}
 
+
+        IEnumerator waitForLoad()
+        {
+            while (true)
+            {
+                if (GameObject.FindGameObjectWithTag("Root") == null)
+                    yield return null;
+                break;
+            }
+
+            initLevel.Dispatch();
+        }
 
         void startLevelHandler(int index)
         {
@@ -88,6 +104,7 @@ namespace Traffic.MVCS.Views.UI
             {
                 levels.CurrentLevelIndex = index;
                 startLevel.Dispatch(levels.CurrentLevelIndex);
+                StartCoroutine("waitForLoad");                
             }
         }
 

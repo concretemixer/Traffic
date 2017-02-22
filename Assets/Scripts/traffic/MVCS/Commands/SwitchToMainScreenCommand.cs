@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Commons.UI;
 using strange.extensions.command.impl;
 using strange.extensions.context.api;
@@ -28,7 +29,13 @@ namespace Traffic.MVCS.Commands
             safeUnbind<ILevelModel>(GameState.Current);
 
             if (stage.transform.childCount > 0)
+            {
+                for (int a=1;a<SceneManager.sceneCount;a++)
+                    if (SceneManager.GetSceneAt(a).isLoaded)
+                        SceneManager.UnloadSceneAsync(a);
                 GameObject.Destroy(stage.transform.GetChild(0).gameObject);
+            }
+
             Time.timeScale = 1;
 
             AudioSource gameMusic = GameObject.Find("GameMusic").GetComponent<AudioSource>();

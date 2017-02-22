@@ -353,7 +353,7 @@ public class Vehicle : MonoBehaviour {
 
             onVehicleCrashed.Dispatch();
 
-            Debug.Log(gameObject.name +":"+ Time.time);
+          //  Debug.Log(gameObject.name +":"+ Time.time);
 		}
 
 		if (col.gameObject.tag == "VehicleAI") 

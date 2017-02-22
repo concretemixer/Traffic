@@ -79,6 +79,12 @@ namespace Commons.UI
             if (resourceManager == null)
                 Debug.Log("NULLLLL");
 
+            if (uiElements.ContainsKey(_viewId))
+            {
+                Loggr.Log("already exist: " + _viewId.ToString());
+                return uiElements[_viewId];
+            }
+
             var resourcePath = UIMap.GetPath(_viewId);
             var view = resourceManager.GetResource<GameObject>(resourcePath);
 
@@ -89,8 +95,6 @@ namespace Commons.UI
             localeService.SetAllTexts(instance.gameObject);
 
             uiElements[_viewId] = instance;
-
-
 
             return instance;
         }

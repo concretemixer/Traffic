@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Commons.UI;
 using strange.extensions.command.impl;
 using strange.extensions.context.api;
@@ -7,6 +8,7 @@ using Traffic.Core;
 using Traffic.MVCS.Models;
 using Commons.Utils;
 using System.IO;
+using System.Collections;
 using Traffic.MVCS.Services;
 
 namespace Traffic.MVCS.Commands
@@ -31,37 +33,20 @@ namespace Traffic.MVCS.Commands
 
         [Inject]
         public AnalyticsCollector analitics { private get; set; }
-        
-		public override void Execute()
-		{
 
-            UI.HideAll();
 
-            Time.timeScale = 0.85f;
+        private void Setup()
+        {
+            var o = GameObject.Find("Level");
 
-			safeUnbind<ILevelModel>(GameState.Current);
+            LevelModel levelModel = injectionBinder.GetInstance<ILevelModel>() as LevelModel;
 
-            if (stage.transform.childCount>0)
-                GameObject.Destroy(stage.transform.GetChild(0).gameObject);
-
-            stageMenu.SetActive(false);
-
-	    Debug.Log("LVL: "+levels.LevelNames[levelIndex]);
-
-            GameObject instance = Object.Instantiate(Resources.Load("levels/" + levels.LevelNames[levelIndex], typeof(GameObject))) as GameObject;
-			instance.transform.SetParent(stage.transform);
-
-			var o = GameObject.Find ("Level");
-                   
-			LevelModel levelModel = injectionBinder.GetInstance<ILevelModel>() as LevelModel;	
-			injectionBinder.Bind<ILevelModel>().To(levelModel).ToName(GameState.Current);
-
-            MonoBehaviour[] scripts = o.GetComponents<MonoBehaviour>(); 
-            foreach(var s in scripts)
+            MonoBehaviour[] scripts = o.GetComponents<MonoBehaviour>();
+            foreach (var s in scripts)
                 injectionBinder.injector.Inject(s);
 
-            levelModel.Config = levels.LevelConfigs[levelIndex];  
-            levelModel.LevelIndex = levelIndex;          
+            levelModel.Config = levels.LevelConfigs[levelIndex];
+            levelModel.LevelIndex = levelIndex;
 
             foreach (var go in GameObject.FindGameObjectsWithTag("Respawn"))
             {
@@ -85,12 +70,13 @@ namespace Traffic.MVCS.Commands
                 MeshRenderer r = go.GetComponent<MeshRenderer>();
                 if (r != null)
                 {
-                    r.enabled = false;                   
+                    r.enabled = false;
                 }
             }
 
             AudioSource menuMusic = GameObject.Find("MenuMusic").GetComponent<AudioSource>();
-            if (menuMusic.isPlaying) {
+            if (menuMusic.isPlaying)
+            {
                 menuMusic.Stop();
                 AudioSource gameMusic = GameObject.Find("GameMusic").GetComponent<AudioSource>();
                 gameMusic.Play();
@@ -111,9 +97,40 @@ namespace Traffic.MVCS.Commands
                 src.volume = soundVolume;
             }
 
-			UI.Show(UIMap.Id.ScreenHUD);	
+            UI.Show(UIMap.Id.ScreenHUD);
 
             analitics.LevelStart(levelIndex);
+        }
+
+        public override void Execute()
+		{
+
+            Time.timeScale = 0.85f;
+
+			safeUnbind<ILevelModel>(GameState.Current);
+
+            if (stage.transform.childCount>0)
+                GameObject.Destroy(stage.transform.GetChild(0).gameObject);
+
+            LevelModel levelModel = injectionBinder.GetInstance<ILevelModel>() as LevelModel;
+            injectionBinder.Bind<ILevelModel>().To(levelModel).ToName(GameState.Current);
+
+	        Debug.Log("LVL: "+levels.LevelNames[levelIndex]);
+
+            levelModel.Config = levels.LevelConfigs[levelIndex];
+            levelModel.LevelIndex = levelIndex;
+
+            if (levelIndex == 2)
+            {
+                //GameObject instance = Object.Instantiate(Resources.Load("levels/" + levels.LevelNames[levelIndex], typeof(GameObject))) as GameObject;
+                SceneManager.LoadScene(levels.LevelNames[levelIndex], LoadSceneMode.Additive);                
+            }
+            else
+            {
+                GameObject instance = Object.Instantiate(Resources.Load("levels/" + levels.LevelNames[levelIndex], typeof(GameObject))) as GameObject;
+                instance.transform.SetParent(stage.transform);
+                Setup();
+            }
 		}
         /*
         public override void Execute()

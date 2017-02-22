@@ -10,6 +10,10 @@ namespace Traffic.MVCS.Commands.Signals
     {
     }
 
+    public class InitLevelSignal : Signal
+    {
+    }
+
     public class SwitchToMainScreenSignal : Signal
     {
     }

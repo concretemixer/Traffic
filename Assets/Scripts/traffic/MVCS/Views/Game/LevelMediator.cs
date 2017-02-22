@@ -66,7 +66,9 @@ namespace Traffic.MVCS.Views.Game
 
         void Update()
         {
-            if (shakeTimer>0) {
+            Debug.Log("Shake timer = " + shakeTimer);
+            if (shakeTimer>0)
+            {
                 float t = (shakeTime - shakeTimer) / shakeTime;
 
 
@@ -103,10 +105,12 @@ namespace Traffic.MVCS.Views.Game
 
 		void vehicleCrashedHandler()
 		{
-			if (!level.Failed && !level.Complete) {
+            Debug.Log("HERE!");
+            if (!level.Failed && !level.Complete) {
                 cameraStartPos = Camera.main.transform.localPosition;
                 shakeTimer = shakeTime;
                 level.Failed = true;
+                Debug.Log("!!!! Shake timer = " + shakeTimer);
 
                 for (int a = 0; a < ampsX.Length; a++)
                 {
@@ -139,12 +143,16 @@ namespace Traffic.MVCS.Views.Game
 
         void levelFailedDispatch()
         {
+            Debug.Log("HERE! 1");
+
             analitics.LevelFail(level.LevelIndex, level.Score);
             onLevelFailed.Dispatch();
         }
 
         void levelFailedHandler()
         {
+            Debug.Log("HERE!2");
+
             UI.Hide(UIMap.Id.ScreenHUD);
 	        if (levels.CurrentLevelIndex==0)
                 UI.Show(UIMap.Id.TutorialFailedMenu);	

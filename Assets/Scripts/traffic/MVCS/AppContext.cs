@@ -65,6 +65,7 @@ namespace Traffic.MVCS
                 .To<StartupCommand>();
 
             commandBinder.Bind<StartLevelSignal>().To<StartLevelCommand>();
+            commandBinder.Bind<InitLevelSignal>().To<InitLevelCommand>();
             commandBinder.Bind<LevelPause>().To<PauseLevelCommand>();
             commandBinder.Bind<LevelResume>().To<ResumeLevelCommand>();
             commandBinder.Bind<LevelRetry>().To<RetryLevelCommand>();
