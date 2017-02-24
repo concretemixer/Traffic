@@ -22,6 +22,8 @@ public class Pitcher : MonoBehaviour {
     [Inject]
     public ScoreGrow onScoreGrow { get; set; }
 
+    private bool ready = false;
+
 	public float Pause = 2;
     private float _pause;
 
@@ -36,7 +38,9 @@ public class Pitcher : MonoBehaviour {
     private int nextVehicleIdx = 0;
 
 	// Use this for initialization
-	void Start () {
+	public void OnReady ()
+    {
+        ready = true;
 
         if (onLevelFailed != null)
             onLevelFailed.AddListener(stopSpawn);
@@ -61,6 +65,9 @@ public class Pitcher : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        if (!ready)
+            return;
+
 		if (_pause > 0) {
 			_pause -= Time.deltaTime;
 			return;

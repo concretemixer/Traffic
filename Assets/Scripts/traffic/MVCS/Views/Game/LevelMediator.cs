@@ -66,7 +66,7 @@ namespace Traffic.MVCS.Views.Game
 
         void Update()
         {
-            Debug.Log("Shake timer = " + shakeTimer);
+//            Debug.Log("Shake timer = " + shakeTimer);
             if (shakeTimer>0)
             {
                 float t = (shakeTime - shakeTimer) / shakeTime;

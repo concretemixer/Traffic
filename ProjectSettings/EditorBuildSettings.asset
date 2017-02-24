@@ -8,4 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
   - enabled: 1
+    path: Assets/Scenes/Levels/LevelTutorial.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level1.unity
+  - enabled: 1
     path: Assets/Scenes/Levels/Level2.unity

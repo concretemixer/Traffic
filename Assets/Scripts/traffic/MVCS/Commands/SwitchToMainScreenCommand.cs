@@ -28,13 +28,8 @@ namespace Traffic.MVCS.Commands
 
             safeUnbind<ILevelModel>(GameState.Current);
 
-            if (stage.transform.childCount > 0)
-            {
-                for (int a=1;a<SceneManager.sceneCount;a++)
-                    if (SceneManager.GetSceneAt(a).isLoaded)
-                        SceneManager.UnloadSceneAsync(a);
+            if (stage.transform.childCount>0)
                 GameObject.Destroy(stage.transform.GetChild(0).gameObject);
-            }
 
             Time.timeScale = 1;
 

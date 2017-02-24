@@ -10,6 +10,7 @@ using Commons.SN.Facebook;
 using Commons.SN;
 using Traffic.MVCS.Services;
 using Traffic.Components;
+using System.Collections;
 
 namespace Traffic.MVCS.Views.UI
 {
@@ -50,6 +51,9 @@ namespace Traffic.MVCS.Views.UI
         }
 
         [Inject]
+        public InitLevelSignal initLevel { get; set; }
+
+        [Inject]
         public SwitchToMainScreenSignal toMainScreenSignal
         {
             get;
@@ -75,6 +79,18 @@ namespace Traffic.MVCS.Views.UI
         [Inject]
         public ILocaleService localeService { get; set; }
 
+        IEnumerator waitForLoad()
+        {
+            while (true)
+            {
+                if (GameObject.FindGameObjectWithTag("Root") == null)
+                    yield return null;
+                break;
+            }
+
+            initLevel.Dispatch();
+        }
+
         int acheivedStars;
 
         void nextLevelHandler()
@@ -90,6 +106,7 @@ namespace Traffic.MVCS.Views.UI
             {
                 levels.CurrentLevelIndex = levels.CurrentLevelIndex + 1;
                 startLevel.Dispatch(levels.CurrentLevelIndex);
+                StartCoroutine("waitForLoad");
             }
         }
 

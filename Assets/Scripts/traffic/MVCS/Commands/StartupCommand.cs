@@ -36,6 +36,15 @@ namespace Traffic.MVCS.Commands
             GameObject instance = Object.Instantiate(Resources.Load("levels/level0", typeof(GameObject))) as GameObject;
             instance.transform.SetParent(stageMenu.transform);
 
+            foreach (var go in GameObject.FindGameObjectsWithTag("Respawn"))
+            {
+                Pitcher pitcher = go.GetComponent<Pitcher>();
+                if (pitcher != null)
+                {                    
+                    pitcher.OnReady();
+                }
+            }
+
             /*
             var o = GameObject.Find("Level");
 

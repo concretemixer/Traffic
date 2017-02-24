@@ -54,6 +54,7 @@ namespace Traffic.MVCS.Commands
                 if (pitcher != null)
                 {
                     injectionBinder.injector.Inject(go.GetComponent<Pitcher>());
+                    pitcher.OnReady();
 
                     // if (levelModel.Config.pitchers.ContainsKey(go.name) && false)
                     // {
@@ -109,8 +110,6 @@ namespace Traffic.MVCS.Commands
 
 			safeUnbind<ILevelModel>(GameState.Current);
 
-            if (stage.transform.childCount>0)
-                GameObject.Destroy(stage.transform.GetChild(0).gameObject);
 
             LevelModel levelModel = injectionBinder.GetInstance<ILevelModel>() as LevelModel;
             injectionBinder.Bind<ILevelModel>().To(levelModel).ToName(GameState.Current);
@@ -120,7 +119,7 @@ namespace Traffic.MVCS.Commands
             levelModel.Config = levels.LevelConfigs[levelIndex];
             levelModel.LevelIndex = levelIndex;
 
-            if (levelIndex == 2)
+            if (levelIndex <= 2)
             {
                 //GameObject instance = Object.Instantiate(Resources.Load("levels/" + levels.LevelNames[levelIndex], typeof(GameObject))) as GameObject;
                 SceneManager.LoadScene(levels.LevelNames[levelIndex], LoadSceneMode.Additive);                

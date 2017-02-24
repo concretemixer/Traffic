@@ -37,8 +37,13 @@ namespace Traffic.MVCS.Commands
 
             stageMenu.SetActive(false);
 
+            if (stage.transform.childCount > 0)
+                GameObject.Destroy(stage.transform.GetChild(0).gameObject);
+
             GameObject root = GameObject.FindGameObjectWithTag("Root");
-            //root.transform.SetParent(stage.transform);
+            SceneManager.MergeScenes(root.scene, SceneManager.GetActiveScene());
+            root.transform.SetParent(stage.transform);
+            root.tag = "Untagged";
 
             var o = GameObject.Find("Level");
 
@@ -52,6 +57,7 @@ namespace Traffic.MVCS.Commands
                 if (pitcher != null)
                 {
                     injectionBinder.injector.Inject(go.GetComponent<Pitcher>());
+                    pitcher.OnReady();
 
                     // if (levelModel.Config.pitchers.ContainsKey(go.name) && false)
                     // {
