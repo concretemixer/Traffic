@@ -51,7 +51,7 @@ LightmapSettings:
     m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 1
     m_EnableBakedLightmaps: 1
-    m_EnableRealtimeLightmaps: 1
+    m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
     serializedVersion: 4
     m_Resolution: 2
@@ -71,7 +71,7 @@ LightmapSettings:
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 1024
     m_ReflectionCompression: 2
-  m_LightingDataAsset: {fileID: 112000086, guid: 208107c81527e9f49a87dbfd4b30989d,
+  m_LightingDataAsset: {fileID: 112000001, guid: 208107c81527e9f49a87dbfd4b30989d,
     type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5

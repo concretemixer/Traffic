@@ -16,15 +16,15 @@ public class BatchBaker : EditorWindow
         EditorWindow.GetWindow (typeof(BatchBaker));
     }
    
-    private int fieldCount = 9;
+    private int fieldCount = 3;
     private string[] levelNames = new string[] {
-                "LevelTutorial",
+               // "LevelTutorial",
                 "Level1",
-                "Level2",
-                "Level3_1",                
-                "Level4_1",
-                "Level13_1",
-                "Level5",
+               // "Level2",
+               // "Level3_1",                
+               // "Level4_1",
+               // "Level13_1",
+               // "Level5",
                 "Level10",
                 "Level7",
                 /* 
