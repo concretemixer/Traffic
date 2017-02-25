@@ -119,7 +119,7 @@ namespace Traffic.MVCS.Commands
             levelModel.Config = levels.LevelConfigs[levelIndex];
             levelModel.LevelIndex = levelIndex;
 
-            if (levelIndex <= 2)
+            if (levelIndex <= 8)
             {
                 //GameObject instance = Object.Instantiate(Resources.Load("levels/" + levels.LevelNames[levelIndex], typeof(GameObject))) as GameObject;
                 SceneManager.LoadScene(levels.LevelNames[levelIndex], LoadSceneMode.Additive);                

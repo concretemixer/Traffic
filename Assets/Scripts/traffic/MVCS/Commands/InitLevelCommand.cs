@@ -41,7 +41,8 @@ namespace Traffic.MVCS.Commands
                 GameObject.Destroy(stage.transform.GetChild(0).gameObject);
 
             GameObject root = GameObject.FindGameObjectWithTag("Root");
-            SceneManager.MergeScenes(root.scene, SceneManager.GetActiveScene());
+//            SceneManager.MergeScenes(root.scene, SceneManager.GetActiveScene());
+		SceneManager.MergeScenes(SceneManager.GetActiveScene(),root.scene);
             root.transform.SetParent(stage.transform);
             root.tag = "Untagged";
 
