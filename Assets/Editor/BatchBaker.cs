@@ -19,21 +19,22 @@ public class BatchBaker : EditorWindow
     private int fieldCount = 3;
     private string[] levelNames = new string[] {
                // "LevelTutorial",
-                "Level1",
+              //  "Level1",
                // "Level2",
-               // "Level3_1",                
+                "Level3_1",                
                // "Level4_1",
                // "Level13_1",
                // "Level5",
-                "Level10",
+                //"Level10",
                 "Level7",
-                /* 
-                @"Scenes\Level4",
-                @"Scenes\Level6",
-                @"Scenes\Level22",
-                @"Scenes\Level11",
-                @"Scenes\Level18_1",
-                @"Scenes\Level23",
+                 
+                "Level4",
+                "Level6",
+                "Level22",
+                "Level11",
+                "Level18_1",
+                "Level23",
+                /*
                 @"Scenes\Level16",
                 @"Scenes\Level17",
                 @"Scenes\Level19",
@@ -50,7 +51,8 @@ public class BatchBaker : EditorWindow
 };
    
     void OnGUI()
-    {      
+    {
+        fieldCount = levelNames.Length;
         fieldCount = EditorGUILayout.IntField("Field Count:  ",fieldCount);
         if (levelNames == null || levelNames.Length != fieldCount)
             levelNames = new string[fieldCount];
