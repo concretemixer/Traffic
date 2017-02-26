@@ -71,7 +71,7 @@ LightmapSettings:
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 1024
     m_ReflectionCompression: 2
-  m_LightingDataAsset: {fileID: 112000000, guid: 4ae239358c818ad42a597ba6c33292fb,
+  m_LightingDataAsset: {fileID: 112000001, guid: 3f0adf4b4b0d38849ac38371fa704b29,
     type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
@@ -129,6 +129,18 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 422670, guid: efe4e485da61b82488542b721c694187, type: 2}
       propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209324, guid: efe4e485da61b82488542b721c694187, type: 2}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209324, guid: efe4e485da61b82488542b721c694187, type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209324, guid: efe4e485da61b82488542b721c694187, type: 2}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
