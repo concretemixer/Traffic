@@ -1033,7 +1033,7 @@ GameObject:
   - component: {fileID: 11433900}
   m_Layer: 0
   m_Name: Level16
-  m_TagString: Untagged
+  m_TagString: Root
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2063,7 +2063,6 @@ GameObject:
   - component: {fileID: 438238}
   - component: {fileID: 3316532}
   - component: {fileID: 2369152}
-  - component: {fileID: 9551974}
   m_Layer: 8
   m_Name: Radar (1)
   m_TagString: Untagged
@@ -14595,23 +14594,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &9551974
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155416}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 64d5bbe0d06dce04fb9b7b3bc8c77740, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &9597022
 Animator:
   serializedVersion: 3
@@ -14962,7 +14944,6 @@ GameObject:
   - component: {fileID: 4157790040149158}
   - component: {fileID: 33468058867148188}
   - component: {fileID: 23049627705497516}
-  - component: {fileID: 95060137296179560}
   m_Layer: 0
   m_Name: Radar
   m_TagString: Untagged
@@ -15202,23 +15183,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1708437041951726}
   m_Mesh: {fileID: 4300000, guid: 68a2663142e32424491e3525925eaae6, type: 3}
---- !u!95 &95060137296179560
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1078987557062344}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 64d5bbe0d06dce04fb9b7b3bc8c77740, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!108 &108720363091627862
 Light:
   m_ObjectHideFlags: 1
