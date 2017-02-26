@@ -6,10 +6,24 @@ ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: _Roads_L17
+    100004: fence
+    100006: _Fence_L17
     400000: //RootNode
+    400002: _Roads_L17
+    400004: fence
+    400006: _Fence_L17
     2300000: //RootNode
+    2300002: _Roads_L17
+    2300004: fence
+    2300006: _Fence_L17
     3300000: //RootNode
+    3300002: _Roads_L17
+    3300004: fence
+    3300006: _Fence_L17
     4300000: _Roads_L17
+    4300002: fence
+    4300004: _Fence_L17
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -40,7 +54,7 @@ ModelImporter:
     addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
