@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 6652427efe307ae4a99dd897341d870f
-timeCreated: 1487265857
+guid: c5f4128d9fe99884b8e58d99dee534c3
+timeCreated: 1488049010
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,14 +9,12 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: AllRoad
-    4300002: AllRoads
-    4300004: Roads
-    4300006: New Game Object
+    4300000: _Roads_L17
+    9500000: //RootNode
   materials:
     importMaterials: 1
-    materialName: 1
-    materialSearch: 2
+    materialName: 0
+    materialSearch: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -55,7 +53,7 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 0
+    tangentImportMode: 3
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -75,7 +73,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
