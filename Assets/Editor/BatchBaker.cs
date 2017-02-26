@@ -38,16 +38,17 @@ public class BatchBaker : EditorWindow
 
                 "Level17",
                 "Level19",
-/*                
-                @"Scenes\Level3",
-                @"Scenes\Level9",
-                @"Scenes\Level14",
-                @"Scenes\Level21",
-                @"Scenes\Level18",
-                @"Scenes\Level12",
-                @"Scenes\Level13",
-                @"Scenes\Level15",
-                @"Scenes\Level8",     */
+                
+                "Level3",
+                "Level9",
+                "Level14",
+                "Level21",
+/*
+                "Level18",
+                "Level12",
+                "Level13",
+                "Level15",
+                "Level8",     */
 };
    
     void OnGUI()
