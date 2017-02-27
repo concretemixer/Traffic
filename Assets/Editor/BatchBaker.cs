@@ -22,21 +22,21 @@ public class BatchBaker : EditorWindow
               //  "Level1",
                // "Level2",
               //  "Level3_1",                
-                "Level4_1",
-                "Level13_1",
-                "Level5",
-                "Level10",
-                "Level7",
+               // "Level4_1",  *
+                //"Level13_1",  *
+              //  "Level5",
+                //"Level10",
+             //   "Level7",
                  
-                "Level4",
-                "Level6",
+                //"Level4",
+              //  "Level6",
                // "Level22",
-                "Level11",
-                "Level18_1",
-                "Level23",                
-                "Level16",
+           //     "Level11",
+             //   "Level18_1", *
+               // "Level23",                
+               // "Level16",
 
-                "Level17",
+              //  "Level17",
                 "Level19",
                 
                 "Level3",
