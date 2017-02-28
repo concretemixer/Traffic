@@ -49,6 +49,7 @@ public class Level : MonoBehaviour  {
                     if (light.gameObject.name.Contains("Realtime"))
                     {
                         light.enabled = true;
+                        light.shadows = PlayerPrefs.GetInt("gfx.shadows", 1) > 0 ? LightShadows.Soft : LightShadows.None;
                        // light.enabled = false;
                     }
                 }

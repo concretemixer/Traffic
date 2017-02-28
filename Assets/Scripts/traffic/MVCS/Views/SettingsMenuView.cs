@@ -34,6 +34,9 @@ namespace Traffic.MVCS.Views.UI
         Text codeText;
 
         [SerializeField]
+        Toggle shadowsToggle;
+
+        [SerializeField]
         Button[] pinButtons;
 
         [SerializeField]
@@ -65,6 +68,7 @@ namespace Traffic.MVCS.Views.UI
 
         public readonly Signal<float> onMusicVolume= new Signal<float>();
         public readonly Signal<float> onSoundVolume = new Signal<float>();
+        public readonly Signal<bool> onShadowsToggle = new Signal<bool>();
 
         public readonly Signal<SystemLanguage> onLangChoosen = new Signal<SystemLanguage>();
 
@@ -76,6 +80,7 @@ namespace Traffic.MVCS.Views.UI
 
             musicSlider.onValueChanged.AddListener(onMusicVolume.Dispatch);
             soundSlider.onValueChanged.AddListener(onSoundVolume.Dispatch);
+            shadowsToggle.onValueChanged.AddListener(onShadowsToggle.Dispatch);
 
             langButton.onClick.AddListener(onButtonLang.Dispatch);
             langCloseButton.onClick.AddListener(onButtonLangClose.Dispatch);
@@ -84,6 +89,7 @@ namespace Traffic.MVCS.Views.UI
 
             musicSlider.value = PlayerPrefs.GetFloat("volume.music", 1);
             soundSlider.value = PlayerPrefs.GetFloat("volume.sound", 1);
+            shadowsToggle.isOn = PlayerPrefs.GetInt("gfx.shadows", 1) > 0;
 
             foreach (Button b in pinButtons)
             {
@@ -108,6 +114,7 @@ namespace Traffic.MVCS.Views.UI
 
             musicSlider.onValueChanged.RemoveListener(onMusicVolume.Dispatch);
             soundSlider.onValueChanged.RemoveListener(onSoundVolume.Dispatch);
+            shadowsToggle.onValueChanged.RemoveListener(onShadowsToggle.Dispatch);
 
             langButton.onClick.RemoveListener(onButtonLang.Dispatch);
             langCloseButton.onClick.RemoveListener(onButtonLangClose.Dispatch);
@@ -250,12 +257,16 @@ namespace Traffic.MVCS.Views.UI
                 // scaledDimention = 960 * ratio;
 
                 musicSlider.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 540);
-                musicSlider.GetComponent<RectTransform>().anchoredPosition = new Vector2(153, 156);
+                musicSlider.GetComponent<RectTransform>().anchoredPosition = new Vector2(153, 127);
                 soundSlider.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 540);
-                soundSlider.GetComponent<RectTransform>().anchoredPosition = new Vector2(153, 87);
+                soundSlider.GetComponent<RectTransform>().anchoredPosition = new Vector2(153, 68);
 
                 langButton.GetComponent<RectTransform>().localScale = new Vector2(1,1);
                 langButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(440, 195);
+
+               shadowsToggle.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+                shadowsToggle.GetComponent<RectTransform>().anchoredPosition = new Vector2(-30, 185);
+
             }
             else
             {
@@ -264,13 +275,17 @@ namespace Traffic.MVCS.Views.UI
 
 
                 musicSlider.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 304);
-                musicSlider.GetComponent<RectTransform>().anchoredPosition = new Vector2(108, 145);
+                musicSlider.GetComponent<RectTransform>().anchoredPosition = new Vector2(108, 112);
                 soundSlider.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 304);
-                soundSlider.GetComponent<RectTransform>().anchoredPosition = new Vector2(108, 75);
+                soundSlider.GetComponent<RectTransform>().anchoredPosition = new Vector2(108, 52);
 
 
                 langButton.GetComponent<RectTransform>().localScale = new Vector2(0.6f, 0.6f);
                 langButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(272, 178);
+
+               shadowsToggle.GetComponent<RectTransform>().localScale = new Vector3(.8f, .8f, .8f);
+                shadowsToggle.GetComponent<RectTransform>().anchoredPosition = new Vector2(25, 160);
+
                 // scaledDimention = 960 / ratio;
             }
 

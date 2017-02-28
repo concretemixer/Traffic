@@ -167,6 +167,23 @@ namespace Traffic.MVCS.Views.UI
             }
         }
 
+        void shadowsToggleHandler(bool value)
+        {
+            PlayerPrefs.SetInt("gfx.shadows", value ? 1 : 0);
+
+            Light[] lights = stage.transform.parent.GetComponentsInChildren<Light>(true);
+            if (lights.Length > 1)
+            {
+                foreach (var light in lights)
+                {
+                    if (light.gameObject.name.Contains("Realtime"))
+                    {
+                        light.shadows = value ? LightShadows.Soft : LightShadows.None;
+                    }
+                }
+            }
+        }
+
         public override void OnRegister()
         {
             view.ShowCode(false);
@@ -184,6 +201,7 @@ namespace Traffic.MVCS.Views.UI
             view.onButtonLangClose.AddListener(langCloseHandler);
 
             view.onLangChoosen.AddListener(langChosenHandler);
+            view.onShadowsToggle.AddListener(shadowsToggleHandler);
 
             view.SetLanguage(localeService.GetCurrentLanguage());
             view.Layout(Screen.width, Screen.height);
@@ -205,6 +223,7 @@ namespace Traffic.MVCS.Views.UI
 
             view.onButtonLang.RemoveListener(langHandler);
             view.onButtonLangClose.RemoveListener(langCloseHandler);
+            view.onShadowsToggle.RemoveListener(shadowsToggleHandler);
 
             base.OnRemove();
         }
