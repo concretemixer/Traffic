@@ -1,21 +1,37 @@
 fileFormatVersion: 2
-guid: 6b2c3263939fdf944a111a9f81e58a34
-timeCreated: 1487266037
+guid: 00a006f633fc40c49951cedec5c0bb7b
+timeCreated: 1488301300
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Fence
-    4300002: fence
-    4300004: New Game Object
+    100000: _Fence_L15
+    100002: _Fence_L18_1
+    100004: _Rails_L18_1
+    100006: _Roads_L15
+    100008: //RootNode
+    400000: _Fence_L15
+    400002: _Fence_L18_1
+    400004: _Rails_L18_1
+    400006: _Roads_L15
+    400008: //RootNode
+    2300000: _Fence_L15
+    2300002: _Fence_L18_1
+    2300004: _Rails_L18_1
+    2300006: _Roads_L15
+    3300000: _Fence_L15
+    3300002: _Fence_L18_1
+    3300004: _Rails_L18_1
+    3300006: _Roads_L15
+    4300000: _Rails_L18_1
+    4300002: _Fence_L18_1
+    4300004: _Roads_L15
+    4300006: _Fence_L15
+    9500000: //RootNode
   materials:
     importMaterials: 1
-    materialName: 1
-    materialSearch: 2
+    materialName: 0
+    materialSearch: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -54,7 +70,7 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 0
+    tangentImportMode: 3
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -74,7 +90,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
