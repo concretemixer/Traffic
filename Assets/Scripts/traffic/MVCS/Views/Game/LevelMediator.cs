@@ -143,7 +143,7 @@ namespace Traffic.MVCS.Views.Game
 
         void levelFailedDispatch()
         {
-            Debug.Log("HERE! 1");
+           // Debug.Log("HERE! 1");
 
             analitics.LevelFail(level.LevelIndex, level.Score);
             onLevelFailed.Dispatch();
@@ -151,7 +151,7 @@ namespace Traffic.MVCS.Views.Game
 
         void levelFailedHandler()
         {
-            Debug.Log("HERE!2");
+           // Debug.Log("HERE!2");
 
             UI.Hide(UIMap.Id.ScreenHUD);
 	        if (levels.CurrentLevelIndex==0)

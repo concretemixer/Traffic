@@ -18,6 +18,7 @@ namespace Traffic.Core
         void Start()
         {
             startPos = transform.localPosition;
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
 
         public override void Stop()
