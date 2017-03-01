@@ -2,7 +2,7 @@
 using System.Collections;
 using Commons.Utils;
 using strange.extensions.command.impl;
-//using AppodealAds.Unity.Api;    
+using AppodealAds.Unity.Api;    
 using System;
 
 
@@ -12,10 +12,10 @@ namespace Traffic.MVCS.Commands
     /// Команда инициализации рекламмы, елси рекламма уже инициализирована просто возвращаем управление.
     /// </summary>
     /// 
-    /*
+    
     public class InitializeAppodealCommand : Command
     {
-        /*
+        
         [Inject]
         public UnityEventProvider Provider { private get; set; }
 
@@ -37,5 +37,5 @@ namespace Traffic.MVCS.Commands
         }
         
     }
-      */
+      
 }     

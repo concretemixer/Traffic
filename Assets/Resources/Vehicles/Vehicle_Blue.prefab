@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 407796}
   - component: {fileID: 3342348}
   - component: {fileID: 2352484}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: car_blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ GameObject:
   - component: {fileID: 11440284}
   - component: {fileID: 5433780}
   - component: {fileID: 6524632}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Vehicle_Blue
   m_TagString: Vehicle
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   m_Component:
   - component: {fileID: 436260}
   - component: {fileID: 13579090}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: MouseHelper
   m_TagString: VehicleHelper
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 436416}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   m_Component:
   - component: {fileID: 479934}
   - component: {fileID: 8249494}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: AccelSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 425176}
   - component: {fileID: 8237830}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: MoveSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,12 +107,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107072}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.99999976, y: 1, z: 0.99999976}
   m_Children: []
   m_Father: {fileID: 436416}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &425176
 Transform:
@@ -150,6 +150,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4065229443435036}
   - {fileID: 407796}
   m_Father: {fileID: 494946}
   m_RootOrder: 1
@@ -222,8 +223,8 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107072}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 3
+  m_ReceiveShadows: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
@@ -517,3 +518,71 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 129050}
   m_IsPrefabParent: 1
+--- !u!1 &1142642595160842
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4065229443435036}
+  - component: {fileID: 33373274277439718}
+  - component: {fileID: 23639995644787400}
+  m_Layer: 8
+  m_Name: car_blue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4065229443435036
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1142642595160842}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 436416}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23639995644787400
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1142642595160842}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: d594dd5f97c95af43b577c3ace270413, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &33373274277439718
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1142642595160842}
+  m_Mesh: {fileID: 4300000, guid: af4878fa6956aaf4f8de9982324f692a, type: 3}

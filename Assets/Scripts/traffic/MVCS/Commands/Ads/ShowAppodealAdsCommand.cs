@@ -2,21 +2,13 @@ using Commons.Utils;
 using strange.extensions.command.impl;
 using Traffic.MVCS.Commands.Signals;
 using Traffic.MVCS.Services;
-//using AppodealAds.Unity.Api;
-//using AppodealAds.Unity.Common;
+using AppodealAds.Unity.Api;
+using AppodealAds.Unity.Common;
 using UnityEngine;
+
 
 namespace Traffic.MVCS.Commands.Ads
 {
-    public class ShowAppodealAdsCommand : Command
-    {
-
-        public override void Execute()
-        {
-        }
-    }
-
-        /*
         public class ShowAppodealAdsCommand : Command, ISkippableVideoAdListener
         {
             [Inject]
@@ -47,5 +39,5 @@ namespace Traffic.MVCS.Commands.Ads
             public void onSkippableVideoClosed() { analitycs.AdsSkiped(); }
             #endregion       
 
-        }*/
+        }
     }

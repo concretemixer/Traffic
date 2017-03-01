@@ -119,7 +119,9 @@ namespace Traffic.MVCS.Commands
             levelModel.Config = levels.LevelConfigs[levelIndex];
             levelModel.LevelIndex = levelIndex;
 
-                SceneManager.LoadScene(levels.LevelNames[levelIndex], LoadSceneMode.Additive);                
+            analitics.LevelStart(levelIndex);
+
+            SceneManager.LoadScene(levels.LevelNames[levelIndex], LoadSceneMode.Additive);                
 	}
         /*
         public override void Execute()
