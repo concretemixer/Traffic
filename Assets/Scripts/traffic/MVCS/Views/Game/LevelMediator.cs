@@ -105,12 +105,12 @@ namespace Traffic.MVCS.Views.Game
 
 		void vehicleCrashedHandler()
 		{
-            Debug.Log("HERE!");
+            //Debug.Log("HERE!");
             if (!level.Failed && !level.Complete) {
                 cameraStartPos = Camera.main.transform.localPosition;
                 shakeTimer = shakeTime;
                 level.Failed = true;
-                Debug.Log("!!!! Shake timer = " + shakeTimer);
+           //     Debug.Log("!!!! Shake timer = " + shakeTimer);
 
                 for (int a = 0; a < ampsX.Length; a++)
                 {

@@ -16,10 +16,12 @@ namespace Traffic.MVCS.Commands
 
         public override void Execute()
         {
+#if (UNITY_ANDROID || UNITY_IOS)
             Localytics.LoggingEnabled = true;
             Localytics.SessionTimeoutInterval = 300;
             Localytics.RegisterForAnalyticsEvents();
-            Localytics.RegisterForMessagingEvents();            
+            Localytics.RegisterForMessagingEvents();
+#endif
         }
         
     }
