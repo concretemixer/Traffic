@@ -11,8 +11,8 @@ namespace Traffic.MVCS.Views.UI.Debug
         [Inject]
         public ScreenDebugView view { set; private get; }
 
-  //      [Inject]
-   //     public FacebookSN facebook { set; private get; }
+        [Inject]
+        public FacebookSN facebook { set; private get; }
 
         [Inject]
         public LoginCompleteSignal loginComplete { private get; set; }
@@ -47,7 +47,7 @@ namespace Traffic.MVCS.Views.UI.Debug
                 Picture = "https://example.com/myapp/assets/1/larch.jpg"
             };
 
-            /*
+            
             facebook.Post(postData).Done(
                 () =>
                 {
@@ -57,7 +57,7 @@ namespace Traffic.MVCS.Views.UI.Debug
                 {
                     Loggr.Log(e.Message);
                 }
-            );*/
+            );
         }
 
         void onFriendsLoaded(ISNUser[] _friends)

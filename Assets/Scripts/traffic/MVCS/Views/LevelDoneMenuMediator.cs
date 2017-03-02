@@ -70,8 +70,8 @@ namespace Traffic.MVCS.Views.UI
         [Inject]
         public IAPService iapService { get; set; }
 
-     //   [Inject]
-     //   public FacebookSN facebook { private get; set; }
+        [Inject]
+        public FacebookSN facebook { private get; set; }
 
         [Inject]
         public AnalyticsCollector analytics { private get; set; }
@@ -173,9 +173,9 @@ namespace Traffic.MVCS.Views.UI
                 Picture = "https://scontent.xx.fbcdn.net/hphotos-xpa1/t31.0-8/12778873_462805340596055_5575106335908842951_o.png"
             };
 
-           // facebook.Post(postData).Done(
-           //     () => analytics.FacebookShareComplete()
-           // );
+            facebook.Post(postData).Done(
+                () => analytics.FacebookShareComplete()
+            );
         }
 
         public override void OnRemove()

@@ -1,12 +1,12 @@
 using System;
 using Commons.Utils;
 using Commons.Utils.Commands;
-//using Facebook.Unity;
+using Facebook.Unity;
 using RSG;
 
 namespace Commons.SN.Facebook.Commands
 {
-    /*
+    
     public class InitFBCommand : IAsyncCommand
     {
         
@@ -38,5 +38,5 @@ namespace Commons.SN.Facebook.Commands
             }
         }
     }
-    */
+    
 }

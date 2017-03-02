@@ -7,7 +7,7 @@ using Traffic.MVCS.Commands.Signals;
 
 namespace Traffic.MVCS.Commands.Init
 {
-    /*
+    
     public class InitSocialNetworkCommand : Command
     {
         [Inject]
@@ -38,5 +38,5 @@ namespace Traffic.MVCS.Commands.Init
         {
             throw _exception;
         }
-    } */
+    } 
 }
