@@ -5390,7 +5390,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: DYNAMIC SHADOWS
+  m_Text: '%DYNAMIC_SHADOWS%'
 --- !u!114 &114186000768945480
 MonoBehaviour:
   m_ObjectHideFlags: 1
