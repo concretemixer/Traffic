@@ -141,9 +141,11 @@ namespace Traffic.MVCS.Views.UI
 
             view.SetScore((int)level.Score, acheivedStars);
 
-            if (levels.CurrentLevelIndex == 11)
+            if (levels.CurrentLevelIndex == 8)
                 view.ShowBadge(true);
-            if (levels.CurrentLevelIndex == 23)
+            if (levels.CurrentLevelIndex == 17)
+                view.ShowBadge(true);
+            if (levels.CurrentLevelIndex == 26)
                 view.ShowBadge(true);
 
             view.Layout(Screen.width, Screen.height);
