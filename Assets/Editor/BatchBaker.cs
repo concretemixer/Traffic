@@ -18,7 +18,7 @@ public class BatchBaker : EditorWindow
    
     private int fieldCount = 3;
     private string[] levelNames = new string[] {
-                "LevelTutorial",
+             /*   "LevelTutorial",
                 "Level1",
                 "Level2",
                 "Level3_1",                
@@ -39,14 +39,14 @@ public class BatchBaker : EditorWindow
                 "Level17",
                 "Level19",
                 
-                "Level3",    // x
+                "Level3",    // x  */
                 "Level9",
-                "Level14",   // x
-                "Level21",
-                "Level18",
-                "Level12",
-                "Level13",  // z
-                "Level15",  // z
+              //  "Level14",   // x
+              //  "Level21",
+              //  "Level18",
+              //  "Level12",
+              //  "Level13",  // z
+              //  "Level15",  // z
                 "Level8",   // z  
 };
    
