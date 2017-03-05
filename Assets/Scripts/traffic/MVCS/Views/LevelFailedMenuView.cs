@@ -67,7 +67,7 @@ namespace Traffic.MVCS.Views.UI
                 // scaledDimention = 960 * ratio;
                 retryButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-105, 10);
                 homeButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-250, 10);
-                score.GetComponent<RectTransform>().anchoredPosition = new Vector2(300, 172);
+                score.GetComponent<RectTransform>().anchoredPosition = new Vector2(300, 180);
             }
             else
             {
@@ -78,7 +78,7 @@ namespace Traffic.MVCS.Views.UI
                 homeButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-215, 10);
 
 
-                score.GetComponent<RectTransform>().anchoredPosition = new Vector2(100, 172);
+                score.GetComponent<RectTransform>().anchoredPosition = new Vector2(100, 180);
                 // scaledDimention = 960 / ratio;
             }
             this.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
