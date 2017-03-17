@@ -2,7 +2,7 @@
 using System.Collections;
 using Commons.Utils;
 using strange.extensions.command.impl;
-using UnityEngine.Analytics;
+using UnityEngine;
 using System;
 
 /// <summary>
