@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿using UnityEngine.Advertisements;
 using System.Collections;
 using Commons.Utils;
 using strange.extensions.command.impl;
@@ -23,6 +23,8 @@ public class InitializeUnityAdsCommand : Command
 #if UNITY_STANDALONE
         return;
 #endif
+
+        
 
         Retain();
         CheckPlatfromSupport();

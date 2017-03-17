@@ -2,7 +2,7 @@ using Commons.Utils;
 using strange.extensions.command.impl;
 using Traffic.MVCS.Commands.Signals;
 using Traffic.MVCS.Services;
-//using UnityEngine.Advertisements;
+using UnityEngine.Advertisements;
 
 namespace Traffic.MVCS.Commands.Ads
 {
@@ -22,7 +22,7 @@ namespace Traffic.MVCS.Commands.Ads
 #else
         public override void Execute()
         {
-            /*
+            
             Retain();
 
             ShowOptions options = new ShowOptions();
@@ -37,10 +37,10 @@ namespace Traffic.MVCS.Commands.Ads
             {
                 showResultHandler(ShowResult.Failed);
             }
-             * */
+             
         }
 
-        /*
+        
         void showResultHandler(ShowResult result)
         {
             switch (result)
@@ -62,7 +62,7 @@ namespace Traffic.MVCS.Commands.Ads
 
             Release();
         }
-         * */
+         
 #endif
     }
 }
