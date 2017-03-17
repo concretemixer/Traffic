@@ -59,8 +59,7 @@ namespace Traffic.MVCS
                 .To<CreateServiceItemsCommand>()
                 .To<InitUICommand>()
                 .To<InitializeLocalyticsCommand>()
-                // .To<InitializeUnityAdsCommand>()
-                .To<InitializeAppodealCommand>()
+                .To<InitializeUnityAdsCommand>()                
                 .To<LoadConfigCommand>()
                 .To<InitSocialNetworkCommand>()
                 .To<StartupCommand>();
@@ -77,12 +76,11 @@ namespace Traffic.MVCS
 
             // Ads commands
             
-            /*
+            
             commandBinder.Bind<ShowAdsSignal>().InSequence().
                 To<InitializeUnityAdsCommand>().
-                To<ShowAdsCommand>();*/
-            commandBinder.Bind<ShowAdsSignal>().InSequence().                
-                To<ShowAppodealAdsCommand>();
+                To<ShowAdsCommand>();
+
             commandBinder.Bind<AddLivesForAdsSignal>().To<AddLivesForAdsCommad>();
         }
 
