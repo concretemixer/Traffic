@@ -169,6 +169,7 @@ namespace Traffic.MVCS.Views.UI
 
         void shadowsToggleHandler(bool value)
         {
+#if !UNITY_IOS
             PlayerPrefs.SetInt("gfx.shadows", value ? 1 : 0);
 
             Light[] lights = stage.transform.parent.GetComponentsInChildren<Light>(true);
@@ -182,6 +183,7 @@ namespace Traffic.MVCS.Views.UI
                     }
                 }
             }
+#endif
         }
 
         public override void OnRegister()

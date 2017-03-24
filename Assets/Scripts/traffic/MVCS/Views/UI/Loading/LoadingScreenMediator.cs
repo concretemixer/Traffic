@@ -15,7 +15,7 @@ namespace Traffic.MVCS.Views.UI.Loading
         override public void OnRegister()
         {
             view.Layout(Screen.width, Screen.height);
-            view.ShowPreloader(false);
+            view.ShowPreloader(true);
 
             timerDoneSignal = DummyTimer.WaitFor(1000, "WaitTimer");
             timerDoneSignal.AddListener(timerDoneHandler);
