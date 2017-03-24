@@ -91,6 +91,10 @@ namespace Traffic.MVCS.Views.UI
             soundSlider.value = PlayerPrefs.GetFloat("volume.sound", 1);
             shadowsToggle.isOn = PlayerPrefs.GetInt("gfx.shadows", 1) > 0;
 
+#if UNITY_IOS
+            shadowsToggle.gameObject.SetActive(false);
+#endif
+
             foreach (Button b in pinButtons)
             {
                 string text = b.GetComponentInChildren<Text>().text;

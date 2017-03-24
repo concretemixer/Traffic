@@ -49,7 +49,11 @@ public class Level : MonoBehaviour  {
                     if (light.gameObject.name.Contains("Realtime") && !light.gameObject.name.Contains("("))
                     {
                         light.enabled = true;
+#if UNITY_IOS
+                        light.shadows = LightShadows.None;
+#else
                         light.shadows = PlayerPrefs.GetInt("gfx.shadows", 1) > 0 ? LightShadows.Soft : LightShadows.None;
+#endif
                         light.shadowStrength = 0.7f;
                         light.cullingMask = 0x300;
                        // light.enabled = false;
