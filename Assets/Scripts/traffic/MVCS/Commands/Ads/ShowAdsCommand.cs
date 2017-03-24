@@ -2,7 +2,9 @@ using Commons.Utils;
 using strange.extensions.command.impl;
 using Traffic.MVCS.Commands.Signals;
 using Traffic.MVCS.Services;
+#if UNITY_ADS
 using UnityEngine.Advertisements;
+#endif
 
 namespace Traffic.MVCS.Commands.Ads
 {

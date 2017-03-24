@@ -1,4 +1,6 @@
-﻿using UnityEngine.Advertisements;
+﻿#if UNITY_ADS
+using UnityEngine.Advertisements;
+#endif
 using System.Collections;
 using Commons.Utils;
 using strange.extensions.command.impl;
