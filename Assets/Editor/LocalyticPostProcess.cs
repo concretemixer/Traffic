@@ -73,7 +73,13 @@ public class LocalyticsPostProcess : MonoBehaviour
 			}
 		}
 */
-       // AddAdaptersDirectory ("Localytics/Locatylics.framework", project, target);
+		//CopyAndReplaceDirectory ("Assets/Dependencies/Localytics.framework", Path.Combine(buildPath, "Frameworks/Localytics.framework"));
+		{
+			string tmp = Utils.FixSlashesInPath("$(PROJECT_DIR)/Frameworks/Localytics");
+			project.AddBuildProperty (target, "FRAMEWORK_SEARCH_PATHS", tmp);
+		}
+
+		//AddAdaptersDirectory (Path.Combine(buildPath, "Frameworks/Localytics.framework"), project, target);
 		/*
 		#if UNITY_4_0 || UNITY_4_1 || UNITY_4_2 || UNITY_4_3 || UNITY_4_4 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7
 		project.AddBuildProperty (target, "FRAMEWORK_SEARCH_PATHS", "$(PROJECT_DIR)/Frameworks/Plugins/iOS");
