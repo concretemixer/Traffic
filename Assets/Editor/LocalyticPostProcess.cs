@@ -21,15 +21,10 @@ public class LocalyticsPostProcess : MonoBehaviour
 	#endif
 
 	private static string[] frameworkList = new string[] {
-		"Twitter", "AdSupport", "AudioToolbox",
-		"AVFoundation", "CoreFoundation", "CFNetwork",
-		"CoreGraphics", "CoreImage", "CoreMedia",
-		"CoreLocation", "CoreTelephony", "GLKit",
-		"JavaScriptCore", "EventKitUI", "EventKit",
-		"MediaPlayer", "MessageUI", "QuartzCore", 
-		"MobileCoreServices", "Security", "StoreKit",
-		"SystemConfiguration", "Twitter", "UIKit",
-		"CoreBluetooth" 
+		"AdSupport", 
+		"CoreLocation", 
+		"SystemConfiguration",
+
 	};
 
 	private static string[] weakFrameworkList = new string[] {
@@ -38,10 +33,8 @@ public class LocalyticsPostProcess : MonoBehaviour
 
 
 	private static string[] platformLibs = new string[] {
-		"libc++.dylib",
-		"libz.dylib",
-		"libsqlite3.dylib",
-		"libxml2.2.dylib"
+		"libz.tbd",
+		"libsqlite3.tbd",
 	};
 
 	[PostProcessBuild(100)]
@@ -61,9 +54,9 @@ public class LocalyticsPostProcess : MonoBehaviour
 		project.ReadFromString (File.ReadAllText(projPath));
 		string target = project.TargetGuidByName ("Unity-iPhone");
 
-//		AddProjectFrameworks (frameworkList, project, target, false);
+		AddProjectFrameworks (frameworkList, project, target, false);
 //		AddProjectFrameworks (weakFrameworkList, project, target, true);
-//		AddProjectLibs (platformLibs, project, target);
+		AddProjectLibs (platformLibs, project, target);
 		project.AddBuildProperty (target, "OTHER_LDFLAGS", "-ObjC");
 		project.AddBuildProperty (target, "ENABLE_BITCODE", "NO");
 		project.AddBuildProperty (target, "LIBRARY_SEARCH_PATHS", "$(SRCROOT)/Libraries");
@@ -79,7 +72,9 @@ public class LocalyticsPostProcess : MonoBehaviour
 				}
 			}
 		}
-
+*/
+       // AddAdaptersDirectory ("Localytics/Locatylics.framework", project, target);
+		/*
 		#if UNITY_4_0 || UNITY_4_1 || UNITY_4_2 || UNITY_4_3 || UNITY_4_4 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7
 		project.AddBuildProperty (target, "FRAMEWORK_SEARCH_PATHS", "$(PROJECT_DIR)/Frameworks/Plugins/iOS");
 		project.SetBuildProperty (target, "LIBRARY_SEARCH_PATHS", "$(SRCROOT)/Libraries");
@@ -144,11 +139,11 @@ public class LocalyticsPostProcess : MonoBehaviour
 	}
 
 	private static void ExtractZip(string filePath, string destFolder){
-		using(Ionic.Zip.ZipFile zip = Ionic.Zip.ZipFile.Read(filePath)){			
-			foreach(Ionic.Zip.ZipEntry z in zip){
-				z.Extract(destFolder, Ionic.Zip.ExtractExistingFileAction.OverwriteSilently);
-			}
-		}
+//		using(Ionic.Zip.ZipFile zip = Ionic.Zip.ZipFile.Read(filePath)){			
+//			foreach(Ionic.Zip.ZipEntry z in zip){
+//				z.Extract(destFolder, Ionic.Zip.ExtractExistingFileAction.OverwriteSilently);
+//			}
+//		}
 	}
 
 	private static void AddAdaptersDirectory(string path, PBXProject proj, string targetGuid)
