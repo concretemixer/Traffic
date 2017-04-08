@@ -98,6 +98,7 @@ namespace Traffic.MVCS.Views.Game
                 if (level.Progress == level.Config.target)
                 {
                     analitics.LevelComplete(level.LevelIndex, level.Score);
+                    analitics.LevelResult(level.LevelIndex, "complete");
                     onLevelComplete.Dispatch();
                 }
             }
@@ -146,6 +147,7 @@ namespace Traffic.MVCS.Views.Game
            // Debug.Log("HERE! 1");
 
             analitics.LevelFail(level.LevelIndex, level.Score);
+            analitics.LevelResult(level.LevelIndex, "fail");
             onLevelFailed.Dispatch();
         }
 
@@ -184,6 +186,8 @@ namespace Traffic.MVCS.Views.Game
 
             if (levels.GetLevelState(levels.CurrentLevelIndex + 1) == LevelState.Locked)
                 levels.SetLevelState(levels.CurrentLevelIndex + 1, LevelState.Playable);
+
+            analitics.SetDimentions();
 
             UI.Hide(UIMap.Id.ScreenHUD);
             if (levels.CurrentLevelIndex==0)

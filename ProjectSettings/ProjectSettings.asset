@@ -209,8 +209,8 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 1
   androidSplashScreen: {fileID: 2800000, guid: a8542faf25eb84da881f3af3104e677a, type: 3}
-  AndroidKeystoreName: D:/Unity/Projects/Traffic/user.keystore
-  AndroidKeyaliasName: concretemixer games
+  AndroidKeystoreName: D:/Unity/Projects/Traffic/concretemixer.keystore
+  AndroidKeyaliasName: 
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
   androidEnableBanner: 1
