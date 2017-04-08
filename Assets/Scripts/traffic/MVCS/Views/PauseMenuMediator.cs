@@ -7,7 +7,7 @@ using Traffic.Core;
 using Commons.UI;
 using Commons.Utils;
 using UnityEngine;
-
+using Traffic.MVCS.Services;
 using strange.extensions.mediation.impl;
 
 namespace Traffic.MVCS.Views.UI
@@ -58,6 +58,9 @@ namespace Traffic.MVCS.Views.UI
             set;
         }
 
+        [Inject]
+        public AnalyticsCollector analitycs { private get; set; }
+
         void resumeLevelHandler()
         {
             onResume.Dispatch();
@@ -65,6 +68,7 @@ namespace Traffic.MVCS.Views.UI
 
         void homeHandler()
         {
+            analitycs.LevelResult(level.LevelIndex, "quit");
             toMainScreenSignal.Dispatch();
         }
 

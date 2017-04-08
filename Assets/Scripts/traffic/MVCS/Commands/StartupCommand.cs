@@ -7,12 +7,15 @@ using Traffic.Core;
 using Traffic.MVCS.Models;
 using Commons.Utils;
 using System.IO;
-
+using Traffic.MVCS.Services;
 
 namespace Traffic.MVCS.Commands
 {
     public class StartupCommand : Command
     {
+        [Inject]
+        public AnalyticsCollector analitycs { private get; set; }
+
         [Inject]
         public IUIManager UI { private get; set; }
 
@@ -21,6 +24,9 @@ namespace Traffic.MVCS.Commands
 
         public override void Execute()
         {
+            analitycs.SetDimentions();
+            analitycs.SessionStart();            
+
             AudioSource gameMusic = GameObject.Find("GameMusic").GetComponent<AudioSource>();
             AudioSource menuMusic = GameObject.Find("MenuMusic").GetComponent<AudioSource>();
 
