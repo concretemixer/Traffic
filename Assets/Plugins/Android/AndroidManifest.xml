@@ -29,6 +29,11 @@
     </receiver>
     <activity android:name="com.localytics.android.PushTrackingActivity" />
     <!-- Localytics Acquisition Tracking -->
+<!--receiver android:name=".MyReferralReceiver" android:exported="true">
+  <intent-filter>
+    <action android:name="com.android.vending.INSTALL_REFERRER" />
+  </intent-filter>
+</receiver-->
     <receiver android:name="com.localytics.android.ReferralReceiver" android:exported="true">
       <intent-filter>
         <action android:name="com.android.vending.INSTALL_REFERRER" />
@@ -72,11 +77,11 @@
       </intent-filter>
       <meta-data android:name="metrica:api:level" android:value="48" />
     </service>
-    <receiver android:name="com.yandex.metrica.MetricaEventHandler" android:enabled="true" android:exported="true">
+    <!--receiver android:name="com.yandex.metrica.MetricaEventHandler" android:enabled="true" android:exported="true">
       <intent-filter>
         <action android:name="com.android.vending.INSTALL_REFERRER" />
       </intent-filter>
-    </receiver>
+    </receiver-->
     <activity android:name="com.yandex.mobile.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
     <activity android:name="com.flurry.android.FlurryFullscreenTakeoverActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
     <activity android:name="com.appodeal.ads.VideoPlayerActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
