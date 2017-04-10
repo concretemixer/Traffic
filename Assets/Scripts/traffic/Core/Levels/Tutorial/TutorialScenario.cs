@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using Traffic.MVCS.Services;
 using Traffic.MVCS.Commands.Signals;
 
 namespace Traffic.Core
@@ -22,6 +22,7 @@ namespace Traffic.Core
 
         public override void Reset()
         {
+            onTutorialPoint.Dispatch((int)TutorialStep.START);
             lifetime = 0;
             point = 0;
             stopped = false;

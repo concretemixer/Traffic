@@ -144,8 +144,7 @@ namespace Traffic.MVCS.Views.Game
 
         void levelFailedDispatch()
         {
-           // Debug.Log("HERE! 1");
-
+            // Debug.Log("HERE! 1");
             analitics.LevelFail(level.LevelIndex, level.Score);
             analitics.LevelResult(level.LevelIndex, "fail");
             onLevelFailed.Dispatch();
@@ -156,15 +155,21 @@ namespace Traffic.MVCS.Views.Game
            // Debug.Log("HERE!2");
 
             UI.Hide(UIMap.Id.ScreenHUD);
-	        if (levels.CurrentLevelIndex==0)
-                UI.Show(UIMap.Id.TutorialFailedMenu);	
+            if (levels.CurrentLevelIndex == 0)
+            {
+                analitics.LogTutorialStep(TutorialStep.FAIL);
+                UI.Show(UIMap.Id.TutorialFailedMenu);
+            }
             else
                 UI.Show(UIMap.Id.LevelFailedMenu);	
         }
 
         void levelCompleteHandler()
         {
-            level.Complete = true;
+            if (levels.CurrentLevelIndex == 0)           
+                analitics.LogTutorialStep(TutorialStep.DONE);
+
+           level.Complete = true;
 
             int stars = 1;
 
@@ -186,6 +191,7 @@ namespace Traffic.MVCS.Views.Game
 
             if (levels.GetLevelState(levels.CurrentLevelIndex + 1) == LevelState.Locked)
                 levels.SetLevelState(levels.CurrentLevelIndex + 1, LevelState.Playable);
+
 
             analitics.SetDimentions();
 
