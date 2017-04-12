@@ -93,6 +93,7 @@ namespace Traffic.MVCS.Views.UI
 
 #if UNITY_IOS
             shadowsToggle.gameObject.SetActive(false);
+			codeButton.gameObject.SetActive(false);
 #endif
 
             foreach (Button b in pinButtons)
