@@ -251,6 +251,12 @@ namespace Traffic.MVCS.Views.UI
             else
                 backButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(5, -5); 
 
+
+#if UNITY_IOS
+			shadowsToggle.gameObject.SetActive(false);
+			codeButton.gameObject.SetActive(false);
+#endif
+
             float ratio = (float)height / (float)width;
 
             // float scaledDimention;
