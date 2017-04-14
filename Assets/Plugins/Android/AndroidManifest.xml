@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.concretemixer.traffic" android:installLocation="preferExternal" android:versionCode="1" android:versionName="1.0">
   <supports-screens android:smallScreens="true" android:normalScreens="true" android:largeScreens="true" android:xlargeScreens="true" android:anyDensity="true" />
   <application android:name="com.localytics.android.unity.LocalyticsApplication" android:icon="@drawable/app_icon" android:label="@string/app_name" android:debuggable="true">
-    <meta-data android:name="LOCALYTICS_APP_KEY" android:value="09014ed41fa1cf875213ba1-f889113a-f291-11e6-6245-008c9f3dc0ef" />
+    <meta-data android:name="LOCALYTICS_APP_KEY" android:value="efb00b4b497f9e26af7de43-bc4eefa0-20fa-11e7-397e-00d0c38fa2c6" />
     <meta-data android:name="LOCALYTICS_PUSH_PROJECT_ID" android:value="\ 123456123" />
     <!--meta-data android:name="com.google.android.gms.version" android:value="6587000" /-->
     <activity android:name="com.localytics.android.unity.LocalyticsUnityPlayerActivity" android:label="@string/app_name" android:launchMode="singleTask" android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale">

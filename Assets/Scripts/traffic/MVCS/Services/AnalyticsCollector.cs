@@ -70,7 +70,7 @@ namespace Traffic.MVCS.Services
         {
             //  Collector.CustomEvent("tutorial", Params.Simple("step", (int)_step));
 #if (UNITY_ANDROID || UNITY_IOS)
-            Localytics.TagEvent("tutorial", new Dictionary<string, string>() { { "step", _step.ToString() } });
+            Localytics.TagEvent("Tutorial", new Dictionary<string, string>() { { "step", _step.ToString() } });
 #endif
         }
 
@@ -79,6 +79,7 @@ namespace Traffic.MVCS.Services
             Int32 _tries = PlayerPrefs.GetInt("stats.tries."+levelId.ToString(), 0);
             _tries++;
             PlayerPrefs.SetInt("stats.tries." + levelId.ToString(), _tries);
+            return;
 #if (UNITY_ANDROID || UNITY_IOS)
 
 
@@ -89,6 +90,7 @@ namespace Traffic.MVCS.Services
 
         public void LevelFail(int levelId, float score)
         {
+            return;
 #if (UNITY_ANDROID || UNITY_IOS)
             Localytics.TagEvent("level_fail", new Dictionary<string, string>() {
                 { "level", levelId.ToString() },
@@ -102,6 +104,7 @@ namespace Traffic.MVCS.Services
 
         public void LevelComplete(int levelId, float score)
         {
+            return;
 #if (UNITY_ANDROID || UNITY_IOS)
             Localytics.TagEvent("level_complete",new Dictionary<string, string>() {
                 { "level", levelId.ToString()}  ,
@@ -171,7 +174,7 @@ namespace Traffic.MVCS.Services
         public void FacebookConnected()
         {
 #if (UNITY_ANDROID || UNITY_IOS)
-            Localytics.TagEvent("fb_connected");
+            Localytics.TagEvent("FB Connected");
             //Collector.CustomEvent("fb_connected", Params.NONE);
 #endif
         }
@@ -195,7 +198,7 @@ namespace Traffic.MVCS.Services
         public void NoTriesWindowShown()
         {
 #if (UNITY_ANDROID || UNITY_IOS)
-            Localytics.TagEvent("no_tries_window_shown");
+            Localytics.TagEvent("No Tries Window");
             //Collector.CustomEvent("no_tries_window_shown", Params.NONE);
 #endif
         }
@@ -203,7 +206,7 @@ namespace Traffic.MVCS.Services
         public void AdsStart()
         {
 #if (UNITY_ANDROID || UNITY_IOS)
-            Localytics.TagEvent("ads_start");
+            Localytics.TagEvent("Ads Start");
             //Collector.CustomEvent("ads_start", Params.NONE);
 #endif
         }
@@ -211,7 +214,7 @@ namespace Traffic.MVCS.Services
         public void AdsSkiped()
         {
 #if (UNITY_ANDROID || UNITY_IOS)
-            Localytics.TagEvent("ads_skiped");
+            Localytics.TagEvent("Ads Skiped");
             // Collector.CustomEvent("ads_skiped", Params.NONE);
 #endif
         }
@@ -219,7 +222,7 @@ namespace Traffic.MVCS.Services
         public void AdsComplete()
         {
 #if (UNITY_ANDROID || UNITY_IOS)
-            Localytics.TagEvent("ads_complete");
+            Localytics.TagEvent("Ads_Complete");
             //Collector.CustomEvent("ads_complete", Params.NONE);
 #endif
         }
@@ -227,7 +230,7 @@ namespace Traffic.MVCS.Services
         public void AdsFailed()
         {
 #if (UNITY_ANDROID || UNITY_IOS)
-            Localytics.TagEvent("ads_failed");
+            Localytics.TagEvent("Ads Failed");
 #endif
             //Collector.CustomEvent("ads_failed", Params.NONE);
 
