@@ -60,6 +60,10 @@ namespace Traffic.MVCS.Services
             Localytics.SetCustomDimension(0, packs[0].ToString());
             Localytics.SetCustomDimension(1, packs[1].ToString());
             Localytics.SetCustomDimension(2, packs[2].ToString());
+
+            PlayerPrefs.SetInt("stats.level_ch_1", packs[0]);
+            PlayerPrefs.SetInt("stats.level_ch_2", packs[1]);
+            PlayerPrefs.SetInt("stats.level_ch_3", packs[2]);
         }
 
         public void LogTutorialStep(TutorialStep _step)
@@ -72,7 +76,12 @@ namespace Traffic.MVCS.Services
 
         public void LevelStart(int levelId)
         {
+            Int32 _tries = PlayerPrefs.GetInt("stats.tries."+levelId.ToString(), 0);
+            _tries++;
+            PlayerPrefs.SetInt("stats.tries." + levelId.ToString(), _tries);
 #if (UNITY_ANDROID || UNITY_IOS)
+
+
             Localytics.TagEvent("level_start", new Dictionary<string, string>() { { "level", levelId.ToString() } });
             //Collector.CustomEvent("level_start", Params.Simple("level", levelId));
 #endif
@@ -105,14 +114,21 @@ namespace Traffic.MVCS.Services
 
         public void LevelResult(int levelId, string result)
         {
+            Int32 _tries = PlayerPrefs.GetInt("stats.tries." + levelId.ToString(), 0);
 #if (UNITY_ANDROID || UNITY_IOS)
-            Localytics.TagEvent("level_result", 
-                new Dictionary<string, string>() {
-                    { "level", levelId.ToString() },
-                    { "pack", (levelId / 9).ToString() },
-                    { "level_in_pack", (levelId % 9).ToString() },
-                    { "result", result },
-                });            
+            Localytics.TagEvent("Level Result", 
+                new Dictionary<string, string>() {                    
+                    { "Chapter", (((int)(levelId / 9))+1).ToString() },
+                    { "Level", ((levelId % 9)+1).ToString() },
+                    { "Result", result },
+                    { "Try Num", _tries.ToString() },
+
+            { "Session Number",(PlayerPrefs.GetInt("stats.sessions_count", 0)+1).ToString() },
+            { "Level Ch 1",PlayerPrefs.GetInt("stats.level_ch_1", 0).ToString() },
+            { "Level Ch 2",PlayerPrefs.GetInt("stats.level_ch_2", 0).ToString() },
+            { "Level Ch 3",PlayerPrefs.GetInt("stats.level_ch_3", 0).ToString() },
+
+        });            
 #endif
         }
 
@@ -123,7 +139,7 @@ namespace Traffic.MVCS.Services
             Int32 unixTimestamp = PlayerPrefs.GetInt("stats.last_session_start", 0);
             DateTime LastSessionStart = new DateTime(1970, 1, 1).AddSeconds(unixTimestamp);
 
-            TimeSpan span = LastSessionStart - DateTime.Now;
+            TimeSpan span = DateTime.Now - LastSessionStart;
 
             if (span.TotalSeconds > 300)
             {
@@ -131,18 +147,21 @@ namespace Traffic.MVCS.Services
                 _sessions++;
                 PlayerPrefs.SetInt("stats.sessions_count", _sessions);
 
-                Localytics.TagEvent("session_start",
+                Localytics.TagEvent("Session Start",
                     new Dictionary<string, string>() {
-                    { "number", _sessions.ToString() },                    
+                    { "Session Number", _sessions.ToString() },            
+                    { "Level Ch 1",PlayerPrefs.GetInt("stats.level_ch_1", 0).ToString() },
+                    { "Level Ch 2",PlayerPrefs.GetInt("stats.level_ch_2", 0).ToString() },
+                    { "Level Ch 3",PlayerPrefs.GetInt("stats.level_ch_3", 0).ToString() },
                     });
 
                 if (_sessions <= 1)
                 {
-                    Localytics.TagEvent("first_launch");
+                    Localytics.TagEvent("First Launch");
                 }
 
                 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-                PlayerPrefs.SetInt("tries.last_session_start", unixTimestamp);
+                PlayerPrefs.SetInt("stats.last_session_start", unixTimestamp);
 
             }
 #endif
