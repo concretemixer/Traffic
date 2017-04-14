@@ -119,13 +119,13 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleIdentifier: com.concretemixer.traffic
-  bundleVersion: 1.23
+  bundleVersion: 1.24
   preloadedAssets: []
   metroInputSource: 0
   m_HolographicPauseOnTrackingLoss: 1
   xboxOneDisableKinectGpuReservation: 0
   protectGraphicsMemory: 0
-  AndroidBundleVersionCode: 32
+  AndroidBundleVersionCode: 33
   AndroidMinSdkVersion: 14
   AndroidPreferredInstallLocation: 1
   aotOptions: nimt-trampolines=4096
