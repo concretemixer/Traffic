@@ -8,7 +8,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [Localytics autoIntegrate:@"efb00b4b497f9e26af7de43-bc4eefa0-20fa-11e7-397e-00d0c38fa2c6" launchOptions:launchOptions];
+    [Localytics autoIntegrate:@"b956ccff93ee17153f6f719-2726cd38-2509-11e7-b602-009e56132fe5" launchOptions:launchOptions];
  
     // If you are using Localytics Messaging include the following code to register for push notifications
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)])

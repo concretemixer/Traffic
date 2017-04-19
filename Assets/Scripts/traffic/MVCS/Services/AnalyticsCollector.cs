@@ -16,13 +16,14 @@ namespace Traffic.MVCS.Services
         [Inject]
         public ILevelListModel levels { get; set; }
 
-        public void SetDimentions()
+        void SetDimentionsSessions()
         {
+#if (UNITY_ANDROID || UNITY_IOS)
             Int32 _sessions = PlayerPrefs.GetInt("stats.sessions_count", 0);
             _sessions++;
-            if (_sessions<=5)
+            if (_sessions <= 5)
                 Localytics.SetCustomDimension(3, _sessions.ToString());
-            else if (_sessions<=10)
+            else if (_sessions <= 10)
                 Localytics.SetCustomDimension(3, "6-10");
             else if (_sessions <= 25)
                 Localytics.SetCustomDimension(3, "11-25");
@@ -36,6 +37,13 @@ namespace Traffic.MVCS.Services
                 Localytics.SetCustomDimension(3, "101-200");
             else
                 Localytics.SetCustomDimension(3, "200+");
+#endif
+        }
+
+        public void SetDimentions()
+        {
+#if (UNITY_ANDROID || UNITY_IOS)
+            SetDimentionsSessions();
 
             if (facebook!=null && facebook.IsLoggedIn)
                 Localytics.SetCustomDimension(4, "Facebook");
@@ -64,6 +72,7 @@ namespace Traffic.MVCS.Services
             PlayerPrefs.SetInt("stats.level_ch_1", packs[0]);
             PlayerPrefs.SetInt("stats.level_ch_2", packs[1]);
             PlayerPrefs.SetInt("stats.level_ch_3", packs[2]);
+#endif
         }
 
         public void LogTutorialStep(TutorialStep _step)
@@ -76,9 +85,9 @@ namespace Traffic.MVCS.Services
 
         public void LevelStart(int levelId)
         {
-            Int32 _tries = PlayerPrefs.GetInt("stats.tries."+levelId.ToString(), 0);
-            _tries++;
-            PlayerPrefs.SetInt("stats.tries." + levelId.ToString(), _tries);
+            //Int32 _tries = PlayerPrefs.GetInt("stats.tries."+levelId.ToString(), 0);
+           // _tries++;
+           // PlayerPrefs.SetInt("stats.tries." + levelId.ToString(), _tries);
             return;
 #if (UNITY_ANDROID || UNITY_IOS)
 
@@ -118,6 +127,8 @@ namespace Traffic.MVCS.Services
         public void LevelResult(int levelId, string result)
         {
             Int32 _tries = PlayerPrefs.GetInt("stats.tries." + levelId.ToString(), 0);
+            _tries++;
+            PlayerPrefs.SetInt("stats.tries." + levelId.ToString(), _tries);
 #if (UNITY_ANDROID || UNITY_IOS)
             Localytics.TagEvent("Level Result", 
                 new Dictionary<string, string>() {                    
@@ -149,6 +160,8 @@ namespace Traffic.MVCS.Services
                 Int32 _sessions = PlayerPrefs.GetInt("stats.sessions_count", 0);
                 _sessions++;
                 PlayerPrefs.SetInt("stats.sessions_count", _sessions);
+
+                SetDimentionsSessions();
 
                 Localytics.TagEvent("Session Start",
                     new Dictionary<string, string>() {

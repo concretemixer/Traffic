@@ -2,6 +2,7 @@
 using Traffic.MVCS;
 using UnityEngine;
 using UnityEngine.CrashLog;
+using Traffic.MVCS.Services;
 
 namespace Traffic.Components
 {
@@ -12,6 +13,8 @@ namespace Traffic.Components
         [SerializeField] GameObject ui;
         [SerializeField] GameObject stage;
         [SerializeField] GameObject stageMenu;
+
+
 
         void Start()
         {
@@ -40,6 +43,12 @@ namespace Traffic.Components
             StageMenu,
             Stage,
             UI
+        }
+
+        void OnApplicationPause(bool pauseStatus)
+        {
+            if ((context as AppContext) != null)
+                (context as AppContext).OnPause(pauseStatus);
         }
     }
 }

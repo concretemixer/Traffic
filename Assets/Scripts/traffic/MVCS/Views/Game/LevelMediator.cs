@@ -98,7 +98,6 @@ namespace Traffic.MVCS.Views.Game
                 if (level.Progress == level.Config.target)
                 {
                     analitics.LevelComplete(level.LevelIndex, level.Score);
-                    analitics.LevelResult(level.LevelIndex, "complete");
                     onLevelComplete.Dispatch();
                 }
             }
@@ -194,6 +193,7 @@ namespace Traffic.MVCS.Views.Game
 
 
             analitics.SetDimentions();
+            analitics.LevelResult(level.LevelIndex, "complete");
 
             UI.Hide(UIMap.Id.ScreenHUD);
             if (levels.CurrentLevelIndex==0)

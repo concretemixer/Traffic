@@ -21,7 +21,20 @@ namespace Traffic.MVCS
 {
     public class AppContext : MVCSContext
     {
+      //  [Inject]
+        //public AnalyticsCollector analitycs { private get; set; }
+
         EntryPoint entryPoint;
+
+        public void OnPause(bool pauseStatus)
+        {            
+            if (!pauseStatus)
+            {
+                AnalyticsCollector analitycs = injectionBinder.GetInstance<AnalyticsCollector>();
+                if (analitycs!=null)
+                    analitycs.SessionStart();
+            }
+        }
 
         public AppContext(EntryPoint _view) : base(_view, true)
         {
@@ -49,7 +62,7 @@ namespace Traffic.MVCS
             mapModels();
             mapStageMediators();
             mapUIMediators();
-            mapOthers();
+            mapOthers();            
         }
 
         void mapCommands()
