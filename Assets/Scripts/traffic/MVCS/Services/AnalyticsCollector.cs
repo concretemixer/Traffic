@@ -129,6 +129,7 @@ namespace Traffic.MVCS.Services
             Int32 _tries = PlayerPrefs.GetInt("stats.tries." + levelId.ToString(), 0);
             _tries++;
             PlayerPrefs.SetInt("stats.tries." + levelId.ToString(), _tries);
+            int advTries = PlayerPrefs.GetInt("tries.left", 7);
 #if (UNITY_ANDROID || UNITY_IOS)
             Localytics.TagEvent("Level Result", 
                 new Dictionary<string, string>() {                    
@@ -136,6 +137,7 @@ namespace Traffic.MVCS.Services
                     { "Level", ((levelId % 9)+1).ToString() },
                     { "Result", result },
                     { "Try Num", _tries.ToString() },
+                    { "Adv Try Num", advTries.ToString() },
 
             { "Session Number",(PlayerPrefs.GetInt("stats.sessions_count", 0)+1).ToString() },
             { "Level Ch 1",PlayerPrefs.GetInt("stats.level_ch_1", 0).ToString() },
@@ -154,6 +156,7 @@ namespace Traffic.MVCS.Services
             DateTime LastSessionStart = new DateTime(1970, 1, 1).AddSeconds(unixTimestamp);
 
             TimeSpan span = DateTime.Now - LastSessionStart;
+            int advTries = PlayerPrefs.GetInt("tries.left", 7);
 
             if (span.TotalSeconds > 300)
             {
@@ -165,6 +168,8 @@ namespace Traffic.MVCS.Services
 
                 Localytics.TagEvent("Session Start",
                     new Dictionary<string, string>() {
+
+                        { "Adv Try Num", advTries.ToString() },
                     { "Session Number", _sessions.ToString() },            
                     { "Level Ch 1",PlayerPrefs.GetInt("stats.level_ch_1", 0).ToString() },
                     { "Level Ch 2",PlayerPrefs.GetInt("stats.level_ch_2", 0).ToString() },
@@ -211,7 +216,18 @@ namespace Traffic.MVCS.Services
         public void NoTriesWindowShown()
         {
 #if (UNITY_ANDROID || UNITY_IOS)
-            Localytics.TagEvent("No Tries Window");
+            int advTries = PlayerPrefs.GetInt("tries.left", 7);
+            Localytics.TagEvent("No Tries Window",
+                new Dictionary<string, string>() {                
+                    { "Adv Try Num", advTries.ToString() },
+
+            { "Session Number",(PlayerPrefs.GetInt("stats.sessions_count", 0)+1).ToString() },
+            { "Level Ch 1",PlayerPrefs.GetInt("stats.level_ch_1", 0).ToString() },
+            { "Level Ch 2",PlayerPrefs.GetInt("stats.level_ch_2", 0).ToString() },
+            { "Level Ch 3",PlayerPrefs.GetInt("stats.level_ch_3", 0).ToString() },
+
+        });
+
             //Collector.CustomEvent("no_tries_window_shown", Params.NONE);
 #endif
         }
