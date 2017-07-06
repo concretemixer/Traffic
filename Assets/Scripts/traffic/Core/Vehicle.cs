@@ -82,7 +82,7 @@ public class Vehicle : MonoBehaviour {
 
 		if (gameObject.tag == "Vehicle") {
 			if (moveSound != null) {
-				Transform t = transform.FindChild ("MoveSource");
+				Transform t = transform.Find ("MoveSource");
 				if (t != null && moveSound!=null) {
                     t.gameObject.GetComponent<AudioSource>().PlayOneShot(moveSound, soundVolume);
 				}
@@ -313,7 +313,7 @@ public class Vehicle : MonoBehaviour {
             if (gameObject.tag == "Vehicle") 
                 onVehicleReachedDestination.Dispatch();
 
-			Transform t = transform.FindChild("AccelSource");
+			Transform t = transform.Find("AccelSource");
 			if (t!=null) {
 				//t.gameObject.GetComponent<AudioSource>().
 			}
@@ -339,7 +339,7 @@ public class Vehicle : MonoBehaviour {
 
             if (crashSound != null && !crashed)
             {
-                Transform t = transform.FindChild("AccelSource");
+                Transform t = transform.Find("AccelSource");
                 if (t != null && crashSound!=null  && crashSound.Length>0)
                 {
                     float soundVolume = PlayerPrefs.GetFloat("volume.sound", 1);
@@ -436,7 +436,7 @@ public class Vehicle : MonoBehaviour {
 			targetSpeed = NormalSpeed;
 			//GetComponent<Rigidbody> ().velocity = transform.rotation * new Vector3 (NormalSpeed, 0, 0);
 			if (startSound!=null) {
-				Transform t = transform.FindChild("AccelSource");
+				Transform t = transform.Find("AccelSource");
 				if (t!=null) {
                     t.gameObject.GetComponent<AudioSource>().PlayOneShot(startSound, soundVolume);
 				}
@@ -454,7 +454,7 @@ public class Vehicle : MonoBehaviour {
 				ShowEffects();
 
 				if (accelSound!=null) {
-					Transform t = transform.FindChild("AccelSource");
+					Transform t = transform.Find("AccelSource");
 					if (t!=null) {
                         t.gameObject.GetComponent<AudioSource>().PlayOneShot(accelSound[Random.Range(0, accelSound.Length)], soundVolume);
 					}

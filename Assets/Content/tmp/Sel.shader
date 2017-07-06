@@ -1,4 +1,6 @@
-﻿Shader "Unlit/Sel"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Unlit/Sel"
 {
 	Properties
 	{
@@ -43,7 +45,7 @@
 			v2f vert (appdata v)
 			{
 				v2f o;
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.vertex = UnityObjectToClipPos(v.vertex);
 				//o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 				o.uv.x =  0.5+0.5*_SinTime.z;
 				o.uv.y = v.vertex.y * 0.33;

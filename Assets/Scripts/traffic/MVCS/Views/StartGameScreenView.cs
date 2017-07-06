@@ -148,8 +148,15 @@ namespace Traffic.MVCS.Views.UI
             this.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
             this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
 
-#if UNITY_IOS
+#if UNITY_IOS || UNITY_WEBGL
             quitButton.gameObject.SetActive(false);
+#endif
+
+#if UNITY_WEBGL
+            shopButton.gameObject.SetActive(false);
+            connectButton.gameObject.SetActive(false);
+            startButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-105, 10);
+            optionsButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-190, -485);
 #endif
         }
     }

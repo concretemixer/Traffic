@@ -63,8 +63,8 @@ public class Level : MonoBehaviour  {
             }
 
 
-        cameraPortrait = levelRoot.transform.FindChild("Main Camera Portrait").gameObject;
-        cameraLandscape = levelRoot.transform.FindChild("Main Camera Landscape").gameObject;
+        cameraPortrait = levelRoot.transform.Find("Main Camera Portrait").gameObject;
+        cameraLandscape = levelRoot.transform.Find("Main Camera Landscape").gameObject;
 
 		{
             if (cameraMain != null)

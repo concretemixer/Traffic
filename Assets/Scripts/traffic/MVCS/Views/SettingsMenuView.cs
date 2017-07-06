@@ -95,6 +95,8 @@ namespace Traffic.MVCS.Views.UI
             shadowsToggle.gameObject.SetActive(false);
 #endif
 
+
+
             foreach (Button b in pinButtons)
             {
                 string text = b.GetComponentInChildren<Text>().text;
@@ -292,6 +294,10 @@ namespace Traffic.MVCS.Views.UI
 
                 // scaledDimention = 960 / ratio;
             }
+
+#if UNITY_WEBGL
+            codeButton.gameObject.SetActive(false);
+#endif
 
             musicSlider.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
             soundSlider.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);           

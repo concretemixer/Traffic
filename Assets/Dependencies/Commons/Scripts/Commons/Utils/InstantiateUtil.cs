@@ -38,7 +38,7 @@ namespace Commons.Utils
             if (go == null)
                 go = new GameObject(path[0]);
             for (var i = 1; i < path.Length; i++) {
-                var finded = go.transform.FindChild(path[i]);
+                var finded = go.transform.Find(path[i]);
                 GameObject current;
                 if (finded == null) {
                     current = new GameObject(path[i]);
