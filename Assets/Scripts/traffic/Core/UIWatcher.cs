@@ -43,7 +43,7 @@ namespace Traffic.Core {
                     w = Math.Max(Screen.width, Screen.height);
                     h = Math.Min(Screen.width, Screen.height);
                 }
-#if UNITY_STANDALONE
+#if UNITY_STANDALONE || UNITY_WEBGL
                 w = Screen.width;
                 h = Screen.height;
 #endif

@@ -72,7 +72,7 @@ namespace Traffic.MVCS
                 .To<CreateServiceItemsCommand>()
                 .To<InitUICommand>()
                 .To<InitializeLocalyticsCommand>()
-                // .To<InitializeUnityAdsCommand>()
+                 //.To<InitializeUnityAdsCommand>()
                 .To<InitializeAppodealCommand>()
                 .To<LoadConfigCommand>()
                 .To<InitSocialNetworkCommand>()

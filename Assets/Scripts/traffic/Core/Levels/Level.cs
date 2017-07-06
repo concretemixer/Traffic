@@ -90,7 +90,7 @@ public class Level : MonoBehaviour  {
 
 
 
-#if UNITY_STANDALONE
+#if UNITY_STANDALONE || UNITY_WEBGL 
 
         if (Screen.width > Screen.height)
         {
