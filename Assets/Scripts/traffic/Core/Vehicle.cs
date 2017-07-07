@@ -330,6 +330,14 @@ public class Vehicle : MonoBehaviour {
 
 	void OnCollisionEnter (Collision col)
 	{
+        if (col.gameObject.tag == "VehicleAI" || gameObject.tag== "VehicleAI")
+        {
+            GetComponent<Rigidbody>().drag = 10;
+            GetComponent<Rigidbody>().angularDrag = 10;
+            Invoke("SelfDestroy", 1);
+                return;
+        }
+
         if (col.gameObject.tag == "Vehicle" || col.gameObject.tag == "Obstacle") 
 		{
           
@@ -356,12 +364,7 @@ public class Vehicle : MonoBehaviour {
           //  Debug.Log(gameObject.name +":"+ Time.time);
 		}
 
-		if (col.gameObject.tag == "VehicleAI") 
-		{
-			GetComponent<Rigidbody> ().drag = 10;
-			GetComponent<Rigidbody> ().angularDrag = 10;
-			Invoke("SelfDestroy",1);
-		}
+
 	}
 
 	public void SlowDown()

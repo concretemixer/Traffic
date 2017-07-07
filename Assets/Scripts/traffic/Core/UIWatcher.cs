@@ -28,6 +28,9 @@ namespace Traffic.Core {
 
         void Update()
         {
+#if UNITY_WEBGL
+            return;
+#endif
             if (orientation != Screen.orientation)
             {
                 int w = Screen.width;

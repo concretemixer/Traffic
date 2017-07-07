@@ -54,7 +54,7 @@ namespace Traffic.MVCS.Views.UI
 
         void Update()
         {
-            UnityEngine.Debug.Log("Update");
+         //   UnityEngine.Debug.Log("Update");
 
             if (view.Step < 0)
                 return;
@@ -114,7 +114,7 @@ namespace Traffic.MVCS.Views.UI
                 screenPos.x /= (float)Camera.main.pixelWidth;
                 screenPos.y /= (float)Camera.main.pixelHeight;
 
-                UnityEngine.Debug.Log(screenPos);
+                //UnityEngine.Debug.Log(screenPos);
 
 
                 float w = view.gameObject.GetComponent<RectTransform>().rect.width;
@@ -127,21 +127,17 @@ namespace Traffic.MVCS.Views.UI
 
               //  UnityEngine.Debug.Log("k = " + k);
 
-                if (view.Step == 4)
-                {
-                    view.SetHandPos(w + 90 * k, h + 50.0f * (float)Math.Sqrt(k));
-                    view.SetHandAlpha(2 * (1 - k * k));
-                }
-                else if (view.Step == 6 || view.Step == 7)
+                if (view.Step == 6 || view.Step == 7)
                 {
                     view.SetHandAlpha(0);
                 }
                 else
                 {
-                    float k2 = 1 - (float)Math.Sin(Math.PI * k);
+                    float k2 = 1 - (float)Math.Sin(Math.PI * k);                    
 
-                    view.SetHandPos(w - 10 * k2, h + 10.0f * k2);
+                    view.SetHandPos(w - 10 * k2, h + 10.0f * k2, view.Step != 4);
                     view.SetHandAlpha(1);
+                    view.SetHandButtonsAlpha(0.8f*k*k);
                 }
                 view.SetShadePos(w, h);
 

@@ -116,6 +116,8 @@ namespace Traffic.MVCS.Views.UI
 
         public override void Layout(int width, int height)
         {
+            UnityEngine.Debug.Log("Layout " + width + "," + height);
+
             base.Layout(width, height);
 
             float ratio = (float)height / (float)width;

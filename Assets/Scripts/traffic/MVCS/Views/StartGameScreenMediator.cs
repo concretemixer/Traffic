@@ -4,7 +4,7 @@ using Commons.UI;
 using UnityEngine;
 
 using strange.extensions.mediation.impl;
-using Commons.SN.Facebook;
+//using Commons.SN.Facebook;
 using Traffic.MVCS.Services;
 
 namespace Traffic.MVCS.Views.UI
@@ -32,8 +32,8 @@ namespace Traffic.MVCS.Views.UI
         [Inject]
         public SwitchToSettingsScreenSignal toSettingsSignal { get; set; }
 
-        [Inject]
-        public FacebookSN facebook { private get; set; }
+        //[Inject]
+        //public FacebookSN facebook { private get; set; }
         
         public AnalyticsCollector analytics { private get; set; }
 
@@ -196,6 +196,7 @@ namespace Traffic.MVCS.Views.UI
         void connectFBClickHandler()
         {
             
+            /*
             if (facebook.IsLoggedIn)
             {
                 var message = UI.Show<InfoMessageView>(UIMap.Id.InfoMessage);
@@ -208,7 +209,7 @@ namespace Traffic.MVCS.Views.UI
                 facebook.Login().Done(
                     () => analytics.FacebookConnected()
                 );
-            } 
+            } */
         }
 
 

@@ -112,6 +112,12 @@ namespace Traffic.MVCS.Views.UI
             }
             this.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
             this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+
+#if UNITY_WEBGL
+            homeButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-240, 10);
+            //homeButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-342, 10);
+            shareButton.gameObject.SetActive(false);
+#endif
         }
     }
 }

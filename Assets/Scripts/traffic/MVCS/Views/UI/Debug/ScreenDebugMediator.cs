@@ -1,5 +1,5 @@
 using Commons.SN;
-using Commons.SN.Facebook;
+//using Commons.SN.Facebook;
 using Commons.Utils;
 using strange.extensions.mediation.impl;
 using Traffic.MVCS.Commands.Signals;
@@ -11,8 +11,8 @@ namespace Traffic.MVCS.Views.UI.Debug
         [Inject]
         public ScreenDebugView view { set; private get; }
 
-        [Inject]
-        public FacebookSN facebook { set; private get; }
+        //[Inject]
+        //public FacebookSN facebook { set; private get; }
 
         [Inject]
         public LoginCompleteSignal loginComplete { private get; set; }
@@ -37,7 +37,7 @@ namespace Traffic.MVCS.Views.UI.Debug
         }
 
         void postClickHandler()
-        {
+        {     /*
             var postData = new PostData()
             {
                 Link = "https://example.com/myapp/?storyID=thelarch",
@@ -57,7 +57,7 @@ namespace Traffic.MVCS.Views.UI.Debug
                 {
                     Loggr.Log(e.Message);
                 }
-            );
+            );  */
         }
 
         void onFriendsLoaded(ISNUser[] _friends)

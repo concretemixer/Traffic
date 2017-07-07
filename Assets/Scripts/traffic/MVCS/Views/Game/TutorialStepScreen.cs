@@ -14,6 +14,13 @@ namespace Traffic.MVCS.Views.UI
         Image handImage;
 
         [SerializeField]
+        Image handImageL;
+
+        [SerializeField]
+        Image handImageR;
+
+
+        [SerializeField]
         Image frameImage;
 
         [SerializeField]
@@ -53,10 +60,12 @@ namespace Traffic.MVCS.Views.UI
             this.step = step;
         }
 
-        public void SetHandPos(float x, float y)
+        public void SetHandPos(float x, float y, bool left)
         {
             handImage.gameObject.SetActive(true);
-            handImage.GetComponent<RectTransform>().anchoredPosition = new Vector3(x, y, 0);            
+            handImage.GetComponent<RectTransform>().anchoredPosition = new Vector3(x, y, 0);
+            handImageL.gameObject.SetActive(left);
+            handImageR.gameObject.SetActive(!left);
         }
 
         public void SetShadePos(float x, float y)
@@ -105,6 +114,12 @@ namespace Traffic.MVCS.Views.UI
         public void SetHandAlpha(float a)
         {
             handImage.GetComponent<Image>().color = new Color(1, 1, 1, a);
+        }
+
+        public void SetHandButtonsAlpha(float a)
+        {
+            handImageR.GetComponent<Image>().color = new Color(1, 1, 1, a);
+            handImageL.GetComponent<Image>().color = new Color(1, 1, 1, a);
         }
 
         public override void Layout(int width, int height)

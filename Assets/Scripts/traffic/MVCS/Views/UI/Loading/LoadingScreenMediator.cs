@@ -17,7 +17,7 @@ namespace Traffic.MVCS.Views.UI.Loading
             view.Layout(Screen.width, Screen.height);
             view.ShowPreloader(true);
 
-            timerDoneSignal = DummyTimer.WaitFor(1000, "WaitTimer");
+            timerDoneSignal = DummyTimer.WaitFor(0, "WaitTimer");
             timerDoneSignal.AddListener(timerDoneHandler);
         }
 

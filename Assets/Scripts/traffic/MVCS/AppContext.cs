@@ -71,11 +71,11 @@ namespace Traffic.MVCS
             commandBinder.Bind<StartupSignal>().InSequence()
                 .To<CreateServiceItemsCommand>()
                 .To<InitUICommand>()
-                .To<InitializeLocalyticsCommand>()
+                //.To<InitializeLocalyticsCommand>()
                  //.To<InitializeUnityAdsCommand>()
-                .To<InitializeAppodealCommand>()
+                //.To<InitializeAppodealCommand>()
                 .To<LoadConfigCommand>()
-                .To<InitSocialNetworkCommand>()
+                //.To<InitSocialNetworkCommand>()
                 .To<StartupCommand>();
 
             commandBinder.Bind<StartLevelSignal>().To<StartLevelCommand>();
@@ -117,7 +117,7 @@ namespace Traffic.MVCS
         {
             injectionBinder.Bind<ILevelModel>().To<LevelModel>();
             injectionBinder.Bind<ILevelListModel>().To<LevelListModel>().ToSingleton();
-#if UNITY_STANDALONE
+#if UNITY_STANDALONE || UNITY_WEBGL
             injectionBinder.Bind<IAPService>().To<IAPServiceDummy>().ToSingleton();
 #else
             injectionBinder.Bind<IAPService>().To<IAPServiceUnity>().ToSingleton();

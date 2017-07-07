@@ -1,8 +1,8 @@
 using strange.extensions.command.impl;
 using System;
-using Commons.SN.Facebook;
+//using Commons.SN.Facebook;
 using Commons.Utils;
-using Traffic.MVCS.Commands.SN;
+//using Traffic.MVCS.Commands.SN;
 using Traffic.MVCS.Commands.Signals;
 
 namespace Traffic.MVCS.Commands.Init
@@ -19,6 +19,10 @@ namespace Traffic.MVCS.Commands.Init
             injectionBinder.Bind<FacebookSN>().ToSingleton();
             return;
 #endif
+
+#if UNITY_WEBGL
+            return;
+#else
             Retain();
 
             injectionBinder.Bind<FacebookSN>().ToSingleton();
@@ -32,6 +36,7 @@ namespace Traffic.MVCS.Commands.Init
 
             commandBinder.Bind<GetSNFriendsSignal>().To<GetFrindsCommand>();
             injectionBinder.Bind<FriendsLoadedSignal>().ToSingleton();
+#endif
         }
 
         void onInitFail(Exception _exception)

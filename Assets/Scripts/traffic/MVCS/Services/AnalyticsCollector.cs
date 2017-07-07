@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Commons.SN.Facebook;
+//using Commons.SN.Facebook;
 using Collector = UnityEngine.Analytics.Analytics;
 using LocalyticsUnity;
 using UnityEngine;
@@ -10,8 +10,8 @@ namespace Traffic.MVCS.Services
 {
     public class AnalyticsCollector
     {
-        [Inject]
-        public FacebookSN facebook { private get; set; }
+//        [Inject]
+        //public FacebookSN facebook { private get; set; }
 
         [Inject]
         public ILevelListModel levels { get; set; }

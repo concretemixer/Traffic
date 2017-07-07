@@ -54,8 +54,9 @@ namespace Traffic.Core
                 {
                     transform.localRotation = Quaternion.Euler(0, 0, -70.0f);
 
-                    if (flash.GetComponent<ParticleSystem>().isPlaying)
-                        flash.GetComponent<ParticleSystem>().Stop();
+                    if (flash != null && flash.GetComponent<ParticleSystem>() != null)
+                        if (flash.GetComponent<ParticleSystem>().isPlaying)
+                            flash.GetComponent<ParticleSystem>().Stop();
 
                 }
             }
@@ -65,8 +66,9 @@ namespace Traffic.Core
                 if (lifetime > 7.5f)
                 {
                     transform.localRotation = Quaternion.Euler(0, 0, -(8.5f - lifetime)*66.0f);
-                    if (!flash.GetComponent<ParticleSystem>().isPlaying)
-                        flash.GetComponent<ParticleSystem>().Play();
+                    if (flash!=null && flash.GetComponent<ParticleSystem>()!=null)
+                        if (!flash.GetComponent<ParticleSystem>().isPlaying)
+                            flash.GetComponent<ParticleSystem>().Play();
                 }
 
                 if (lifetime > 8.5f)

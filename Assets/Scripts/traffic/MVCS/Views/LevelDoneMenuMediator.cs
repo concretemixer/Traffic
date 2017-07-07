@@ -6,7 +6,7 @@ using Commons.Utils;
 using UnityEngine;
 
 using strange.extensions.mediation.impl;
-using Commons.SN.Facebook;
+//using Commons.SN.Facebook;
 using Commons.SN;
 using Traffic.MVCS.Services;
 using Traffic.Components;
@@ -70,8 +70,8 @@ namespace Traffic.MVCS.Views.UI
         [Inject]
         public IAPService iapService { get; set; }
 
-        [Inject]
-        public FacebookSN facebook { private get; set; }
+        //[Inject]
+        //public FacebookSN facebook { private get; set; }
 
         [Inject]
         public AnalyticsCollector analytics { private get; set; }
@@ -162,6 +162,7 @@ namespace Traffic.MVCS.Views.UI
 
         void shareHandler()
         {
+            /*
             Loggr.Log("Click to Facebook share.");
             analytics.FacebookShareStart();
 
@@ -177,7 +178,7 @@ namespace Traffic.MVCS.Views.UI
 
             facebook.Post(postData).Done(
                 () => analytics.FacebookShareComplete()
-            );
+            );*/
         }
 
         public override void OnRemove()

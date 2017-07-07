@@ -51,6 +51,10 @@ namespace Traffic.MVCS.Views.UI.HUD
 
         public void SetTries(int left,int max)
         {
+#if UNITY_WEBGL
+            this.tries.text = "";
+            return;
+#endif
             if (max==int.MaxValue)
                 this.tries.text = "∞";
             else
