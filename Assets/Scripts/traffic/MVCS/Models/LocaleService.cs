@@ -154,10 +154,10 @@ namespace Traffic.MVCS.Models
             if (!string.IsNullOrEmpty(langStr))
                 return (SystemLanguage)Enum.Parse(typeof(SystemLanguage), langStr);
 
-            if (map.ContainsKey(Application.systemLanguage))
-                return Application.systemLanguage;
+//            if (map.ContainsKey(Application.systemLanguage))
+  //              return Application.systemLanguage;
 
-            return SystemLanguage.English;
+            return SystemLanguage.Russian;
         }
 
 
