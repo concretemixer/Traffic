@@ -70,6 +70,7 @@ namespace Traffic.MVCS
             // init commands
             commandBinder.Bind<StartupSignal>().InSequence()
                 .To<CreateServiceItemsCommand>()
+                .To<InitDBCommand>()
                 .To<InitUICommand>()
                 //.To<InitializeLocalyticsCommand>()
                  //.To<InitializeUnityAdsCommand>()

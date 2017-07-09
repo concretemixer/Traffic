@@ -177,6 +177,8 @@ namespace Traffic.MVCS.Views.Game
             else if (level.Score >= levels.LevelConfigs[levels.CurrentLevelIndex].twoStarsScore)
                 stars = 2;
 
+            if (levels.GetLevelScore(levels.CurrentLevelIndex) < (int)level.Score)
+                levels.SetLevelScore(levels.CurrentLevelIndex, (int)level.Score);
 
             if (levels.GetLevelState(levels.CurrentLevelIndex) != LevelState.PassedThreeStars)
             {

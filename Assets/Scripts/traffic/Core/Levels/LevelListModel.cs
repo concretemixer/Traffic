@@ -74,7 +74,8 @@ namespace Traffic.Core
             if (index >= LevelNames.Length)
                 return LevelState.NoLevel;
 
-            LevelState result = (LevelState)PlayerPrefs.GetInt("progress.2." + index.ToString(), 0);
+            string user_id = PlayerPrefs.GetString("user_id","0");
+            LevelState result = (LevelState)PlayerPrefs.GetInt("progress.2." + user_id + "." + index.ToString(), 0);
             if (result == LevelState.Locked && index % 9 == 0)
                 result = LevelState.Playable;
 
@@ -83,9 +84,21 @@ namespace Traffic.Core
 
         public void SetLevelState(int index, LevelState state)
         {
-            PlayerPrefs.SetInt("progress.2." + index.ToString(), (int)state);
+            string user_id = PlayerPrefs.GetString("user_id","0");
+            PlayerPrefs.SetInt("progress.2." + user_id +"."+ index.ToString(), (int)state);
         }
 
+        public int GetLevelScore(int index)
+        {
+            string user_id = PlayerPrefs.GetString("user_id","0");
+            return PlayerPrefs.GetInt("score.2." + user_id + "." + index.ToString(), 0);
+        }
+
+        public void SetLevelScore(int index, int score)
+        {
+            string user_id = PlayerPrefs.GetString("user_id","0");
+            PlayerPrefs.SetInt("score.2." + user_id + "." + index.ToString(), score);
+        }
 
         public LevelListModel()
         {
