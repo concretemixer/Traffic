@@ -86,9 +86,9 @@ namespace Traffic.Core
         }
 
         LevelState GetLevelState(int index);
-        void SetLevelState(int index, LevelState state);
+        void SetLevelState(int index, LevelState state, int score);
         int GetLevelScore(int index);
-        void SetLevelScore(int index, int score);
+        //void SetLevelScore(int index, int score);
 
 
     }

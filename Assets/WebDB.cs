@@ -22,6 +22,7 @@ namespace Traffic
 
         public int state;
         public int score;
+        public int attempts;
     }
 
     public class LevelScoreData
@@ -107,12 +108,14 @@ namespace Traffic
         public void UpdateState(int index, int state, int score)
         {
             UnityWebRequest www = UnityWebRequest.Get(URL + "/update.php?user_id="+userId+"&level="+index+"&score="+score+"&state="+state);
+            Debug.Log("Update level " + www.url);
             www.Send();
         }
 
         public void TryLevel(int index)
         {
             UnityWebRequest www = UnityWebRequest.Get(URL + "/try.php?user_id=" + userId + "&level=" + index);
+            Debug.Log("Try level " + www.url);
             www.Send();
         }
 

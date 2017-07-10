@@ -87,15 +87,15 @@ namespace Traffic.Core
             return result;
         }
 
-        public void SetLevelState(int index, LevelState state)
+        public void SetLevelState(int index, LevelState state, int score)
         {
             string user_id = PlayerPrefs.GetString("user_id","0");
             PlayerPrefs.SetInt("progress.2." + user_id +"."+ index.ToString(), (int)state);
-
+            PlayerPrefs.SetInt("score.2." + user_id + "." + index.ToString(), score);
             WebDB webDB = stage.GetComponentInParent<WebDB>();
             if (webDB != null)
             {
-                webDB.UpdateState(index, (int)state, 0);
+                webDB.UpdateState(index, (int)state, score);
             }
         }
 
@@ -105,12 +105,13 @@ namespace Traffic.Core
             return PlayerPrefs.GetInt("score.2." + user_id + "." + index.ToString(), 0);
         }
 
+        /*
         public void SetLevelScore(int index, int score)
         {
             string user_id = PlayerPrefs.GetString("user_id","0");
             PlayerPrefs.SetInt("score.2." + user_id + "." + index.ToString(), score);
         }
-
+          */
         public LevelListModel()
         {
             CurrentLevelIndex = 0;

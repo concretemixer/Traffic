@@ -177,21 +177,17 @@ namespace Traffic.MVCS.Views.Game
             else if (level.Score >= levels.LevelConfigs[levels.CurrentLevelIndex].twoStarsScore)
                 stars = 2;
 
-            if (levels.GetLevelScore(levels.CurrentLevelIndex) < (int)level.Score)
-                levels.SetLevelScore(levels.CurrentLevelIndex, (int)level.Score);
+            int score = Math.Max((int)levels.GetLevelScore(levels.CurrentLevelIndex), (int)level.Score);               
 
-            if (levels.GetLevelState(levels.CurrentLevelIndex) != LevelState.PassedThreeStars)
-            {
-                if (stars == 3)
-                    levels.SetLevelState(levels.CurrentLevelIndex, LevelState.PassedThreeStars);
-                else if (stars == 2)                
-                    levels.SetLevelState(levels.CurrentLevelIndex, LevelState.PassedTwoStars);                
-                else if (levels.GetLevelState(levels.CurrentLevelIndex) != LevelState.PassedTwoStars)
-                        levels.SetLevelState(levels.CurrentLevelIndex, LevelState.PassedOneStar);
-            }             
+            if (stars == 3)
+                levels.SetLevelState(levels.CurrentLevelIndex, LevelState.PassedThreeStars,score);
+            else if (stars == 2 && (levels.GetLevelState(levels.CurrentLevelIndex) != LevelState.PassedThreeStars))
+                levels.SetLevelState(levels.CurrentLevelIndex, LevelState.PassedTwoStars,score);                
+            else 
+                levels.SetLevelState(levels.CurrentLevelIndex, LevelState.PassedOneStar,score);
 
-            if (levels.GetLevelState(levels.CurrentLevelIndex + 1) == LevelState.Locked)
-                levels.SetLevelState(levels.CurrentLevelIndex + 1, LevelState.Playable);
+          //  if (levels.GetLevelState(levels.CurrentLevelIndex + 1) == LevelState.Locked)
+          //      levels.SetLevelState(levels.CurrentLevelIndex + 1, LevelState.Playable, 0);
 
 
             analitics.SetDimentions();

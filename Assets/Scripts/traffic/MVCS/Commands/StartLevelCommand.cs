@@ -102,11 +102,7 @@ namespace Traffic.MVCS.Commands
 
             analitics.LevelStart(levelIndex);
 
-            WebDB webDB = stage.GetComponentInParent<WebDB>();
-            if (webDB != null)
-            {
-                webDB.TryLevel(levelIndex);
-            }
+
         }
 
         public override void Execute()
@@ -127,8 +123,13 @@ namespace Traffic.MVCS.Commands
 
             analitics.LevelStart(levelIndex);
 
+            WebDB webDB = stage.GetComponentInParent<WebDB>();
+            if (webDB != null)
+            {
+                webDB.TryLevel(levelIndex);
+            }
             SceneManager.LoadScene(levels.LevelNames[levelIndex], LoadSceneMode.Additive);                
-	}
+	    }
         /*
         public override void Execute()
         {
