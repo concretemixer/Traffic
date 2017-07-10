@@ -672,6 +672,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1740177640}
   - component: {fileID: 1740177641}
+  - component: {fileID: 1740177642}
   m_Layer: 0
   m_Name: EntryPoint
   m_TagString: Untagged
@@ -709,6 +710,17 @@ MonoBehaviour:
   ui: {fileID: 1429904453}
   stage: {fileID: 1267618280}
   stageMenu: {fileID: 60883039}
+--- !u!114 &1740177642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1740177639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bc1e50a89fa4a94897b4d68a4ce63ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1896510437
 GameObject:
   m_ObjectHideFlags: 0

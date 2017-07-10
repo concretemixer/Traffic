@@ -1,6 +1,8 @@
 using Traffic.MVCS.Commands.Signals;
 using UnityEngine;
 using System;
+using Traffic.Components;
+
 
 namespace Traffic.Core
 {
@@ -22,6 +24,9 @@ namespace Traffic.Core
             get;
             set;
         }
+
+        [Inject(EntryPoint.Container.Stage)]
+        public GameObject stage { get; set; }
 
         int _TriesLeft;
         public int TriesLeft
@@ -86,6 +91,12 @@ namespace Traffic.Core
         {
             string user_id = PlayerPrefs.GetString("user_id","0");
             PlayerPrefs.SetInt("progress.2." + user_id +"."+ index.ToString(), (int)state);
+
+            WebDB webDB = stage.GetComponentInParent<WebDB>();
+            if (webDB != null)
+            {
+                webDB.UpdateState(index, (int)state, 0);
+            }
         }
 
         public int GetLevelScore(int index)

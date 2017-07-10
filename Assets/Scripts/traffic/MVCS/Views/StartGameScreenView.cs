@@ -159,6 +159,15 @@ namespace Traffic.MVCS.Views.UI
             connectButton.gameObject.SetActive(false);
             startButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-105, 10);
             optionsButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-190, -485);
+
+            startButton.GetComponent<Button>().interactable = PlayerPrefs.GetInt("progress_ok", 0) == 1;
+#endif
+        }
+
+        void Update()
+        {
+#if UNITY_WEBGL
+            startButton.GetComponent<Button>().interactable = PlayerPrefs.GetInt("progress_ok", 0) == 1;
 #endif
         }
     }

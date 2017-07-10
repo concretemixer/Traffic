@@ -31,7 +31,7 @@ namespace Traffic.MVCS.Commands
         [Inject(EntryPoint.Container.Stage)]
         public GameObject stage { get; set; }
 
-      
+        string URL = "";
 
         public override void Execute()
         {
@@ -79,7 +79,9 @@ namespace Traffic.MVCS.Commands
 
             EntryPoint entryPoint = stage.GetComponentInParent<EntryPoint>();
 
-            WWW req = new WWW("http://trafficstorm.concretemixergames.com/webgl/progress.php");
+
+
+            WWW req = new WWW(URL+"/progress.php");
             entryPoint.StartCoroutine(WaitForRequest(req));
 
             do
@@ -124,11 +126,17 @@ namespace Traffic.MVCS.Commands
 
         Dictionary<string, string> ParseUrlParams()
         {
-            string Application_absoluteURL = "https://trafficstorm.concretemixergames.com/webgl?api_url=https://api.vk.com/api.php&api_id=6104047&api_settings=257&viewer_id=1515540&viewer_type=2&sid=f412b52e22946204d01eb9938a87f6f3d2c250dcb281938d51d59b0e1608f7e6deb6ac407408b1911eebf&secret=a6fe816344&access_token=35711d15cf4ccecf5d39b50fda2db717f56498b3bd48d2369cff877dbdb574a21472bd9264b059457f408&user_id=1515540&group_id=0&is_app_user=1&auth_key=68fdd07734e4843281f64caaeb88a98c&language=0&parent_language=0&is_secure=1&ads_app_id=6104047_f1aa53f3f187160325&referrer=menu&lc_name=1425d72e&hash=";
+            string Application_absoluteURL = "http://trafficstorm.concretemixergames.com/webgl?api_url=https://api.vk.com/api.php&api_id=6104047&api_settings=257&viewer_id=1515540&viewer_type=2&sid=f412b52e22946204d01eb9938a87f6f3d2c250dcb281938d51d59b0e1608f7e6deb6ac407408b1911eebf&secret=a6fe816344&access_token=35711d15cf4ccecf5d39b50fda2db717f56498b3bd48d2369cff877dbdb574a21472bd9264b059457f408&user_id=1515540&group_id=0&is_app_user=1&auth_key=68fdd07734e4843281f64caaeb88a98c&language=0&parent_language=0&is_secure=1&ads_app_id=6104047_f1aa53f3f187160325&referrer=menu&lc_name=1425d72e&hash=";
             Dictionary<string, string> res = new Dictionary<string, string>();
             if (!Application_absoluteURL.Contains("?"))
+            {
+                URL = Application_absoluteURL;
                 return res;
+            }
             string p = Application_absoluteURL.Split(new char[] { '?' }, StringSplitOptions.None)[1];
+
+            URL = Application_absoluteURL.Split(new char[] { '?' }, StringSplitOptions.None)[0];
+
             foreach (var item in p.Split(new char[] { '&' }, StringSplitOptions.None))
             {
                 string[] keyval = item.Split(new char[] { '=' }, StringSplitOptions.None);

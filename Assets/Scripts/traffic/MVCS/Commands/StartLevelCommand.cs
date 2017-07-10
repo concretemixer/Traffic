@@ -101,6 +101,12 @@ namespace Traffic.MVCS.Commands
             UI.Show(UIMap.Id.ScreenHUD);
 
             analitics.LevelStart(levelIndex);
+
+            WebDB webDB = stage.GetComponentInParent<WebDB>();
+            if (webDB != null)
+            {
+                webDB.TryLevel(levelIndex);
+            }
         }
 
         public override void Execute()
