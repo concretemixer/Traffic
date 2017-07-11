@@ -47,10 +47,6 @@ namespace Traffic
                 userId = urlParams["user_id"];
 
                 PlayerPrefs.SetString("user_id", userId);
-                for (int a = 0; a < 27; a++)
-                {
-                    PlayerPrefs.SetInt("progress.2." + userId + "." + a.ToString(), 0);
-                }
 
                 RequestProgress();
             }
@@ -98,6 +94,12 @@ namespace Traffic
         {
             var progress = Newtonsoft.Json.JsonConvert.DeserializeObject<LevelScoreData>(json);
 
+            for (int a = 0; a < 27; a++)
+            {
+                PlayerPrefs.SetInt("progress.2." + userId + "." + a.ToString(), 0);
+                PlayerPrefs.SetInt("score.2." + userId + "." + a.ToString(), 0);
+            }
+
             foreach (string key in progress.levels.Keys)
             {
                 PlayerPrefs.SetInt("progress.2." + userId + "." + key, progress.levels[key].state);
@@ -105,18 +107,30 @@ namespace Traffic
             }
         }
 
+        IEnumerator GetText(string url)
+        {
+            Debug.Log("WWW: " + url);
+            UnityWebRequest www = UnityWebRequest.Get(url);
+            yield return www.Send();
+
+            if (www.isError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log(www.downloadHandler.text);
+            }
+        }
+
         public void UpdateState(int index, int state, int score)
         {
-            UnityWebRequest www = UnityWebRequest.Get(URL + "/update.php?user_id="+userId+"&level="+index+"&score="+score+"&state="+state);
-            Debug.Log("Update level " + www.url);
-            www.Send();
+            StartCoroutine(GetText(URL + "/update.php?user_id=" + userId + "&level=" + index + "&score=" + score + "&state=" + state));
         }
 
         public void TryLevel(int index)
         {
-            UnityWebRequest www = UnityWebRequest.Get(URL + "/try.php?user_id=" + userId + "&level=" + index);
-            Debug.Log("Try level " + www.url);
-            www.Send();
+            StartCoroutine(GetText(URL + "/try.php?user_id=" + userId + "&level=" + index));
         }
 
         Dictionary<string, string> ParseUrlParams()

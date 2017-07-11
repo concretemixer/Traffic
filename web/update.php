@@ -28,7 +28,7 @@ if (mysqli_num_rows($result)==0) {
     $sql = "INSERT INTO `progress`(`user`, `level`, `state`, `score`, `attempts`) VALUES ($user_id,$level,$state,$score,0)";
 }
 else {
-    $sql = "UPDATE `progress` SET `state`=$state,`score`=$score WHERE user=$user_id and level=$level and score<$score";
+    $sql = "UPDATE `progress` SET `state`=$state,`score`=$score WHERE user=$user_id and level=$level";
 }
 
 @mysqli_query($db, $sql);

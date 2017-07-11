@@ -81,8 +81,13 @@ namespace Traffic.Core
 
             string user_id = PlayerPrefs.GetString("user_id","0");
             LevelState result = (LevelState)PlayerPrefs.GetInt("progress.2." + user_id + "." + index.ToString(), 0);
-            if (result == LevelState.Locked && index % 9 == 0)
-                result = LevelState.Playable;
+            if (result == LevelState.Locked) {
+                if (index % 9 == 0)
+                    return LevelState.Playable;
+                LevelState prev = (LevelState)PlayerPrefs.GetInt("progress.2." + user_id + "." + (index-1).ToString(), 0);
+                if (prev==LevelState.PassedOneStar || prev == LevelState.PassedTwoStars|| prev == LevelState.PassedThreeStars)
+                    return LevelState.Playable;
+            }
 
             return result;
         }

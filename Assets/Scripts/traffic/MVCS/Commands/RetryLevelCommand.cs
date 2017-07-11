@@ -24,8 +24,15 @@ namespace Traffic.MVCS.Commands
             get;
             set;
         }
-        
-		public override void Execute()
+
+        [Inject]
+        public ILevelListModel levels
+        {
+            get;
+            set;
+        }
+
+        public override void Execute()
 		{
             level.Score = 0;
             level.Progress = 0;
@@ -57,7 +64,14 @@ namespace Traffic.MVCS.Commands
             UI.Show(UIMap.Id.ScreenHUD);	
             UI.Hide(UIMap.Id.LevelFailedMenu);
             UI.Hide(UIMap.Id.TutorialFailedMenu);
-		}
+
+            
+            WebDB webDB = stage.GetComponentInParent<WebDB>();
+            if (webDB != null)
+            {
+                webDB.TryLevel(levels.CurrentLevelIndex);
+            }
+        }
 	}
 }
 
