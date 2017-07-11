@@ -35,13 +35,14 @@ namespace Traffic
     {
         string URL = "";
         string userId = "";
+        Dictionary<string, string> urlParams = new Dictionary<string, string>();
 
         public void Start()
         {
 #if UNITY_WEBGL
             PlayerPrefs.SetInt("progress_ok", 0);
 
-            Dictionary<string, string> urlParams = ParseUrlParams();
+            urlParams = ParseUrlParams();
             if (urlParams.ContainsKey("user_id"))
             {
                 userId = urlParams["user_id"];
@@ -131,6 +132,18 @@ namespace Traffic
         public void TryLevel(int index)
         {
             StartCoroutine(GetText(URL + "/try.php?user_id=" + userId + "&level=" + index));
+        }
+
+        private const string serviceKey = "55a4faec55a4faec55a4faec2f55f9d903555a455a4faec0cfaaf6f4d842328c9d6aefe";
+
+        public void LogTutorialAchievement()
+        {
+            StartCoroutine(GetText(URL + "/achievement.php?user_id=" + userId + "&activity_id=3&value=0&access_token="+serviceKey));
+        }
+
+        public void LogLevelAchievement(int count)
+        {
+            StartCoroutine(GetText(URL + "/achievement.php?user_id=" + userId + "&activity_id=1&value="+count+"&access_token=" + serviceKey));
         }
 
         Dictionary<string, string> ParseUrlParams()

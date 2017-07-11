@@ -101,6 +101,11 @@ namespace Traffic.Core
             if (webDB != null)
             {
                 webDB.UpdateState(index, (int)state, score);
+                if (index == 0 && (state == LevelState.PassedOneStar || state == LevelState.PassedThreeStars || state == LevelState.PassedTwoStars))
+                    webDB.LogTutorialAchievement();
+                int levels = GetPassedLevelCount();
+                if (levels>1)
+                    webDB.LogLevelAchievement(levels);
             }
         }
 
@@ -108,6 +113,19 @@ namespace Traffic.Core
         {
             string user_id = PlayerPrefs.GetString("user_id","0");
             return PlayerPrefs.GetInt("score.2." + user_id + "." + index.ToString(), 0);
+        }
+
+        private int GetPassedLevelCount()
+        {
+            string user_id = PlayerPrefs.GetString("user_id", "0");
+            int result = 0;
+            for (int a = 0; a < 27; a++)
+            {
+                LevelState state = (LevelState)PlayerPrefs.GetInt("progress.2." + user_id + "." + a, 0);
+                if (state == LevelState.PassedOneStar || state == LevelState.PassedThreeStars || state == LevelState.PassedTwoStars)
+                    result++;
+            }
+            return result;
         }
 
         /*
