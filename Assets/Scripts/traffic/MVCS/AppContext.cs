@@ -94,9 +94,9 @@ namespace Traffic.MVCS
             commandBinder.Bind<ShowAdsSignal>().InSequence().
                 To<InitializeUnityAdsCommand>().
                 To<ShowAdsCommand>();*/
-            commandBinder.Bind<ShowAdsSignal>().InSequence().                
-                To<ShowAppodealAdsCommand>();
-            commandBinder.Bind<AddLivesForAdsSignal>().To<AddLivesForAdsCommad>();
+           // commandBinder.Bind<ShowAdsSignal>().InSequence().                
+          //      To<ShowAppodealAdsCommand>();
+          //  commandBinder.Bind<AddLivesForAdsSignal>().To<AddLivesForAdsCommad>();
         }
 
         void mapSignals()

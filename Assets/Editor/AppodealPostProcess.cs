@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#if UNITY_IPHONE
+
+using UnityEngine;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using Unity.Appodeal.Xcode;
@@ -9,16 +11,16 @@ using System.Diagnostics;
 using System.IO;
 using System.Collections;
 
-#if UNITY_IPHONE
+
 public class AppodealPostProcess : MonoBehaviour
 {
 	private static string suffix = ".framework";
 	private static string absoluteProjPath;
 
-	#if UNITY_4_0 || UNITY_4_1 || UNITY_4_2 || UNITY_4_3 || UNITY_4_4 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7
+#if UNITY_4_0 || UNITY_4_1 || UNITY_4_2 || UNITY_4_3 || UNITY_4_4 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7
 	private static string AppodealFramework = "Plugins/iOS/Appodeal.framework";
 	private static string AppodealBundle = "Plugins/iOS/Appodeal.bundle";
-	#endif
+#endif
 
 	private static string[] frameworkList = new string[] {
 		"Twitter", "AdSupport", "AudioToolbox",
@@ -79,14 +81,14 @@ public class AppodealPostProcess : MonoBehaviour
 			}
 		}
 
-		#if UNITY_4_0 || UNITY_4_1 || UNITY_4_2 || UNITY_4_3 || UNITY_4_4 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7
+#if UNITY_4_0 || UNITY_4_1 || UNITY_4_2 || UNITY_4_3 || UNITY_4_4 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7
 		project.AddBuildProperty (target, "FRAMEWORK_SEARCH_PATHS", "$(PROJECT_DIR)/Frameworks/Plugins/iOS");
 		project.SetBuildProperty (target, "LIBRARY_SEARCH_PATHS", "$(SRCROOT)/Libraries");
 		CopyAndReplaceDirectory ("Assets/" + AppodealFramework, Path.Combine(buildPath, "Frameworks/" + AppodealFramework));
 		project.AddFileToBuild(target, project.AddFile("Frameworks/" + AppodealFramework, "Frameworks/" + AppodealFramework, PBXSourceTree.Source));
 		CopyAndReplaceDirectory ("Assets/" + AppodealBundle, Path.Combine(buildPath, "Frameworks/" + AppodealBundle));
 		project.AddFileToBuild(target,  project.AddFile("Frameworks/" + AppodealBundle,  "Frameworks/" + AppodealBundle, PBXSourceTree.Source));
-		#endif
+#endif
 
 		File.WriteAllText (projPath, project.WriteToString());
 	}
@@ -110,14 +112,14 @@ public class AppodealPostProcess : MonoBehaviour
 
 	private static void UpdatePlist (string buildPath)
 	{
-		#if UNITY_4_0 || UNITY_4_1 || UNITY_4_2 || UNITY_4_3 || UNITY_4_4 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7
+#if UNITY_4_0 || UNITY_4_1 || UNITY_4_2 || UNITY_4_3 || UNITY_4_4 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7
 		string plistPath = Path.Combine (buildPath, "Info.plist");
 		PlistDocument plist = new PlistDocument ();
 		plist.ReadFromString(File.ReadAllText (plistPath));	
 		PlistElementDict dict = plist.root.CreateDict ("NSAppTransportSecurity");
 		dict.SetBoolean ("NSAllowsArbitraryLoads", true);
 		File.WriteAllText(plistPath, plist.WriteToString());
-		#endif
+#endif
 	}
 
 	private static void CopyAndReplaceDirectory(string srcPath, string dstPath)
