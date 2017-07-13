@@ -43,9 +43,9 @@ namespace Traffic
             PlayerPrefs.SetInt("progress_ok", 0);
 
             urlParams = ParseUrlParams();
-            if (urlParams.ContainsKey("user_id"))
+            if (urlParams.ContainsKey("viewer_id"))
             {
-                userId = urlParams["user_id"];
+                userId = urlParams["viewer_id"];
 
                 PlayerPrefs.SetString("user_id", userId);
 
