@@ -44,7 +44,7 @@
 %TUTOR_STEP_4%|There is an obstacle ahead! <color=lime>RIGHT CLICK</color> the car to stop it or to decelerate.
 %TUTOR_STEP_5%|<color=lime>CLICK</color> the car to make it move again and avoid being hitting from behind.
 %TUTOR_STEP_6%|This is the <color=yellow>bus stop</color>. The place where buses stop :)
-%TUTOR_STEP_7%|And here is the <color=yellow>bus</color> heading for the <color=yellow>bus stop</color>.<br>You <color=#ff5500>CANNOT CONTROL</color> buses, so be careful and watch the other vehicles.
+%TUTOR_STEP_7%|And here is the <color=yellow>bus</color> heading for the <color=yellow>bus stop</color>.<br>You <color=#ff5500>CANNOT ACCELERATE</color> buses, so be careful and watch the other vehicles.
 
 %LEVEL_LOST_1%|CRASHED!
 %LEVEL_LOST_2%|NICE TRY, BUT...
@@ -70,3 +70,4 @@
 %CODE_FAIL%|UNKNOWN CODE
 
 %DYNAMIC_SHADOWS%|DYNAMIC SHADOWS
+%TOP_TITLE%|TOP SCORES

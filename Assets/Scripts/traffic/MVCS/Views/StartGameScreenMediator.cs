@@ -6,11 +6,15 @@ using UnityEngine;
 using strange.extensions.mediation.impl;
 //using Commons.SN.Facebook;
 using Traffic.MVCS.Services;
+using Traffic.Components;
 
 namespace Traffic.MVCS.Views.UI
 {
     public class StartGameScreenMediator : Mediator
     {
+        [Inject(EntryPoint.Container.Stage)]
+        public GameObject stage { get; set; }
+
         [Inject]
         public PurshaseOk onPurchaseOk { get; set; }
 
@@ -64,6 +68,21 @@ namespace Traffic.MVCS.Views.UI
         void closeShopHandler()
         {
             view.ShowShop(false, iapService);
+        }
+
+        void topHandler()
+        {
+            WebDB webDB = stage.GetComponentInParent<WebDB>();
+            if (webDB != null)
+            {               
+                view.ShowTop(true, webDB);
+                localeService.SetAllTexts(view.gameObject);
+            }
+        }
+
+        void closeTopHandler()
+        {
+            view.ShowTop(false, null);
         }
 
         void connectHandler()
@@ -189,6 +208,8 @@ namespace Traffic.MVCS.Views.UI
 
             view.onButtonConnect.AddListener(connectFBClickHandler);
             view.onButtonShopRestore.AddListener(restorePurchasesHandler);
+            view.onButtonTop.AddListener(topHandler);
+            view.onButtonTopClose.AddListener(closeTopHandler);
 
             view.ShowShop(false, iapService);
         }
@@ -228,6 +249,8 @@ namespace Traffic.MVCS.Views.UI
             onRestorePurchaseFailed.RemoveListener(purchaseRestoreFailHandler);
 
             view.onButtonShopRestore.RemoveListener(restorePurchasesHandler);
+            view.onButtonTop.RemoveListener(topHandler);
+            view.onButtonTopClose.RemoveListener(closeTopHandler);
 
             base.OnRemove();
         }

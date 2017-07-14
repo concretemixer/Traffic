@@ -12,6 +12,9 @@ namespace Traffic.MVCS.Views.UI
         Button startButton;
 
         [SerializeField]
+        Button topButton;
+
+        [SerializeField]
         Button connectButton;
 
         [SerializeField]
@@ -30,6 +33,9 @@ namespace Traffic.MVCS.Views.UI
         Button shopCloseButton;
 
         [SerializeField]
+        Button topCloseButton;
+
+        [SerializeField]
         Button shopBuyLevels;
 
         [SerializeField]
@@ -44,6 +50,21 @@ namespace Traffic.MVCS.Views.UI
         [SerializeField]
         Image shopNoAdvertsBought;
 
+        [SerializeField]
+        Image topBg;
+
+        [SerializeField]
+        Text topScores;
+
+        [SerializeField]
+        Text topNames;
+
+        [SerializeField]
+        Text topLevels;
+
+
+        public readonly Signal onButtonTop= new Signal();
+        public readonly Signal onButtonTopClose = new Signal();
 
         public readonly Signal onButtonStart = new Signal();
         public readonly Signal onButtonConnect = new Signal();
@@ -56,6 +77,7 @@ namespace Traffic.MVCS.Views.UI
         public readonly Signal onButtonBuyLevels= new Signal();
         public readonly Signal onButtonBuyNoAds= new Signal();
 
+        private bool inTop = false;
 
         protected override void Awake()
         {
@@ -70,6 +92,8 @@ namespace Traffic.MVCS.Views.UI
             shopBuyNoAdverts.onClick.AddListener(onButtonBuyNoAds.Dispatch);
 
             shopRestore.onClick.AddListener(onButtonShopRestore.Dispatch);
+            topButton.onClick.AddListener(onButtonTop.Dispatch);
+            topCloseButton.onClick.AddListener(onButtonTopClose.Dispatch);
 
             base.Awake();
         }
@@ -87,8 +111,23 @@ namespace Traffic.MVCS.Views.UI
             startButton.onClick.RemoveListener(onButtonStart.Dispatch);
 
             shopRestore.onClick.RemoveListener(onButtonShopRestore.Dispatch);
+            topButton.onClick.RemoveListener(onButtonTop.Dispatch);
+            topCloseButton.onClick.RemoveListener(onButtonTopClose.Dispatch);
 
             base.OnDestroy();
+        }
+
+        WebDB webDB;
+
+        public void ShowTop(bool show, WebDB webDB)
+        {            
+            topBg.gameObject.SetActive(show);
+            if (webDB != null)
+            {
+                webDB.RequestTop();
+                this.webDB = webDB;
+            }
+            inTop = show;
         }
 
         public void ShowShop(bool show, IAPService iapService)
@@ -116,7 +155,7 @@ namespace Traffic.MVCS.Views.UI
 
         public override void Layout(int width, int height)
         {
-            UnityEngine.Debug.Log("Layout " + width + "," + height);
+            //UnityEngine.Debug.Log("Layout " + width + "," + height);
 
             base.Layout(width, height);
 
@@ -158,9 +197,12 @@ namespace Traffic.MVCS.Views.UI
             shopButton.gameObject.SetActive(false);
             connectButton.gameObject.SetActive(false);
             startButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-105, 10);
-            optionsButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-190, -485);
+            topButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-240, 10);
+            optionsButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-305, -485);
 
             startButton.GetComponent<Button>().interactable = PlayerPrefs.GetInt("progress_ok", 0) == 1;
+#else
+            topButton.gameObject.SetActive(false);
 #endif
         }
 
@@ -168,6 +210,30 @@ namespace Traffic.MVCS.Views.UI
         {
 #if UNITY_WEBGL
             startButton.GetComponent<Button>().interactable = PlayerPrefs.GetInt("progress_ok", 0) == 1;
+            if (inTop && PlayerPrefs.GetInt("top_ok", 0)==1)
+            {
+                PlayerPrefs.SetInt("top_ok", 2);
+
+                if (webDB.Top != null)
+                {
+                    topScores.text = "Score\n";
+                    topNames.text = "\n";
+                    topLevels.text = "Lvl\n";
+                    foreach (var entry in webDB.Top)
+                    {
+                            if (entry.Key > 10)
+                            {
+                                topScores.text += "\n";
+                                topNames.text += "...\n";
+                                topLevels.text += "\n";
+                            }
+
+                        topScores.text += entry.Value.score + "\n";
+                        topNames.text += entry.Key.ToString()+". "+ entry.Value.name+ "\n";
+                        topLevels.text += entry.Value.levels+ "\n";
+                    }
+                }
+            }
 #endif
         }
     }

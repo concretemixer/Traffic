@@ -31,11 +31,35 @@ namespace Traffic
         public Dictionary<string, LevelScore> levels = new Dictionary<string, LevelScore>();
     }
 
+    public class TopEntry
+    {
+        public TopEntry() { }
+
+        public string name;
+        public int score;
+        public int levels;
+    }
+
+    public class TopScoresData
+    {
+        public TopScoresData() { }
+        public Dictionary<int, TopEntry> top = new Dictionary<int, TopEntry>();
+    }
+
     public class WebDB : MonoBehaviour
     {
         string URL = "";
         string userId = "";
         Dictionary<string, string> urlParams = new Dictionary<string, string>();
+
+        Dictionary<int, TopEntry> top;
+        public Dictionary<int, TopEntry> Top
+        {
+            get
+            {
+                return top;
+            }
+        }
 
         public void Start()
         {
@@ -71,27 +95,45 @@ namespace Traffic
             if (www.error != null)
             {
                 Debug.Log("WWW Error: " + www.error);
+                if (www.url.Contains("progress"))
+                    PlayerPrefs.SetInt("progress_ok", 1);
             }
             else
             {
-                Debug.Log("WWW Text: " + www.text);
-                LoadFromJson(userId, www.text);
+                if (www.url.Contains("progress"))
+                {
+                    //Debug.Log("WWW Text: " + www.text);
+                    LoadProgressFromJson(userId, www.text);
+                    PlayerPrefs.SetInt("progress_ok", 1);
+                }
+                else if (www.url.Contains("top"))
+                {
+                  //  Debug.Log("WWW Text: " + www.text);
+                    LoadTopFromJson(userId, www.text);
+                    PlayerPrefs.SetInt("top_ok", 1);
+                }
             }
 
-            PlayerPrefs.SetInt("progress_ok", 1);
+            
         }
 
         void RequestProgress()
         {
             //http://trafficstorm.concretemixergames.com/webgl/progress.php
 
-           
+            
             WWW req = new WWW(URL + "/progress.php?user_id="+userId);
             StartCoroutine(WaitForRequest(req));          
         }
 
+        public void RequestTop()
+        {
+            PlayerPrefs.SetInt("top_ok", 0);            
+            WWW req = new WWW(URL + "/top.php?user_id=" + userId);
+            StartCoroutine(WaitForRequest(req));
+        }
 
-        void LoadFromJson(string userId, string json)
+        void LoadProgressFromJson(string userId, string json)
         {
             var progress = Newtonsoft.Json.JsonConvert.DeserializeObject<LevelScoreData>(json);
 
@@ -101,11 +143,20 @@ namespace Traffic
                 PlayerPrefs.SetInt("score.2." + userId + "." + a.ToString(), 0);
             }
 
+            int crashes = 0;
             foreach (string key in progress.levels.Keys)
             {
                 PlayerPrefs.SetInt("progress.2." + userId + "." + key, progress.levels[key].state);
                 PlayerPrefs.SetInt("score.2." + userId + "." + key, progress.levels[key].score);
+                crashes += progress.levels[key].attempts;
             }
+            PlayerPrefs.SetInt("progress.attempts",crashes);
+        }
+
+        void LoadTopFromJson(string userId, string json)
+        {
+            var _top = Newtonsoft.Json.JsonConvert.DeserializeObject<TopScoresData>(json);
+            top = _top.top;
         }
 
         IEnumerator GetText(string url)
@@ -120,25 +171,37 @@ namespace Traffic
             }
             else
             {
-                Debug.Log(www.downloadHandler.text);
+               // Debug.Log(www.downloadHandler.text);
             }
         }
 
         public void UpdateState(int index, int state, int score)
         {
             StartCoroutine(GetText(URL + "/update.php?user_id=" + userId + "&level=" + index + "&score=" + score + "&state=" + state));
+            
         }
 
         public void TryLevel(int index)
         {
             StartCoroutine(GetText(URL + "/try.php?user_id=" + userId + "&level=" + index));
+            int crashes = PlayerPrefs.GetInt("progress.attempts", 0);
+            PlayerPrefs.SetInt("progress.attempts", crashes+1);
+            Debug.Log("progress.attempts = " + crashes);
+            if (crashes == 100)
+                LogCrashAchievement();
         }
 
         private const string serviceKey = "55a4faec55a4faec55a4faec2f55f9d903555a455a4faec0cfaaf6f4d842328c9d6aefe";
 
+
         public void LogTutorialAchievement()
         {
             StartCoroutine(GetText(URL + "/achievement.php?user_id=" + userId + "&activity_id=3&value=0&access_token="+serviceKey));
+        }
+
+        public void LogCrashAchievement()
+        {
+            StartCoroutine(GetText(URL + "/achievement.php?user_id=" + userId + "&activity_id=4&value=0&access_token=" + serviceKey));
         }
 
         public void LogLevelAchievement(int count)
