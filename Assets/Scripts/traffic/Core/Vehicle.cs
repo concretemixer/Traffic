@@ -7,6 +7,7 @@ namespace Traffic.Core {
 public class Vehicle : MonoBehaviour {
 
     public static int NextNumber = 1;
+    public static bool isNight = false;
 
     public int Number;
 
@@ -56,6 +57,9 @@ public class Vehicle : MonoBehaviour {
     private bool onceVisible = false;
     private bool wentOffscreen = false;
 
+    [SerializeField]
+    private GameObject lightsRoot = null;
+
 	// Use this for initialization
 	void Start () {
 		if (tag=="VehicleAI")
@@ -70,13 +74,17 @@ public class Vehicle : MonoBehaviour {
 		if (gear==2)
 			GetComponent<Rigidbody> ().velocity = transform.rotation * new Vector3 (FastSpeed, 0, 0);
 
-		//level = GameObject.Find ("Level").GetComponent<Level>();
-		
+            //level = GameObject.Find ("Level").GetComponent<Level>();
+
+        if (lightsRoot != null)
+            lightsRoot.SetActive(false);
 
         ShowEffects();
 		if (gameObject.tag == "Vehicle") {
 			StopEffects();
 		}
+        if (isNight && lightsRoot!=null)
+            lightsRoot.SetActive(true);
 
         float soundVolume = PlayerPrefs.GetFloat("volume.sound", 1);
 

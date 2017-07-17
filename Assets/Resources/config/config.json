@@ -643,7 +643,15 @@
          "threeStarsScore":16000,
          "twoStarsScore":11000,
          "target":50
-	 }
+	 },
+
+      "Level10_Night":{
+         "threeStarsScore":11000,
+         "twoStarsScore":7500,
+         "target":50,
+         
+      },
+
 
    }
 }

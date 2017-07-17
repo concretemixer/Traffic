@@ -26,14 +26,19 @@ public class Level : MonoBehaviour  {
 	GameObject cameraLandscape;
 	GameObject cameraMain;
 
+        [SerializeField]
+        bool isNight = false;
+
 	//  bool Crash = false;
 	//  bool Complete = false;
 	//  bool PreStart = true;	
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log ("start");
-        Vehicle.NextNumber = 1;		
+		//Debug.Log ("start");
+
+        Vehicle.NextNumber = 1;
+        Vehicle.isNight = isNight;		
 
 	//	cameraMain = GameObject.Find("UI Camera");
 

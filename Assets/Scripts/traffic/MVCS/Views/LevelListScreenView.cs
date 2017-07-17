@@ -91,7 +91,7 @@ namespace Traffic.MVCS.Views.UI
 
         public void SetPage(int page,ILevelListModel levels) 
         {
-			if (page != 1 && page != 0 && page != 2)
+			if (page != 1 && page != 0 && page != 2 && page != 3)
                 return;
 
             Sprite spriteCurrent = Resources.Load<Sprite>("UI/Sprites/Level_Current");
@@ -104,7 +104,7 @@ namespace Traffic.MVCS.Views.UI
             this.page = page;
 
             prevButton.GetComponent<Button>().interactable = (page != 0);
-            nextButton.GetComponent<Button>().interactable = (page != 2);
+            nextButton.GetComponent<Button>().interactable = (page != 3);
 
             for (int a = 0; a < levelButtons.Length; a++) {
 				int n = a+page*9;

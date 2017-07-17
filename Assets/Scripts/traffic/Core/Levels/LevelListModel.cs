@@ -185,7 +185,9 @@ namespace Traffic.Core
 				"Level15",
 				"Level8",
 
-	        };
+                "Level10_Night",
+
+            };
 
         }
 

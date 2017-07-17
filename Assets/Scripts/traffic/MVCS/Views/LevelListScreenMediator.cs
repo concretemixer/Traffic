@@ -62,7 +62,7 @@ namespace Traffic.MVCS.Views.UI
 
         void switchPageHandlerNext()
         {
-            page = page < 2 ? page+1 : page;
+            page = page < 3 ? page+1 : page;
             view.SetPage(page, levels);
         }
 
