@@ -63,6 +63,7 @@ namespace Traffic.MVCS.Views.UI
         void shopHandler()
         {
             view.ShowShop(true, iapService);
+            localeService.SetAllTexts(view.gameObject);
         }
 
         void closeShopHandler()

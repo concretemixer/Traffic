@@ -194,11 +194,12 @@ namespace Traffic.MVCS.Views.UI
 #endif
 
 #if UNITY_WEBGL
-            shopButton.gameObject.SetActive(false);
+           // shopButton.gameObject.SetActive(false);
             connectButton.gameObject.SetActive(false);
             startButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-105, 10);
-            topButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-240, 10);
-            optionsButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-305, -485);
+            topButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-250, 10);
+            shopButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-370, 10);
+            // optionsButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(-305, -485);
 
             startButton.GetComponent<Button>().interactable = PlayerPrefs.GetInt("progress_ok", 0) == 1;
 #else

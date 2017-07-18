@@ -3,6 +3,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | %UNITY_WEB_NAME%</title>
+    <link rel="stylesheet" href="TemplateData/style.css">
     <script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
     <script src="%UNITY_WEBGL_LOADER_URL%"></script>
     <script>
@@ -13,10 +14,10 @@
 // Функция order() отображает окно для покупки товара с наименованием "item_25new".
 // Названия платежных событий пишутся в контейнер с id="callbacks".
 
-  function order() {
+  function order(item_name) {
     var params = {
       type: 'item',
-      item: 'item1'
+      item: item_name
     };
     VK.callMethod('showOrderBox', params);
   }
@@ -24,18 +25,18 @@
   var callbacksResults = document.getElementById('callbacks');
 
   VK.addCallback('onOrderSuccess', function(order_id) {
-    callbacksResults.innerHTML += '<br />onOrderSuccess '+order_id;
+    SendMessage("gameInstance.EntryPoint","onOrderSuccess", order_id);
   });
   VK.addCallback('onOrderFail', function() {
-    callbacksResults.innerHTML += '<br />onOrderFail';
+    SendMessage("gameInstance.EntryPoint","onOrderFail", "");
   });
   VK.addCallback('onOrderCancel', function() {
-    SendMessage("EntryPoint","onOrderCancel", "");
+    SendMessage("gameInstance.EntryPoint","onOrderCancel", "");
   });
 </script>
   </head>
   <body style="margin: 0px">
     <div id="gameContainer" style="width: %UNITY_WIDTH%px; height: %UNITY_HEIGHT%px; margin: auto"></div>
-    <div id="callbacks" style="width: %UNITY_WIDTH%px; height: 40px; margin: auto"></div>
+    <!--div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div-->
   </body>
 </html>

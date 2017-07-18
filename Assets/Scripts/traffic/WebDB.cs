@@ -9,6 +9,8 @@ using Traffic.MVCS.Services;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using Traffic.MVCS.Commands.Signals;
+using Traffic.MVCS.Services;
 
 
 namespace Traffic
@@ -51,6 +53,15 @@ namespace Traffic
 
     public class WebDB : MonoBehaviour
     {
+        [Inject]
+        public PurshaseOk onPurchaseOk { get; set; }
+
+        [Inject]
+        public PurchaseFailed onPurchaseFailed { get; set; }
+
+        [Inject]
+        public PurchaseCancelled onPurchaseCancelled { get; set; }
+
         string URL = "";
         string userId = "";
         Dictionary<string, string> urlParams = new Dictionary<string, string>();
@@ -133,7 +144,7 @@ namespace Traffic
         {
             PlayerPrefs.SetInt("top_ok", 0);            
             WWW req = new WWW(URL + "/top.php?user_id=" + userId);
-            StartCoroutine(WaitForRequest(req));
+            StartCoroutine(WaitForRequest(req));            
         }
 
         void LoadProgressFromJson(string userId, string json)
@@ -223,16 +234,21 @@ namespace Traffic
         {
             StartCoroutine(GetText(URL + "/achievement.php?user_id=" + userId + "&activity_id=1&value="+count+"&access_token=" + serviceKey));
         }
-
-        public void ShowOrderBox()
-        {
-            //  StartCoroutine(GetText("https://api.vk.com/method/showOrderBox?type=item&votes=10&item=item1" + "&access_token=" + urlParams["access_token"]));
-            Application.ExternalCall("order");
-        }
+        
 
         public void onOrderCancel()
         {
-            Debug.Log("Order canceled");
+            onPurchaseCancelled.Dispatch();            
+        }
+
+        public void onOrderSuccess()
+        {
+            onPurchaseOk.Dispatch(MVCS.Models.IAPType.Tries100);            
+        }
+
+        public void onOrderFail()
+        {
+            onPurchaseFailed.Dispatch(MVCS.Models.IAPType.Tries100,"");            
         }
 
         Dictionary<string, string> ParseUrlParams()

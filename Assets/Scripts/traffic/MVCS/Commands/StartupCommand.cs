@@ -73,6 +73,8 @@ namespace Traffic.MVCS.Commands
             }
             */
 
+            injectionBinder.injector.Inject(stageMenu.GetComponentInParent<WebDB>());
+
             UI.Hide(UIMap.Id.ScreenLoading);
             // UI.Show(UIMap.Id.ScreenDebug);
             UI.Show(UIMap.Id.ScreenMain);

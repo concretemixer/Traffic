@@ -15,6 +15,11 @@ namespace Traffic.MVCS.Commands.Signals
 
     }
 
+    public class PurchaseCancelled: Signal
+    {
+
+    }
+
     public class RestorePurchasesFailed : Signal
     {
     }

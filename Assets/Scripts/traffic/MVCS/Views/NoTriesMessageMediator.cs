@@ -108,17 +108,19 @@ namespace Traffic.MVCS.Views.UI
         {
             UI.Hide(UIMap.Id.InfoMessage);
 
-            /*
+            
             InfoMessageView view = UI.Show<InfoMessageView>(UIMap.Id.InfoMessage);
             view.SetMessageMode(false);
 
-            iapService.PurchaseStart(IAPType.NoAdverts);*/
+            iapService.PurchaseStart(IAPType.Tries100);
 
+            /*
             WebDB webDB = stage.GetComponentInParent<WebDB>();
             if (webDB != null)
             {
                 webDB.ShowOrderBox();
             }
+            */
         }
 
         public override void OnRegister()

@@ -6,30 +6,7 @@ using System;
 
 namespace Traffic.MVCS.Models
 {
-    public enum IAPType {
-        AdditionalLevels,
-        NoAdverts,
-        Tries100,
-        Tries1000
-    }
-
-    public interface IAPService
-    {
-        bool ApplyCode(string code);
-
-        bool IsBought(IAPType what);
-        void PurchaseStart(IAPType what);
-
-        bool GetProductPrice(IAPType what, out float price, out string currency);
-
-        void RestorePurchases();
-
-        PurshaseOk onPurchaseOk { get; set; }
-        PurchaseFailed onPurchaseFailed { get; set; }
-        RestorePurchasesFailed onRestorePurchaseFailed { get; set; }
-    }
-
-    public class IAPServiceDummy : IAPService
+    public class IAPServiceVK : IAPService
     {
         [Inject]
         public PurshaseOk onPurchaseOk { get; set; }
@@ -50,8 +27,14 @@ namespace Traffic.MVCS.Models
 
         public bool GetProductPrice(IAPType what, out float price, out string currency)
         {
+            currency = "";
             price = 1;
-            currency = "$";
+            switch (what)
+            {
+                case IAPType.Tries100: price = 10; break;
+                case IAPType.Tries1000: price = 50; break;
+            }
+            
             return true;
         }
 
@@ -64,16 +47,14 @@ namespace Traffic.MVCS.Models
 
         public bool IsBought(IAPType what)
         {
-#if UNITY_WEBGL
             return false;
-#endif
-            return PlayerPrefs.GetInt("iap." + what.ToString(), 0) == 1;
         }
 
         public void PurchaseStart(IAPType what)
         {
-            PlayerPrefs.SetInt("iap." + what.ToString(), 1);
-            onPurchaseOk.Dispatch(what);  
+            //PlayerPrefs.SetInt("iap." + what.ToString(), 1);
+            //onPurchaseOk.Dispatch(what);  
+            Application.ExternalCall("order", new string[] { what.ToString().ToLowerInvariant() });
         }
     }
 }
