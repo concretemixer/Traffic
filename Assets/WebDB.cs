@@ -29,6 +29,9 @@ namespace Traffic
     {
         public LevelScoreData() { }
         public Dictionary<string, LevelScore> levels = new Dictionary<string, LevelScore>();
+
+        public int tries;
+        public int diff;        
     }
 
     public class TopEntry
@@ -151,6 +154,11 @@ namespace Traffic
                 crashes += progress.levels[key].attempts;
             }
             PlayerPrefs.SetInt("progress.attempts",crashes);
+            PlayerPrefs.SetInt("tries.left", progress.tries);
+
+            DateTime lastTry = DateTime.Now.AddSeconds(-progress.tries);
+            Int32 unixTimestamp = (Int32)(lastTry.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+            PlayerPrefs.SetInt("tries.last", unixTimestamp);
         }
 
         void LoadTopFromJson(string userId, string json)
@@ -186,9 +194,16 @@ namespace Traffic
             StartCoroutine(GetText(URL + "/try.php?user_id=" + userId + "&level=" + index));
             int crashes = PlayerPrefs.GetInt("progress.attempts", 0);
             PlayerPrefs.SetInt("progress.attempts", crashes+1);
-            Debug.Log("progress.attempts = " + crashes);
+            //Debug.Log("progress.attempts = " + crashes);
             if (crashes == 100)
                 LogCrashAchievement();
+
+            if (index != 0)
+            {
+                DateTime lastTry = DateTime.Now;
+                Int32 unixTimestamp = (Int32)(lastTry.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                PlayerPrefs.SetInt("tries.last", unixTimestamp);
+            }
         }
 
         private const string serviceKey = "55a4faec55a4faec55a4faec2f55f9d903555a455a4faec0cfaaf6f4d842328c9d6aefe";
@@ -209,9 +224,20 @@ namespace Traffic
             StartCoroutine(GetText(URL + "/achievement.php?user_id=" + userId + "&activity_id=1&value="+count+"&access_token=" + serviceKey));
         }
 
+        public void ShowOrderBox()
+        {
+            //  StartCoroutine(GetText("https://api.vk.com/method/showOrderBox?type=item&votes=10&item=item1" + "&access_token=" + urlParams["access_token"]));
+            Application.ExternalCall("order");
+        }
+
+        public void onOrderCancel()
+        {
+            Debug.Log("Order canceled");
+        }
+
         Dictionary<string, string> ParseUrlParams()
         {
-            string Application_absoluteURL = "http://trafficstorm.concretemixergames.com/webgl?api_url=https://api.vk.com/api.php&api_id=6104047&api_settings=257&viewer_id=1515540&viewer_type=2&sid=f412b52e22946204d01eb9938a87f6f3d2c250dcb281938d51d59b0e1608f7e6deb6ac407408b1911eebf&secret=a6fe816344&access_token=35711d15cf4ccecf5d39b50fda2db717f56498b3bd48d2369cff877dbdb574a21472bd9264b059457f408&user_id=1515540&group_id=0&is_app_user=1&auth_key=68fdd07734e4843281f64caaeb88a98c&language=0&parent_language=0&is_secure=1&ads_app_id=6104047_f1aa53f3f187160325&referrer=menu&lc_name=1425d72e&hash=";
+            string Application_absoluteURL = "http://trafficstorm.concretemixergames.com/webgl2?api_url=https://api.vk.com/api.php&api_id=6104047&api_settings=257&viewer_id=1515540&viewer_type=2&sid=f412b52e22946204d01eb9938a87f6f3d2c250dcb281938d51d59b0e1608f7e6deb6ac407408b1911eebf&secret=a6fe816344&access_token=35711d15cf4ccecf5d39b50fda2db717f56498b3bd48d2369cff877dbdb574a21472bd9264b059457f408&user_id=1515540&group_id=0&is_app_user=1&auth_key=68fdd07734e4843281f64caaeb88a98c&language=0&parent_language=0&is_secure=1&ads_app_id=6104047_f1aa53f3f187160325&referrer=menu&lc_name=1425d72e&hash=";
             if (Application.absoluteURL.Contains("concretemixergames"))
                 Application_absoluteURL = Application.absoluteURL;
 

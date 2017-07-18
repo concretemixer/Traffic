@@ -7,6 +7,7 @@ using UnityEngine;
 
 using strange.extensions.mediation.impl;
 using Traffic.MVCS.Services;
+using Traffic.Components;
 
 namespace Traffic.MVCS.Views.UI
 {
@@ -32,10 +33,13 @@ namespace Traffic.MVCS.Views.UI
 
         [Inject]
         public ILocaleService localeService { get; set; }
-        
-        [Inject]
-        public ShowAdsSignal showAds { private get; set; }
-        
+
+        [Inject(EntryPoint.Container.Stage)]
+        public GameObject stage { get; set; }
+
+        //   [Inject]
+        //   public ShowAdsSignal showAds { private get; set; }
+
         [Inject]
         public AnalyticsCollector analitics { private get; set; }
 
@@ -62,7 +66,7 @@ namespace Traffic.MVCS.Views.UI
         void advertHandler()
         {
             UI.Hide(UIMap.Id.NoTriesMessage);
-            showAds.Dispatch();
+            //showAds.Dispatch();
         }
 
         void infoOkHandler()
@@ -104,10 +108,17 @@ namespace Traffic.MVCS.Views.UI
         {
             UI.Hide(UIMap.Id.InfoMessage);
 
+            /*
             InfoMessageView view = UI.Show<InfoMessageView>(UIMap.Id.InfoMessage);
             view.SetMessageMode(false);
 
-            iapService.PurchaseStart(IAPType.NoAdverts);
+            iapService.PurchaseStart(IAPType.NoAdverts);*/
+
+            WebDB webDB = stage.GetComponentInParent<WebDB>();
+            if (webDB != null)
+            {
+                webDB.ShowOrderBox();
+            }
         }
 
         public override void OnRegister()
