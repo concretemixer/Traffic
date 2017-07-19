@@ -136,20 +136,25 @@ namespace Traffic
             //http://trafficstorm.concretemixergames.com/webgl/progress.php
 
             
-            WWW req = new WWW(URL + "/progress.php?user_id="+userId);
+            WWW req = new WWW(URL + "/progress.php?user_id="+userId + "&salt=" + DateTime.Now.Ticks.ToString());
             StartCoroutine(WaitForRequest(req));          
         }
 
         public void RequestTop()
         {
             PlayerPrefs.SetInt("top_ok", 0);            
-            WWW req = new WWW(URL + "/top.php?user_id=" + userId);
+            WWW req = new WWW(URL + "/top.php?user_id=" + userId +"&salt="+DateTime.Now.Ticks.ToString());
             StartCoroutine(WaitForRequest(req));            
         }
 
         void LoadProgressFromJson(string userId, string json)
         {
+            Debug.Log("Progress ok");
             var progress = Newtonsoft.Json.JsonConvert.DeserializeObject<LevelScoreData>(json);
+
+
+            Debug.Log("Tries = "+ progress.tries);
+            PlayerPrefs.SetInt("tries.left", progress.tries);
 
             for (int a = 0; a < 27; a++)
             {
@@ -165,11 +170,12 @@ namespace Traffic
                 crashes += progress.levels[key].attempts;
             }
             PlayerPrefs.SetInt("progress.attempts",crashes);
-            PlayerPrefs.SetInt("tries.left", progress.tries);
 
-            DateTime lastTry = DateTime.Now.AddSeconds(-progress.tries);
+            DateTime lastTry = DateTime.Now.AddSeconds(-progress.diff);
             Int32 unixTimestamp = (Int32)(lastTry.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
             PlayerPrefs.SetInt("tries.last", unixTimestamp);
+
+            PlayerPrefs.Save();
         }
 
         void LoadTopFromJson(string userId, string json)
@@ -241,14 +247,17 @@ namespace Traffic
             onPurchaseCancelled.Dispatch();            
         }
 
-        public void onOrderSuccess()
+        public void onOrderSuccess(string id)
         {
-            onPurchaseOk.Dispatch(MVCS.Models.IAPType.Tries100);            
+            Debug.Log("ID = " + id);
+            onPurchaseOk.Dispatch(MVCS.Models.IAPType.Any);
+            PlayerPrefs.SetInt("tries.left", PlayerPrefs.GetInt("tries.left",0)+100);
+            RequestProgress();
         }
 
         public void onOrderFail()
         {
-            onPurchaseFailed.Dispatch(MVCS.Models.IAPType.Tries100,"");            
+            onPurchaseFailed.Dispatch(MVCS.Models.IAPType.Any,"");            
         }
 
         Dictionary<string, string> ParseUrlParams()

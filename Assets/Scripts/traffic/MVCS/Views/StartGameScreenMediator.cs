@@ -22,6 +22,10 @@ namespace Traffic.MVCS.Views.UI
         public PurchaseFailed onPurchaseFailed { get; set; }
 
         [Inject]
+        public PurchaseCancelled onPurchaseCancelled { get; set; }
+
+
+        [Inject]
         public RestorePurchasesFailed onRestorePurchaseFailed { get; set; }
 
         [Inject]
@@ -119,10 +123,11 @@ namespace Traffic.MVCS.Views.UI
                     view.SetText(localeService.ProcessString("%LEVELS_BOUGHT%"));
                 else if (what == IAPType.NoAdverts)
                     view.SetText(localeService.ProcessString("%NO_ADS_BOUGHT%"));
+                else if (what == IAPType.Any)
+                    view.SetText(localeService.ProcessString("%TRIES_BOUGHT%"));
             }
-            
 
-           
+
             view.onButtonOk.RemoveListener(infoOkHandler);
             view.onButtonOk.AddListener(infoOkHandler);
         }
@@ -131,9 +136,19 @@ namespace Traffic.MVCS.Views.UI
         {         
             InfoMessageView view = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
             view.SetCaption(localeService.ProcessString("%PURCHASE_FAILED%"));
-            view.SetText(error);
+            if (string.IsNullOrEmpty(error))
+                view.SetText(localeService.ProcessString("%PURCHASE_FAILED_TEXT%"));
+            else
+                view.SetText(error);
             view.SetMessageMode(true);
             view.onButtonOk.AddListener(infoOkHandler);
+        }
+
+        void purchaseCancelHandler()
+        {
+            InfoMessageView view = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
+            view.SetMessageMode(false);
+            UI.Hide(UIMap.Id.InfoMessage);
         }
 
         void purchaseRestoreFailHandler()
@@ -170,6 +185,27 @@ namespace Traffic.MVCS.Views.UI
             iapService.PurchaseStart(IAPType.NoAdverts);
         }
 
+        void buyTries100()
+        {
+            restoring = false;
+            UI.Hide(UIMap.Id.InfoMessage);
+
+            InfoMessageView view = UI.Show<InfoMessageView>(UIMap.Id.InfoMessage);
+            view.SetMessageMode(false);
+
+            iapService.PurchaseStart(IAPType.Tries100);
+        }
+
+        void buyTries1000()
+        {
+            restoring = false;
+            UI.Hide(UIMap.Id.InfoMessage);
+
+            InfoMessageView view = UI.Show<InfoMessageView>(UIMap.Id.InfoMessage);
+            view.SetMessageMode(false);
+
+            iapService.PurchaseStart(IAPType.Tries1000);
+        }
 
         void quitHandler()
         {
@@ -199,13 +235,14 @@ namespace Traffic.MVCS.Views.UI
             view.onButtonShop.AddListener(shopHandler);
             view.onButtonShopClose.AddListener(closeShopHandler);
 
-            view.onButtonBuyLevels.AddListener(buyLevelsHandler);
-            view.onButtonBuyNoAds.AddListener(buyNoAdsHandler);
+            view.onButtonBuyTries100.AddListener(buyTries100);
+            view.onButtonBuyTries1K.AddListener(buyTries1000);
             view.onButtonQuit.AddListener(quitHandler);
 
             onPurchaseOk.AddListener(purchaseOkHandler);
             onPurchaseFailed.AddListener(purchaseFailHandler);
             onRestorePurchaseFailed.AddListener(purchaseRestoreFailHandler);
+            onPurchaseCancelled.AddListener(purchaseCancelHandler);
 
             view.onButtonConnect.AddListener(connectFBClickHandler);
             view.onButtonShopRestore.AddListener(restorePurchasesHandler);
@@ -245,9 +282,13 @@ namespace Traffic.MVCS.Views.UI
             view.onButtonConnect.RemoveListener(connectFBClickHandler);
             view.onButtonQuit.RemoveListener(quitHandler);
 
+            view.onButtonBuyTries100.RemoveListener(buyTries100);
+            view.onButtonBuyTries1K.RemoveListener(buyTries1000);         
+
             onPurchaseOk.RemoveListener(purchaseOkHandler);
             onPurchaseFailed.RemoveListener(purchaseFailHandler);
             onRestorePurchaseFailed.RemoveListener(purchaseRestoreFailHandler);
+            onPurchaseCancelled.RemoveListener(purchaseCancelHandler);
 
             view.onButtonShopRestore.RemoveListener(restorePurchasesHandler);
             view.onButtonTop.RemoveListener(topHandler);

@@ -1,5 +1,8 @@
 <?php 
-header("Content-Type: application/json; encoding=utf-8"); 
+header("Content-Type: application/json; encoding=utf-8; charset=utf-8"); 
+header("Cache-Control: no-cache");
+
+require("common.php");
 
 $secret_key = '854Eqghn5SOULHtukhoO'; // Защищенный ключ приложения 
 
@@ -27,19 +30,19 @@ if ($sig != md5($str.$secret_key)) {
       // Получение информации о товаре 
       $item = $input['item']; // наименование товара 
 
-      if ($item == 'item1') { 
+      if ($item == 'tries100') { 
         $response['response'] = array( 
-          'item_id' => 25, 
-          'title' => '300 золотых монет', 
-          'photo_url' => 'http://somesite/images/coin.jpg', 
-          'price' => 5 
-        ); 
-      } elseif ($item == 'item2') { 
-        $response['response'] = array( 
-          'item_id' => 27, 
-          'title' => '500 золотых монет', 
+          'item_id' => 101, 
+          'title' => "100 попыток", 
           'photo_url' => 'http://somesite/images/coin.jpg', 
           'price' => 10 
+        ); 
+      } elseif ($item == 'tries1000') { 
+        $response['response'] = array( 
+          'item_id' => 102, 
+          'title' => "1000 попыток", 
+          'photo_url' => 'http://somesite/images/coin.jpg', 
+          'price' => 50 
         ); 
       } else { 
         $response['error'] = array( 
@@ -53,61 +56,85 @@ if ($sig != md5($str.$secret_key)) {
 case 'get_item_test': 
       // Получение информации о товаре в тестовом режиме 
       $item = $input['item']; 
-      if ($item == 'item1') { 
+      if ($item == 'noadverts') {
         $response['response'] = array( 
-          'item_id' => 125, 
-          'title' => "10 попыток", 
+          'item_id' => 100, 
+          'title' => "Отключить рекламу (тестовый режим)", 
           'photo_url' => 'http://somesite/images/coin.jpg', 
-          'price' => 5 
+          'price' => 1 
         ); 
-      } elseif ($item == 'item2') { 
+      }
+      elseif ($item == 'tries100') { 
         $response['response'] = array( 
-          'item_id' => 127, 
-          'title' => '500 золотых монет (тестовый режим)', 
+          'item_id' => 101, 
+          'title' => "100 попыток (тестовый режим)", 
           'photo_url' => 'http://somesite/images/coin.jpg', 
           'price' => 10 
+        ); 
+      } elseif ($item == 'tries1000') { 
+        $response['response'] = array( 
+          'item_id' => 102, 
+          'title' => "1000 попыток (тестовый режим)", 
+          'photo_url' => 'http://somesite/images/coin.jpg', 
+          'price' => 50 
         ); 
       } else { 
         $response['error'] = array( 
           'error_code' => 20, 
-          'error_msg' => 'Товара не существует.', 
-          'critical' => true 
-        ); 
-      } 
-      break; 
-
-case 'order_status_change': 
-      // Изменение статуса заказа 
-      if ($input['status'] == 'chargeable') { 
-        $order_id = intval($input['order_id']); 
-
-// Код проверки товара, включая его стоимость 
-        $app_order_id = 1; // Получающийся у вас идентификатор заказа. 
-
-$response['response'] = array( 
-          'order_id' => $order_id, 
-          'app_order_id' => $app_order_id, 
-        ); 
-      } else { 
-        $response['error'] = array( 
-          'error_code' => 100, 
-          'error_msg' => 'Передано непонятно что вместо chargeable.', 
+          'error_msg' => "Товара $item не существует", 
           'critical' => true 
         ); 
       } 
       break; 
 
 case 'order_status_change_test': 
-      // Изменение статуса заказа в тестовом режиме 
+case 'order_status_change': 
+      // Изменение статуса заказа 
       if ($input['status'] == 'chargeable') { 
         $order_id = intval($input['order_id']); 
+        $user = $input['receiver_id'];
+        $item = $input['item']; 
+        $dt = $input['date'];
 
-$app_order_id = 1; // Тут фактического заказа может не быть - тестовый режим. 
+        $db = @mysqli_connect("localhost", $db_user, $db_pass, $db_name);
 
-$response['response'] = array( 
-          'order_id' => $order_id, 
-          'app_order_id' => $app_order_id, 
-        ); 
+        $sql = "INSERT INTO orders (user,order_id,item,dt) VALUES ($user,$order_id,'$item',$dt)";
+         if (mysqli_query($db, $sql)) {
+            $app_order_id = mysqli_insert_id($db);
+
+            if ($item=='tries100')
+               $sql = "UPDATE `tries` SET tries=tries+100,last_try=NOW() WHERE user=$user";
+            elseif ($item=='tries1000')
+               $sql = "UPDATE `tries` SET tries=tries+1000,last_try=NOW() WHERE user=$user";
+            else {
+             $response['error'] = array( 
+               'error_code' => 103, 
+               'error_msg' => 'item error', 
+               'critical' => true 
+             ); 
+            }
+            if (mysqli_query($db, $sql)) {
+              $response['response'] = array( 
+                'order_id' => $order_id, 
+                'app_order_id' => $app_order_id, 
+              ); 
+             }
+           else {
+             $response['error'] = array( 
+               'error_code' => 102, 
+               'error_msg' => 'DB error', 
+               'critical' => true 
+             ); 
+
+           }
+         }
+         else {
+             $response['error'] = array( 
+               'error_code' => 101, 
+               'error_msg' => 'DB error', 
+               'critical' => true 
+             ); 
+         }
       } else { 
         $response['error'] = array( 
           'error_code' => 100, 
@@ -119,5 +146,5 @@ $response['response'] = array(
   } 
 } 
 
-echo json_encode($response); 
+echo json_encode($response, JSON_UNESCAPED_UNICODE); 
 ?> 

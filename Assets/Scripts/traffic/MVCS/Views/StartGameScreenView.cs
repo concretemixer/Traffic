@@ -74,8 +74,8 @@ namespace Traffic.MVCS.Views.UI
         public readonly Signal onButtonShopClose = new Signal();
         public readonly Signal onButtonShopRestore = new Signal();
 
-        public readonly Signal onButtonBuyLevels= new Signal();
-        public readonly Signal onButtonBuyNoAds= new Signal();
+        public readonly Signal onButtonBuyTries100= new Signal();
+        public readonly Signal onButtonBuyTries1K= new Signal();
 
         private bool inTop = false;
 
@@ -88,8 +88,8 @@ namespace Traffic.MVCS.Views.UI
             startButton.onClick.AddListener(onButtonStart.Dispatch);
             quitButton.onClick.AddListener(onButtonQuit.Dispatch);
 
-            shopBuyLevels.onClick.AddListener(onButtonBuyLevels.Dispatch);
-            shopBuyNoAdverts.onClick.AddListener(onButtonBuyNoAds.Dispatch);
+            shopBuyLevels.onClick.AddListener(onButtonBuyTries100.Dispatch);
+            shopBuyNoAdverts.onClick.AddListener(onButtonBuyTries1K.Dispatch);
 
             shopRestore.onClick.AddListener(onButtonShopRestore.Dispatch);
             topButton.onClick.AddListener(onButtonTop.Dispatch);
@@ -102,8 +102,8 @@ namespace Traffic.MVCS.Views.UI
         protected override void OnDestroy()
         {
             quitButton.onClick.RemoveListener(onButtonQuit.Dispatch);
-            shopBuyLevels.onClick.RemoveListener(onButtonBuyLevels.Dispatch);
-            shopBuyNoAdverts.onClick.RemoveListener(onButtonBuyNoAds.Dispatch);
+            shopBuyLevels.onClick.RemoveListener(onButtonBuyTries100.Dispatch);
+            shopBuyNoAdverts.onClick.RemoveListener(onButtonBuyTries1K.Dispatch);
             shopCloseButton.onClick.RemoveListener(onButtonShopClose.Dispatch);
             shopButton.onClick.RemoveListener(onButtonShop.Dispatch);
             optionsButton.onClick.RemoveListener(onButtonOptions.Dispatch);

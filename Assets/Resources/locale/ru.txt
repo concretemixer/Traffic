@@ -14,23 +14,26 @@
 
 %LEVELS_DESC_SHOP%|ЕЩЕ 12 УРОВНЕЙ ЗА %PRICE_NO_ADS%
 %NO_ADS_DESC_SHOP%|ОТКЛЮЧИТЬ РЕКЛАМУ ЗА %PRICE_LEVELS%
+%TRIES_100_DESC_SHOP%|100 ПОПЫТОК ЗА %PRICE_TRIES_100% ГОЛОСОВ
+%TRIES_1K_DESC_SHOP%|1000 ПОПЫТОК ЗА %PRICE_TRIES_1K% ГОЛОСОВ
 
 %PURCHASE_OK%|ПОКУПКА УСПЕШНА
 %PURCHASE_FAILED%|ПОКУПКА НЕ УДАЛАСЬ
+%PURCHASE_FAILED_TEXT%|Что-то пошло не так...
 
 %PURCHASE_RESTORED%|ВАШИ ПОКУПКИ
 %PURCHASE_RESTORED_TEXT%|Вы восстановили все свои покупки
 %PURCHASE_RESTORE_FAIL%|ОШИБКА
 %PURCHASE_RESTORE_FAIL_TEXT%|Восстановление покупок не удалось
 
-
 %LEVELS_BOUGHT%|Вы приобрели 12 дополнительных уровней за %PRICE_LEVELS%
 %NO_ADS_BOUGHT%|Вы отключили рекламу в приложении за %PRICE_NO_ADS%
+%TRIES_BOUGHT%|Вы успешно приобрели успешно попытки! 
 
 %LEVELS_LOCKED_TITLE%|ВНИМАНИЕ
 %LEVELS_LOCKED_TEXT%|ВЫ МОЖЕТЕ КУПИТЬ 12 ДОПОЛНИТЕЛЬНЫХ УРОВНЕЙ ЗА %PRICE_LEVELS%
 %NO_TRIES_TITLE%|ПОПЫТКИ КОНЧИЛИСЬ
-%NO_TRIES_DESC%|КУПИТЕ ДОПОЛНИТЕЛЫЕ ПОПЫТКИ ЗА %PRICE_NO_ADS% ИЛИ ВЕРНИТЕСЬ В ИГРУ ЧУТЬ ПОЗДНЕЕ!
+%NO_TRIES_DESC%|КУПИТЕ ДОПОЛНИТЕЛЫЕ ПОПЫТКИ ЗА %PRICE_TRIES% ИЛИ ВЕРНИТЕСЬ В ИГРУ ЧУТЬ ПОЗДНЕЕ!
 %NO_TRIES_TIMER%|ПОПЫТКИ ВОССТАНОВЯТСЯ ЧЕРЕЗ {0}:{1}
 
 %NO_TRIES_ADVERT%|СМОТРЕТЬ<br>РЕКЛАМУ

@@ -11,9 +11,6 @@
     </script>
 <script type="text/javascript">
 
-// Функция order() отображает окно для покупки товара с наименованием "item_25new".
-// Названия платежных событий пишутся в контейнер с id="callbacks".
-
   function order(item_name) {
     var params = {
       type: 'item',
@@ -25,13 +22,14 @@
   var callbacksResults = document.getElementById('callbacks');
 
   VK.addCallback('onOrderSuccess', function(order_id) {
-    SendMessage("gameInstance.EntryPoint","onOrderSuccess", order_id);
+    gameInstance.SendMessage("EntryPoint","onOrderSuccess", order_id);
   });
   VK.addCallback('onOrderFail', function() {
-    SendMessage("gameInstance.EntryPoint","onOrderFail", "");
+    gameInstance.SendMessage("EntryPoint","onOrderFail", "");
   });
   VK.addCallback('onOrderCancel', function() {
-    SendMessage("gameInstance.EntryPoint","onOrderCancel", "");
+    gameInstance.SendMessage("EntryPoint","onOrderFail", "");
+//    gameInstance.SendMessage("EntryPoint","onOrderCancel", "");
   });
 </script>
   </head>

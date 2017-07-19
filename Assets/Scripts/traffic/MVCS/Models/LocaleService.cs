@@ -182,6 +182,16 @@ namespace Traffic.MVCS.Models
                 entries.Add("%PRICE_LEVELS%", currency + (currency.Length > 1 ? " " : "") + price.ToString("F2"));
                 priceStringsOk = true;
             }
+            if (iapService.GetProductPrice(IAPType.Tries100, out price, out currency))
+            {
+                entries.Add("%PRICE_TRIES_100%", price.ToString("F0"));
+                priceStringsOk = true;
+            }
+            if (iapService.GetProductPrice(IAPType.Tries1000, out price, out currency))
+            {
+                entries.Add("%PRICE_TRIES_1K%", price.ToString("F0"));
+                priceStringsOk = true;
+            }
         }
 
         public void SetAllTexts(GameObject root)         

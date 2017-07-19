@@ -1,5 +1,6 @@
 <? 
 header('Content-Type: application/json'); 
+header("Cache-Control: no-cache");
 
 require("common.php");
 

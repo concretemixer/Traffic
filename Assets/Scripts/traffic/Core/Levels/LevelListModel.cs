@@ -32,6 +32,9 @@ namespace Traffic.Core
         public int TriesLeft
         {
             get {
+#if UNITY_WEBGL
+                _TriesLeft = PlayerPrefs.GetInt("tries.left", 30);
+#endif
                 return _TriesLeft;
             }
             set {
