@@ -58,11 +58,14 @@ namespace Traffic.MVCS.Views.UI
         [Inject]
         public SwitchToStartScreenSignal toStartScreenSignal { get; set; }
 
+        [Inject(EntryPoint.Container.Stage)]
+        public GameObject stage { get; set; }
+
         static int page = 0;
 
         void switchPageHandlerNext()
         {
-            page = page < 3 ? page+1 : page;
+            page = page < 2 ? page+1 : page;
             view.SetPage(page, levels);
         }
 
@@ -85,6 +88,26 @@ namespace Traffic.MVCS.Views.UI
             initLevel.Dispatch();
         }
 
+        public void Update()
+        {
+            if (levels.TriesLeft <= 0)
+            {
+                if (DateTime.Now > levels.TriesRefreshTime)
+                {
+                    WebDB webDB = stage.GetComponentInParent<WebDB>();
+                    if (webDB != null)
+                    {
+                        webDB.RequestProgress();
+                    }
+                    UI.Hide(UIMap.Id.NoTriesMessage);
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                homeHandler();
+            }
+        }
+
         void startLevelHandler(int index)
         {
             bool block = false;
@@ -92,9 +115,9 @@ namespace Traffic.MVCS.Views.UI
 
             if (levels.TriesLeft <= 0)
             {
-                if (DateTime.Now > levels.TriesRefreshTime)
-                    levels.TriesLeft = levels.TriesTotal;
-                else
+                //if (DateTime.Now > levels.TriesRefreshTime)
+                //    levels.TriesLeft = levels.TriesTotal;
+                //else
                     block = true;
             }
 
@@ -113,13 +136,7 @@ namespace Traffic.MVCS.Views.UI
             toStartScreenSignal.Dispatch();
         }
 
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                homeHandler();
-            }
-        }
+
 
 
         void closeHandler()

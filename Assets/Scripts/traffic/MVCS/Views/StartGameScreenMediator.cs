@@ -123,8 +123,10 @@ namespace Traffic.MVCS.Views.UI
                     view.SetText(localeService.ProcessString("%LEVELS_BOUGHT%"));
                 else if (what == IAPType.NoAdverts)
                     view.SetText(localeService.ProcessString("%NO_ADS_BOUGHT%"));
-                else if (what == IAPType.Any)
-                    view.SetText(localeService.ProcessString("%TRIES_BOUGHT%"));
+                else if (what == IAPType.Tries100)
+                    view.SetText(localeService.ProcessString("%TRIES_BOUGHT_100%"));
+                else if (what == IAPType.Tries1000)
+                    view.SetText(localeService.ProcessString("%TRIES_BOUGHT_1000%"));
             }
 
 

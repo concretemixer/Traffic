@@ -56,12 +56,13 @@ namespace Traffic.MVCS.Views.UI
 
         void infoOkHandler()
         {
+            /*
             if (iapService.IsBought(IAPType.AdditionalLevels))
             {
                 levels.TriesLeft = levels.TriesTotal;
                 UI.Hide(UIMap.Id.LevelPackDoneMessage);
             }
-
+             */
             InfoMessageView view2 = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
             view2.onButtonOk.RemoveListener(infoOkHandler);
         }

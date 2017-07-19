@@ -20,6 +20,9 @@ namespace Traffic.MVCS.Views.UI
         public PurchaseFailed onPurchaseFailed { get; set; }
 
         [Inject]
+        public PurchaseCancelled onPurchaseCancelled{ get; set; }
+
+        [Inject]
         public NoTriesMessageView view { get; set; }
 
         [Inject]
@@ -52,7 +55,11 @@ namespace Traffic.MVCS.Views.UI
                     String.Format(localeService.ProcessString("%NO_TRIES_TIMER%"), ((int)span.TotalMinutes).ToString("D2"), span.Seconds.ToString("D2")));
                 if (DateTime.Now > levels.TriesRefreshTime)
                 {
-                    levels.TriesLeft = levels.TriesTotal;
+                    WebDB webDB = stage.GetComponentInParent<WebDB>();
+                    if (webDB != null)
+                    {
+                        webDB.RequestProgress();                        
+                    }
                     UI.Hide(UIMap.Id.NoTriesMessage);
                 }
             }
@@ -70,13 +77,13 @@ namespace Traffic.MVCS.Views.UI
         }
 
         void infoOkHandler()
-        {
+        {       /*
             if (iapService.IsBought(IAPType.NoAdverts))
             {
                 levels.TriesLeft = levels.TriesTotal;
                 UI.Hide(UIMap.Id.NoTriesMessage);
             }
-
+                  */
             InfoMessageView view2 = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
             view2.onButtonOk.RemoveListener(infoOkHandler);
         }
@@ -89,8 +96,13 @@ namespace Traffic.MVCS.Views.UI
             if (what == IAPType.AdditionalLevels)
                 view.SetText(localeService.ProcessString("%LEVELS_BOUGHT%"));
             else if (what == IAPType.NoAdverts)
-                view.SetText(localeService.ProcessString("%NO_ADS_BOUGHT%"));            
+                view.SetText(localeService.ProcessString("%NO_ADS_BOUGHT%"));
+            else if (what == IAPType.Tries100)
+                view.SetText(localeService.ProcessString("%TRIES_BOUGHT_100%"));
+            else if (what == IAPType.Tries1000)
+                view.SetText(localeService.ProcessString("%TRIES_BOUGHT_1000%"));
 
+            UI.Hide(UIMap.Id.NoTriesMessage);
             view.SetMessageMode(true);
             view.onButtonOk.AddListener(infoOkHandler);
         }
@@ -99,11 +111,20 @@ namespace Traffic.MVCS.Views.UI
         {
             InfoMessageView view = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
             view.SetCaption(localeService.ProcessString("%PURCHASE_FAILED%"));
-            view.SetText(error);
+            if (string.IsNullOrEmpty(error))
+                view.SetText(localeService.ProcessString("%PURCHASE_FAILED_TEXT%"));
+            else
+                view.SetText(error);
             view.SetMessageMode(true);
             view.onButtonOk.AddListener(infoOkHandler);
         }
 
+        void purchaseCancelHandler()
+        {
+            InfoMessageView view = UI.Get<InfoMessageView>(UIMap.Id.InfoMessage);
+            view.SetMessageMode(false);
+            UI.Hide(UIMap.Id.InfoMessage);
+        }
         void buyHandler()
         {
             UI.Hide(UIMap.Id.InfoMessage);
@@ -132,6 +153,7 @@ namespace Traffic.MVCS.Views.UI
 
             onPurchaseOk.AddListener(purchaseOkHandler);
             onPurchaseFailed.AddListener(purchaseFailHandler);
+            onPurchaseCancelled.AddListener(purchaseCancelHandler);
 
             view.Layout(Screen.width, Screen.height);
 
@@ -146,6 +168,7 @@ namespace Traffic.MVCS.Views.UI
 
             onPurchaseOk.RemoveListener(purchaseOkHandler);
             onPurchaseFailed.RemoveListener(purchaseFailHandler);
+            onPurchaseCancelled.RemoveListener(purchaseCancelHandler);
 
             base.OnRemove();
         }

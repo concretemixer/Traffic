@@ -150,9 +150,9 @@ namespace Traffic.MVCS.Models
         private SystemLanguage GetDefaultLanguage()
         {
          
-            string langStr = PlayerPrefs.GetString("language", "");
-            if (!string.IsNullOrEmpty(langStr))
-                return (SystemLanguage)Enum.Parse(typeof(SystemLanguage), langStr);
+          //  string langStr = PlayerPrefs.GetString("language", "");
+       //     if (!string.IsNullOrEmpty(langStr))
+            //    return (SystemLanguage)Enum.Parse(typeof(SystemLanguage), langStr);
 
 //            if (map.ContainsKey(Application.systemLanguage))
   //              return Application.systemLanguage;

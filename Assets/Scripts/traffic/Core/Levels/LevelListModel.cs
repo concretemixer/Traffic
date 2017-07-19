@@ -142,17 +142,19 @@ namespace Traffic.Core
         {
             CurrentLevelIndex = 0;
 
-            _TriesLeft = PlayerPrefs.GetInt("tries.left", 7);
+            _TriesLeft = PlayerPrefs.GetInt("tries.left", 0);
             TriesTotal = 7;
 
             Int32 unixTimestamp = PlayerPrefs.GetInt("tries.refresh", 0);
             _TriesRefreshTime = new DateTime(1970, 1, 1).AddSeconds(unixTimestamp);
 
+            /*
             if (TriesLeft <= 0)
             {
                 if (DateTime.Now > TriesRefreshTime)
                     TriesLeft = TriesTotal;
             }
+              */
 
             LevelNames = new string[] 
 	        {

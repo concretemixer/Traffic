@@ -126,12 +126,11 @@ namespace Traffic.MVCS.Views.Game
 
                 if (levels.CurrentLevelIndex != 0)
                 {
-                    if (!iapService.IsBought(IAPType.NoAdverts))
-                    {
-                        levels.TriesLeft--;
-                        if (levels.TriesLeft == 0)
-                            levels.TriesRefreshTime = DateTime.Now.AddHours(1);
-                    }
+                   
+                    levels.TriesLeft--;
+                    if (levels.TriesLeft == 0)
+                         levels.TriesRefreshTime = DateTime.Now.AddMinutes(10);
+                    
                 }
 
                 foreach (var scenario in stage.GetComponentsInChildren<TutorialScenarioBase>())

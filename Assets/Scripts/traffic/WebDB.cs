@@ -131,7 +131,7 @@ namespace Traffic
             
         }
 
-        void RequestProgress()
+        public void RequestProgress()
         {
             //http://trafficstorm.concretemixergames.com/webgl/progress.php
 
@@ -153,7 +153,7 @@ namespace Traffic
             var progress = Newtonsoft.Json.JsonConvert.DeserializeObject<LevelScoreData>(json);
 
 
-            Debug.Log("Tries = "+ progress.tries);
+          //  Debug.Log("Tries = "+ progress.tries);
             PlayerPrefs.SetInt("tries.left", progress.tries);
 
             for (int a = 0; a < 27; a++)
@@ -249,9 +249,17 @@ namespace Traffic
 
         public void onOrderSuccess(string id)
         {
-            Debug.Log("ID = " + id);
-            onPurchaseOk.Dispatch(MVCS.Models.IAPType.Any);
-            PlayerPrefs.SetInt("tries.left", PlayerPrefs.GetInt("tries.left",0)+100);
+//            Debug.Log("ID = " + id);
+            if (id == "tries100")
+            {
+                onPurchaseOk.Dispatch(MVCS.Models.IAPType.Tries100);
+                PlayerPrefs.SetInt("tries.left", PlayerPrefs.GetInt("tries.left", 0) + 100);
+            }
+            else if (id == "tries1000")
+            {
+                onPurchaseOk.Dispatch(MVCS.Models.IAPType.Tries1000);
+                PlayerPrefs.SetInt("tries.left", PlayerPrefs.GetInt("tries.left", 0) + 1000);
+            }
             RequestProgress();
         }
 

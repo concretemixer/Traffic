@@ -31,8 +31,8 @@ namespace Traffic.MVCS.Models
             price = 1;
             switch (what)
             {
-                case IAPType.Tries100: price = 10; break;
-                case IAPType.Tries1000: price = 50; break;
+                case IAPType.Tries100: price = 9; break;
+                case IAPType.Tries1000: price = 45; break;
             }
             
             return true;

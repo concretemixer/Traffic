@@ -11,25 +11,28 @@
     </script>
 <script type="text/javascript">
 
+
   function order(item_name) {
     var params = {
       type: 'item',
       item: item_name
     };
+    global_item_name = item_name;
     VK.callMethod('showOrderBox', params);
   }
 
+  var global_item_name = "";
   var callbacksResults = document.getElementById('callbacks');
 
   VK.addCallback('onOrderSuccess', function(order_id) {
-    gameInstance.SendMessage("EntryPoint","onOrderSuccess", order_id);
+    gameInstance.SendMessage("EntryPoint","onOrderSuccess", global_item_name);
   });
   VK.addCallback('onOrderFail', function() {
     gameInstance.SendMessage("EntryPoint","onOrderFail", "");
   });
   VK.addCallback('onOrderCancel', function() {
-    gameInstance.SendMessage("EntryPoint","onOrderFail", "");
-//    gameInstance.SendMessage("EntryPoint","onOrderCancel", "");
+//    gameInstance.SendMessage("EntryPoint","onOrderFail", "");
+    gameInstance.SendMessage("EntryPoint","onOrderCancel", "");
   });
 </script>
   </head>

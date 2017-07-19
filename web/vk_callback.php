@@ -4,7 +4,7 @@ header("Cache-Control: no-cache");
 
 require("common.php");
 
-$secret_key = '854Eqghn5SOULHtukhoO'; // Защищенный ключ приложения 
+$secret_key = 'Yzr95iIXkAEUkBToDgV2'; // Защищенный ключ приложения 
 
 $input = $_POST; 
 
@@ -27,56 +27,22 @@ if ($sig != md5($str.$secret_key)) {
   // Подпись правильная 
   switch ($input['notification_type']) { 
     case 'get_item': 
-      // Получение информации о товаре 
-      $item = $input['item']; // наименование товара 
-
+   case 'get_item_test': 
+      // Получение информации о товаре в тестовом режиме 
+      $item = $input['item']; 
       if ($item == 'tries100') { 
         $response['response'] = array( 
           'item_id' => 101, 
-          'title' => "100 попыток", 
-          'photo_url' => 'http://somesite/images/coin.jpg', 
-          'price' => 10 
+          'title' => "100 новых попыток", 
+          'photo_url' => 'trafficstorm.concretemixergames.com/webgl2/img/tries100.png', 
+          'price' => 9 
         ); 
       } elseif ($item == 'tries1000') { 
         $response['response'] = array( 
           'item_id' => 102, 
-          'title' => "1000 попыток", 
-          'photo_url' => 'http://somesite/images/coin.jpg', 
-          'price' => 50 
-        ); 
-      } else { 
-        $response['error'] = array( 
-          'error_code' => 20, 
-          'error_msg' => 'Товара не существует.', 
-          'critical' => true 
-        ); 
-      } 
-      break; 
-
-case 'get_item_test': 
-      // Получение информации о товаре в тестовом режиме 
-      $item = $input['item']; 
-      if ($item == 'noadverts') {
-        $response['response'] = array( 
-          'item_id' => 100, 
-          'title' => "Отключить рекламу (тестовый режим)", 
-          'photo_url' => 'http://somesite/images/coin.jpg', 
-          'price' => 1 
-        ); 
-      }
-      elseif ($item == 'tries100') { 
-        $response['response'] = array( 
-          'item_id' => 101, 
-          'title' => "100 попыток (тестовый режим)", 
-          'photo_url' => 'http://somesite/images/coin.jpg', 
-          'price' => 10 
-        ); 
-      } elseif ($item == 'tries1000') { 
-        $response['response'] = array( 
-          'item_id' => 102, 
-          'title' => "1000 попыток (тестовый режим)", 
-          'photo_url' => 'http://somesite/images/coin.jpg', 
-          'price' => 50 
+          'title' => "1000 новых попыток", 
+          'photo_url' => 'trafficstorm.concretemixergames.com/webgl2/img/tries1000.png', 
+          'price' => 45 
         ); 
       } else { 
         $response['error'] = array( 
