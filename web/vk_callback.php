@@ -35,14 +35,14 @@ if ($sig != md5($str.$secret_key)) {
           'item_id' => 101, 
           'title' => "100 новых попыток", 
           'photo_url' => 'trafficstorm.concretemixergames.com/webgl2/img/tries100.png', 
-          'price' => 9 
+          'price' => 7
         ); 
       } elseif ($item == 'tries1000') { 
         $response['response'] = array( 
           'item_id' => 102, 
           'title' => "1000 новых попыток", 
           'photo_url' => 'trafficstorm.concretemixergames.com/webgl2/img/tries1000.png', 
-          'price' => 45 
+          'price' => 35 
         ); 
       } else { 
         $response['error'] = array( 

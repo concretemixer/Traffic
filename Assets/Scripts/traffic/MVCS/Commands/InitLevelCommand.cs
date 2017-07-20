@@ -41,6 +41,9 @@ namespace Traffic.MVCS.Commands
             root.transform.SetParent(stage.transform);
             root.tag = "Untagged";
 
+            if (root.GetComponentInChildren<TutorialTouchCamera>() != null)
+                injectionBinder.injector.Inject(root.GetComponentInChildren<TutorialTouchCamera>());
+
             var o = GameObject.Find("Level");
 
             MonoBehaviour[] scripts = o.GetComponents<MonoBehaviour>();

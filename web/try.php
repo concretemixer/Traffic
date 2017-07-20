@@ -46,9 +46,9 @@ else {
     $tries = $row['tries'];
 
     if ($tries<=0) {
-        $tries = intval($diff / (60*5)) * 5;
-        if ($tries>30)
-            $tries = 30;
+        $tries = intval($diff / (60*60)) * 5;
+        if ($tries>25)
+            $tries = 25;
         $tries--;
         $sql = "UPDATE `tries` SET tries=$tries,last_try=NOW() WHERE user=$user_id";
     }

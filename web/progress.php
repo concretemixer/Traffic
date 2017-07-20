@@ -55,9 +55,9 @@ else {
     $data->diff = $diff;
 
     if ($data->tries<=0) {
-        $data->tries = intval($diff / (60*5)) * 5;
-        if ($data->tries>30)
-            $data->tries = 30;
+        $data->tries = intval($diff / (60*60)) * 5;
+        if ($data->tries>25)
+            $data->tries = 25;
 
         $sql = "UPDATE `tries` SET tries=".$data->tries.",last_try=NOW() WHERE user=$user_id";
         @mysqli_query($db, $sql);

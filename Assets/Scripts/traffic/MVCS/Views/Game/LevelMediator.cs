@@ -129,7 +129,7 @@ namespace Traffic.MVCS.Views.Game
                    
                     levels.TriesLeft--;
                     if (levels.TriesLeft == 0)
-                         levels.TriesRefreshTime = DateTime.Now.AddMinutes(10);
+                         levels.TriesRefreshTime = DateTime.Now.AddMinutes(60);
                     
                 }
 

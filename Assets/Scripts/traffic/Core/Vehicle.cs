@@ -27,7 +27,10 @@ public class Vehicle : MonoBehaviour {
 	public AudioClip startSound;
 	public AudioClip stopSound;
 
-	public float NormalSpeed = 30;
+    float accelBonus = 100.0f;
+    float decelBonus = 100.0f;
+
+    public float NormalSpeed = 30;
 	public float FastSpeed = 60;
 	public bool  CanAccelerate = true;
 	public bool IsBus = false;
@@ -308,11 +311,15 @@ public class Vehicle : MonoBehaviour {
 		if(col.gameObject.tag == "Finish" && !finished)
 		{
             finished = true;
-            //Debug.Log("lifetime = " + lifetime);
-            //Debug.Log("F: " + gameObject.name + ":" + Time.time);
+                //Debug.Log("lifetime = " + lifetime);
+                //Debug.Log("F: " + gameObject.name + ":" + Time.time);
 
-            if (gear==2)
-                onScoreGrow.Dispatch(100);
+            if (gear == 2)
+            {
+                onScoreGrow.Dispatch(accelBonus);
+                accelBonus *= 0.5f;
+            }
+
             scoreGrowK = 0;
 
 			gameObject.GetComponent<Rigidbody>().detectCollisions = false;
@@ -402,8 +409,11 @@ public class Vehicle : MonoBehaviour {
 
         if (gear == 0)
         {
-            if (tag != "VehicleAI")                
-                onScoreGrow.Dispatch(50);
+                if (tag != "VehicleAI")
+                {
+                    onScoreGrow.Dispatch(decelBonus);
+                    decelBonus *= 0.5f;
+                }
             scoreGrowK = 0.1f;
         }
         if (gear == 1)
