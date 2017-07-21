@@ -44,7 +44,7 @@ namespace Traffic.MVCS.Commands.Init
 
 //            cfg = JsonReader.Deserialize<GameplayConfig>(json);
 
-            levels.LevelConfigs = new LevelConfig[cfg.levels.Count];
+            levels.LevelConfigs = new LevelConfig[9*4/*cfg.levels.Count*/];
             int c = levels.LevelNames.Length;
             foreach (string key in cfg.levels.Keys)
             {

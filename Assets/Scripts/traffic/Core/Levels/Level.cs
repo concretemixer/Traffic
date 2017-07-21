@@ -26,8 +26,8 @@ public class Level : MonoBehaviour  {
 	GameObject cameraLandscape;
 	GameObject cameraMain;
 
-        [SerializeField]
-        bool isNight = false;
+        
+    public bool isNight = false;
 
 	//  bool Crash = false;
 	//  bool Complete = false;
@@ -58,9 +58,11 @@ public class Level : MonoBehaviour  {
                         light.shadows = LightShadows.None;
 #else
                         light.shadows = PlayerPrefs.GetInt("gfx.shadows", 1) > 0 ? LightShadows.Soft : LightShadows.None;
+                        if (isNight)
+                            light.shadows = LightShadows.None;
 #endif
                         light.shadowStrength = 0.7f;
-                        light.cullingMask = 0x300;
+                      //  light.cullingMask = 0x300;
                        // light.enabled = false;
 
                     }

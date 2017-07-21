@@ -84,7 +84,7 @@ namespace Traffic.Core
             }
             else if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
             {
-                Debug.Log(Camera.main.gameObject.name);
+                //Debug.Log(Camera.main.gameObject.name);
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
 

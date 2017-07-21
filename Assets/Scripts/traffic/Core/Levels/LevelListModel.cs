@@ -156,31 +156,40 @@ namespace Traffic.Core
             }
               */
 
-            LevelNames = new string[] 
-	        {
-				              "LevelTutorial",
-					        "Level1",
-					        "Level2",
-					        "Level3_1", 		        
-							"Level4_1",
-					        "Level13_1",
-							"Level5",
-					        "Level10",
-					        "Level7",
+            LevelNames = new string[]
+            {
+                              "LevelTutorial",
+                            "Level1",
+                            "Level2",
+                            "Level3_1",
+                            "Level4_1",
+                            "Level13_1",
+                            "Level5",
+                            "Level10",
+                            "Level7",
 
-				"Level4",
-				"Level6",
-				"Level22",
-				"Level11",
-				"Level18_1",
-				"Level23",
+                "Level4",
+                "Level6",
+                "Level22",
+                "Level11",
+                "Level18_1",
+                "Level23",
 
-				"Level16",
-				"Level17",
-				"Level19",
+                "Level16",
+                "Level17",
+                "Level19",
 
+                "Level10_Night",
+                "Level7_Night",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
 
-				 "Level3",
+                 "Level3",
 				"Level9",
 				"Level14",
 				"Level21",
@@ -190,7 +199,6 @@ namespace Traffic.Core
 				"Level15",
 				"Level8",
 
-                "Level10_Night",
 
             };
 

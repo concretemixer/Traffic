@@ -79,17 +79,18 @@ public class Vehicle : MonoBehaviour {
 
             //level = GameObject.Find ("Level").GetComponent<Level>();
 
-        if (lightsRoot != null)
-            lightsRoot.SetActive(false);
-
         ShowEffects();
 		if (gameObject.tag == "Vehicle") {
 			StopEffects();
 		}
-        if (isNight && lightsRoot!=null)
-            lightsRoot.SetActive(true);
+            if (lightsRoot != null) {
+                if (isNight )
+                    lightsRoot.SetActive(true);
+                else
+                    lightsRoot.SetActive(false);
+            }
 
-        float soundVolume = PlayerPrefs.GetFloat("volume.sound", 1);
+            float soundVolume = PlayerPrefs.GetFloat("volume.sound", 1);
 
 		if (gameObject.tag == "Vehicle") {
 			if (moveSound != null) {
@@ -359,6 +360,10 @@ public class Vehicle : MonoBehaviour {
 			GetComponent<Rigidbody> ().drag =10;
 			GetComponent<Rigidbody> ().angularDrag = 10;
 
+                if (lightsRoot != null && isNight)
+                    foreach (var ray in lightsRoot.GetComponentsInChildren<LineRenderer>())
+                        ray.enabled = false;
+
 
             if (crashSound != null && !crashed)
             {
@@ -425,7 +430,8 @@ public class Vehicle : MonoBehaviour {
 	{
         foreach (var p in transform.GetComponentsInChildren<ParticleSystem>())
         {
-            p.Play();
+            if (p.transform.parent.gameObject!=lightsRoot)
+                p.Play();
         }
                    
 		if (transform.Find ("Door") != null)
@@ -437,7 +443,8 @@ public class Vehicle : MonoBehaviour {
 	{
         foreach (var p in transform.GetComponentsInChildren<ParticleSystem>())
         {
-            p.Stop();
+                if (p.transform.parent.gameObject != lightsRoot)
+                    p.Stop();
         }
 
 		if (transform.Find ("Door") != null)

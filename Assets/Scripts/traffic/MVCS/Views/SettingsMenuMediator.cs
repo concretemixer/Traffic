@@ -173,13 +173,20 @@ namespace Traffic.MVCS.Views.UI
             PlayerPrefs.SetInt("gfx.shadows", value ? 1 : 0);
 
             Light[] lights = stage.transform.parent.GetComponentsInChildren<Light>(true);
+            bool isNight = false;
+            if (stage.GetComponentInChildren<Level>() != null)
+                isNight = stage.GetComponentInChildren<Level>().isNight;
+
+
             if (lights.Length > 1)
             {
                 foreach (var light in lights)
                 {
                     if (light.gameObject.name.Contains("Realtime"))
                     {
-                        light.shadows = value ? LightShadows.Soft : LightShadows.None;
+                        light.shadows = value ? LightShadows.Soft : LightShadows.None;                        
+                        if (isNight)
+                            light.shadows = LightShadows.None;
                     }
                 }
             }

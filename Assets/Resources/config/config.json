@@ -259,33 +259,6 @@
          "threeStarsScore":12500,
          "twoStarsScore":8500,
          "target":50,
-         "pitchers":{
-            "Pitcher 1":{
-               "startDelay":1,
-               "intervalMin":2,
-               "intervalMax":4
-            },
-            "Pitcher":{
-               "startDelay":2,
-               "intervalMin":3,
-               "intervalMax":6
-            },
-            "Pitcher 4":{
-               "startDelay":2,
-               "intervalMin":5,
-               "intervalMax":6
-            },
-            "Pitcher 3":{
-               "startDelay":2,
-               "intervalMin":3,
-               "intervalMax":5
-            },
-            "Pitcher 2":{
-               "startDelay":3,
-               "intervalMin":3,
-               "intervalMax":5
-            }
-         }
       },
       "Level13_1":{
          "threeStarsScore":13000,
@@ -652,6 +625,11 @@
          
       },
 
+       "Level7_Night":{
+         "threeStarsScore":12500,
+         "twoStarsScore":8500,
+         "target":50,
+      },
 
    }
 }
