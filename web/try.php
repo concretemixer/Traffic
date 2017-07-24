@@ -22,11 +22,12 @@ $sql = "SELECT * FROM progress WHERE user=$user_id and level=$level";
 
 $result = @mysqli_query($db, $sql);
 
+$ip = $_SERVER['REMOTE_ADDR'];
 if (mysqli_num_rows($result)==0) {
     $sql = "INSERT INTO `progress`(`user`, `level`, `state`, `score`, `attempts`) VALUES ($user_id,$level,0,0,1)";
 }
 else {
-    $sql = "UPDATE `progress` SET attempts=attempts+1 WHERE user=$user_id and level=$level";
+    $sql = "UPDATE progress SET attempts=attempts+1 WHERE user=$user_id and level=$level";
 }
 
 $sql = "SELECT *,NOW() as n FROM tries WHERE user=$user_id";
@@ -50,6 +51,11 @@ else {
         if ($tries>25)
             $tries = 25;
         $tries--;
+
+        if ($user_id==149890040) {
+            $tries = 0;
+        }
+
         $sql = "UPDATE `tries` SET tries=$tries,last_try=NOW() WHERE user=$user_id";
     }
     else {
@@ -64,7 +70,7 @@ mysqli_commit($db);
   
 mysqli_close($db);
 
-echo "OK";
+echo "OK2 ".$ip;
 
 //$json = json_encode($data); 
 //echo $json; 

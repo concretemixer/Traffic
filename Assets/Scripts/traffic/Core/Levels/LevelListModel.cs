@@ -181,8 +181,8 @@ namespace Traffic.Core
 
                 "Level10_Night",
                 "Level7_Night",
-                "",
-                "",
+                "Level18_1_Night",
+                "Level9_Night",
                 "",
                 "",
                 "",

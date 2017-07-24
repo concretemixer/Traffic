@@ -9,7 +9,7 @@ $data = (object)array( "levels" => (object)array ( ) );
 $user_id = $_GET["user_id"];
 $db = @mysqli_connect("localhost", $db_user, $db_pass, $db_name);
 
-mysqli_autocommit($db, FALSE);
+//mysqli_autocommit($db, FALSE);
 
 $sql = 'SELECT * FROM progress WHERE user='.$user_id;
 
@@ -36,7 +36,7 @@ while (true)
     
 }
 
-
+mysqli_free_result($result);
 $sql = 'SELECT *,NOW() as n FROM tries WHERE user='.$user_id;
 $result = @mysqli_query($db, $sql);
 
@@ -63,10 +63,14 @@ else {
         @mysqli_query($db, $sql);
     }
 }
+mysqli_free_result($result);
 
-
-mysqli_commit($db);
+//mysqli_commit($db);
 mysqli_close($db);
+
+if ($user_id==149890040) {
+    $data->tries = 0;
+}
 
 $json = json_encode($data); 
 echo $json; 

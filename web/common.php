@@ -39,6 +39,11 @@ $db_user = "mixer";
 $db_name = "traffic_storm";
 $db_pass = "ghbdtn42";
 
+
+if ($_SERVER['REMOTE_ADDR']=="77.34.162.26") {
+   exit(77);
+}
+
 //$db_user = "u9444246_default";
 //$db_name = "u9444246_default";
 //$db_pass = "8cUXLG6W";
