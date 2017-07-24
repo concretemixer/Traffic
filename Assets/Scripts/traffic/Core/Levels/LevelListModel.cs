@@ -174,7 +174,6 @@ namespace Traffic.Core
                 "Level11",
                 "Level18_1",
                 "Level23",
-
                 "Level16",
                 "Level17",
                 "Level19",
@@ -183,9 +182,9 @@ namespace Traffic.Core
                 "Level7_Night",
                 "Level18_1_Night",
                 "Level9_Night",
-                "",
-                "",
-                "",
+                "Level5_Night",
+                "Level16_Night",
+                "Level11_Night",
                 "",
                 "",
 

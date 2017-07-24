@@ -643,5 +643,21 @@
          "target":50,
       },
 
-   }
+       "Level5_Night":{
+         "threeStarsScore":6000,
+         "twoStarsScore":4000,
+         "target":35,
+      },
+      "Level16_Night":{
+         "threeStarsScore":11000,
+         "twoStarsScore":7500,
+         "target":50,
+      },
+
+      "Level11_Night":{
+         "threeStarsScore":12500,
+         "twoStarsScore":8500,
+         "target":50,
+      },
+  }
 }
